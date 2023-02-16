@@ -105,6 +105,33 @@
 			padding: 0;
 		}
 	</style>
+</head>
+<body>
+	<h1>Crickdle</h1>
+	<div>
+		<h2>How to play:</h2>
+		<p>Guess the names of the top run scorer and top wicket taker in the given Test match based on the provided information. You have four guesses total. Good luck!</p>
+	</div>
+	<div>
+		<h2><span id="team1">Team 1</span> vs <span id="team2">Team 2</span></h2>
+		<p><span id="date">DD/MM/YYYY</span></p>
+		<p><span id="score">Score</span></p>
+		<p><span id="match_number">X of X</span></p>
+	</div>
+	<div>
+		<h2>&#128512;Top run scorer - XXX*</h2>
+		<input type="text" id="run_scorer_guess" name="run_scorer_guess">
+	</div>
+	<div>
+		<h2>&#128512;Top wicket taker - X/XX</h2>
+		<input type="text" id="wicket_taker_guess" name="wicket_taker_guess">
+	</div>
+	<div>
+		<button onclick="checkGuesses()">Submit</button>
+		<p id="result1"></p>
+		<p id="result2"></p>
+	</div>
+	window.onload = function() {
 	<script>
 		let team1, team2, date, score, series, topScorer, topScorerScore, topScorerFlag, topWicketTaker, topWicketTakerFigures, topWicketTakerFlag;
 
@@ -206,31 +233,6 @@
 			}
 		}	
 	</script>
-</head>
-<body>
-	<h1>Crickdle</h1>
-	<div>
-		<h2>How to play:</h2>
-		<p>Guess the names of the top run scorer and top wicket taker in the given Test match based on the provided information. You have four guesses total. Good luck!</p>
-	</div>
-	<div>
-		<h2><span id="team1">Team 1</span> vs <span id="team2">Team 2</span></h2>
-		<p><span id="date">DD/MM/YYYY</span></p>
-		<p><span id="score">Score</span></p>
-		<p><span id="match_number">X of X</span></p>
-	</div>
-	<div>
-		<h2>&#128512;Top run scorer - XXX*</h2>
-		<input type="text" id="run_scorer_guess" name="run_scorer_guess">
-	</div>
-	<div>
-		<h2>&#128512;Top wicket taker - X/XX</h2>
-		<input type="text" id="wicket_taker_guess" name="wicket_taker_guess">
-	</div>
-	<div>
-		<button onclick="checkGuesses()">Submit</button>
-		<p id="result1"></p>
-		<p id="result2"></p>
-	</div>
+	};
 </body>
 </html>
