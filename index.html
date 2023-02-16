@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+<head>
+        <title>Crickdle</title>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+		}
+		.main {
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			text-align: center;
+			height: 100vh;
+		}
+		.game-info {
+			margin-bottom: 20px;
+		}
+		.game-info h1 {
+			font-size: 3em;
+			margin: 0;
+			font-weight: bold;
+		}
+		.game-info p {
+			font-size: 1.5em;
+			margin: 0;
+		}
+		.input-section {
+			display: flex;
+			flex-direction: row;
+			justify-content: center;
+			align-items: center;
+			margin-bottom: 20px;
+		}
+		.input-section label {
+			font-size: 2em;
+			margin: 0 10px;
+		}
+		.input-section input {
+			font-size: 2em;
+			padding: 5px;
+			width: 200px;
+			border-radius: 10px;
+			border: 2px solid #ccc;
+		}
+		.input-section input:focus {
+			outline: none;
+			border: 2px solid #000;
+		}
+		.submit-button {
+			font-size: 2em;
+			padding: 10px;
+			border-radius: 10px;
+			background-color: #000;
+			color: #fff;
+			cursor: pointer;
+			border: none;
+			margin: 0 10px;
+		}
+		.submit-button:hover {
+			background-color: #555;
+		}
+		.results {
+			display: flex;
+			flex-direction: row;
+			justify-content: center;
+			align-items: center;
+			margin-bottom: 20px;
+		}
+		.results div {
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			margin: 0 10px;
+		}
+		.results label {
+			font-size: 1.5em;
+			margin: 10px 0;
+		}
+		.results input {
+			font-size: 2em;
+			padding: 5px;
+			width: 200px;
+			border-radius: 10px;
+			border: 2px solid #ccc;
+			text-align: center;
+		}
+		.results input.correct {
+			border: 2px solid #00cc00;
+		}
+		.results input.incorrect {
+			border: 2px solid #ff0000;
+		}
+		.how-to-play {
+			margin-top: 20px;
+		}
+		.how-to-play h2 {
+			font-size: 2em;
+			margin: 0 0 10px 0;
+		}
+		.how-to-play p {
+			font-size: 1.5em;
+			margin: 0;
+		}
+	</style>
+	<script>
+		function checkAnswer(guess, answer, answerField) {
+		  if (guess.toLowerCase() === answer.toLowerCase()) {
+		    answerField.classList.add("correct");
+		    return true;
+		  } else {
+		    answerField.classList.add("incorrect");
+		    return false;
+		  }
+		}
+		function submitGuesses() {
+		  let runScorer1Guess = document.getElementById("run-scorer1-guess").value;
+  		  let runScorer2Guess = document.getElementById("run-scorer2-guess").value;
+  		  let wicketTaker1Guess = document.getElementById("wicket-taker1-guess").value;
+  		  let wicketTaker2Guess = document.getElementById("wicket-taker2-guess").value;
+  		  let runScorer1Answer = document.getElementById("run-scorer1-answer").textContent;
+  		  let runScorer2Answer = document.getElementById("run-scorer2-answer").textContent;
+  		  let wicketTaker1Answer = document.getElementById("wicket-taker1-answer").textContent;
+  		  let wicketTaker2Answer = document.getElementById("wicket-taker2-answer").textContent;
+  		  let runScorer1Field = document.getElementById("run-scorer1-field");
+  		  let runScorer2Field = document.getElementById("run-scorer2-field");
+  		  let wicketTaker1Field = document.getElementById("wicket-taker1-field");
+  		  let wicketTaker2Field = document.getElementById("wicket-taker2-field");
+  		  let correctCount = 0;
+  		  if (checkAnswer(runScorer1Guess, runScorer1Answer, runScorer1Field)) {
+  		    correctCount++;
+  		  }
+  		  if (checkAnswer(runScorer2Guess, runScorer2Answer, runScorer2Field)) {
+  		    correctCount++;
+  		  }
+  		  if (checkAnswer(wicketTaker1Guess, wicketTaker1Answer, wicketTaker1Field)) {
+  		    correctCount++;
+  		  }
+  		  if (checkAnswer(wicketTaker2Guess, wicketTaker2Answer, wicketTaker2Field)) {
+   		    correctCount++;
+  		  }
+  		  if (correctCount === 4) {
+  		    alert("Congratulations! You got all the answers correct!");
+  		  } else if (correctCount > 0) {
+  		    alert("You got " + correctCount + " answers correct.");
+  		  } else {
+  		    alert("Sorry, you didn't get any of the answers correct. Please try again.");
+  		  }
+		}
+		document.getElementById("submit-button").addEventListener("click", submitGuesses);
+	</script>
+</head>
+<body>
+	<h1>Crickdle - Guess the Top Players</h1>
+	<h2>Test Match: Team 1 vs Team 2</h2>
+	<p>Date: Day Month Year</p>
+	<p>Score: Team 1 Score - Team 2 Score</p>
+	<p>Match Number: Test Match x of y</p>
+	<div>
+		<h3>Top Run Scorers</h3>
+		<p>Player 1 - <img src="country-flag.png" alt="Country Flag"> Top Score: X</p>
+		<p>Player 2 - <img src="country-flag.png" alt="Country Flag"> Top Score: X</p>
+		<label>Guess the top two run scorers:</label><br>
+		<input type="text" id="run-scorer-1" placeholder="Enter player name"><br>
+		<input type="text" id="run-scorer-2" placeholder="Enter player name"><br>
+	</div>
+	<div>
+		<h3>Top Wicket Takers</h3>
+		<p>Player 1 - <img src="country-flag.png" alt="Country Flag"> Best Bowling Figures: X/Y</p>
+		<p>Player 2 - <img src="country-flag.png" alt="Country Flag"> Best Bowling Figures: X/Y</p>
+		<label>Guess the top two wicket takers:</label><br>
+		<input type="text" id="wicket-taker-1" placeholder="Enter player name"><br>
+		<input type="text" id="wicket-taker-2" placeholder="Enter player name"><br>
+	</div>
+	<button type="button" onclick="checkAnswers()">Submit</button>
+	<div>
+		<p id="run-scorer-1-answer"></p>
+		<p id="run-scorer-2-answer"></p>
+		<p id="wicket-taker-1-answer"></p>
+		<p id="wicket-taker-2-answer"></p>
+	</div>
+	<div>
+		<h3>How to Play</h3>
+		<p>Guess the top two run scorers and top two wicket takers in the given Test match.</p>
+		<p>Enter the player names in the textboxes provided and click on the submit button.</p>
+		<p>The boxes will turn green if your answer is correct, and red if it is wrong.</p>
+		<p>You have four guesses total to guess all four players.</p>
+	</div>
+</body>
+</html>
