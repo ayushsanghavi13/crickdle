@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Crickdle - Guess the top run scorer and wicket taker!</title>
+	<title>Crickdle - Daily Cricket Guessing Game!</title>
 	<style>
 		body {
 			display: flex;
@@ -129,17 +129,17 @@
 
 		function updateGameData() {
 
-			team1 = 'Team 1'; // Replace with code to get team 1 name
-			team2 = 'Team 2'; // Replace with code to get team 2 name
-			date = '12 Feb 2023'; // Replace with code to get date
-			score = '100-200'; // Replace with code to get score
-			series = 'Test match 1 of 5'; // Replace with code to get series information
-			topScorer = 'Player 1'; // Replace with code to get top scorer name
-			topScorerScore = 100; // Replace with code to get top scorer score
-			topScorerFlag = '🇮🇳'; // Replace with code to get top scorer flag
-			topWicketTaker = 'Player 2'; // Replace with code to get top wicket taker name
-			topWicketTakerFigures = '5/50'; // Replace with code to get top wicket taker figures
-			topWicketTakerFlag = '🇦🇺'; // Replace with code to get top wicket taker flag
+			team1 = 'Team 1';
+			team2 = 'Team 2';
+			date = '12 Feb 2023';
+			score = '100-200';
+			series = 'Test match 1 of 5';
+			topScorer = 'Player 1';
+			topScorerScore = 100;
+			topScorerFlag = '🇮🇳';
+			topWicketTaker = 'Player 2';
+			topWicketTakerFigures = '5/50';
+			topWicketTakerFlag = '🇦🇺';
 
 			teamNamesElement.textContent = `${team1} vs ${team2}`;
 			dateElement.textContent = date;
@@ -227,7 +227,7 @@
 		<input type="text" id="wicket_taker_guess" name="wicket_taker_guess">
 	</div>
 	<div>
-		<button onclick="checkAnswers()">Submit</button>
+		<button onclick="checkGuesses()">Submit</button>
 		<p id="result1"></p>
 		<p id="result2"></p>
 	</div>
