@@ -1,192 +1,243 @@
 <!DOCTYPE html>
 <html>
 <head>
-        <title>Crickdle</title>
+	<title>Crickdle - Guess the top run scorer and wicket taker!</title>
 	<style>
 		body {
-			font-family: Arial, sans-serif;
-		}
-		.main {
 			display: flex;
 			flex-direction: column;
-			justify-content: center;
 			align-items: center;
-			text-align: center;
-			height: 100vh;
 		}
-		.game-info {
+
+		.game-container {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			border: 2px solid black;
+			padding: 10px;
+			margin-top: 50px;
+			border-radius: 10px;
+			box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+		}
+
+		.game-header {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
 			margin-bottom: 20px;
+			font-size: 24px;
 		}
-		.game-info h1 {
-			font-size: 3em;
-			margin: 0;
+
+		.game-title {
+			font-size: 36px;
+			font-weight: bold;
+			margin-bottom: 10px;
+		}
+
+		.game-info {
+			margin-bottom: 10px;
+			font-size: 18px;
+		}
+
+		.game-input {
+			display: flex;
+			flex-direction: row;
+			align-items: center;
+			margin-bottom: 10px;
+			font-size: 18px;
+		}
+
+		.flag {
+			margin-right: 10px;
+			font-size: 24px;
+		}
+
+		.submit-button {
+			background-color: #4CAF50;
+			border: none;
+			color: white;
+			padding: 10px 20px;
+			text-align: center;
+			text-decoration: none;
+			display: inline-block;
+			font-size: 18px;
+			margin-top: 20px;
+			cursor: pointer;
+			border-radius: 5px;
+		}
+
+		.result-text {
+			margin-top: 10px;
+			font-size: 18px;
 			font-weight: bold;
 		}
-		.game-info p {
-			font-size: 1.5em;
-			margin: 0;
-		}
-		.input-section {
-			display: flex;
-			flex-direction: row;
-			justify-content: center;
-			align-items: center;
-			margin-bottom: 20px;
-		}
-		.input-section label {
-			font-size: 2em;
-			margin: 0 10px;
-		}
-		.input-section input {
-			font-size: 2em;
-			padding: 5px;
-			width: 200px;
-			border-radius: 10px;
-			border: 2px solid #ccc;
-		}
-		.input-section input:focus {
-			outline: none;
-			border: 2px solid #000;
-		}
-		.submit-button {
-			font-size: 2em;
+
+		.answer-box {
 			padding: 10px;
-			border-radius: 10px;
-			background-color: #000;
-			color: #fff;
-			cursor: pointer;
-			border: none;
-			margin: 0 10px;
+			margin-bottom: 10px;
+			font-size: 18px;
+			text-align: center;
+			width: 150px;
+			height: 50px;
+			border: 2px solid black;
+			border-radius: 5px;
 		}
-		.submit-button:hover {
-			background-color: #555;
+
+		.answer-correct {
+			background-color: #4CAF50;
+			color: white;
 		}
-		.results {
-			display: flex;
-			flex-direction: row;
-			justify-content: center;
-			align-items: center;
-			margin-bottom: 20px;
+
+		.answer-incorrect {
+			background-color: #FF5252;
+			color: white;
 		}
-		.results div {
-			display: flex;
-			flex-direction: column;
-			justify-content: center;
-			align-items: center;
-			margin: 0 10px;
-		}
-		.results label {
-			font-size: 1.5em;
-			margin: 10px 0;
-		}
-		.results input {
-			font-size: 2em;
-			padding: 5px;
-			width: 200px;
-			border-radius: 10px;
-			border: 2px solid #ccc;
+
+		.how-to-play {
+			margin-top: 50px;
+			font-size: 18px;
+			font-style: italic;
 			text-align: center;
 		}
-		.results input.correct {
-			border: 2px solid #00cc00;
-		}
-		.results input.incorrect {
-			border: 2px solid #ff0000;
-		}
-		.how-to-play {
-			margin-top: 20px;
-		}
-		.how-to-play h2 {
-			font-size: 2em;
-			margin: 0 0 10px 0;
-		}
-		.how-to-play p {
-			font-size: 1.5em;
+
+		html, body {
+			height: 100%;
 			margin: 0;
+			padding: 0;
 		}
 	</style>
 	<script>
-		function checkAnswer(guess, answer, answerField) {
-		  if (guess.toLowerCase() === answer.toLowerCase()) {
-		    answerField.classList.add("correct");
-		    return true;
-		  } else {
-		    answerField.classList.add("incorrect");
-		    return false;
-		  }
+		let team1, team2, date, score, series, topScorer, topScorerScore, topScorerFlag, topWicketTaker, topWicketTakerFigures, topWicketTakerFlag;
+
+		let guessCount = 0;
+		let runScorerGuess, wicketTakerGuess;
+
+		const teamNamesElement = document.getElementById('team-names');
+		const dateElement = document.getElementById('date');
+		const scoreElement = document.getElementById('score');
+		const seriesElement = document.getElementById('series');
+		const topScorerElement = document.getElementById('top-scorer');
+		const topScorerScoreElement = document.getElementById('top-scorer-score');
+		const topScorerFlagElement = document.getElementById('top-scorer-flag');
+		const topWicketTakerElement = document.getElementById('top-wicket-taker');
+		const topWicketTakerFiguresElement = document.getElementById('top-wicket-taker-figures');
+		const topWicketTakerFlagElement = document.getElementById('top-wicket-taker-flag');
+		const runScorerGuessElement = document.getElementById('run-scorer-guess');
+		const wicketTakerGuessElement = document.getElementById('wicket-taker-guess');
+		const guessButtonElement = document.getElementById('guess-button');
+		const messageElement = document.getElementById('message');
+
+		function updateGameData() {
+
+			team1 = 'Team 1'; // Replace with code to get team 1 name
+			team2 = 'Team 2'; // Replace with code to get team 2 name
+			date = '12 Feb 2023'; // Replace with code to get date
+			score = '100-200'; // Replace with code to get score
+			series = 'Test match 1 of 5'; // Replace with code to get series information
+			topScorer = 'Player 1'; // Replace with code to get top scorer name
+			topScorerScore = 100; // Replace with code to get top scorer score
+			topScorerFlag = '🇮🇳'; // Replace with code to get top scorer flag
+			topWicketTaker = 'Player 2'; // Replace with code to get top wicket taker name
+			topWicketTakerFigures = '5/50'; // Replace with code to get top wicket taker figures
+			topWicketTakerFlag = '🇦🇺'; // Replace with code to get top wicket taker flag
+
+			teamNamesElement.textContent = `${team1} vs ${team2}`;
+			dateElement.textContent = date;
+			scoreElement.textContent = score;
+			seriesElement.textContent = series;
+			topScorerElement.textContent = topScorer;
+			topScorerScoreElement.textContent = topScorerScore;
+			topScorerFlagElement.textContent = topScorerFlag;
+			topWicketTakerElement.textContent = topWicketTaker;
+			topWicketTakerFiguresElement.textContent = topWicketTakerFigures;
+			topWicketTakerFlagElement.textContent = topWicketTakerFlag;
+			
+			guessCount = 0;
+			runScorerGuess = '';
+			wicketTakerGuess = '';
+			messageElement.textContent = '';
 		}
-		function submitGuesses() {
-		  let runScorer1Guess = document.getElementById("run-scorer1-guess").value;
-  		  let runScorer2Guess = document.getElementById("run-scorer2-guess").value;
-  		  let wicketTaker1Guess = document.getElementById("wicket-taker1-guess").value;
-  		  let wicketTaker2Guess = document.getElementById("wicket-taker2-guess").value;
-  		  let runScorer1Answer = document.getElementById("run-scorer1-answer").textContent;
-  		  let runScorer2Answer = document.getElementById("run-scorer2-answer").textContent;
-  		  let wicketTaker1Answer = document.getElementById("wicket-taker1-answer").textContent;
-  		  let wicketTaker2Answer = document.getElementById("wicket-taker2-answer").textContent;
-  		  let runScorer1Field = document.getElementById("run-scorer1-field");
-  		  let runScorer2Field = document.getElementById("run-scorer2-field");
-  		  let wicketTaker1Field = document.getElementById("wicket-taker1-field");
-  		  let wicketTaker2Field = document.getElementById("wicket-taker2-field");
-  		  let correctCount = 0;
-  		  if (checkAnswer(runScorer1Guess, runScorer1Answer, runScorer1Field)) {
-  		    correctCount++;
-  		  }
-  		  if (checkAnswer(runScorer2Guess, runScorer2Answer, runScorer2Field)) {
-  		    correctCount++;
-  		  }
-  		  if (checkAnswer(wicketTaker1Guess, wicketTaker1Answer, wicketTaker1Field)) {
-  		    correctCount++;
-  		  }
-  		  if (checkAnswer(wicketTaker2Guess, wicketTaker2Answer, wicketTaker2Field)) {
-   		    correctCount++;
-  		  }
-  		  if (correctCount === 4) {
-  		    alert("Congratulations! You got all the answers correct!");
-  		  } else if (correctCount > 0) {
-  		    alert("You got " + correctCount + " answers correct.");
-  		  } else {
-  		    alert("Sorry, you didn't get any of the answers correct. Please try again.");
-  		  }
-		}
-		document.getElementById("submit-button").addEventListener("click", submitGuesses);
+
+		function checkGuesses() {
+			var runScorerGuess = document.getElementById("runScorerGuess").value;
+			var wicketTakerGuess = document.getElementById("wicketTakerGuess").value;
+			var runScorerAnswer = document.getElementById("runScorerAnswer").innerHTML;
+			var wicketTakerAnswer = document.getElementById("wicketTakerAnswer").innerHTML;
+
+			var runScorerCorrect = false;
+			var wicketTakerCorrect = false;
+
+			if (runScorerGuess.toLowerCase() === runScorerAnswer.toLowerCase()) {
+				document.getElementById("runScorerResult").style.color = "green";
+				document.getElementById("runScorerResult").innerHTML = "Correct!";
+				runScorerCorrect = true;
+			} else {
+				document.getElementById("runScorerResult").style.color = "red";
+				document.getElementById("runScorerResult").innerHTML = "Wrong";
+			}
+
+			if (wicketTakerGuess.toLowerCase() === wicketTakerAnswer.toLowerCase()) {
+				document.getElementById("wicketTakerResult").style.color = "green";
+				document.getElementById("wicketTakerResult").innerHTML = "Correct!";
+				wicketTakerCorrect = true;
+			} else {
+				document.getElementById("wicketTakerResult").style.color = "red";
+				document.getElementById("wicketTakerResult").innerHTML = "Wrong";
+			}
+
+			if (runScorerCorrect && wicketTakerCorrect) {
+				document.getElementById("guessesLeft").innerHTML = "You win!";
+				document.getElementById("runScorerGuess").disabled = true;
+				document.getElementById("wicketTakerGuess").disabled = true;
+				document.getElementById("submitGuesses").disabled = true;
+			} else {
+				guessesLeft--;
+				document.getElementById("guessesLeft").innerHTML = "Guesses left: " + guessesLeft;
+
+				if (guessesLeft === 0) {
+					document.getElementById("runScorerResult").style.color = "green";
+					document.getElementById("wicketTakerResult").style.color = "green";
+					document.getElementById("runScorerResult").innerHTML = "Answer: " + runScorerAnswer;
+					document.getElementById("wicketTakerResult").innerHTML = "Answer: " + wicketTakerAnswer;
+					document.getElementById("guessesLeft").innerHTML = "You lose!";
+					document.getElementById("runScorerGuess").disabled = true;
+					document.getElementById("wicketTakerGuess").disabled = true;
+					document.getElementById("submitGuesses").disabled = true;
+				}
+			}
+		}	
 	</script>
 </head>
 <body>
-	<h1>Crickdle - Daily Online Cricket Game</h1>
-	<h2>India vs Australia</h2>
-	<p>9-11 February 2023</p>
-	<p>Australia 177 & 91; India 400</p>
-	<p>Test 1 of 4</p>
+	<h1>Crickdle - Guess the top run scorer and wicket taker!</h1>
 	<div>
-		<h3>Top Run Scorers</h3>
-		<p>Player 1 &#127470; - Top Score: 120</p>
-		<p>Player 2 &#127470; - Top Score: 84</p>
-		<label>Guess the top two run scorers:</label><br>
-		<input type="text" id="run-scorer-1" placeholder="Enter player name"><br>
-		<input type="text" id="run-scorer-2" placeholder="Enter player name"><br>
+		<h2>Match Information:</h2>
+		<p>Teams: <span id="team1">Team 1</span> vs <span id="team2">Team 2</span></p>
+		<p>Date: <span id="date">DD/MM/YYYY</span></p>
+		<p>Score: <span id="score">Score</span></p>
+		<p>Test match: <span id="match_number">X of X</span></p>
 	</div>
 	<div>
-		<h3>Top Wicket Takers</h3>
-		<p>Player 1 &#128512; - Best Bowling Figures: 7/124</p>
-		<p>Player 2 &#127462; - Best Bowling Figures: 5/37</p>
-		<label>Guess the top two wicket takers:</label><br>
-		<input type="text" id="wicket-taker-1" placeholder="Enter player name"><br>
-		<input type="text" id="wicket-taker-2" placeholder="Enter player name"><br>
-	</div>
-	<button type="button" onclick="checkAnswers()">Submit</button>
-	<div>
-		<p id="Rohit Sharma"></p>
-		<p id="Axar Patel"></p>
-		<p id="Todd Murphy"></p>
-		<p id="Ravindra Jadeja"></p>
+		<h2>Guess the top run scorer:</h2>
+		<p>Nationality: <img src="path/to/team1_flag.png" alt="Team 1 Flag"><img src="path/to/team2_flag.png" alt="Team 2 Flag"></p>
+		<p>Top score: <span id="top_score">Top Score</span></p>
+		<input type="text" id="run_scorer_guess" name="run_scorer_guess">
 	</div>
 	<div>
-		<h3>How to Play</h3>
-		<p>Guess the top two run scorers and top two wicket takers in the given Test match.</p>
-		<p>Enter the player names in the textboxes provided and click on the submit button.</p>
-		<p>The boxes will turn green if your answer is correct, and red if it is wrong.</p>
-		<p>You have four guesses total to guess all four players.</p>
+		<h2>Guess the top wicket taker:</h2>
+		<p>Nationality: <img src="path/to/team1_flag.png" alt="Team 1 Flag"><img src="path/to/team2_flag.png" alt="Team 2 Flag"></p>
+		<p>Best bowling figures: <span id="best_bowling">Best Bowling Figures</span></p>
+		<input type="text" id="wicket_taker_guess" name="wicket_taker_guess">
 	</div>
+	<div>
+		<button onclick="checkAnswers()">Submit</button>
+		<p id="result1"></p>
+		<p id="result2"></p>
+	</div>
+	<div>
+		<h2>How to play:</h2>
+		<p>Guess the names of the top run scorer and top wicket taker in the given Test match based on the provided information. You have four guesses total. Good luck!</p>
+	</div>
+	<script src="path/to/your/js/file.js"></script>
 </body>
 </html>
