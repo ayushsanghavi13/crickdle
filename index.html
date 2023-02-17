@@ -11,14 +11,18 @@
     <p>Game number: <span id="match-series"></span></p>
     <h2>Top Run Scorer</h2>
     <p>Top score: <span id="top-run-score"></span></p>
-    <input type="text" id="run-guess" placeholder="Enter name here">
-    <button id="submit-run-guesses">Submit</button>
-    <div id="run-guess-result"></div>
+    <form id="run-guess-form">
+      <input type="text" id="run-guess" name="run-guess" placeholder="Enter name here">
+      <input type="submit" id="submit-run-guesses" value="Submit">
+      <div id="run-guess-result"></div>
+    </form>
     <h2>Top Wicket Taker</h2>
     <p>Best bowling figures: <span id="top-wicket-figures"></span></p>
-    <input type="text" id="wicket-guess" placeholder="Enter name here">
-    <button id="submit-wicket-guesses">Submit</button>
-    <div id="wicket-guess-result"></div>
+    <form id="wicket-guess-form">
+      <input type="text" id="wicket-guess" name="wicket-guess" placeholder="Enter name here">
+      <input type="submit" id="submit-wicket-guesses" value="Submit">
+      <div id="wicket-guess-result"></div>
+    </form>
     <button id="reveal-answers">Reveal Answers</button>
     <p>Attempts remaining: <span id="attempts-remaining">4</span></p>
     <p>Answers:</p>
