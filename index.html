@@ -1,163 +1,163 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>Crickdle</title>
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      background-color: #f9f9f9;
-    }
+	<head>
+		<meta charset="UTF-8">
+		<title>Crickdle</title>
+		<style>
+			body {
+				margin: 0;
+				padding: 0;
+				background-color: #f9f9f9;
+			}
 
-    .container {
-      max-width: 600px;
-      margin: 0 auto;
-      padding: 20px;
-      text-align: center;
-    }
+			.container {
+				max-width: 600px;
+				margin: 0 auto;
+				padding: 20px;
+				text-align: center;
+			}
 
-    h1 {
-      font-size: 36px;
-      font-weight: bold;
-      margin: 0;
-    }
+			h1 {
+				font-size: 36px;
+				font-weight: bold;
+				margin: 0;
+			}
 
-    p {
-      font-size: 18px;
-      margin: 0;
-      margin-top: 20px;
-    }
+			p {
+				font-size: 18px;
+				margin: 0;
+				margin-top: 20px;
+			}
 
-    .form-group {
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-      align-items: center;
-      margin-top: 20px;
-    }
+			.form-group {
+				display: flex;
+				flex-direction: row;
+				justify-content: space-between;
+				align-items: center;
+				margin-top: 20px;
+			}
 
-    .form-group label {
-      font-size: 18px;
-      font-weight: bold;
-      margin-right: 10px;
-    }
+			.form-group label {
+				font-size: 18px;
+				font-weight: bold;
+				margin-right: 10px;
+			}
 
-    .form-group input {
-      padding: 10px;
-      border: 1px solid #ccc;
-      font-size: 16px;
-      flex: 1;
-      margin-right: 10px;
-    }
+			.form-group input {
+				padding: 10px;
+				border: 1px solid #ccc;
+				font-size: 16px;
+				flex: 1;
+				margin-right: 10px;
+			}
 
-    .form-group input.correct {
-      border-color: #5cb85c;
-      background-color: #dff0d8;
-    }
+			.form-group input.correct {
+				border-color: #5cb85c;
+				background-color: #dff0d8;
+			}
 
-    .form-group input.incorrect {
-      border-color: #d9534f;
-      background-color: #f2dede;
-    }
+			.form-group input.incorrect {
+				border-color: #d9534f;
+				background-color: #f2dede;
+			}
 
-    .form-group input.answer {
-      background-color: white;
-      font-weight: bold;
-      font-size: 16px;
-      color: #333;
-      border: none;
-      text-align: center;
-    }
+			.form-group input.answer {
+				background-color: white;
+				font-weight: bold;
+				font-size: 16px;
+				color: #333;
+				border: none;
+				text-align: center;
+			}
 
-    .button-container {
-      margin-top: 20px;
-    }
+			.button-container {
+				margin-top: 20px;
+			}
 
-    .button-container button {
-      padding: 10px 20px;
-      background-color: #337ab7;
-      color: #fff;
-      border: none;
-      font-size: 18px;
-      cursor: pointer;
-    }
+			.button-container button {
+				padding: 10px 20px;
+				background-color: #337ab7;
+				color: #fff;
+				border: none;
+				font-size: 18px;
+				cursor: pointer;
+			}
 
-    .button-container button:hover {
-      background-color: #286090;
-    }
+			.button-container button:hover {
+				background-color: #286090;
+			}
 
-    .game-over {
-      font-size: 24px;
-      font-weight: bold;
-      margin-top: 20px;
-      color: #d9534f;
-    }
+			.game-over {
+				font-size: 24px;
+				font-weight: bold;
+				margin-top: 20px;
+				color: #d9534f;
+			}
 
-    .correct-answers {
-      margin-top: 20px;
-      font-weight: bold;
-      font-size: 16px;
-      color: #333;
-    }
+			.correct-answers {
+				margin-top: 20px;
+				font-weight: bold;
+				font-size: 16px;
+				color: #333;
+			}
 
-    .correct-answers span {
-      margin-right: 10px;
-    }
+			.correct-answers span {
+				margin-right: 10px;
+			}
 
-    .correct-answer-text {
-      font-style: italic;
-    }
-</script>
-</head>
-<body>
-	<div id="game-info">
-		<h2>Match Info:</h2>
-		<p>Nations: <span id="nations"></span></p>
-		<p>Date: <span id="date"></span></p>
-		<p>Score: <span id="score"></span></p>
-		<p>Game Number: <span id="game-number"></span></p>
-	</div>
-	<div id="guesses">
-		<h2>Guess the Top Run Scorer:</h2>
-		<input type="text" id="run-scorer" maxlength="20">
-		<h2>Guess the Top Wicket Taker:</h2>
-		<input type="text" id="wicket-taker" maxlength="20">
-	</div>
-  <script>
-    const correctRunScorer = "Virat Kohli";
-    const correctWicketTaker = "James Anderson";
-    let guessesLeft = 4;
-    
-    const runScorerInput = document.getElementById("run-scorer-input");
-    const wicketTakerInput = document.getElementById("wicket-taker-input");
-    const submitButton = document.getElementById("submit-button");
+			.correct-answer-text {
+				font-style: italic;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="game-info">
+			<h2>Match Info:</h2>
+			<p>Nations: <span id="nations"></span></p>
+			<p>Date: <span id="date"></span></p>
+			<p>Score: <span id="score"></span></p>
+			<p>Game Number: <span id="game-number"></span></p>
+		</div>
+		<div id="guesses">
+			<h2>Guess the Top Run Scorer:</h2>
+			<input type="text" id="run-scorer" maxlength="20">
+			<h2>Guess the Top Wicket Taker:</h2>
+			<input type="text" id="wicket-taker" maxlength="20">
+		</div>
+		<script>
+			const correctRunScorer = "Virat Kohli";
+			const correctWicketTaker = "James Anderson";
+			let guessesLeft = 4;
+			
+			const runScorerInput = document.getElementById("run-scorer-input");
+			const wicketTakerInput = document.getElementById("wicket-taker-input");
+			const submitButton = document.getElementById("submit-button");
 
-    submitButton.addEventListener("click", function() {
-      const userRunScorer = runScorerInput.value;
-      const userWicketTaker = wicketTakerInput.value;
+			submitButton.addEventListener("click", function() {
+				const userRunScorer = runScorerInput.value;
+				const userWicketTaker = wicketTakerInput.value;
 
-      if (userRunScorer.toLowerCase() === correctRunScorer.toLowerCase()) {
-        runScorerInput.style.backgroundColor = "green";
-      } else {
-        runScorerInput.style.backgroundColor = "red";
-        guessesLeft--;
-      }
-      if (userWicketTaker.toLowerCase() === correctWicketTaker.toLowerCase()) {
-        wicketTakerInput.style.backgroundColor = "green";
-      } else {
-        wicketTakerInput.style.backgroundColor = "red";
-        guessesLeft--;
-      }
+				if (userRunScorer.toLowerCase() === correctRunScorer.toLowerCase()) {
+					runScorerInput.style.backgroundColor = "green";
+				} else {
+					runScorerInput.style.backgroundColor = "red";
+					guessesLeft--;
+				}
+				if (userWicketTaker.toLowerCase() === correctWicketTaker.toLowerCase()) {
+					wicketTakerInput.style.backgroundColor = "green";
+				} else {
+					wicketTakerInput.style.backgroundColor = "red";
+					guessesLeft--;
+				}
 
-      if (guessesLeft === 0) {
-        runScorerInput.value = correctRunScorer;
-        wicketTakerInput.value = correctWicketTaker;
-        runScorerInput.style.backgroundColor = "white";
-        wicketTakerInput.style.backgroundColor = "white";
-        submitButton.disabled = true;
-      }
-    });
-  </script>
-</body>
+				if (guessesLeft === 0) {
+					runScorerInput.value = correctRunScorer;
+					wicketTakerInput.value = correctWicketTaker;
+					runScorerInput.style.backgroundColor = "white";
+					wicketTakerInput.style.backgroundColor = "white";
+					submitButton.disabled = true;
+				}
+			});
+		</script>
+	</body>
 </html>
