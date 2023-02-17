@@ -1,173 +1,101 @@
 <!DOCTYPE html>
-<html lang="en">
-	<head>
-		<meta charset="UTF-8">
-		<title>Crickdle</title>
-		<style>
-			body {
-				margin: 0;
-				padding: 0;
-				background-color: #f9f9f9;
-			}
+<html>
+  <head>
+    <title>Crickdle - Guess the Cricket Player</title>
+  </head>
+  <body>
+    <div id="match-details">
+      <h2>Match Details:</h2>
+      <p><strong>Nations:</strong> <span id="nation1"></span> vs <span id="nation2"></span></p>
+      <p><strong>Date:</strong> <span id="date"></span></p>
+      <p><strong>Score:</strong> <span id="score"></span></p>
+      <p><strong>Game:</strong> <span id="game-number"></span> of <span id="total-games"></span></p>
+    </div>
+    <div id="guess-section">
+      <h2>Guess the Cricket Player:</h2>
+      <p>Based on the match details given above, guess the name of one player who played in the given match. You have four guesses.</p>
+      <div class="guess-input">
+        <label for="guess1">Guess 1:</label>
+        <input type="text" id="guess1" />
+        <button id="submit1">Submit</button>
+      </div>
+      <div class="guess-input">
+        <label for="guess2">Guess 2:</label>
+        <input type="text" id="guess2" disabled />
+        <button id="submit2" disabled>Submit</button>
+      </div>
+      <div class="guess-input">
+        <label for="guess3">Guess 3:</label>
+        <input type="text" id="guess3" disabled />
+        <button id="submit3" disabled>Submit</button>
+      </div>
+      <div class="guess-input">
+        <label for="guess4">Guess 4:</label>
+        <input type="text" id="guess4" disabled />
+        <button id="submit4" disabled>Submit</button>
+      </div>
+      <div id="congratulations" style="display:none">
+        <p>Congratulations! You guessed the correct player.</p>
+      </div>
+      <div id="answer" style="display:none">
+        <p>The correct answer is: <span id="correct-answer"></span></p>
+      </div>
+    </div>
+    <div id="how-to-play">
+      <h2>How to Play:</h2>
+      <p>Guess the name of one player who played in the given match. You have four guesses. The background of the input box will turn green if you guess the correct player, and grey if you guess incorrectly. If you make four incorrect guesses, the correct answer will be displayed at the top of the screen.</p>
+    </div>
+	  <script>
+		  // Define game details and correct player (can be set manually)
+const gameDetails = {
+  nation1: "India",
+  nation2: "Australia",
+  date: "2023-02-12",
+  score: "250/4 (40 overs)",
+  gameNumber: 3,
+  totalGames: 5
+};
 
-			.container {
-				max-width: 600px;
-				margin: 0 auto;
-				padding: 20px;
-				text-align: center;
-			}
+const correctPlayer = "Virat Kohli";
 
-			h1 {
-				font-size: 36px;
-				font-weight: bold;
-				margin: 0;
-			}
+// Set up event listeners
+const guessInputs = document.querySelectorAll(".guess-input");
+const submitButtons = document.querySelectorAll("button[id^='submit']");
+const answerElement = document.getElementById("answer");
+const congratulationsElement = document.getElementById("congratulations");
+const correctAnswerElement = document.getElementById("correct-answer");
 
-			p {
-				font-size: 18px;
-				margin: 0;
-				margin-top: 20px;
-			}
+submitButtons.forEach((button, index) => {
+  button.addEventListener("click", (event) => {
+    event.preventDefault();
+    const guessInput = guessInputs[index].querySelector("input");
+    const guess = guessInput.value;
+    guessInput.disabled = true;
+    button.disabled = true;
+    if (guess === correctPlayer) {
+      guessInput.style.backgroundColor = "green";
+      congratulationsElement.style.display = "block";
+      answerElement.style.display = "none";
+    } else {
+      guessInput.style.backgroundColor = "grey";
+      if (index < 3) {
+        guessInputs[index + 1].querySelector("input").disabled = false;
+        guessInputs[index + 1].querySelector("button").disabled = false;
+      } else {
+        answerElement.style.display = "block";
+        correctAnswerElement.textContent = correctPlayer;
+      }
+    }
+  });
+});
 
-			.form-group {
-				display: flex;
-				flex-direction: row;
-				justify-content: space-between;
-				align-items: center;
-				margin-top: 20px;
-			}
-
-			.form-group label {
-				font-size: 18px;
-				font-weight: bold;
-				margin-right: 10px;
-			}
-
-			.form-group input {
-				padding: 10px;
-				border: 1px solid #ccc;
-				font-size: 16px;
-				flex: 1;
-				margin-right: 10px;
-			}
-
-			.form-group input.correct {
-				border-color: #5cb85c;
-				background-color: #dff0d8;
-			}
-
-			.form-group input.incorrect {
-				border-color: #d9534f;
-				background-color: #f2dede;
-			}
-
-			.form-group input.answer {
-				background-color: white;
-				font-weight: bold;
-				font-size: 16px;
-				color: #333;
-				border: none;
-				text-align: center;
-			}
-
-			.button-container {
-				margin-top: 20px;
-			}
-
-			.button-container button {
-				padding: 10px 20px;
-				background-color: #337ab7;
-				color: #fff;
-				border: none;
-				font-size: 18px;
-				cursor: pointer;
-			}
-
-			.button-container button:hover {
-				background-color: #286090;
-			}
-
-			.game-over {
-				font-size: 24px;
-				font-weight: bold;
-				margin-top: 20px;
-				color: #d9534f;
-			}
-
-			.correct-answers {
-				margin-top: 20px;
-				font-weight: bold;
-				font-size: 16px;
-				color: #333;
-			}
-
-			.correct-answers span {
-				margin-right: 10px;
-			}
-
-			.correct-answer-text {
-				font-style: italic;
-			}
-			
-			html, body {
-				height: 100%;
-			}
-
-			body {
-				display: flex;
-				align-items: center;
-				justify-content: center;
-			}
-		</style>
-	</head>
-	<body>
-		<div id="game-info">
-			<h2>Match Info:</h2>
-			<p>Nations: <span id="nations"></span></p>
-			<p>Date: <span id="date"></span></p>
-			<p>Score: <span id="score"></span></p>
-			<p>Game Number: <span id="game-number"></span></p>
-		</div>
-		<div id="guesses">
-			<h2>Guess the Top Run Scorer:</h2>
-			<input type="text" id="run-scorer" maxlength="20">
-			<h2>Guess the Top Wicket Taker:</h2>
-			<input type="text" id="wicket-taker" maxlength="20">
-		</div>
-		<script>
-			const correctRunScorer = "Virat Kohli";
-			const correctWicketTaker = "James Anderson";
-			let guessesLeft = 4;
-			
-			const runScorerInput = document.getElementById("run-scorer-input");
-			const wicketTakerInput = document.getElementById("wicket-taker-input");
-			const submitButton = document.getElementById("submit-button");
-
-			submitButton.addEventListener("click", function() {
-				const userRunScorer = runScorerInput.value;
-				const userWicketTaker = wicketTakerInput.value;
-
-				if (userRunScorer.toLowerCase() === correctRunScorer.toLowerCase()) {
-					runScorerInput.style.backgroundColor = "green";
-				} else {
-					runScorerInput.style.backgroundColor = "red";
-					guessesLeft--;
-				}
-				if (userWicketTaker.toLowerCase() === correctWicketTaker.toLowerCase()) {
-					wicketTakerInput.style.backgroundColor = "green";
-				} else {
-					wicketTakerInput.style.backgroundColor = "red";
-					guessesLeft--;
-				}
-
-				if (guessesLeft === 0) {
-					runScorerInput.value = correctRunScorer;
-					wicketTakerInput.value = correctWicketTaker;
-					runScorerInput.style.backgroundColor = "white";
-					wicketTakerInput.style.backgroundColor = "white";
-					submitButton.disabled = true;
-				}
-			});
-		</script>
-	</body>
+// Update game details in HTML
+document.getElementById("nation1").textContent = gameDetails.nation1;
+document.getElementById("nation2").textContent = gameDetails.nation2;
+document.getElementById("date").textContent = gameDetails.date;
+document.getElementById("score").textContent = gameDetails.score;
+document.getElementById("game-number").textContent = gameDetails.gameNumber;
+document.getElementById("total-games").textContent = gameDetails.totalGames;
+</script>
+  </body>
 </html>
