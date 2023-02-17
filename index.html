@@ -2,6 +2,100 @@
 <html>
   <head>
     <title>Crickdle</title>
+    <style>
+      body {
+        font-family: 'Roboto', sans-serif;
+        color: #2d2d2d;
+        background-color: #f7f7f7;
+      }
+
+      .container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+
+      h1 {
+        font-size: 36px;
+        font-weight: 700;
+        margin-bottom: 20px;
+        text-align: center;
+      }
+
+      h2 {
+        font-size: 24px;
+        font-weight: 500;
+        margin-top: 50px;
+        margin-bottom: 20px;
+      }
+
+      p {
+        font-size: 18px;
+        font-weight: 400;
+        margin: 10px 0;
+        text-align: center;
+      }
+
+      input[type="text"], input[type="submit"], button {
+        padding: 10px 20px;
+        font-size: 18px;
+        font-weight: 500;
+        border-radius: 30px;
+        border: none;
+        margin: 10px 0;
+        background-color: #d8d8d8;
+        color: #2d2d2d;
+        cursor: pointer;
+        transition: all 0.2s ease-in-out;
+      }
+
+      input[type="text"]:hover, input[type="submit"]:hover, button:hover {
+        background-color: #2d2d2d;
+        color: #ffffff;
+      }
+
+      #run-guess-result, #wicket-guess-result {
+        font-size: 18px;
+        font-weight: 500;
+        margin: 10px 0;
+        text-align: center;
+      }
+
+      #reveal-answers, #run-answer, #wicket-answer {
+        font-size: 18px;
+        font-weight: 500;
+        margin: 10px 0;
+        text-align: center;
+        display: none;
+      }
+
+      #reveal-answers {
+        background-color: #2d2d2d;
+        color: #ffffff;
+      }
+
+      #attempts-remaining {
+        font-size: 18px;
+        font-weight: 500;
+        margin: 10px 0;
+        text-align: center;
+      }
+
+      #match-nations, #match-date, #match-score, #match-series {
+        font-size: 18px;
+        font-weight: 400;
+        margin: 10px 0;
+        text-align: center;
+      }
+
+      #top-run-score, #top-wicket-figures {
+        font-size: 18px;
+        font-weight: 400;
+        margin: 10px 0;
+        text-align: center;
+    </style>
   </head>
   <body>
     <h1>Guess the top run scorer and top wicket taker in this Test cricket match:</h1>
