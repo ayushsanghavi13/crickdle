@@ -178,7 +178,7 @@ const gameDetails = {
   totalGames: 4
 };
 
-const correctPlayer = "Rishabh Pant";
+const correctPlayer = ["Rishabh Pant", "Rishabh", "Pant"];
 
 // Set up event listeners
 const guessInputs = document.querySelectorAll(".guess-input");
@@ -194,7 +194,7 @@ submitButtons.forEach((button, index) => {
     const guess = guessInput.value;
     guessInput.disabled = true;
     button.disabled = true;
-    if (guess === correctPlayer) {
+    if (correctPlayer.includes(guess)) {
       guessInput.style.backgroundColor = "green";
       congratulationsElement.style.display = "block";
       answerElement.style.display = "none";
