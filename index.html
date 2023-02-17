@@ -2,6 +2,134 @@
 <html>
   <head>
     <title>Crickdle - Guess the Cricket Player</title>
+	  <style>
+		  /* Center all elements on the page */
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Add margins to the sides of the page */
+body {
+  margin: 2em;
+}
+
+/* Center the game container */
+#game-container {
+  margin: auto;
+  max-width: 800px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Style the match details section */
+#match-details {
+  border: 2px solid #ccc;
+  padding: 1em;
+  margin-bottom: 2em;
+  text-align: center;
+}
+
+#match-details h2 {
+  margin-top: 0;
+}
+
+#match-details p {
+  margin: 0.5em 0;
+}
+
+/* Style the guess section */
+#guess-section {
+  border: 2px solid #ccc;
+  padding: 1em;
+  margin-bottom: 2em;
+  text-align: center;
+}
+
+#guess-section h2 {
+  margin-top: 0;
+}
+
+.guess-input {
+  margin: 1em 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.guess-input label {
+  margin-right: 1em;
+}
+
+.guess-input input {
+  margin-right: 1em;
+  padding: 0.5em;
+  font-size: 1.2em;
+  text-align: center;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  width: 200px;
+}
+
+.guess-input input:focus {
+  outline: none;
+  border-color: #00bfff;
+}
+
+.guess-input button {
+  padding: 0.5em;
+  font-size: 1.2em;
+  border: none;
+  border-radius: 4px;
+  background-color: #00bfff;
+  color: #fff;
+  cursor: pointer;
+}
+
+.guess-input button:disabled {
+  background-color: #ccc;
+  color: #333;
+  cursor: default;
+}
+
+/* Style the congratulations and answer sections */
+#congratulations, #answer {
+  border: 2px solid #ccc;
+  padding: 1em;
+  margin-bottom: 2em;
+  text-align: center;
+}
+
+#congratulations p, #answer p {
+  margin: 0.5em 0;
+}
+
+#answer {
+  display: none;
+}
+
+#answer p {
+  font-weight: bold;
+}
+
+/* Style the how-to-play section */
+#how-to-play {
+  text-align: center;
+}
+
+#how-to-play h2 {
+  margin-top: 0;
+  margin-bottom: 1em;
+}
+
+#how-to-play p {
+  margin-bottom: 1em;
+}
+	  </style>
   </head>
   <body>
     <div id="match-details">
