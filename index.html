@@ -2,6 +2,24 @@
 <html>
   <head>
     <title>Crickdle</title>
+  </head>
+  <body>
+    <h1>Guess the top run scorer and top wicket taker in this Test cricket match:</h1>
+    <p>Nations: <span id="nations"></span></p>
+    <p>Date: <span id="date"></span></p>
+    <p>Score: <span id="score"></span></p>
+    <p>Game number: <span id="game-number"></span></p>
+    <h2>Top Run Scorer</h2>
+    <p>Top score: <span id="top-score"></span></p>
+    <input type="text" id="run-scorer-guess" placeholder="Enter name here">
+    <button id="submit-run-scorer-guess">Submit</button>
+    <div id="run-scorer-result"></div>
+    <h2>Top Wicket Taker</h2>
+    <p>Best bowling figures: <span id="best-bowling-figures"></span></p>
+    <input type="text" id="wicket-taker-guess" placeholder="Enter name here">
+    <button id="submit-wicket-taker-guess">Submit</button>
+    <div id="wicket-taker-result"></div>
+    <button id="reveal-answers">Reveal Answers</button>
     <script>
       var matchNations = "England vs India";
       var matchDate = "1st January 2022";
@@ -58,24 +76,5 @@
       
       document.getElementById("submit-guesses").addEventListener("click", checkGuesses);
     </script>
-  </head>
-  <body>
-    <h1>Guess the top run scorer and top wicket taker in this Test cricket match:</h1>
-    <p>Nations: <span id="nations"></span></p>
-    <p>Date: <span id="date"></span></p>
-    <p>Score: <span id="score"></span></p>
-    <p>Game number: <span id="game-number"></span></p>
-    <h2>Top Run Scorer</h2>
-    <p>Top score: <span id="top-score"></span></p>
-    <input type="text" id="run-scorer-guess" placeholder="Enter name here">
-    <button id="submit-run-scorer-guess">Submit</button>
-    <div id="run-scorer-result"></div>
-    <h2>Top Wicket Taker</h2>
-    <p>Best bowling figures: <span id="best-bowling-figures"></span></p>
-    <input type="text" id="wicket-taker-guess" placeholder="Enter name here">
-    <button id="submit-wicket-taker-guess">Submit</button>
-    <div id="wicket-taker-result"></div>
-    <button id="reveal-answers">Reveal Answers</button>
-    <script src="crickdle.js"></script>
   </body>
 </html>
