@@ -2,6 +2,62 @@
 <html>
   <head>
     <title>Crickdle</title>
+    <script>
+      var matchNations = "England vs India";
+      var matchDate = "1st January 2022";
+      var matchScore = "England 300/5 (80) - India 200 all out (60)";
+      var matchSeries = "Test Series, Match 3 of 5";
+
+      var topRunScorer = "Joe Root";
+      var topRunScore = 150;
+      var topWicketTaker = "James Anderson";
+      var topWicketFigures = "5/40";
+
+      var runGuess = "";
+      var wicketGuess = "";
+      var attemptsRemaining = 4;
+
+      document.getElementById("match-nations").innerHTML = matchNations;
+      document.getElementById("match-date").innerHTML = matchDate;
+      document.getElementById("match-score").innerHTML = matchScore;
+      document.getElementById("match-series").innerHTML = matchSeries;
+      document.getElementById("top-run-score").innerHTML = topRunScore;
+      document.getElementById("top-wicket-figures").innerHTML = topWicketFigures;
+
+      function checkGuesses() {
+        runGuess = document.getElementById("run-guess").value;
+        wicketGuess = document.getElementById("wicket-guess").value;
+
+        if (runGuess.toLowerCase() === topRunScorer.toLowerCase()) {
+          document.getElementById("run-guess-result").style.color = "green";
+          document.getElementById("run-guess-result").innerHTML = "Correct!";
+        } else {
+          document.getElementById("run-guess-result").style.color = "red";
+          document.getElementById("run-guess-result").innerHTML = "Incorrect";
+        }
+
+        if (wicketGuess.toLowerCase() === topWicketTaker.toLowerCase()) {
+          document.getElementById("wicket-guess-result").style.color = "green";
+          document.getElementById("wicket-guess-result").innerHTML = "Correct!";
+        } else {
+          document.getElementById("wicket-guess-result").style.color = "red";
+          document.getElementById("wicket-guess-result").innerHTML = "Incorrect";
+        }
+
+        attemptsRemaining--;
+
+        document.getElementById("attempts-remaining").innerHTML = attemptsRemaining;
+
+        if (attemptsRemaining === 0) {
+          document.getElementById("run-guess").disabled = true;
+          document.getElementById("wicket-guess").disabled = true;
+          document.getElementById("run-answer").innerHTML = topRunScorer;
+          document.getElementById("wicket-answer").innerHTML = topWicketTaker;
+        }
+      }
+      
+      document.getElementById("submit-guesses").addEventListener("click", checkGuesses);
+    </script>
   </head>
   <body>
     <h1>Guess the top run scorer and top wicket taker in this Test cricket match:</h1>
