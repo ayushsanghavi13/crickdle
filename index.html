@@ -146,6 +146,7 @@
       document.getElementById("top-wicket-figures").innerHTML = topWicketFigures;
 
       function checkGuesses() {
+         event.preventDefault();
         runGuess = document.getElementById("run-guess").value;
         wicketGuess = document.getElementById("wicket-guess").value;
 
