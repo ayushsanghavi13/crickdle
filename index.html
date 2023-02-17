@@ -134,14 +134,13 @@ body {
   <body>
     <div id="match-details">
       <h2>CRICKDLE</h2>
-      <p><strong>i</strong> <span id="nation1"></span> vs <span id="nation2"></span></p>
-      <p><strong>i</strong> <span id="date"></span></p>
-      <p><strong>i</strong> <span id="score"></span></p>
-      <p><strong>i</strong> <span id="game-number"></span> of <span id="total-games"></span></p>
+      <p><span id="nation1"></span> vs <span id="nation2"></span></p>
+      <p><span id="date"></span></p>
+      <p><span id="score"></span></p>
+      <p>Test match <span id="game-number"></span> of <span id="total-games"></span></p>
     </div>
     <div id="guess-section">
-      <h2>Guess the Cricket Player:</h2>
-      <p>Which player scored 23 and 89* in this game? You have four guesses.</p>
+      <p>Which player scored <b>23<b> and <b>89*<b> in this game?</p>
       <div class="guess-input">
         <label for="guess1">Guess 1:</label>
         <input type="text" id="guess1" />
@@ -171,7 +170,7 @@ body {
     </div>
     <div id="how-to-play">
       <h2>How to Play:</h2>
-      <p>Guess the name of one player who played in the given match. You have four guesses. The background of the input box will turn green if you guess the correct player, and grey if you guess incorrectly. If you make four incorrect guesses, the correct answer will be displayed at the top of the screen.</p>
+      <p>Guess the name of the player based on their stats in this match. You have four guesses. The background of the input box will turn green if you guess the correct player, and grey if you guess incorrectly. If you make four incorrect guesses, the correct answer will be revealed.</p>
     </div>
 	  <script>
 		  // Define game details and correct player (can be set manually)
