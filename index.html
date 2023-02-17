@@ -117,7 +117,6 @@
       <input type="submit" id="submit-wicket-guesses" value="Submit">
       <div id="wicket-guess-result"></div>
     </form>
-    <button id="reveal-answers">Reveal Answers</button>
     <p>Attempts remaining: <span id="attempts-remaining">4</span></p>
     <p>Answers:</p>
     <p>Top run scorer: <span id="run-answer"></span></p>
@@ -175,16 +174,12 @@
           document.getElementById("wicket-guess").disabled = true;
           document.getElementById("run-answer").innerHTML = topRunScorer;
           document.getElementById("wicket-answer").innerHTML = topWicketTaker;
-          document.getElementById("reveal-answers").style.display = "block";
+          
         }
       }
 
       document.getElementById("submit-run-guesses").addEventListener("click", checkGuesses);
       document.getElementById("submit-wicket-guesses").addEventListener("click", checkGuesses);
-
-      document.getElementById("reveal-answers").addEventListener("click", function() {
-        document.getElementById("run-answer").innerHTML = topRunScorer;
-        document.getElementById("wicket-answer").innerHTML = topWicketTaker;
       });
     </script>
   </body>
