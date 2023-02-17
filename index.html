@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Crickdle - Guess the Cricket Player</title>
+    <title>Crickdle - Daily Cricket Guessing Game!</title>
 	  <style>
 		  /* Center all elements on the page */
 html, body {
@@ -133,15 +133,15 @@ body {
   </head>
   <body>
     <div id="match-details">
-      <h2>Match Details:</h2>
-      <p><strong>Nations:</strong> <span id="nation1"></span> vs <span id="nation2"></span></p>
-      <p><strong>Date:</strong> <span id="date"></span></p>
-      <p><strong>Score:</strong> <span id="score"></span></p>
-      <p><strong>Game:</strong> <span id="game-number"></span> of <span id="total-games"></span></p>
+      <h2>CRICKDLE</h2>
+      <p><strong></strong> <span id="nation1"></span> vs <span id="nation2"></span></p>
+      <p><strong></strong> <span id="date"></span></p>
+      <p><strong></strong> <span id="score"></span></p>
+      <p><strong></strong> <span id="game-number"></span> of <span id="total-games"></span></p>
     </div>
     <div id="guess-section">
       <h2>Guess the Cricket Player:</h2>
-      <p>Based on the match details given above, guess the name of one player who played in the given match. You have four guesses.</p>
+      <p>Which player scored 23 and 89* in this game?. You have four guesses.</p>
       <div class="guess-input">
         <label for="guess1">Guess 1:</label>
         <input type="text" id="guess1" />
@@ -176,15 +176,15 @@ body {
 	  <script>
 		  // Define game details and correct player (can be set manually)
 const gameDetails = {
-  nation1: "India",
-  nation2: "Australia",
-  date: "2023-02-12",
-  score: "250/4 (40 overs)",
-  gameNumber: 3,
-  totalGames: 5
+  nation1: "Australia",
+  nation2: "India",
+  date: "January 15 - 19, 2021",
+  score: "Australia 369 & 294, India (T: 328) 336 & 329/7",
+  gameNumber: Test match 4,
+  totalGames: 4
 };
 
-const correctPlayer = "Virat Kohli";
+const correctPlayer = "Rishabh Pant";
 
 // Set up event listeners
 const guessInputs = document.querySelectorAll(".guess-input");
