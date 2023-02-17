@@ -3,85 +3,89 @@
   <head>
     <title>Crickdle - Guess the Cricket Player</title>
 	  <style>
-		html, body {
+html,
+body {
   height: 100%;
+  margin: 0;
+  padding: 0;
 }
 
 body {
-  margin: 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  font-family: Arial, sans-serif;
-  background-color: #f7f7f7;
+  font-family: sans-serif;
 }
 
-h2 {
-  font-size: 1.2em;
-  margin-top: 0;
-}
-
-#match-details {
-  margin-bottom: 2em;
-}
-
-#guess-section {
-  border: 1px solid #ccc;
-  padding: 1em;
-  background-color: white;
+#match-details,
+#guess-section,
+#how-to-play {
+  margin: 20px auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
   text-align: center;
-  max-width: 500px;
+  max-width: 800px;
 }
 
 .guess-input {
-  margin: 1em 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 10px 0;
 }
 
-label {
-  display: block;
-  margin-bottom: 0.5em;
-  font-weight: bold;
+.guess-input label {
+  flex-basis: 100px;
 }
 
-input[type="text"] {
-  padding: 0.5em;
-  border: 1px solid #ccc;
-  border-radius: 3px;
-  width: 200px;
-  font-size: 1em;
+.guess-input input {
+  flex-grow: 1;
+  margin-left: 10px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 16px;
 }
 
-button {
-  padding: 0.5em;
+.guess-input button {
+  margin-left: 10px;
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 16px;
   background-color: #4CAF50;
   color: white;
   border: none;
-  border-radius: 3px;
-  margin-left: 1em;
-  cursor: pointer;
-  font-size: 1em;
 }
 
-button:disabled {
-  background-color: #ccc;
-  cursor: default;
+.guess-input button:disabled {
+  background-color: #ddd;
+  color: #666;
+  cursor: not-allowed;
 }
 
-#congratulations, #answer {
-  margin: 1em 0;
+#congratulations,
+#answer {
+  margin-top: 20px;
+}
+
+#congratulations p,
+#answer p {
+  font-weight: bold;
+  font-size: 20px;
 }
 
 #congratulations p {
-  color: green;
+  color: #4CAF50;
 }
 
 #answer p {
-  color: red;
+  color: #f44336;
 }
 
 #how-to-play {
-  margin-top: 2em;
+  margin-top: 50px;
 }
 	  </style>  
   </head>
