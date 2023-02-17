@@ -5,21 +5,26 @@
   </head>
   <body>
     <h1>Guess the top run scorer and top wicket taker in this Test cricket match:</h1>
-    <p>Nations: <span id="nations"></span></p>
-    <p>Date: <span id="date"></span></p>
-    <p>Score: <span id="score"></span></p>
-    <p>Game number: <span id="game-number"></span></p>
+    <p>Nations: <span id="match-nations"></span></p>
+    <p>Date: <span id="match-date"></span></p>
+    <p>Score: <span id="match-score"></span></p>
+    <p>Game number: <span id="match-series"></span></p>
     <h2>Top Run Scorer</h2>
-    <p>Top score: <span id="top-score"></span></p>
-    <input type="text" id="run-scorer-guess" placeholder="Enter name here">
-    <button id="submit-run-scorer-guess">Submit</button>
-    <div id="run-scorer-result"></div>
+    <p>Top score: <span id="top-run-score"></span></p>
+    <input type="text" id="run-guess" placeholder="Enter name here">
+    <button id="submit-run-guesses">Submit</button>
+    <div id="run-guess-result"></div>
     <h2>Top Wicket Taker</h2>
-    <p>Best bowling figures: <span id="best-bowling-figures"></span></p>
-    <input type="text" id="wicket-taker-guess" placeholder="Enter name here">
-    <button id="submit-wicket-taker-guess">Submit</button>
-    <div id="wicket-taker-result"></div>
+    <p>Best bowling figures: <span id="top-wicket-figures"></span></p>
+    <input type="text" id="wicket-guess" placeholder="Enter name here">
+    <button id="submit-wicket-guesses">Submit</button>
+    <div id="wicket-guess-result"></div>
     <button id="reveal-answers">Reveal Answers</button>
+    <p>Attempts remaining: <span id="attempts-remaining">4</span></p>
+    <p>Answers:</p>
+    <p>Top run scorer: <span id="run-answer"></span></p>
+    <p>Top wicket taker: <span id="wicket-answer"></span></p>
+
     <script>
       var matchNations = "England vs India";
       var matchDate = "1st January 2022";
@@ -29,7 +34,7 @@
       var topRunScorer = "Joe Root";
       var topRunScore = 150;
       var topWicketTaker = "James Anderson";
-      var topWicketFigures = "5/40";
+      var topWicketFigures = 5;
 
       var runGuess = "";
       var wicketGuess = "";
@@ -71,10 +76,16 @@
           document.getElementById("wicket-guess").disabled = true;
           document.getElementById("run-answer").innerHTML = topRunScorer;
           document.getElementById("wicket-answer").innerHTML = topWicketTaker;
+          document.getElementById("reveal-answers").style.display = "block";
         }
       }
-      
+
       document.getElementById("submit-guesses").addEventListener("click", checkGuesses);
+
+      document.getElementById("reveal-answers").addEventListener("click", function() {
+        document.getElementById("run-answer").innerHTML = topRunScorer;
+        document.getElementById("wicket-answer").innerHTML = topWicketTaker;
+      });
     </script>
   </body>
 </html>
