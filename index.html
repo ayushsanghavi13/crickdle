@@ -199,7 +199,7 @@ submitButtons.forEach((button, index) => {
     const guess = guessInput.value;
     guessInput.disabled = true;
     button.disabled = true;
-    if (correctPlayer.includes(guess)) {
+    if (guess === correctPlayer) {
       guessInput.style.backgroundColor = "green";
       congratulationsElement.style.display = "block";
       answerElement.style.display = "none";
