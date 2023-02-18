@@ -308,11 +308,14 @@ submitButtons.forEach((button, index) => {
       answerElement.style.display = "none";
           } else if (isClose(guess, correctPlayer)) {
       guessInput.style.backgroundColor = "#ffcc00";
-      guessInput.style.color = "black";
-      guessInput.disabled = false;
-      guessInput.focus();
-      button.disabled = false;
-      return;
+    guessInput.style.color = "white";
+      if (index < 3) {
+        guessInputs[index + 1].querySelector("input").disabled = false;
+        guessInputs[index + 1].querySelector("button").disabled = false;
+        guessInputs[index + 1].querySelector("input").focus();
+      } else {
+        answerElement.style.display = "block";
+        correctAnswerElement.textContent = correctPlayer;
     } else {
       guessInput.style.backgroundColor = "grey";
 	      guessInput.style.color = "white";
