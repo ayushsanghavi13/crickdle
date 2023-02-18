@@ -309,6 +309,10 @@ submitButtons.forEach((button, index) => {
   } else {
       guessInput.style.backgroundColor = "grey";
 	      guessInput.style.color = "white";
+	  else if (misspelled(guess, correctPlayer)) {
+  guessInput.style.backgroundColor = "yellow";
+  guessInput.focus();
+}
       if (index < 3) {
         guessInputs[index + 1].querySelector("input").disabled = false;
         guessInputs[index + 1].querySelector("button").disabled = false;
@@ -356,6 +360,26 @@ inputElements.forEach((input) => {
     event.target.value = inputValue.toUpperCase();
   });
 });
+		  function misspelled(str1, str2) {
+  if (str1 === str2) {
+    return false;
+  }
+  if (Math.abs(str1.length - str2.length) > 2) {
+    return false;
+  }
+  const longer = str1.length > str2.length ? str1 : str2;
+  const shorter = str1.length > str2.length ? str2 : str1;
+  let mismatch = 0;
+  for (let i = 0; i < longer.length; i++) {
+    if (shorter[i - mismatch] !== longer[i]) {
+      if (mismatch >= 2) {
+        return false;
+      }
+      mismatch++;
+    }
+  }
+  return true;
+}
 </script>
   </body>
 </html>
