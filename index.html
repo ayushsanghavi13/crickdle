@@ -14,12 +14,6 @@ html {
   box-sizing: inherit;
 }
 
-@media only screen and (max-width: 768px) {
-  html {
-    font-size: 14px;
-  }
-}
-
 /* Set up font styles */
 body {
   font-family: 'Montserrat', sans-serif;
@@ -47,18 +41,8 @@ p {
   border-radius: 0.5rem;
   background-color: #f5f5f5;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-@media only screen and (max-width: 600px) {
-  #game-container {
-    width: 90%;
-  }
-}
-
-@media only screen and (min-width: 600px) {
-  #game-container {
-    width: 600px;
-  }
+  width: 90%;
+  max-width: 600px;
 }
 
 /* Style the match details section */
@@ -70,7 +54,7 @@ p {
 #match-details h1 {
   margin-bottom: 0.5rem;
   font-size: 2rem;
-	color: #1dc278;
+  color: #1dc278;
 }
 
 #match-details p {
@@ -92,23 +76,23 @@ p {
 .guess-input {
   margin: 1rem 0;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
 }
 
 .guess-input label {
-  margin-right: 1rem;
+  margin-bottom: 0.5rem;
   font-size: 1.2rem;
 }
 
 .guess-input input {
-  margin-right: 1rem;
+  margin-bottom: 0.5rem;
   padding: 0.5rem;
   font-size: 1.2rem;
   text-align: center;
   border: 2px solid #ccc;
   border-radius: 0.5rem;
-  width: 200px;
+  width: 100%;
   transition: all 0.2s ease-in-out;
 }
 
