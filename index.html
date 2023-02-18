@@ -13,7 +13,7 @@ html {
   box-sizing: inherit;
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 768px) {
   html {
     font-size: 14px;
   }
@@ -21,14 +21,15 @@ html {
 
 /* Set up font styles */
 body {
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Montserrat', sans-serif;
   font-weight: 400;
   font-size: 1.2rem;
   line-height: 1.5;
+  color: #333;
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Montserrat', sans-serif;
   font-weight: 700;
   line-height: 1.2;
   margin-top: 0;
@@ -40,22 +41,22 @@ p {
 
 /* Set up game container styles */
 #game-container {
-  max-width: 800px;
+  max-width: 600px;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 1rem;
   border-radius: 0.5rem;
-  background-color: #fff;
-  box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
+  background-color: #f5f5f5;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 /* Style the match details section */
 #match-details {
   text-align: center;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
 }
 
 #match-details h2 {
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
   font-size: 1.5rem;
 }
 
@@ -67,11 +68,11 @@ p {
 /* Style the guess section */
 #guess-section {
   text-align: center;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
 }
 
 #guess-section h2 {
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
   font-size: 1.5rem;
 }
 
@@ -95,21 +96,24 @@ p {
   border: 2px solid #ccc;
   border-radius: 0.5rem;
   width: 200px;
+  transition: all 0.2s ease-in-out;
 }
 
 .guess-input input:focus {
   outline: none;
-  border-color: #00bfff;
+  border-color: #1dc278;
+  box-shadow: 0 0 4px rgba(29, 194, 120, 0.5);
 }
 
 .guess-input button {
-  padding: 0.5rem;
+  padding: 0.5rem 1rem;
   font-size: 1.2rem;
   border: none;
   border-radius: 0.5rem;
   background-color: #1dc278;
   color: #fff;
   cursor: pointer;
+  transition: all 0.2s ease-in-out;
 }
 
 .guess-input button:disabled {
@@ -121,21 +125,12 @@ p {
 /* Style the congratulations and answer sections */
 #congratulations, #answer {
   text-align: center;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
 }
 
 #congratulations p, #answer p {
   margin: 0.5rem 0;
   font-size: 1.2rem;
-}
-
-#answer {
-  display: none;
-}
-
-#answer p {
-  font-weight: bold;
-  font-size: 1.5rem;
 }
 	  </style>
   </head>
