@@ -3,75 +3,97 @@
   <head>
     <title>Crickdle - Daily Cricket Guessing Game!</title>
 	  <style>
-		  /* Center all elements on the page */
-html, body {
-  height: 100%;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
+		/* Set up responsive design */
+html {
+  box-sizing: border-box;
+  font-size: 16px;
 }
 
-/* Add margins to the sides of the page */
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+@media only screen and (max-width: 600px) {
+  html {
+    font-size: 14px;
+  }
+}
+
+/* Set up font styles */
 body {
-  margin: 2em;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  font-size: 1.2rem;
+  line-height: 1.5;
 }
 
-/* Center the game container */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-top: 0;
+}
+
+p {
+  margin: 0 0 1rem;
+}
+
+/* Set up game container styles */
 #game-container {
-  margin: auto;
   max-width: 800px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  margin: 0 auto;
+  padding: 2rem;
+  border-radius: 0.5rem;
+  background-color: #fff;
+  box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
 }
 
 /* Style the match details section */
 #match-details {
-  border: 2px solid #ccc;
-  padding: 1em;
-  margin-bottom: 2em;
   text-align: center;
+  margin-bottom: 2rem;
 }
 
 #match-details h2 {
-  margin-top: 0;
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
 }
 
 #match-details p {
-  margin: 0.5em 0;
+  margin: 0.5rem 0;
+  font-size: 1.2rem;
 }
 
 /* Style the guess section */
 #guess-section {
-  border: 2px solid #ccc;
-  padding: 1em;
-  margin-bottom: 2em;
   text-align: center;
+  margin-bottom: 2rem;
 }
 
 #guess-section h2 {
-  margin-top: 0;
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
 }
 
 .guess-input {
-  margin: 1em 0;
+  margin: 1rem 0;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
 .guess-input label {
-  margin-right: 1em;
+  margin-right: 1rem;
+  font-size: 1.2rem;
 }
 
 .guess-input input {
-  margin-right: 1em;
-  padding: 0.5em;
-  font-size: 1.2em;
+  margin-right: 1rem;
+  padding: 0.5rem;
+  font-size: 1.2rem;
   text-align: center;
   border: 2px solid #ccc;
-  border-radius: 4px;
+  border-radius: 0.5rem;
   width: 200px;
 }
 
@@ -81,10 +103,10 @@ body {
 }
 
 .guess-input button {
-  padding: 0.5em;
-  font-size: 1.2em;
+  padding: 0.5rem;
+  font-size: 1.2rem;
   border: none;
-  border-radius: 4px;
+  border-radius: 0.5rem;
   background-color: #1dc278;
   color: #fff;
   cursor: pointer;
@@ -98,14 +120,13 @@ body {
 
 /* Style the congratulations and answer sections */
 #congratulations, #answer {
-  border: 2px solid #ccc;
-  padding: 1em;
-  margin-bottom: 2em;
   text-align: center;
+  margin-bottom: 2rem;
 }
 
 #congratulations p, #answer p {
-  margin: 0.5em 0;
+  margin: 0.5rem 0;
+  font-size: 1.2rem;
 }
 
 #answer {
@@ -114,6 +135,7 @@ body {
 
 #answer p {
   font-weight: bold;
+  font-size: 1.5rem;
 }
 
 /* Style the how-to-play section */
@@ -122,8 +144,10 @@ body {
 }
 
 #how-to-play p {
-  margin-bottom: 2em;
-}
+  margin-bottom: 2rem;
+  font-size: 1.2rem;
+	margin-bottom: 2em;
+	}
 	  </style>
   </head>
   <body>
