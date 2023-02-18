@@ -301,28 +301,43 @@ submitButtons.forEach((button, index) => {
     const guess = guessInput.value;
     guessInput.disabled = true;
     button.disabled = true;
-    if (guess === correctPlayer) {
+       if (guess === correctPlayer) {
       guessInput.style.backgroundColor = "#1dc278";
-	    guessInput.style.color = "white";
+      guessInput.style.color = "white";
       congratulationsElement.style.display = "block";
       answerElement.style.display = "none";
-  } else {
-      guessInput.style.backgroundColor = "grey";
-	      guessInput.style.color = "white";
-	  else if (misspelled(guess, correctPlayer)) {
-  guessInput.style.backgroundColor = "yellow";
-  guessInput.focus();
-}
-      if (index < 3) {
-        guessInputs[index + 1].querySelector("input").disabled = false;
-        guessInputs[index + 1].querySelector("button").disabled = false;
-        guessInputs[index + 1].querySelector("input").focus();
-      } else {
-        answerElement.style.display = "block";
-        correctAnswerElement.textContent = correctPlayer;
+    } else if (guess.length === correctPlayer.length + 1 || guess.length === correctPlayer.length - 1) {
+      let diff = 0;
+      for (let i = 0; i < correctPlayer.length; i++) {
+        if (correctPlayer[i] !== guess[i + diff]) {
+          diff++;
+          if (diff > 1) {
+            break;
+          }
+        }
+      }
+      if (diff === 1) {
+        guessInput.style.backgroundColor = "#ffcc00";
+        guessInput.style.color = "black";
+        guessInput.disabled = false;
+        guessInput.focus();
+        button.disabled = false;
+        return;
       }
     }
+
+    guessInput.style.backgroundColor = "grey";
+    guessInput.style.color = "white";
+    if (index < 3) {
+      guessInputs[index + 1].querySelector("input").disabled = false;
+      guessInputs[index + 1].querySelector("button").disabled = false;
+      guessInputs[index + 1].querySelector("input").focus();
+    } else {
+      answerElement.style.display = "block";
+      correctAnswerElement.textContent = correctPlayer;
+    }
   });
+});
   // Enable submitting by pressing "Enter" key
   const input = guessInputs[index].querySelector("input");
   input.addEventListener("keyup", (event) => {
