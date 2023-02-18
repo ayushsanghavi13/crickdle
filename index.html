@@ -158,7 +158,7 @@ p {
 }
 
 .toolbar-title {
-  font-size: 30px;
+  font-size: 40px;
   font-weight: bold;
   margin: 0;
 	 color: #1dc278;
@@ -178,7 +178,7 @@ p {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgb(0, 0, 0);
   display: none;
   justify-content: center;
   align-items: center;
@@ -244,7 +244,7 @@ p {
 	    <p><span id="nation1"></span> vs <span id="nation2"></span></p>
 	    <p><span id="date"></span></p>
 	    <p><span id="score"></span></p>
-	    <p>Test match <span id="game-number"></span> of <span id="total-games"></span></p>
+	    <p>Test <span id="game-number"></span> of <span id="total-games"></span></p>
     </div>
     <div id="guess-section">
       <strong>Which &#127470;&#127475; player scored 23 and 89* in this game?</strong>
@@ -268,7 +268,7 @@ p {
 	      <p><b>Congrats! You've hit this one out of the park.</b></p>
       </div>
       <div id="answer" style="display:none">
-	      <p><b>Golden duck...the correct answer was <span id="correct-answer"></span>.</b></p>
+	      <p><b>Golden duck...the correct answer is <span id="correct-answer"></span>.</b></p>
       </div>
     </div>
 	  <script>
@@ -302,8 +302,10 @@ submitButtons.forEach((button, index) => {
       guessInput.style.backgroundColor = "#1dc278";
       congratulationsElement.style.display = "block";
       answerElement.style.display = "none";
+	    guessInput.style.Color = "#ffffff";
     } else {
       guessInput.style.backgroundColor = "grey";
+	    guessInput.style.Color = "#ffffff";
       if (index < 3) {
         guessInputs[index + 1].querySelector("input").disabled = false;
         guessInputs[index + 1].querySelector("button").disabled = false;
