@@ -186,7 +186,7 @@ p {
       </div>
     </div>
 	  <script>
-		  // Define game details and correct player (can be set manually)
+		 // Define game details and correct player (can be set manually)
 const gameDetails = {
   nation1: "Australia",
   nation2: "India",
@@ -213,7 +213,7 @@ submitButtons.forEach((button, index) => {
     guessInput.disabled = true;
     button.disabled = true;
     if (guess === correctPlayer) {
-      guessInput.style.backgroundColor = "green";
+      guessInput.style.backgroundColor = "#1dc278";
       congratulationsElement.style.display = "block";
       answerElement.style.display = "none";
     } else {
@@ -221,10 +221,18 @@ submitButtons.forEach((button, index) => {
       if (index < 3) {
         guessInputs[index + 1].querySelector("input").disabled = false;
         guessInputs[index + 1].querySelector("button").disabled = false;
+        guessInputs[index + 1].querySelector("input").focus();
       } else {
         answerElement.style.display = "block";
         correctAnswerElement.textContent = correctPlayer;
       }
+    }
+  });
+  // Enable submitting by pressing "Enter" key
+  const input = guessInputs[index].querySelector("input");
+  input.addEventListener("keyup", (event) => {
+    if (event.key === "Enter") {
+      button.click();
     }
   });
 });
