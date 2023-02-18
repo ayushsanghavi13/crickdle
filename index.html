@@ -150,11 +150,77 @@ p {
 #answer {
   color: #f44336;
 }
+		  
+		        /* Define the toolbar styles */
+      .toolbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #FFFFFF;
+        border-bottom: 1px solid #CCCCCC;
+        height: 70px;
+        padding: 0 20px;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+      }
+      /* Define the question button styles */
+      .question-button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        border: none;
+        background-color: #FFFFFF;
+        font-size: 20px;
+        cursor: pointer;
+        transition: all 0.3s;
+      }
+      .question-button:hover {
+        background-color: #F5F5F5;
+      }
+      /* Define the pop-up styles */
+      .popup {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: #FFFFFF;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        padding: 20px;
+        z-index: 9999;
+        display: none;
+      }
+      .popup h2 {
+        margin-top: 0;
+      }
+      .popup p {
+        margin-bottom: 0;
+      }
+      .popup-close {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        font-size: 20px;
+        color: #CCCCCC;
+        cursor: pointer;
+      }
+      .popup-close:hover {
+        color: #333333;
+      }
 	  </style>
   </head>
   <body>
+	  <div class="toolbar">
+      <h1>CRICKDLE</h1>
+      <button class="question-button">&#10067;</button>
+    </div>
+    <div class="popup" id="popup">
+      <span class="popup-close">&times;</span>
+      <h2>How to Play Crickdle</h2>
+      <p>Guess the name of the cricket player who scored the given runs in the game. You have four attempts to guess the correct answer. If you get the answer wrong, the input field will turn gray, and the next input field will become available. If you guess correctly, the input field will turn green, and you will see a congratulations message.</p>
+    </div>
     <div id="match-details">
-	    <p><h1>CRICKDLE</h1></p>
 	    <p><span id="nation1"></span> vs <span id="nation2"></span></p>
 	    <p><span id="date"></span></p>
 	    <p><span id="score"></span></p>
@@ -244,6 +310,61 @@ document.getElementById("date").textContent = gameDetails.date;
 document.getElementById("score").textContent = gameDetails.score;
 document.getElementById("game-number").textContent = gameDetails.gameNumber;
 document.getElementById("total-games").textContent = gameDetails.totalGames;
+		  
+		  // Get the elements
+const toolbar = document.getElementById("toolbar");
+const questionButton = document.getElementById("question-button");
+const popup = document.getElementById("popup");
+const closePopupButton = document.getElementById("close-popup-button");
+
+// Add event listeners
+questionButton.addEventListener("click", () => {
+  popup.style.display = "block";
+});
+
+closePopupButton.addEventListener("click", () => {
+  popup.style.display = "none";
+});
+
+// Style the toolbar
+toolbar.style.backgroundColor = "#f8f9fa";
+toolbar.style.borderBottom = "1px solid #dee2e6";
+toolbar.style.display = "flex";
+toolbar.style.justifyContent = "space-between";
+toolbar.style.padding = "10px";
+toolbar.style.position = "fixed";
+toolbar.style.top = "0";
+toolbar.style.width = "100%";
+
+// Style the question button
+questionButton.style.background = "none";
+questionButton.style.border = "none";
+questionButton.style.color = "#495057";
+questionButton.style.cursor = "pointer";
+questionButton.style.fontSize = "30px";
+questionButton.style.outline = "none";
+
+// Style the popup
+popup.style.backgroundColor = "#f8f9fa";
+popup.style.border = "1px solid #ced4da";
+popup.style.borderRadius = "5px";
+popup.style.boxShadow = "0 0 10px rgba(0, 0, 0, 0.1)";
+popup.style.display = "none";
+popup.style.padding = "10px";
+popup.style.position = "fixed";
+popup.style.top = "50%";
+popup.style.left = "50%";
+popup.style.transform = "translate(-50%, -50%)";
+popup.style.width = "400px";
+
+// Style the close button
+closePopupButton.style.background = "none";
+closePopupButton.style.border = "none";
+closePopupButton.style.color = "#495057";
+closePopupButton.style.cursor = "pointer";
+closePopupButton.style.float = "right";
+closePopupButton.style.fontSize = "20px";
+closePopupButton.style.outline = "none";
 </script>
   </body>
 </html>
