@@ -306,35 +306,18 @@ submitButtons.forEach((button, index) => {
 	    guessInput.style.color = "white";
       congratulationsElement.style.display = "block";
       answerElement.style.display = "none";
-  } else if (guess.length === correctPlayer.length && isOneOrTwoLettersOff(guess, correctPlayer)) {
-    guessInput.style.backgroundColor = "yellow";
-    guessInput.style.color = "black";
   } else {
-    guessInput.style.backgroundColor = "red";
-    guessInput.style.color = "white";
-  }
-}
-
-function isOneOrTwoLettersOff(guess, answer) {
-  if (guess === answer) {
-    return false;
-  }
-
-  if (guess.length !== answer.length) {
-    return false;
-  }
-
-  let mismatchCount = 0;
-  for (let i = 0; i < guess.length; i++) {
-    if (guess[i] !== answer[i]) {
-      mismatchCount++;
+      guessInput.style.backgroundColor = "grey";
+	      guessInput.style.color = "white";
+      if (index < 3) {
+        guessInputs[index + 1].querySelector("input").disabled = false;
+        guessInputs[index + 1].querySelector("button").disabled = false;
+        guessInputs[index + 1].querySelector("input").focus();
+      } else {
+        answerElement.style.display = "block";
+        correctAnswerElement.textContent = correctPlayer;
+      }
     }
-    if (mismatchCount > 2) {
-      return false;
-    }
-  }
-  return true;
-}
   });
   // Enable submitting by pressing "Enter" key
   const input = guessInputs[index].querySelector("input");
