@@ -306,26 +306,14 @@ submitButtons.forEach((button, index) => {
 	    guessInput.style.color = "white";
       congratulationsElement.style.display = "block";
       answerElement.style.display = "none";
-      } else if (guess.length === correctPlayer.length + 1 || guess.length === correctPlayer.length - 1) {
-      let diff = 0;
-      for (let i = 0; i < correctPlayer.length; i++) {
-        if (correctPlayer[i] !== guess[i + diff]) {
-          diff++;
-          if (diff > 1) {
-            break;
-          }
-        }
-      }
-      if (diff === 1) {
-        guessInput.style.backgroundColor = "#ffcc00";
-        guessInput.style.color = "black";
-        guessInput.disabled = false;
-        guessInput.focus();
-        button.disabled = false;
-        return;
-      }
-    }
-
+          } else if (isClose(guess, correctPlayer)) {
+      guessInput.style.backgroundColor = "#ffcc00";
+      guessInput.style.color = "black";
+      guessInput.disabled = false;
+      guessInput.focus();
+      button.disabled = false;
+      return;
+    } else {
       guessInput.style.backgroundColor = "grey";
 	      guessInput.style.color = "white";
       if (index < 3) {
@@ -375,6 +363,36 @@ inputElements.forEach((input) => {
     event.target.value = inputValue.toUpperCase();
   });
 });
+		  function isClose(guess, correctPlayer) {
+  const guessLength = guess.length;
+  const correctPlayerLength = correctPlayer.length;
+  if (Math.abs(guessLength - correctPlayerLength) > 2) {
+    return false;
+  }
+  let i = 0;
+  let j = 0;
+  let diff = 0;
+  while (i < guessLength && j < correctPlayerLength) {
+    if (guess[i] !== correctPlayer[j]) {
+      diff++;
+      if (diff > 1) {
+        return false;
+      }
+      if (guessLength > correctPlayerLength) {
+        i++;
+      } else if (guessLength < correctPlayerLength) {
+        j++;
+      } else {
+        i++;
+        j++;
+      }
+    } else {
+      i++;
+      j++;
+    }
+  }
+  return true;
+}
 </script>
   </body>
 </html>
