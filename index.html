@@ -252,7 +252,7 @@ p {
 	    <p>Test <span id="game-number"></span> of <span id="total-games"></span></p>
     </div>
     <div id="guess-section">
-	    <h2><span id = "crickdlequestion"></span></h2>
+	    <h2><span id="crickdlequestion"></span></h2>
       <div class="guess-input">
         <input type="text" id="guess1" />
 	      <button id="submit1"><b>ENTER</b></button>
@@ -285,7 +285,7 @@ const gameDetails = {
   score: "Australia 369 & 294, India (T: 328) 336 & 329/7",
   gameNumber: 4,
   totalGames: 4,
-	crickdlequestion: "Which &#127470;&#127475; player scored 23 and 89* in this game?"
+  crickdlequestion: "Which &#127470;&#127475; player scored 23 and 89* in this game?"
 };
 
 const correctPlayer = "PANT";
@@ -349,7 +349,7 @@ document.getElementById("date").textContent = gameDetails.date;
 document.getElementById("score").textContent = gameDetails.score;
 document.getElementById("game-number").textContent = gameDetails.gameNumber;
 document.getElementById("total-games").textContent = gameDetails.totalGames;
-		  document.getElementById("crickdle-question").textContent = gameDetails.crickdlequestion;
+document.getElementById("crickdlequestion").textContent = gameDetails.crickdlequestion;
 		  
 		 const helpButton = document.querySelector('.toolbar-help');
 const popupBackground = document.querySelector('.popup-background');
