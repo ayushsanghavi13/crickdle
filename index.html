@@ -232,12 +232,77 @@
 				line-height: 1.5;
 				font-family: Arial, sans-serif;
 			}
+			
+			.toolbar-info {
+				background: none;
+				border: none;
+				cursor: pointer;
+				font-size: 12px;
+				padding: 0 15px;
+			}
+
+			.popup2-background {
+				position: fixed;
+				top: 0;
+				left: 0;
+				right: 0;
+				bottom: 0;
+				background-color: white;
+				opacity: 1;
+				z-index: 9999;
+				display: none;
+				justify-content: center;
+				align-items: center;
+			}
+
+			.popup2 {
+				background-color: white;
+				width: 400px;
+				padding: 16px;
+				border-radius: 8px;
+				box-shadow: 0 0 6px rgba(0, 0, 0, 0.1);
+				position: relative;
+			}
+
+			.popup2-header {
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				margin-bottom: 8px;
+				font-family: Arial, sans-serif;
+			}
+
+			.popup2-header h2 {
+				margin: 0;
+				font-size: 20px;
+				color: #1dc278;
+				font-family: Arial, sans-serif;
+			}
+
+			.popup2-close {
+				background: none;
+				border: none;
+				font-size: 24px;
+				cursor: pointer;
+				color: #f03a17;
+				font-family: Arial, sans-serif;
+			}
+
+			.popup2-content {
+				margin: 0;
+				font-size: 18px;
+				line-height: 1.5;
+				font-family: Arial, sans-serif;
+			}
 		</style>
 	</head>
 	<body>
 		<header>
 			<div class="toolbar">
 				<div class="toolbar-logo">
+					<button class="toolbar-info" aria-label="About">
+						&#8505;
+					</button>
 					<span class="toolbar-title">CRICKDLE</span>
 					<button class="toolbar-help" aria-label="How to play">
 						&#10067;
@@ -252,6 +317,17 @@
 					</div>
 					<div class="popup-content">
 						<p>Guess the cricketer based on their stats in this game. You should enter the <b>surname</b> of the player you're guessing. If you misspell the name, the box will turn orange, and if you get it wrong, the box will turn grey. You have four guesses total. Good luck!</p>
+					</div>
+				</div>
+			</div>
+			<div class="popup2-background">
+				<div class="popup2">
+					<div class="popup2-header">
+						<h2>About</h2>
+						<button class="popup2-close" aria-label="Close">&times;</button>
+					</div>
+					<div class="popup2-content">
+						<p>Crickdle is a love letter to test cricket, inspired by the hit game Wordle.</p>
 					</div>
 				</div>
 			</div>
@@ -369,6 +445,18 @@
 
 			popupCloseButton.addEventListener('click', function() {
 				popupBackground.style.display = 'none';
+			});
+			
+			const infoButton = document.querySelector('.toolbar-info');
+			const popup2Background = document.querySelector('.popup2-background');
+			const popup2CloseButton = document.querySelector('.popup2-close');
+
+			infoButton.addEventListener('click', function() {
+				popup2Background.style.display = 'flex';
+			});
+
+			popup2CloseButton.addEventListener('click', function() {
+				popup2Background.style.display = 'none';
 			});
 		  
 			const inputElements = document.querySelectorAll('input[type="text"]');
