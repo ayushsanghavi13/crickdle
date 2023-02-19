@@ -1,399 +1,398 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Crickdle - Daily Cricket Guessing Game!</title>
-	  <link rel="icon" type="image/x-icon" href="favicon.ico.png">
-	  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	  <style>
-html {
-  box-sizing: border-box;
-  font-size: 16px;
-}
+	<head>
+		<title>Crickdle - Daily Cricket Guessing Game!</title>
+		<link rel="icon" type="image/x-icon" href="favicon.ico.png">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<style>
+			html {
+				box-sizing: border-box;
+				font-size: 16px;
+			}
 
-*, *:before, *:after {
-  box-sizing: inherit;
-}
+			*, *:before, *:after {
+				box-sizing: inherit;
+			}
 
-@media only screen and (min-width: 768px) {
-  html {
-    font-size: 18px;
-  }
-}
+			@media only screen and (min-width: 768px) {
+				html {
+					font-size: 18px;
+				}
+			}
 
-body {
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 400;
-  font-size: 1rem;
-  line-height: 1.5;
-  color: #333;
-}
+			body {
+				font-family: 'Montserrat', sans-serif;
+				font-weight: 400;
+				font-size: 1rem;
+				line-height: 1.5;
+				color: #333;
+			}
 
-h1, h2, h3, h4, h5, h6 {
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 700;
-  line-height: 1.2;
-  margin-top: 0;
-}
+			h1, h2, h3, h4, h5, h6 {
+				font-family: 'Montserrat', sans-serif;
+				font-weight: 700;
+				line-height: 1.2;
+				margin-top: 0;
+			}
 
-p {
-  margin: 0.5rem 0;
-}
+			p {
+				margin: 0.5rem 0;
+			}
 
-#game-container {
-  margin: 0 auto;
-  padding: 1.5rem;
-  border-radius: 0.5rem;
-  background-color: #f5f5f5;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  width: 90%;
-  max-width: 600px;
-}
+			#game-container {
+				margin: 0 auto;
+				padding: 1.5rem;
+				border-radius: 0.5rem;
+				background-color: #f5f5f5;
+				box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+				width: 90%;
+				max-width: 600px;
+			}
 
-#match-details {
-  text-align: center;
-  margin-bottom: 25px;
-}
+			#match-details {
+				text-align: center;
+				margin-bottom: 25px;
+			}
 
-#match-details p {
-  margin: 0.2rem 0;
-  font-size: 1.1rem;
-}
+			#match-details p {
+				margin: 0.2rem 0;
+				font-size: 1.1rem;
+			}
 
-#guess-section {
-  text-align: center;
-  margin-bottom: 1rem;
-}
+			#guess-section {
+				text-align: center;
+				margin-bottom: 1rem;
+			}
 
-#guess-section h2 {
-  margin-bottom: 0.5rem;
-  font-size: 1.1rem;
-}
+			#guess-section h2 {
+				margin-bottom: 0.5rem;
+				font-size: 1.1rem;
+			}
 
-.guess-input {
-  margin: 1rem 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+			.guess-input {
+				margin: 1rem 0;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+			}
 
-.guess-input label {
-  margin-right: 0.5rem;
-  font-size: 1.2rem;
-}
+			.guess-input label {
+				margin-right: 0.5rem;
+				font-size: 1.2rem;
+			}
 
-.guess-input input {
-  margin-right: 0.5rem;
-  padding: 0.5rem;
-  font-size: 1.2rem;
-  text-align: center;
-  border: 2px solid #ccc;
-  border-radius: 0.5rem;
-  width: 60%;
-  max-width: 200px;
-  transition: all 0.2s ease-in-out;
-	text-transform: uppercase;
-}
+			.guess-input input {
+				margin-right: 0.5rem;
+				padding: 0.5rem;
+				font-size: 1.2rem;
+				text-align: center;
+				border: 2px solid #ccc;
+				border-radius: 0.5rem;
+				width: 60%;
+				max-width: 200px;
+				transition: all 0.2s ease-in-out;
+				text-transform: uppercase;
+			}
 
-.guess-input input:focus {
-  outline: none;
-  border-color: #1dc278;
-  box-shadow: 0 0 4px rgba(29, 194, 120, 0.5);
-}
+			.guess-input input:focus {
+				outline: none;
+				border-color: #1dc278;
+				box-shadow: 0 0 4px rgba(29, 194, 120, 0.5);
+			}
 
-.guess-input button {
-  padding: 0.5rem 1rem;
-  font-size: 1.2rem;
-  border: none;
-  border-radius: 0.5rem;
-  background-color: #1dc278;
-  color: #fff;
-  cursor: pointer;
-  transition: all 0.2s ease-in-out;
-  width: 40%;
-  max-width: 150px;
-}
+			.guess-input button {
+				padding: 0.5rem 1rem;
+				font-size: 1.2rem;
+				border: none;
+				border-radius: 0.5rem;
+				background-color: #1dc278;
+				color: #fff;
+				cursor: pointer;
+				transition: all 0.2s ease-in-out;
+				width: 40%;
+				max-width: 150px;
+			}
 
-.guess-input button:disabled {
-  background-color: #ccc;
-  color: #333;
-  cursor: default;
-}
+			.guess-input button:disabled {
+				background-color: #ccc;
+				color: #333;
+				cursor: default;
+			}
 
-#congratulations, #answer {
-  text-align: center;
-  margin-bottom: 1rem;
-}
+			#congratulations, #answer {
+				text-align: center;
+				margin-bottom: 1rem;
+			}
 
-#congratulations p, #answer p {
-  margin: 0.5rem 0;
-  font-size: 1.1rem;
-}
+			#congratulations p, #answer p {
+				margin: 0.5rem 0;
+				font-size: 1.1rem;
+			}
 
-#congratulations {
-  color: #1dc278;
-}
+			#congratulations {
+				color: #1dc278;
+			}
 
-#answer {
-  color: #f03a17;
-}
+			#answer {
+				color: #f03a17;
+			}
 		  
-		       .toolbar {
-  background-color: #f7f7f7;
-  height: 48px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 0 16px;
-  box-shadow: 0 0 6px rgba(0, 0, 0, 0.1);
-			        margin-bottom: 30px
-}
+			.toolbar {
+				background-color: #f7f7f7;
+				height: 48px;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				padding: 0 16px;
+				box-shadow: 0 0 6px rgba(0, 0, 0, 0.1);
+				margin-bottom: 30px
+			}
 
-.toolbar-logo {
-  display: flex;
-  align-items: center;
-}
+			.toolbar-logo {
+				display: flex;
+				align-items: center;
+			}
 
-.toolbar-title {
-  font-size: 35px;
-  font-weight: bold;
-  margin: 0;
-	 color: #1dc278;
-}
+			.toolbar-title {
+				font-size: 35px;
+				font-weight: bold;
+				margin: 0;
+				color: #1dc278;
+			}
 
-.toolbar-help {
-  background: none;
-  border: none;
-  cursor: pointer;
-	 font-size: 12px;
-  padding: 0 15px;
-}
+			.toolbar-help {
+				background: none;
+				border: none;
+				cursor: pointer;
+				font-size: 12px;
+				padding: 0 15px;
+			}
 
-.popup-background {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: white;
-	opacity: 1;
-	z-index: 9999;
-  display: none;
-  justify-content: center;
-  align-items: center;
-}
+			.popup-background {
+				position: fixed;
+				top: 0;
+				left: 0;
+				right: 0;
+				bottom: 0;
+				background-color: white;
+				opacity: 1;
+				z-index: 9999;
+				display: none;
+				justify-content: center;
+				align-items: center;
+			}
 
-.popup {
-  background-color: white;
-  width: 400px;
-  padding: 16px;
-  border-radius: 8px;
-  box-shadow: 0 0 6px rgba(0, 0, 0, 0.1);
-  position: relative;
-}
+			.popup {
+				background-color: white;
+				width: 400px;
+				padding: 16px;
+				border-radius: 8px;
+				box-shadow: 0 0 6px rgba(0, 0, 0, 0.1);
+				position: relative;
+			}
 
-.popup-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 8px;
-}
+			.popup-header {
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				margin-bottom: 8px;
+			}
 
-.popup-header h2 {
-  margin: 0;
-	font-size: 18px;
-}
+			.popup-header h2 {
+				margin: 0;
+				font-size: 18px;
+			}
 
-.popup-close {
-  background: none;
-  border: none;
-  font-size: 24px;
-  cursor: pointer;
-	color: #f03a17;
-}
+			.popup-close {
+				background: none;
+				border: none;
+				font-size: 24px;
+				cursor: pointer;
+				color: #f03a17;
+			}
 
-.popup-content {
-  margin: 0;
-  font-size: 18px;
-  line-height: 1.5;
-}
-	  </style>
-  </head>
-  <body>
-	<header>
-  <div class="toolbar">
-    <div class="toolbar-logo">
-      <span class="toolbar-title">CRICKDLE</span>
-      <button class="toolbar-help" aria-label="How to play">
-        &#10067;
-      </button>
-    </div>
-  </div>
-  <div class="popup-background">
-    <div class="popup">
-      <div class="popup-header">
-        <h2>How to play</h2>
-        <button class="popup-close" aria-label="Close">&times;</button>
-      </div>
-      <div class="popup-content">
-        <p>Guess the cricketer based on their stats in this game. You have four guesses total. You should enter the <b>surname</b> of the player you're guessing. If you misspell the name, the box will turn orange, and if you get it wrong, the box will turn grey.</p>
-      </div>
-    </div>
-  </div>
-</header>
-    <div id="match-details">
-	    <p><span id="nation1"></span> vs <span id="nation2"></span></p>
-	    <p><span id="date"></span></p>
-	    <p><span id="score"></span></p>
-	    <p>Test <span id="game-number"></span> of <span id="total-games"></span></p>
-    </div>
-    <div id="guess-section">
-	    <h2><span id="crickdlequestion"></span></h2>
-      <div class="guess-input">
-        <input type="text" id="guess1" />
-	      <button id="submit1"><b>ENTER</b></button>
-      </div>
-      <div class="guess-input">
-        <input type="text" id="guess2" disabled />
-        <button id="submit2" disabled><b>ENTER</b></button>
-      </div>
-      <div class="guess-input">
-        <input type="text" id="guess3" disabled />
-        <button id="submit3" disabled><b>ENTER</b></button>
-      </div>
-      <div class="guess-input">
-        <input type="text" id="guess4" disabled />
-        <button id="submit4" disabled><b>ENTER</b></button>
-      </div>
-      <div id="congratulations" style="display:none">
-	      <p><b>Bowled em'! You got the correct answer.</b></p>
-      </div>
-      <div id="answer" style="display:none">
-	      <p><b>Duck! The correct answer is <span id="correct-answer"></span>.</b></p>
-      </div>
-    </div>
-	  <script>
-const gameDetails = {
-  nation1: "Australia",
-  nation2: "India",
-  date: "January 15 - 19, 2021",
-  score: "Australia 369 & 294, India (T: 328) 336 & 329/7; India won by 3 wickets",
-  gameNumber: 4,
-  totalGames: 4,
-  crickdlequestion: "Which 🇮🇳 player scored 23 and 89* in this game?"
-};
+			.popup-content {
+				margin: 0;
+				font-size: 18px;
+				line-height: 1.5;
+			}
+		</style>
+	</head>
+	<body>
+		<header>
+			<div class="toolbar">
+				<div class="toolbar-logo">
+					<span class="toolbar-title">CRICKDLE</span>
+					<button class="toolbar-help" aria-label="How to play">
+						&#10067;
+					</button>
+				</div>
+			</div>
+			<div class="popup-background">
+				<div class="popup">
+					<div class="popup-header">
+						<h2>How to play</h2>
+						<button class="popup-close" aria-label="Close">&times;</button>
+					</div>
+					<div class="popup-content">
+						<p>Guess the cricketer based on their stats in this game. You have four guesses total. You should enter the <b>surname</b> of the player you're guessing. If you misspell the name, the box will turn orange, and if you get it wrong, the box will turn grey.</p>
+					</div>
+				</div>
+			</div>
+		</header>
+		<div id="match-details">
+			<p><span id="nation1"></span> vs <span id="nation2"></span></p>
+			<p><span id="date"></span></p>
+			<p><span id="score"></span></p>
+			<p>Test <span id="game-number"></span> of <span id="total-games"></span></p>
+		</div>
+		<div id="guess-section">
+			<h2><span id="crickdlequestion"></span></h2>
+			<div class="guess-input">
+				<input type="text" id="guess1" />
+				<button id="submit1"><b>ENTER</b></button>
+			</div>
+			<div class="guess-input">
+				<input type="text" id="guess2" disabled />
+				<button id="submit2" disabled><b>ENTER</b></button>
+			</div>
+			<div class="guess-input">
+				<input type="text" id="guess3" disabled />
+				<button id="submit3" disabled><b>ENTER</b></button>
+			</div>
+			<div class="guess-input">
+				<input type="text" id="guess4" disabled />
+				<button id="submit4" disabled><b>ENTER</b></button>
+			</div>
+			<div id="congratulations" style="display:none">
+				<p><b>Bowled em'! You got the correct answer.</b></p>
+			</div>
+			<div id="answer" style="display:none">
+				<p><b>Duck! The correct answer is <span id="correct-answer"></span>.</b></p>
+			</div>
+		</div>
+		<script>
+			const gameDetails = {
+				nation1: "Australia",
+				nation2: "India",
+				date: "January 15 - 19, 2021",
+				score: "Australia 369 & 294, India (T: 328) 336 & 329/7; India won by 3 wickets",
+				gameNumber: 4,
+				totalGames: 4,
+				crickdlequestion: "Which 🇮🇳 player scored 23 and 89* in this game?"
+			};
 
-const correctPlayer = "PANT";
+			const correctPlayer = "PANT";
 
-const guessInputs = document.querySelectorAll(".guess-input");
-const submitButtons = document.querySelectorAll("button[id^='submit']");
-const answerElement = document.getElementById("answer");
-const congratulationsElement = document.getElementById("congratulations");
-const correctAnswerElement = document.getElementById("correct-answer");
+			const guessInputs = document.querySelectorAll(".guess-input");
+			const submitButtons = document.querySelectorAll("button[id^='submit']");
+			const answerElement = document.getElementById("answer");
+			const congratulationsElement = document.getElementById("congratulations");
+			const correctAnswerElement = document.getElementById("correct-answer");
 
-submitButtons.forEach((button, index) => {
-  button.addEventListener("click", (event) => {
-    event.preventDefault();
-    const guessInput = guessInputs[index].querySelector("input");
-    const guess = guessInput.value;
-    guessInput.disabled = true;
-    button.disabled = true;
-     if (guess === correctPlayer) {
-      guessInput.style.backgroundColor = "#1dc278";
-	    guessInput.style.color = "white";
-      congratulationsElement.style.display = "block";
-      answerElement.style.display = "none";
-          } else if (isClose(guess, correctPlayer)) {
-      guessInput.style.backgroundColor = "#ffcc00";
-		  guessInput.style.color = "white";
-      if (index < 3) {
-        guessInputs[index + 1].querySelector("input").disabled = false;
-        guessInputs[index + 1].querySelector("button").disabled = false;
-        guessInputs[index + 1].querySelector("input").focus();
-      } else {
-        answerElement.style.display = "block";
-        correctAnswerElement.textContent = correctPlayer;
-	      }
-    } else {
-      guessInput.style.backgroundColor = "grey";
-	      guessInput.style.color = "white";
-      if (index < 3) {
-        guessInputs[index + 1].querySelector("input").disabled = false;
-        guessInputs[index + 1].querySelector("button").disabled = false;
-        guessInputs[index + 1].querySelector("input").focus();
-      } else {
-        answerElement.style.display = "block";
-        correctAnswerElement.textContent = correctPlayer;
-      }
-    }
-  });
+			submitButtons.forEach((button, index) => {
+				button.addEventListener("click", (event) => {
+					event.preventDefault();
+					const guessInput = guessInputs[index].querySelector("input");
+					const guess = guessInput.value;
+					guessInput.disabled = true;
+					button.disabled = true;
+					if (guess === correctPlayer) {
+						guessInput.style.backgroundColor = "#1dc278";
+						guessInput.style.color = "white";
+						congratulationsElement.style.display = "block";
+						answerElement.style.display = "none";
+					} else if (isClose(guess, correctPlayer)) {
+						guessInput.style.backgroundColor = "#ffcc00";
+						guessInput.style.color = "white";
+						if (index < 3) {
+							guessInputs[index + 1].querySelector("input").disabled = false;
+							guessInputs[index + 1].querySelector("button").disabled = false;
+							guessInputs[index + 1].querySelector("input").focus();
+						} else {
+							answerElement.style.display = "block";
+							correctAnswerElement.textContent = correctPlayer;
+						}
+					} else {
+						guessInput.style.backgroundColor = "grey";
+						guessInput.style.color = "white";
+						if (index < 3) {
+							guessInputs[index + 1].querySelector("input").disabled = false;
+							guessInputs[index + 1].querySelector("button").disabled = false;
+							guessInputs[index + 1].querySelector("input").focus();
+						} else {
+							answerElement.style.display = "block";
+							correctAnswerElement.textContent = correctPlayer;
+						}
+					}
+				});
 	
-  const input = guessInputs[index].querySelector("input");
-  input.addEventListener("keyup", (event) => {
-    if (event.key === "Enter") {
-      button.click();
-    }
-  });
-});
+				const input = guessInputs[index].querySelector("input");
+				input.addEventListener("keyup", (event) => {
+					if (event.key === "Enter") {
+						button.click();
+					}
+				});
+			});
 
-document.getElementById("nation1").textContent = gameDetails.nation1;
-document.getElementById("nation2").textContent = gameDetails.nation2;
-document.getElementById("date").textContent = gameDetails.date;
-document.getElementById("score").textContent = gameDetails.score;
-document.getElementById("game-number").textContent = gameDetails.gameNumber;
-document.getElementById("total-games").textContent = gameDetails.totalGames;
-document.getElementById("crickdlequestion").textContent = gameDetails.crickdlequestion;
+			document.getElementById("nation1").textContent = gameDetails.nation1;
+			document.getElementById("nation2").textContent = gameDetails.nation2;
+			document.getElementById("date").textContent = gameDetails.date;
+			document.getElementById("score").textContent = gameDetails.score;
+			document.getElementById("game-number").textContent = gameDetails.gameNumber;
+			document.getElementById("total-games").textContent = gameDetails.totalGames;
+			document.getElementById("crickdlequestion").textContent = gameDetails.crickdlequestion;
 		  
-		 const helpButton = document.querySelector('.toolbar-help');
-const popupBackground = document.querySelector('.popup-background');
-const popupCloseButton = document.querySelector('.popup-close');
+			const helpButton = document.querySelector('.toolbar-help');
+			const popupBackground = document.querySelector('.popup-background');
+			const popupCloseButton = document.querySelector('.popup-close');
 
-helpButton.addEventListener('click', function() {
-  popupBackground.style.display = 'flex';
-});
+			helpButton.addEventListener('click', function() {
+				popupBackground.style.display = 'flex';
+			});
 
-popupCloseButton.addEventListener('click', function() {
-  popupBackground.style.display = 'none';
-});
+			popupCloseButton.addEventListener('click', function() {
+				popupBackground.style.display = 'none';
+			});
 		  
-		  const inputElements = document.querySelectorAll('input[type="text"]');
-
-inputElements.forEach((input) => {
-  input.addEventListener('input', (event) => {
-    const inputValue = event.target.value;
-    event.target.value = inputValue.toUpperCase();
-	  event.target.style.fontWeight = 'bold';
-  });
-});
-		  function isClose(guess, correctPlayer) {
-  const guessLength = guess.length;
-  const correctPlayerLength = correctPlayer.length;
-  if (Math.abs(guessLength - correctPlayerLength) > 2) {
-    return false;
-  }
-  let i = 0;
-  let j = 0;
-  let diff = 0;
-  while (i < guessLength && j < correctPlayerLength) {
-    if (guess[i] !== correctPlayer[j]) {
-      diff++;
-      if (diff > 2) {
-        return false;
-      }
-      if (guessLength > correctPlayerLength) {
-        i++;
-      } else if (guessLength < correctPlayerLength) {
-        j++;
-      } else {
-        i++;
-        j++;
-      }
-    } else {
-      i++;
-      j++;
-    }
-  }
-  return true;
-}
-</script>
-  </body>
+			const inputElements = document.querySelectorAll('input[type="text"]');
+			inputElements.forEach((input) => {
+				input.addEventListener('input', (event) => {
+					const inputValue = event.target.value;
+					event.target.value = inputValue.toUpperCase();
+					event.target.style.fontWeight = 'bold';
+				});
+			});
+			function isClose(guess, correctPlayer) {
+				const guessLength = guess.length;
+				const correctPlayerLength = correctPlayer.length;
+				if (Math.abs(guessLength - correctPlayerLength) > 2) {
+					return false;
+				}
+				let i = 0;
+				let j = 0;
+				let diff = 0;
+				while (i < guessLength && j < correctPlayerLength) {
+					if (guess[i] !== correctPlayer[j]) {
+						diff++;
+						if (diff > 2) {
+							return false;
+						}
+						if (guessLength > correctPlayerLength) {
+							i++;
+						} else if (guessLength < correctPlayerLength) {
+							j++;
+						} else {
+							i++;
+							j++;
+						}
+					} else {
+						i++;
+						j++;
+					}
+				}
+				return true;
+			}
+		</script>
+	</body>
 </html>
