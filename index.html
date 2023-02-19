@@ -238,7 +238,7 @@ p {
         <button class="popup-close" aria-label="Close">&times;</button>
       </div>
       <div class="popup-content">
-        <p>Guess the cricketer based on their stats in this game. You have four guesses total. You should enter the <b>surname</b> of the player you're guessing.</p>
+        <p>Guess the cricketer based on their stats in this game. You have four guesses total. You should enter the <b>surname</b> of the player you're guessing. If you misspell the name, the box will turn orange, and if you get it wrong, the box will turn grey.</p>
       </div>
     </div>
   </div>
@@ -379,7 +379,7 @@ inputElements.forEach((input) => {
   while (i < guessLength && j < correctPlayerLength) {
     if (guess[i] !== correctPlayer[j]) {
       diff++;
-      if (diff > 1) {
+      if (diff > 2) {
         return false;
       }
       if (guessLength > correctPlayerLength) {
