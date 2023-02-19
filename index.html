@@ -179,14 +179,14 @@ p {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.5);
   display: none;
   justify-content: center;
   align-items: center;
 }
 
 .popup {
-  background-color: #fff;
+  background-color: #ffffff;
   width: 400px;
   padding: 16px;
   border-radius: 8px;
@@ -308,7 +308,7 @@ submitButtons.forEach((button, index) => {
       answerElement.style.display = "none";
           } else if (isClose(guess, correctPlayer)) {
       guessInput.style.backgroundColor = "#ffcc00";
-    guessInput.style.color = "white";
+		  guessInput.style.color = "white";
       if (index < 3) {
         guessInputs[index + 1].querySelector("input").disabled = false;
         guessInputs[index + 1].querySelector("button").disabled = false;
