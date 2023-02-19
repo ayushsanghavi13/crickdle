@@ -369,6 +369,7 @@ inputElements.forEach((input) => {
   input.addEventListener('input', (event) => {
     const inputValue = event.target.value;
     event.target.value = inputValue.toUpperCase();
+	  event.target.value = inputValue.toBold();
   });
 });
 		  function isClose(guess, correctPlayer) {
