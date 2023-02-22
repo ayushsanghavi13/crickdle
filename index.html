@@ -353,7 +353,7 @@
 						<button class="popup-close" aria-label="Close">&times;</button>
 					</div>
 					<div class="popup-content">
-						<p>Guess the cricketer based on their stats in this game. You should enter the <b>surname</b> of the player you're guessing. If you misspell the name, the box will turn orange, and if you get it wrong, the box will turn grey. You have four guesses total. Good luck!</p>
+						<p>Guess the cricketer who was 'Player of the Match' based on their stats in this game. You should enter the <b>surname</b> of the player you're guessing. If you misspell the name, the box will turn orange, and if you get it wrong, the box will turn grey. You have four guesses total. Good luck!</p>
 					</div>
 				</div>
 			</div>
@@ -432,7 +432,7 @@
 						congratulationsElement.style.display = "block";
 						answerElement.style.display = "none";
 					} else if (isClose(guess, correctPlayer)) {
-						guessInput.style.backgroundColor = "#ffcc00";
+						guessInput.style.backgroundColor = "#fcd40c";
 						guessInput.style.color = "white";
 						if (index < 3) {
 							guessInputs[index + 1].querySelector("input").disabled = false;
