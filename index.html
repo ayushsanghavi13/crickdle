@@ -373,7 +373,6 @@
 			<p><span id="nation1"></span> vs <span id="nation2"></span></p>
 			<p><span id="date"></span></p>
 			<p><span id="score"></span></p>
-			<p>Test <span id="game-number"></span> of <span id="total-games"></span></p>
 		</div>
 		<div id="guess-section">
 			<h2>Which <span id="crickdlequestion"></span></h2>
@@ -406,8 +405,6 @@
 				nation2: "Sri Lanka",
 				date: "January 8-12, 2014",
 				score: "Pakistan 165 & 359, Sri Lanka (T: 137) 388 & 137/1; Sri Lanka won by 9 wickets",
-				gameNumber: 2,
-				totalGames: 3,
 				crickdlequestion: "Sri Lanka player scored 129 in this match?"
 			};
 
@@ -468,8 +465,6 @@
 			document.getElementById("nation2").textContent = gameDetails.nation2;
 			document.getElementById("date").textContent = gameDetails.date;
 			document.getElementById("score").textContent = gameDetails.score;
-			document.getElementById("game-number").textContent = gameDetails.gameNumber;
-			document.getElementById("total-games").textContent = gameDetails.totalGames;
 			document.getElementById("crickdlequestion").textContent = gameDetails.crickdlequestion;
 		  
 			const helpButton = document.querySelector('.toolbar-help');
