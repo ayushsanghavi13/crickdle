@@ -448,7 +448,7 @@
 							guessInputs[index + 1].querySelector("input").focus();
 						} else {
 							answerElement.style.display = "block";
-							correctAnswerElement.textContent = correctPlayer;
+							correctAnswerElement.textContent = correctPlayer[0];
 						}
 					}
 				});
@@ -505,35 +505,38 @@
 					event.target.style.fontWeight = 'bold';
 				});
 			});
-			function isClose(guess, correctPlayer) {
+			function isClose(guess, correctPlayers) {
 				const guessLength = guess.length;
-				const correctPlayerLength = correctPlayer.length;
-				if (Math.abs(guessLength - correctPlayerLength) > 2) {
-					return false;
-				}
-				let i = 0;
-				let j = 0;
-				let diff = 0;
-				while (i < guessLength && j < correctPlayerLength) {
-					if (guess[i] !== correctPlayer[j]) {
-						diff++;
-						if (diff > 2) {
-							return false;
+				for (let i = 0; i < correctPlayers.length; i++) {
+					const correctPlayer = correctPlayers[i];
+					const correctPlayerLength = correctPlayer.length;
+					if (Math.abs(guessLength - correctPlayerLength) > 2) {
+						continue;
+					}
+					let j = 0;
+					let diff = 0;
+					for (let k = 0; k < guessLength; k++) {
+						if (guess[k] !== correctPlayer[j]) {
+							diff++;
+							if (diff > 2) {
+								break;
+							}
+							if (guessLength > correctPlayerLength) {
+								j++;
+							} else if (guessLength < correctPlayerLength) {
+								j--;
+							}
 						}
-						if (guessLength > correctPlayerLength) {
-							i++;
-						} else if (guessLength < correctPlayerLength) {
-							j++;
-						} else {
-							i++;
-							j++;
-						}
-					} else {
-						i++;
 						j++;
+						if (j >= correctPlayerLength) {
+							break;
+						}
+					}
+					if (diff <= 2) {
+						return true;
 					}
 				}
-				return true;
+				return false;
 			}
 		</script>
 	</body>
