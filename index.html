@@ -408,7 +408,7 @@
 				crickdlequestion: "Pakistan player scored 114 & 85 in this match?"
 			};
 
-			const correctPlayer = "UL-HAQ";
+			const correctPlayer = ["UL-HAQ", "UL HAQ", "ULHAQ"];
 
 			const guessInputs = document.querySelectorAll(".guess-input");
 			const submitButtons = document.querySelectorAll("button[id^='submit']");
@@ -423,7 +423,7 @@
 					const guess = guessInput.value;
 					guessInput.disabled = true;
 					button.disabled = true;
-					if (guess === correctPlayer) {
+					if (correctPlayer.includes(guess)) {
 						guessInput.style.backgroundColor = "#1dc278";
 						guessInput.style.color = "white";
 						congratulationsElement.style.display = "block";
@@ -437,7 +437,7 @@
 							guessInputs[index + 1].querySelector("input").focus();
 						} else {
 							answerElement.style.display = "block";
-							correctAnswerElement.textContent = correctPlayer;
+							correctAnswerElement.textContent = correctPlayer[0];
 						}
 					} else {
 						guessInput.style.backgroundColor = "grey";
@@ -470,6 +470,12 @@
 			const helpButton = document.querySelector('.toolbar-help');
 			const popupBackground = document.querySelector('.popup-background');
 			const popupCloseButton = document.querySelector('.popup-close');
+			const hasShownInstructions = localStorage.getItem('hasShownInstructions');
+
+			if (!hasShownInstructions) {
+				popupBackground.style.display = 'flex';
+				localStorage.setItem('hasShownInstructions', 'true');
+			}
 
 			helpButton.addEventListener('click', function() {
 				popupBackground.style.display = 'flex';
