@@ -422,8 +422,6 @@
 			const congratulationsElement = document.getElementById("congratulations");
 			const correctAnswerElement = document.getElementById("correct-answer");
 			
-			let numGuessesLeft = 4;
-
 			submitButtons.forEach((button, index) => {
 				button.addEventListener("click", (event) => {
 					event.preventDefault();
@@ -431,7 +429,6 @@
 					const guess = guessInput.value;
 					guessInput.disabled = true;
 					button.disabled = true;
-					numGuessesLeft--;
 					if (correctPlayer.includes(guess)) {
 						guessInput.style.backgroundColor = "#1dc278";
 						guessInput.style.color = "white";
@@ -452,14 +449,17 @@
 					} else {
 						guessInput.style.backgroundColor = "grey";
 						guessInput.style.color = "white";
-						if (numGuessesLeft === 1) { // check if only one guess is left
-        const hint = document.createElement("div"); // create a hint element
-        hint.innerHTML = "Stumped? Click here for a hint."; // add the hint text
-        guessInputs[index].appendChild(hint); // add the hint element to the input container
-        hint.addEventListener("click", () => {
-          guessInput.value = correctPlayer[0][0]; // fill in the first letter of the correct player
-          guessInput.focus(); // focus on the input box
-        });
+						if (index === 2) { // check if only one guess is left
+     const hintLink = document.createElement("a");
+hintLink.setAttribute("href", "#");
+hintLink.textContent = "Stumped? Click here for a hint.";
+guessInputs[3].appendChild(hintLink);
+
+// handle hint link click event
+hintLink.addEventListener("click", (event) => {
+  event.preventDefault();
+  guessInputs[3].querySelector("input").value = correctPlayer[0][0];
+});
       }
 						if (index < 3) {
 							guessInputs[index + 1].querySelector("input").disabled = false;
