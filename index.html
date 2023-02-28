@@ -458,6 +458,22 @@
 							correctAnswerElement.textContent = correctPlayer[0];
 						}
 					}
+					if (index === 2) {
+    const hintElement = document.createElement("span");
+    const hintText = document.createTextNode("Stumped? Click ");
+    const hintLink = document.createElement("a");
+    hintLink.setAttribute("href", "#");
+    hintLink.setAttribute("class", "hint-link");
+    hintLink.textContent = "here";
+    hintLink.addEventListener("click", (event) => {
+        event.preventDefault();
+        guessInputs[3].querySelector("input").value = correctPlayer[0].charAt(0).toUpperCase();
+        guessInputs[3].querySelector("input").style.fontWeight = "bold";
+    });
+    hintElement.appendChild(hintText);
+    hintElement.appendChild(hintLink);
+    guessInputs[3].insertAdjacentElement("afterend", hintElement);
+}
 
 				});
 	
