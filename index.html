@@ -400,47 +400,50 @@
 			</div>
 		</div>
 		<script>
-			// Replace the sheet ID below with the ID of your own Google Sheet.
-const sheetId = '1sWHNpRKK_N1cc9yU2Ik0ml8e7urPYtoTO2xwS4KZaew';
-const apiUrl = `https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/Sheet1!A1:F988`;
+const sheetId = "1sWHNpRKK_N1cc9yU2Ik0ml8e7urPYtoTO2xwS4KZaew";
+const range = "A:F";
+let rowsData;
 
-// Store selected row index to avoid selecting it again.
-let selectedRowIndex;
+// Load the API client and authenticate
+gapi.load('client', function() {
+  gapi.client.init({
+    apiKey: 'AIzaSyDPqcMksAbP6xcW0Nx9J68xh4zowy2gU5A',
+    discoveryDocs: ['https://sheets.googleapis.com/$discovery/rest?version=v4'],
+  }).then(function() {
+    // Load data from the sheet
+    gapi.client.sheets.spreadsheets.values.get({
+      spreadsheetId: sheetId,
+      range: range,
+    }).then(function(response) {
+      // Process the data
+      rowsData = response.result.values.slice(1); // skip header row
+    });
+  });
+});
 
-// Retrieve data from Google Sheets API.
-async function fetchSheetData() {
-  const response = await fetch(`${apiUrl}?key=AIzaSyDPqcMksAbP6xcW0Nx9J68xh4zowy2gU5A`);
-  const data = await response.json();
-	const rows = data.values.slice(1);
-	
-	fetchSheetData();
+// Update game details at midnight
+setInterval(function() {
+  // Randomly select a row
+  const randomIndex = Math.floor(Math.random() * rowsData.length);
+  const randomRow = rowsData.splice(randomIndex, 1)[0]; // remove row from array to prevent duplicate selection
 
-  // Select a random row index that hasn't been selected before.
-  do {
-    var randomRowIndex = Math.floor(Math.random() * rows.length);
-  } while (randomRowIndex === selectedRowIndex);
-
-  // Update game details with selected row's information.
-  const selectedRow = rows[randomRowIndex];
+  // Update game details
   const gameDetails = {
-    nation1: selectedRow[0],
-    nation2: selectedRow[1],
-    date: selectedRow[2],
-    score: selectedRow[3],
-    crickdlequestion: selectedRow[4],
+    nation1: randomRow[0],
+    nation2: randomRow[1],
+    date: randomRow[2],
+    score: randomRow[3],
+    crickdlequestion: randomRow[4]
   };
-  const correctPlayer = selectedRow[5];
+  const correctPlayer = [randomRow[5]];
 
-  // Update HTML with game details.
-  document.getElementById('nation1').textContent = gameDetails.nation1;
-  document.getElementById('nation2').textContent = gameDetails.nation2;
-  document.getElementById('date').textContent = gameDetails.date;
-  document.getElementById('score').textContent = gameDetails.score;
-  document.getElementById('crickdlequestion').textContent = gameDetails.crickdlequestion;
-
-  // Store selected row index to avoid selecting it again.
-  selectedRowIndex = randomRowIndex;
-}
+  // Update HTML elements
+  document.getElementById("nation1").textContent = gameDetails.nation1;
+  document.getElementById("nation2").textContent = gameDetails.nation2;
+  document.getElementById("date").textContent = gameDetails.date;
+  document.getElementById("score").textContent = gameDetails.score;
+  document.getElementById("crickdlequestion").textContent = gameDetails.crickdlequestion;
+}, 86400000); // 24 hours in milliseconds
 
 			const guessInputs = document.querySelectorAll(".guess-input");
 			const submitButtons = document.querySelectorAll("button[id^='submit']");
