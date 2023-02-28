@@ -411,6 +411,9 @@ let selectedRowIndex;
 async function fetchSheetData() {
   const response = await fetch(`${apiUrl}?key=AIzaSyDPqcMksAbP6xcW0Nx9J68xh4zowy2gU5A`);
   const data = await response.json();
+	const rows = data.values.slice(1);
+	
+	fetchSheetData();
 
   // Select a random row index that hasn't been selected before.
   do {
