@@ -435,7 +435,6 @@ async function fetchSheetData() {
   document.getElementById('date').textContent = gameDetails.date;
   document.getElementById('score').textContent = gameDetails.score;
   document.getElementById('crickdlequestion').textContent = gameDetails.crickdlequestion;
-  document.getElementById('correctPlayer').textContent = correctPlayer;
 
   // Store selected row index to avoid selecting it again.
   selectedRowIndex = randomRowIndex;
@@ -491,12 +490,6 @@ async function fetchSheetData() {
 					}
 				});
 			});
-
-			document.getElementById("nation1").textContent = gameDetails.nation1;
-			document.getElementById("nation2").textContent = gameDetails.nation2;
-			document.getElementById("date").textContent = gameDetails.date;
-			document.getElementById("score").textContent = gameDetails.score;
-			document.getElementById("crickdlequestion").textContent = gameDetails.crickdlequestion;
 		  
 			const helpButton = document.querySelector('.toolbar-help');
 			const popupBackground = document.querySelector('.popup-background');
