@@ -458,24 +458,21 @@
 							correctAnswerElement.textContent = correctPlayer[0];
 						}
 					}
- if (index === 2) {
-    const hintButton = document.createElement("span");
-    hintButton.textContent = "Stumped? Click ";
-    const hintLink = document.createElement("a");
-    hintLink.href = "#";
-    hintLink.textContent = "here";
-    hintLink.style.textDecoration = "underline";
-    hintLink.style.color = "black";
-    hintLink.style.fontSize = "1.1rem";
-    hintButton.appendChild(hintLink);
-    guessInputs[index].appendChild(hintButton);
-
-    hintLink.addEventListener("click", () => {
-      guessInputs[index].querySelector("input").value = correctPlayer[0][0].toUpperCase();
-      guessInputs[index].querySelector("input").style.fontWeight = "bold";
-      hintButton.remove();
+if (index === 2) {
+    const hintElement = document.createElement("div");
+    hintElement.style.color = "black";
+    hintElement.style.fontSize = "1.1rem";
+    hintElement.style.marginTop = "1rem";
+    hintElement.innerHTML = "Stumped? Click here for a hint.";
+    guessInputs[index + 1].appendChild(hintElement);
+    hintElement.addEventListener("click", (event) => {
+        event.preventDefault();
+        hintElement.style.display = "none";
+        const answerInput = guessInputs[index + 1].querySelector("input");
+        answerInput.value = correctPlayer[0][0];
+        answerInput.style.fontWeight = "bold";
     });
-  }
+}
 				});
 	
 				const input = guessInputs[index].querySelector("input");
