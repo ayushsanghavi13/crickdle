@@ -464,9 +464,15 @@ hintElement.addEventListener('click', () => {
 						} else {
 							answerElement.style.display = "block";
 							correctAnswerElement.textContent = correctPlayer[0];
-							 if (guessCount === 3) {
-          hintElement.style.display = "inline-block";
-        }
+							 if (index === 2) {
+								 const hintElement = document.createElement("p");
+								 hintElement.innerHTML = 'Stumped? Click here for a hint.';
+								 document.getElementById('guess-section').appendChild(hintElement);
+								 const guess4Input = document.getElementById('guess4');
+								 hintElement.addEventListener('click', () => {
+									 guess4Input.value = correctPlayer[0][0];
+									 hintElement.style.display = "inline-block";
+								 }
 						}
 					}
 
