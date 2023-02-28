@@ -459,15 +459,18 @@
 						}
 					}
 if (index === 2) {
+  const hintContainer = document.createElement("div");
+  hintContainer.style.display = "flex";
+  hintContainer.style.flexDirection = "column";
+  hintContainer.style.alignItems = "center";
   const hintElement = document.createElement("div");
   hintElement.style.color = "black";
   hintElement.style.fontSize = "1.1rem";
   hintElement.style.marginTop = "1rem";
-  hintElement.style.display = "block"; // add this line
-  hintElement.style.marginLeft = "auto"; // add this line
-  hintElement.style.marginRight = "auto"; // add this line
   hintElement.innerHTML = "Stumped? Click here for a hint.";
-  guessInputs[index + 1].appendChild(hintElement);
+  hintContainer.appendChild(guessInputs[index + 1]);
+  hintContainer.appendChild(hintElement);
+  guessInputs[index].parentNode.insertBefore(hintContainer, guessInputs[index + 1]);
   hintElement.addEventListener("click", (event) => {
     event.preventDefault();
     hintElement.style.display = "none";
