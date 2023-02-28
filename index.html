@@ -465,18 +465,11 @@ if (index === 2) {
   hintElement.style.marginTop = "1rem";
   hintElement.innerHTML = "Stumped? Click here for a hint.";
   
-  const inputContainer = document.createElement("div");
-  inputContainer.style.display = "flex";
-  inputContainer.style.flexDirection = "column";
-  inputContainer.style.alignItems = "flex-start";
-  
   const inputBox = guessInputs[index + 1].querySelector("input");
   inputBox.style.display = "block";
   
-  inputContainer.appendChild(inputBox);
-  inputContainer.appendChild(hintElement);
-  
-  guessInputs[index + 1].parentNode.insertBefore(inputContainer, guessInputs[index + 1]);
+  guessInputs[index + 1].appendChild(hintElement);
+  guessInputs[index + 1].appendChild(inputBox);
   
   hintElement.addEventListener("click", (event) => {
     event.preventDefault();
