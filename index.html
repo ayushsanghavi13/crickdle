@@ -400,8 +400,8 @@
 			</div>
 		</div>
 		<script>
-const sheetId = "1sWHNpRKK_N1cc9yU2Ik0ml8e7urPYtoTO2xwS4KZaew";
-const range = "A:F";
+const spreadsheetId = "1sWHNpRKK_N1cc9yU2Ik0ml8e7urPYtoTO2xwS4KZaew";
+const range = "Sheet1!A:F";
 let rowsData;
 
 // Load the API client and authenticate
@@ -412,7 +412,7 @@ gapi.load('client', function() {
   }).then(function() {
     // Load data from the sheet
     gapi.client.sheets.spreadsheets.values.get({
-      spreadsheetId: sheetId,
+      spreadsheetId: spreadsheetId,
       range: range,
     }).then(function(response) {
       // Process the data
@@ -421,7 +421,7 @@ gapi.load('client', function() {
   });
 });
 
-// Update game details at midnight
+// Update game details every minute
 setInterval(function() {
   // Randomly select a row
   const randomIndex = Math.floor(Math.random() * rowsData.length);
@@ -443,7 +443,7 @@ setInterval(function() {
   document.getElementById("date").textContent = gameDetails.date;
   document.getElementById("score").textContent = gameDetails.score;
   document.getElementById("crickdlequestion").textContent = gameDetails.crickdlequestion;
-}, 86400000); // 24 hours in milliseconds
+}, 60000); // 1 minute in milliseconds
 
 			const guessInputs = document.querySelectorAll(".guess-input");
 			const submitButtons = document.querySelectorAll("button[id^='submit']");
