@@ -449,16 +449,23 @@
 					} else {
 						guessInput.style.backgroundColor = "grey";
 						guessInput.style.color = "white";
-						if (index === 2) { // check if only one guess is left
-     const hintLink = document.createElement("a");
-hintLink.setAttribute("href", "#");
-hintLink.textContent = "Stumped? Click here for a hint.";
-guessInputs[3].appendChild(hintLink);
-
-// handle hint link click event
-hintLink.addEventListener("click", (event) => {
-  event.preventDefault();
-  guessInputs[3].querySelector("input").value = correctPlayer[0][0];
+					else {
+    if (index === 3) {
+        answerElement.style.display = "none";
+        const hintText = document.createElement("span");
+        hintText.textContent = "Stumped? Click ";
+        const hintLink = document.createElement("a");
+        hintLink.textContent = "here";
+        hintLink.style.textDecoration = "underline";
+        hintLink.style.cursor = "pointer";
+        hintLink.addEventListener("click", () => {
+            guessInputs[index].querySelector("input").value = correctPlayer[0];
+            guessInputs[index].querySelector("input").style.fontWeight = "bold";
+        });
+        hintText.appendChild(hintLink);
+        guessInputs[index].appendChild(hintText);
+    }
+}
 });
       }
 						if (index < 3) {
