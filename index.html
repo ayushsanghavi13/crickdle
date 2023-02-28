@@ -400,15 +400,46 @@
 			</div>
 		</div>
 		<script>
-			const gameDetails = {
-				nation1: "New Zealand",
-				nation2: "Sri Lanka",
-				date: "December 26-29, 2014",
-				score: "New Zealand (T: 105) 441 & 107/2, Sri Lanka (f/o) 138 & 407; New Zealand won by 8 wickets",
-				crickdlequestion: "New Zealand player scored 195 in this match?"
-			};
+			// Replace the sheet ID below with the ID of your own Google Sheet.
+const sheetId = '1sWHNpRKK_N1cc9yU2Ik0ml8e7urPYtoTO2xwS4KZaew';
+const apiUrl = `https://sheets.googleapis.com/v4/spreadsheets/$1sWHNpRKK_N1cc9yU2Ik0ml8e7urPYtoTO2xwS4KZaew/values/Sheet1!A1:F988`;
 
-			const correctPlayer = ["MCCULLUM"];
+// Store selected row index to avoid selecting it again.
+let selectedRowIndex;
+
+// Retrieve data from Google Sheets API.
+async function fetchSheetData() {
+  const response = await fetch(`${apiUrl}?key=AIzaSyDPqcMksAbP6xcW0Nx9J68xh4zowy2gU5A`);
+  const data = await response.json();
+  const rows = data.values.slice(1); // Exclude header row.
+
+  // Select a random row index that hasn't been selected before.
+  do {
+    var randomRowIndex = Math.floor(Math.random() * rows.length);
+  } while (randomRowIndex === selectedRowIndex);
+
+  // Update game details with selected row's information.
+  const selectedRow = rows[randomRowIndex];
+  const gameDetails = {
+    nation1: selectedRow[0],
+    nation2: selectedRow[1],
+    date: selectedRow[2],
+    score: selectedRow[3],
+    crickdlequestion: selectedRow[4],
+  };
+  const correctPlayer = selectedRow[5];
+
+  // Update HTML with game details.
+  document.getElementById('nation1').textContent = gameDetails.nation1;
+  document.getElementById('nation2').textContent = gameDetails.nation2;
+  document.getElementById('date').textContent = gameDetails.date;
+  document.getElementById('score').textContent = gameDetails.score;
+  document.getElementById('crickdlequestion').textContent = gameDetails.crickdlequestion;
+  document.getElementById('correctPlayer').textContent = correctPlayer;
+
+  // Store selected row index to avoid selecting it again.
+  selectedRowIndex = randomRowIndex;
+}
 
 			const guessInputs = document.querySelectorAll(".guess-input");
 			const submitButtons = document.querySelectorAll("button[id^='submit']");
