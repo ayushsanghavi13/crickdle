@@ -458,17 +458,25 @@
 							correctAnswerElement.textContent = correctPlayer[0];
 						}
 					}
-					if (index === 2) {
-	const hintElement = document.createElement('div');
-	hintElement.innerHTML = `Stumped? Click <u>here</u> for a hint.`;
-	guessInputs[3].appendChild(hintElement);
-	const hintLink = hintElement.querySelector('u');
-	hintLink.addEventListener('click', () => {
-		guessInputs[3].querySelector('input').value = correctPlayer[0][0];
-		guessInputs[3].querySelector('input').style.fontWeight = 'bold';
-		hintElement.remove();
-	});
-}
+ if (index === 2) {
+    const hintButton = document.createElement("span");
+    hintButton.textContent = "Stumped? Click ";
+    const hintLink = document.createElement("a");
+    hintLink.href = "#";
+    hintLink.textContent = "here";
+    hintLink.style.textDecoration = "underline";
+    hintLink.style.color = "black";
+    hintLink.style.fontSize = "1.1rem";
+    hintButton.appendChild(hintLink);
+    guessInputs[index].appendChild(hintButton);
+
+    hintLink.addEventListener("click", () => {
+      guessInputs[index].querySelector("input").value = correctPlayer[0][0].toUpperCase();
+      guessInputs[index].querySelector("input").style.fontWeight = "bold";
+      hintButton.remove();
+    });
+  }
+});
 
 				});
 	
