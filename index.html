@@ -422,14 +422,6 @@
 			const congratulationsElement = document.getElementById("congratulations");
 			const correctAnswerElement = document.getElementById("correct-answer");
 
-			let guessCount = 0;
-const hintElement = document.createElement("p");
-hintElement.innerHTML = 'Stumped? Click here for a hint.';
-document.getElementById('guess-section').appendChild(hintElement);
-const guess4Input = document.getElementById('guess4');
-hintElement.addEventListener('click', () => {
-  guess4Input.value = correctPlayer[0][0];
-});
 			submitButtons.forEach((button, index) => {
 				button.addEventListener("click", (event) => {
 					event.preventDefault();
@@ -464,15 +456,6 @@ hintElement.addEventListener('click', () => {
 						} else {
 							answerElement.style.display = "block";
 							correctAnswerElement.textContent = correctPlayer[0];
-							 if (index === 2) {
-								 const hintElement = document.createElement("p");
-								 hintElement.innerHTML = 'Stumped? Click here for a hint.';
-								 document.getElementById('guess-section').appendChild(hintElement);
-								 const guess4Input = document.getElementById('guess4');
-								 hintElement.addEventListener('click', () => {
-									 guess4Input.value = correctPlayer[0][0];
-									 hintElement.style.display = "inline-block";
-								 }
 						}
 					}
 
