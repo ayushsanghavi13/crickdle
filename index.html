@@ -457,9 +457,8 @@
 							answerElement.style.display = "block";
 							correctAnswerElement.textContent = correctPlayer[0];
 						}
-					}					
-				});
-				if (index === 3) {
+					}
+					if (index === 3) {
     guessInputs[index].insertAdjacentHTML(
       "afterend",
       '<p id="hint">Stumped? Click here for a hint.</p>'
@@ -471,7 +470,7 @@
       guessInput.value = correctPlayer[0].charAt(0);
     });
   }
-});
+				});
 	
 				const input = guessInputs[index].querySelector("input");
 				input.addEventListener("keyup", (event) => {
