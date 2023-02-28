@@ -464,18 +464,13 @@ if (index === 2) {
   hintElement.style.fontSize = "1.1rem";
   hintElement.style.marginTop = "1rem";
   hintElement.innerHTML = "Stumped? Click here for a hint.";
-  
-  const inputBox = guessInputs[index + 1].querySelector("input");
-  inputBox.style.display = "block";
-  
-  guessInputs[index + 1].appendChild(hintElement);
-  guessInputs[index + 1].appendChild(inputBox);
-  
+  guessInputs[index + 1].parentNode.insertBefore(hintElement, guessInputs[index + 1].nextSibling);
   hintElement.addEventListener("click", (event) => {
     event.preventDefault();
     hintElement.style.display = "none";
-    inputBox.value = correctPlayer[0][0];
-    inputBox.style.fontWeight = "bold";
+    const answerInput = guessInputs[index + 1].querySelector("input");
+    answerInput.value = correctPlayer[0][0];
+    answerInput.style.fontWeight = "bold";
   });
 }
 				});
