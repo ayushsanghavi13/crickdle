@@ -445,6 +445,14 @@
 							answerElement.style.display = "block";
 							correctAnswerElement.textContent = correctPlayer[0];
 						}
+						else if (index === 3) {
+  guessInputs[3].insertAdjacentHTML('afterend', '<p id="hint">Stumped? Click here for a hint.</p>');
+  const hintElement = document.getElementById("hint");
+  hintElement.addEventListener("click", (event) => {
+    guessInputs[3].querySelector("input").value = correctPlayer[0][0];
+  });
+}
+						}
 					} else {
 						guessInput.style.backgroundColor = "grey";
 						guessInput.style.color = "white";
@@ -456,7 +464,7 @@
 							answerElement.style.display = "block";
 							correctAnswerElement.textContent = correctPlayer[0];
 						}
-					}
+					}					
 				});
 	
 				const input = guessInputs[index].querySelector("input");
