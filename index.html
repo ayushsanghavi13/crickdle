@@ -459,6 +459,19 @@
 						}
 					}					
 				});
+				if (index === 3) {
+    guessInputs[index].insertAdjacentHTML(
+      "afterend",
+      '<p id="hint">Stumped? Click here for a hint.</p>'
+    );
+
+    const hintElement = document.getElementById("hint");
+    hintElement.addEventListener("click", () => {
+      const guessInput = guessInputs[index].querySelector("input");
+      guessInput.value = correctPlayer[0].charAt(0);
+    });
+  }
+});
 	
 				const input = guessInputs[index].querySelector("input");
 				input.addEventListener("keyup", (event) => {
