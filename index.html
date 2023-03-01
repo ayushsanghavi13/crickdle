@@ -353,7 +353,7 @@
 						<button class="popup-close" aria-label="Close">&times;</button>
 					</div>
 					<div class="popup-content">
-						<p>Guess the cricketer who was 'Player of the Match' based on their stats in this game. You should enter the <b>surname</b> of the player you're guessing. If you misspell the name, the box will turn <span style="color: #FF8200"><b>orange</b></span>, and if you get it wrong, the box will turn <span style="color: grey"><b>grey</b></span>. You have four guesses in total. Good luck!</p>
+						<p>Guess the cricketer who was 'Player of the Match' based on their stats in this game. You should enter the <b>surname</b> of the player you're guessing. If you misspell the name, the box will turn <span style="color: #c8b653"><b>yellow</b></span>, and if you get it wrong, the box will turn <span style="color: #787c7f"><b>grey</b></span>. You have four guesses in total. Good luck!</p>
 					</div>
 				</div>
 			</div>
@@ -435,7 +435,7 @@
 						congratulationsElement.style.display = "block";
 						answerElement.style.display = "none";
 					} else if (isClose(guess, correctPlayer)) {
-						guessInput.style.backgroundColor = "#FF8200";
+						guessInput.style.backgroundColor = "#c8b653";
 						guessInput.style.color = "white";
 						if (index < 3) {
 							guessInputs[index + 1].querySelector("input").disabled = false;
@@ -447,7 +447,7 @@
 						}
 					
 					} else {
-						guessInput.style.backgroundColor = "grey";
+						guessInput.style.backgroundColor = "#787c7f";
 						guessInput.style.color = "white";
 						if (index < 3) {
 							guessInputs[index + 1].querySelector("input").disabled = false;
