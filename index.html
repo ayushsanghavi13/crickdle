@@ -459,14 +459,12 @@
 						}
 					}
 					
-let hintElement = null;
-
 if (index === 2) {
   if (correctPlayer.includes(guess)) {
-    hintElement = document.createElement("div");
+    const hintElement = document.createElement("div");
     hintElement.style.display = "none";
   } else {
-    hintElement = document.createElement("div");
+    const hintElement = document.createElement("div");
     hintElement.style.color = "black";
     hintElement.style.fontSize = "1.1rem";
     hintElement.style.marginTop = "1rem";
@@ -479,8 +477,6 @@ if (index === 2) {
       answerInput.value = correctPlayer[0][0];
       answerInput.style.fontWeight = "bold";
     });
-  }
-}
 
 const submitButton = document.getElementById("submit4");
 
@@ -488,7 +484,6 @@ submitButton.addEventListener("click", (event) => {
   if (hintElement) {
     hintElement.style.display = "none";
   }
-});
 	
 				const input = guessInputs[index].querySelector("input");
 				input.addEventListener("keyup", (event) => {
