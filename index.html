@@ -393,10 +393,10 @@
 				<button id="submit4" disabled><b>ENTER</b></button>
 			</div>
 			<div id="congratulations" style="display:none">
-				<p><b>Bowled 'im! You got the correct answer.</b> Come back tomorrow to guess another cricketer.</p>
+				<p><b>Bowled 'im! You got the correct answer.</b><br>Come back tomorrow to guess another cricketer.</p>
 			</div>
 			<div id="answer" style="display:none">
-				<p><b>Duck! The answer is <span id="correct-answer"></span>.</b> Come back tomorrow to guess another cricketer.</p>
+				<p><b>Duck! The answer is <span id="correct-answer"></span>.</b><br>Come back tomorrow to guess another cricketer.</p>
 			</div>
 		</div>
 		<script>
@@ -475,10 +475,6 @@
 						});
 						
 						const submitButton = document.getElementById("submit4");
-						submitButton.addEventListener("click", (event) => {
-							hintElement.style.display = "none";
-						});
-						
 						const submitButton = document.getElementById("submit3");
 						submitButton.addEventListener("click", (event) => {
 							hintElement.style.display = "none";
