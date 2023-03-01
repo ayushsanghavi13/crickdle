@@ -459,7 +459,8 @@
 						}
 					}
 					
-					let hintElement = null;
+let hintElement = null;
+
 if (index === 2) {
   if (correctPlayer.includes(guess)) {
     hintElement = document.createElement("div");
@@ -480,15 +481,14 @@ if (index === 2) {
     });
   }
 }
-						
-						const submitButton = document.getElementById("submit4");
+
+const submitButton = document.getElementById("submit4");
 
 submitButton.addEventListener("click", (event) => {
-  hintElement.style.display = "none";
+  if (hintElement) {
+    hintElement.style.display = "none";
+  }
 });
-						
-					}
-				});
 	
 				const input = guessInputs[index].querySelector("input");
 				input.addEventListener("keyup", (event) => {
