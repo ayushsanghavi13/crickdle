@@ -474,7 +474,8 @@
 							answerInput.style.fontWeight = "bold";
 						});
 						
-    submitButtons.addEventListener("click", (event) => {
+    const submitButton = document.getElementById("submit");
+    submitButton.addEventListener("click", (event) => {
         hintElement.style.display = "none";
     });
 						
