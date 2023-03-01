@@ -458,21 +458,22 @@
 							correctAnswerElement.textContent = correctPlayer[0];
 						}
 					}
-if (index === 2) {
-  const hintElement = document.createElement("div");
-  hintElement.style.color = "black";
-  hintElement.style.fontSize = "1.1rem";
-  hintElement.style.marginTop = "1rem";
-  hintElement.innerHTML = "Stumped? Click here for a hint.";
-  guessInputs[index + 1].parentNode.insertBefore(hintElement, guessInputs[index + 1].nextSibling);
-  hintElement.addEventListener("click", (event) => {
-    event.preventDefault();
-    hintElement.style.display = "none";
-    const answerInput = guessInputs[index + 1].querySelector("input");
-    answerInput.value = correctPlayer[0][0];
-    answerInput.style.fontWeight = "bold";
-  });
-}
+					
+					if (index === 2) {
+						const hintElement = document.createElement("div");
+						hintElement.style.color = "black";
+						hintElement.style.fontSize = "1.1rem";
+						hintElement.style.marginTop = "1rem";
+						hintElement.innerHTML = "Stumped? Click here for a hint.";
+						guessInputs[index + 1].parentNode.insertBefore(hintElement, guessInputs[index + 1].nextSibling);
+						hintElement.addEventListener("click", (event) => {
+							event.preventDefault();
+							hintElement.style.display = "none";
+							const answerInput = guessInputs[index + 1].querySelector("input");
+							answerInput.value = correctPlayer[0][0];
+							answerInput.style.fontWeight = "bold";
+						});
+					}
 				});
 	
 				const input = guessInputs[index].querySelector("input");
