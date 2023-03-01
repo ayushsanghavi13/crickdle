@@ -409,6 +409,17 @@
 			};
 
 			const correctPlayer = ["HAFEEZ"];
+			
+			const playedGameKey = "playedGame";
+const storedGameData = localStorage.getItem(playedGameKey);
+let hasPlayedGame = false;
+
+if (storedGameData) {
+  const gameData = JSON.parse(storedGameData);
+  if (gameData.gameDetails === JSON.stringify(gameDetails) && gameData.correctPlayer === JSON.stringify(correctPlayer)) {
+    hasPlayedGame = true;
+  }
+}
 
 			document.getElementById("nation1").textContent = gameDetails.nation1;
 			document.getElementById("nation2").textContent = gameDetails.nation2;
