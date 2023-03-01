@@ -462,9 +462,6 @@
 if (index === 2) {
   if (correctPlayer.includes(guess)) {
     const hintElement = document.createElement("div");
-    hintElement.style.display = "none";
-  } else {
-    const hintElement = document.createElement("div");
     hintElement.style.color = "black";
     hintElement.style.fontSize = "1.1rem";
     hintElement.style.marginTop = "1rem";
@@ -483,7 +480,9 @@ const submitButton = document.getElementById("submit4");
 submitButton.addEventListener("click", (event) => {
   if (hintElement) {
     hintElement.style.display = "none";
-  }
+  });
+	  }
+});
 	
 				const input = guessInputs[index].querySelector("input");
 				input.addEventListener("keyup", (event) => {
