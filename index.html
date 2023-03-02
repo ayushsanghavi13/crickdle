@@ -328,6 +328,26 @@
 				font-family: Arial, sans-serif;
 			}
 			
+			.popup2-share {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  bottom: 16px;
+  left: 0;
+  right: 0;
+}
+
+.popup2-share-button {
+  background-color: #1dc278;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 8px 16px;
+  cursor: pointer;
+  font-size: 16px;
+}
+			
 			.toolbar-help img,
 			.toolbar-info img {
 				width: 20px;
@@ -366,6 +386,9 @@
 					<div class="popup2-content">
 						<p>Crickdle is a love letter to Test cricket. There's a new cricketer to guess every day.<br><br>Please send any enquiries about Crickdle to ayushsanghavi13 [at] gmail [dot] com</p>
 					</div>
+					<div class="popup2-share">
+      <button class="popup2-share-button">Share</button>
+    </div>
 				</div>
 			</div>
 		</header>
@@ -515,6 +538,21 @@
 			infoButton.addEventListener('click', function() {
 				popup2Background.style.display = 'flex';
 			});
+			
+			const shareButton = document.querySelector('.popup2-share-button');
+
+shareButton.addEventListener('click', function() {
+  const shareText = 'I’m playing Crickdle, a daily cricket guessing game. Join me at crickdle.com and test your knowledge!';
+  const shareUrl = 'https://crickdle.com';
+  const shareTitle = 'Crickdle';
+  navigator.share({
+    title: shareTitle,
+    text: shareText,
+    url: shareUrl,
+  })
+  .then(() => console.log('Shared successfully!'))
+  .catch((error) => console.error('Error sharing:', error));
+});
 
 			popup2CloseButton.addEventListener('click', function() {
 				popup2Background.style.display = 'none';
