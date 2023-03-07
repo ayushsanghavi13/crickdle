@@ -602,7 +602,7 @@ shareButton.addEventListener('click', function() {
     for (let k = 0; k < guess.length; k++) {
       if (guess[k] !== correctPlayer[j]) {
         diff++;
-        if (diff > 2) {
+        if (diff > 2 || k - j > 2 || j - k > 2) {
           break;
         } else if (guess.length > correctPlayer.length) {
           j++;
