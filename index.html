@@ -592,33 +592,30 @@ shareButton.addEventListener('click', function() {
 				});
 			});
 			function isClose(guess, correctPlayers) {
-  const guessLength = guess.length;
   for (let i = 0; i < correctPlayers.length; i++) {
     const correctPlayer = correctPlayers[i];
-    const correctPlayerLength = correctPlayer.length;
-    if (Math.abs(guessLength - correctPlayerLength) > 2) {
+    if (Math.abs(guess.length - correctPlayer.length) > 2) {
       continue;
     }
-    let j = 0;
     let diff = 0;
-    for (let k = 0; k < guessLength; k++) {
+    let j = 0;
+    for (let k = 0; k < guess.length; k++) {
       if (guess[k] !== correctPlayer[j]) {
         diff++;
-        if (diff > 2 || Math.abs(k - j) > 2) {
+        if (diff > 2) {
           break;
-        }
-        if (guessLength > correctPlayerLength) {
+        } else if (guess.length > correctPlayer.length) {
           j++;
-        } else if (guessLength < correctPlayerLength) {
+        } else if (guess.length < correctPlayer.length) {
           j--;
         }
       }
       j++;
-      if (j >= correctPlayerLength) {
+      if (j >= correctPlayer.length) {
         break;
       }
     }
-    if (diff <= 2 && Math.abs(guessLength - correctPlayerLength) <= 2 && j === correctPlayerLength) {
+    if (diff <= 2 && j >= correctPlayer.length - 2 && j <= correctPlayer.length + 2) {
       return true;
     }
   }
