@@ -592,38 +592,38 @@ shareButton.addEventListener('click', function() {
 				});
 			});
 			function isClose(guess, correctPlayers) {
-				const guessLength = guess.length;
-				for (let i = 0; i < correctPlayers.length; i++) {
-					const correctPlayer = correctPlayers[i];
-					const correctPlayerLength = correctPlayer.length;
-					if (Math.abs(guessLength - correctPlayerLength) > 2) {
-						continue;
-					}
-					let j = 0;
-					let diff = 0;
-					for (let k = 0; k < guessLength; k++) {
-						if (guess[k] !== correctPlayer[j]) {
-							diff++;
-							if (diff > 2) {
-								break;
-							}
-							if (guessLength > correctPlayerLength) {
-								j++;
-							} else if (guessLength < correctPlayerLength) {
-								j--;
-							}
-						}
-						j++;
-						if (j >= correctPlayerLength) {
-							break;
-						}
-					}
-					if (diff <= 2) {
-						return true;
-					}
-				}
-				return false;
-			}
+  const guessLength = guess.length;
+  for (let i = 0; i < correctPlayers.length; i++) {
+    const correctPlayer = correctPlayers[i];
+    const correctPlayerLength = correctPlayer.length;
+    if (Math.abs(guessLength - correctPlayerLength) > 2) {
+      continue;
+    }
+    let j = 0;
+    let diff = 0;
+    for (let k = 0; k < guessLength; k++) {
+      if (guess[k] !== correctPlayer[j]) {
+        diff++;
+        if (diff > 2 || Math.abs(k - j) > 2) {
+          break;
+        }
+        if (guessLength > correctPlayerLength) {
+          j++;
+        } else if (guessLength < correctPlayerLength) {
+          j--;
+        }
+      }
+      j++;
+      if (j >= correctPlayerLength) {
+        break;
+      }
+    }
+    if (diff <= 2 && Math.abs(guessLength - correctPlayerLength) <= 2 && Math.abs(j - guessLength) <= 2) {
+      return true;
+    }
+  }
+  return false;
+}
 		</script>
 	</body>
 </html>
