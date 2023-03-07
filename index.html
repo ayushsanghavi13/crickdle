@@ -594,30 +594,24 @@ shareButton.addEventListener('click', function() {
 			function isClose(guess, correctPlayers) {
   for (let i = 0; i < correctPlayers.length; i++) {
     const correctPlayer = correctPlayers[i];
-    if (Math.abs(guess.length - correctPlayer.length) > 2) {
-      continue;
-    }
-    let j = 0;
-    let diff = 0;
-    for (let k = 0; k < guess.length; k++) {
-      if (guess[k] !== correctPlayer[j]) {
-        diff++;
-        if (diff > 2) {
-          break;
-        }
-        if (guess.length > correctPlayer.length) {
+    const correctPlayerLength = correctPlayer.length;
+    const guessLength = guess.length;
+    if (Math.abs(guessLength - correctPlayerLength) <= 2) {
+      let misspelledLetters = 0;
+      let j = 0;
+      for (let k = 0; k < guessLength; k++) {
+        if (guess[k] !== correctPlayer[j]) {
+          misspelledLetters++;
+          if (misspelledLetters > 2) {
+            break;
+          }
+        } else {
           j++;
-        } else if (guess.length < correctPlayer.length) {
-          j--;
         }
       }
-      j++;
-      if (j >= correctPlayer.length) {
-        break;
+      if (misspelledLetters <= 2 && j >= correctPlayerLength - 2) {
+        return true;
       }
-    }
-    if (diff <= 2) {
-      return true;
     }
   }
   return false;
