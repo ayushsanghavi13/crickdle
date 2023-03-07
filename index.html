@@ -618,7 +618,7 @@ shareButton.addEventListener('click', function() {
         break;
       }
     }
-    if (diff <= 2 && Math.abs(guessLength - correctPlayerLength) <= 2 && Math.abs(j - guessLength) <= 2) {
+    if (diff <= 2 && Math.abs(guessLength - correctPlayerLength) <= 2 && j === correctPlayerLength) {
       return true;
     }
   }
