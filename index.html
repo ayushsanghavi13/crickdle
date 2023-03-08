@@ -460,17 +460,9 @@
 			const localStorageKey = `cricketer_${correctPlayer}_${gameDetails.date}`;
 
 if (localStorage.getItem(localStorageKey)) {
-  // If so, hide guess section and show the answer
   guessInputs.forEach((input) => input.querySelector("input").disabled = true);
   submitButtons.forEach((button) => button.disabled = true);
-
-  if (localStorage.getItem(localStorageKey) === "guessed") {
-    congratulationsElement.style.display = "block";
-  } else {
-    correctAnswerElement.textContent = correctPlayer[0];
-    answerElement.style.display = "block";
-    document.getElementById("correct-answer").textContent = correctPlayer;
-  }
+	congratulationsElement.style.display = "block";
 } else {
   document.querySelectorAll(".guess-input").forEach((guessInput) => guessInput.style.display = "block");
   document.querySelectorAll("button[id^='submit']").forEach((button) => button.disabled = false);
