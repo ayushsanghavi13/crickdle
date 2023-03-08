@@ -475,6 +475,8 @@ if (localStorage.getItem(localStorageKey)) {
   document.querySelectorAll(".guess-input").forEach((guessInput) => guessInput.style.display = "block");
   document.querySelectorAll("button[id^='submit']").forEach((button) => button.disabled = false);
 }
+			    });
+});
 			
 			document.getElementById("nation1").textContent = gameDetails.nation1;
 			document.getElementById("nation2").textContent = gameDetails.nation2;
