@@ -459,20 +459,21 @@
 			const correctPlayer = ["LEHMANN"];
 			const localStorageKey = `cricketer_${correctPlayer}_${gameDetails.date}`;
 
-// Check if the cricketer has been played before
 if (localStorage.getItem(localStorageKey)) {
-    // If so, hide guess section and show the answer
-    document.querySelectorAll(".guess-input").forEach((guessInput) => guessInput.style.display = "none");
-    document.getElementById("answer").style.display = "block";
+  // If so, hide guess section and show the answer
+  guessInputs.forEach((input) => input.querySelector("input").disabled = true);
+  submitButtons.forEach((button) => button.disabled = true);
+
+  if (localStorage.getItem(localStorageKey) === "guessed") {
+    congratulationsElement.style.display = "block";
+  } else {
+    correctAnswerElement.textContent = correctPlayer[0];
+    answerElement.style.display = "block";
     document.getElementById("correct-answer").textContent = correctPlayer;
-    // If the answer was guessed correctly before, show congratulations element instead of answer element
-    if (localStorage.getItem(localStorageKey) === "guessed") {
-        document.getElementById("congratulations").style.display = "block";
-    }
+  }
 } else {
-    // If the cricketer has not been played before, enable guess inputs and submit buttons
-    document.querySelectorAll(".guess-input").forEach((guessInput) => guessInput.style.display = "block");
-    document.querySelectorAll("button[id^='submit']").forEach((button) => button.disabled = false);
+  document.querySelectorAll(".guess-input").forEach((guessInput) => guessInput.style.display = "block");
+  document.querySelectorAll("button[id^='submit']").forEach((button) => button.disabled = false);
 }
 			
 			document.getElementById("nation1").textContent = gameDetails.nation1;
