@@ -457,23 +457,6 @@
 			};
 
 			const correctPlayer = ["LEHMANN"];
-			const localStorageKey = `cricketer_${correctPlayer}_${gameDetails.date}`;
-			
-			if (localStorage.getItem(localStorageKey)) {
-guessInputs.forEach((input) => input.querySelector("input").disabled = true);
-  submitButtons.forEach((button) => button.disabled = true);
-    document.getElementById("answer").style.display = "block";
-    document.getElementById("correct-answer").textContent = correctPlayer;
-    // If the answer was guessed correctly before, show congratulations element instead of answer element
-    if (localStorage.getItem(localStorageKey) === "guessed") {
-        document.getElementById("congratulations").style.display = "block";
-	    document.getElementById("answer").style.display = "none";
-    }
-} else {
-    // If the cricketer has not been played before, enable guess inputs and submit buttons
-    document.querySelectorAll(".guess-input").forEach((guessInput) => guessInput.style.display = "block");
-    document.querySelectorAll("button[id^='submit']").forEach((button) => button.disabled = false);
-}
 			
 			document.getElementById("nation1").textContent = gameDetails.nation1;
 			document.getElementById("nation2").textContent = gameDetails.nation2;
@@ -499,7 +482,6 @@ guessInputs.forEach((input) => input.querySelector("input").disabled = true);
 						guessInput.style.color = "white";
 						congratulationsElement.style.display = "block";
 						answerElement.style.display = "none";
-						  localStorage.setItem(localStorageKey, "guessed");
 					} else if (isClose(guess, correctPlayer)) {
 						guessInput.style.backgroundColor = "#e4a404";
 						guessInput.style.color = "white";
