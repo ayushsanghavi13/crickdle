@@ -44,15 +44,15 @@
 
 	<script>
 		const urlParams = new URLSearchParams(window.location.search);
-  const color1 = urlParams.get("color1");
-  const color2 = urlParams.get("color2");
-  const color3 = urlParams.get("color3");
-  const color4 = urlParams.get("color4");
-  const dashes = document.querySelectorAll(".dash");
-  dashes[0].style.backgroundColor = color1;
-  dashes[1].style.backgroundColor = color2;
-  dashes[2].style.backgroundColor = color3;
-  dashes[3].style.backgroundColor = color4;
+  const guess1Color = urlParams.get("guess1");
+  const guess2Color = urlParams.get("guess2");
+  const guess3Color = urlParams.get("guess3");
+  const guess4Color = urlParams.get("guess4");
+
+  document.getElementById("dash1").style.Color = guess1Color;
+  document.getElementById("dash2").style.Color = guess2Color;
+  document.getElementById("dash3").style.Color = guess3Color;
+  document.getElementById("dash4").style.Color = guess4Color;
 		
 		// Set the target time for the next Crickdle (9am UK time).
 		const targetTime = new Date();
