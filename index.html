@@ -457,22 +457,6 @@
 			};
 
 			const correctPlayer = ["RABADA"];
-			const currentCricketer = gameDetails.crickdlequestion + "_" + gameDetails.date;
-			
-			const hasPlayed = localStorage.getItem(currentCricketer);
-
-if (hasPlayed) {
-  guessInputs.forEach(input => input.querySelector("input").disabled = true);
-  submitButtons.forEach(button => button.disabled = true);
-  congratulationsElement.style.display = "none";
-  answerElement.style.display = "block";
-  correctAnswerElement.textContent = "come back tomorrow to guess another cricketer";
-} else {
-  guessInputs.forEach(input => input.querySelector("input").disabled = false);
-  submitButtons.forEach(button => button.disabled = false);
-  congratulationsElement.style.display = "none";
-  answerElement.style.display = "none";
-}
 			
 			document.getElementById("nation1").textContent = gameDetails.nation1;
 			document.getElementById("nation2").textContent = gameDetails.nation2;
@@ -508,7 +492,6 @@ if (hasPlayed) {
 						} else {
 							answerElement.style.display = "block";
 							correctAnswerElement.textContent = correctPlayer[0];
-							localStorage.setItem(currentCricketer, true);
 						}
 					
 					} else {
@@ -521,7 +504,6 @@ if (hasPlayed) {
 						} else {
 							answerElement.style.display = "block";
 							correctAnswerElement.textContent = correctPlayer[0];
-							localStorage.setItem(currentCricketer, true);
 						}
 					}
 					
