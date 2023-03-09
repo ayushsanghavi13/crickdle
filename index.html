@@ -470,42 +470,38 @@
 			const congratulationsElement = document.getElementById("congratulations");
 			const correctAnswerElement = document.getElementById("correct-answer");
 			
-			submitButtons.forEach((button, index) => {
-				button.addEventListener("click", (event) => {
-					event.preventDefault();
-					const guessInput = guessInputs[index].querySelector("input");
-					const guess = guessInput.value;
-					guessInput.disabled = true;
-					button.disabled = true;
-					if (correctPlayer.includes(guess)) {
-						guessInput.style.backgroundColor = "#1dc278";
-						guessInput.style.color = "white";
-						congratulationsElement.style.display = "block";
-						answerElement.style.display = "none";
-					} else if (isClose(guess, correctPlayer)) {
-						guessInput.style.backgroundColor = "#e4a404";
-						guessInput.style.color = "white";
-						if (index < 3) {
-							guessInputs[index + 1].querySelector("input").disabled = false;
-							guessInputs[index + 1].querySelector("button").disabled = false;
-							guessInputs[index + 1].querySelector("input").focus();
-						} else {
-							answerElement.style.display = "block";
-							correctAnswerElement.textContent = correctPlayer[0];
-						}
-					
-					} else {
-						guessInput.style.backgroundColor = "#787c7f";
-						guessInput.style.color = "white";
-						if (index < 3) {
-							guessInputs[index + 1].querySelector("input").disabled = false;
-							guessInputs[index + 1].querySelector("button").disabled = false;
-							guessInputs[index + 1].querySelector("input").focus();
-						} else {
-							answerElement.style.display = "block";
-							correctAnswerElement.textContent = correctPlayer[0];
-						}
-					}
+  submitButtons.forEach((button, index) => {
+    button.addEventListener("click", (event) => {
+      event.preventDefault();
+      const guessInput = guessInputs[index].querySelector("input");
+      const guess = guessInput.value;
+      guessInput.disabled = true;
+      button.disabled = true;
+      if (correctPlayer.includes(guess)) {
+        guessInput.style.backgroundColor = "#1dc278";
+        guessInput.style.color = "white";
+        window.location.href = "bowled.html?color1=#1dc278&color2=" + encodeURIComponent(guessInputs[1].querySelector("input").style.backgroundColor) + "&color3=" + encodeURIComponent(guessInputs[2].querySelector("input").style.backgroundColor) + "&color4=" + encodeURIComponent(guessInputs[3].querySelector("input").style.backgroundColor);
+      } else if (isClose(guess, correctPlayer)) {
+        guessInput.style.backgroundColor = "#e4a404";
+        guessInput.style.color = "white";
+        if (index < 3) {
+          guessInputs[index + 1].querySelector("input").disabled = false;
+          guessInputs[index + 1].querySelector("button").disabled = false;
+          guessInputs[index + 1].querySelector("input").focus();
+        } else {
+          window.location.href = "duck.html?color1=" + encodeURIComponent(guessInputs[0].querySelector("input").style.backgroundColor) + "&color2=" + encodeURIComponent(guessInputs[1].querySelector("input").style.backgroundColor) + "&color3=" + encodeURIComponent(guessInputs[2].querySelector("input").style.backgroundColor) + "&color4=" + encodeURIComponent(guessInputs[3].querySelector("input").style.backgroundColor);
+        }
+      } else {
+        guessInput.style.backgroundColor = "#787c7f";
+        guessInput.style.color = "white";
+        if (index < 3) {
+          guessInputs[index + 1].querySelector("input").disabled = false;
+          guessInputs[index + 1].querySelector("button").disabled = false;
+          guessInputs[index + 1].querySelector("input").focus();
+        } else {
+          window.location.href = "duck.html?color1=" + encodeURIComponent(guessInputs[0].querySelector("input").style.backgroundColor) + "&color2=" + encodeURIComponent(guessInputs[1].querySelector("input").style.backgroundColor) + "&color3=" + encodeURIComponent(guessInputs[2].querySelector("input").style.backgroundColor) + "&color4=" + encodeURIComponent(guessInputs[3].querySelector("input").style.backgroundColor);
+        }
+      }
 					
 					if (index === 2 && answerElement.style.display === "none" && congratulationsElement.style.display === "none") {
 						const hintElement = document.createElement("div");
