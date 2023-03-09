@@ -462,14 +462,12 @@
 			const hasPlayed = localStorage.getItem(currentCricketer);
 
 if (hasPlayed) {
-  // User has already played this game, disable inputs and display message
   guessInputs.forEach(input => input.querySelector("input").disabled = true);
   submitButtons.forEach(button => button.disabled = true);
   congratulationsElement.style.display = "none";
   answerElement.style.display = "block";
   correctAnswerElement.textContent = "come back tomorrow to guess another cricketer";
 } else {
-  // User has not played this game yet, allow inputs and hide message
   guessInputs.forEach(input => input.querySelector("input").disabled = false);
   submitButtons.forEach(button => button.disabled = false);
   congratulationsElement.style.display = "none";
@@ -511,7 +509,6 @@ if (hasPlayed) {
 							answerElement.style.display = "block";
 							correctAnswerElement.textContent = correctPlayer[0];
 							localStorage.setItem(currentCricketer, true);
-
 						}
 					
 					} else {
@@ -525,7 +522,6 @@ if (hasPlayed) {
 							answerElement.style.display = "block";
 							correctAnswerElement.textContent = correctPlayer[0];
 							localStorage.setItem(currentCricketer, true);
-
 						}
 					}
 					
