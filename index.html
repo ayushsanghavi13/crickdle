@@ -457,6 +457,12 @@
 			};
 
 			const correctPlayer = ["RABADA"];
+			const cricketerKey = gameDetails.crickdlequestion + '_' + gameDetails.date;
+
+let isCricketerAlreadyPlayed = false;
+if (localStorage.getItem(cricketerKey) === 'played') {
+  isCricketerAlreadyPlayed = true;
+}
 			
 			document.getElementById("nation1").textContent = gameDetails.nation1;
 			document.getElementById("nation2").textContent = gameDetails.nation2;
@@ -529,6 +535,43 @@
 						
 					}
 				});
+				
+				if (isCricketerAlreadyPlayed) {
+  guessInputs.forEach((input) => input.querySelector('input').disabled = true);
+  submitButtons.forEach((button) => button.disabled = true);
+  answerElement.style.display = 'block';
+  answerElement.querySelector('#correct-answer').textContent = '';
+  answerElement.querySelector('span').textContent = 'Come back tomorrow to guess another cricketer.';
+} else {
+  submitButtons.forEach((button, index) => {
+    button.addEventListener('click', (event) => {
+      event.preventDefault();
+      const guessInput = guessInputs[index].querySelector('input');
+      const guess = guessInput.value;
+      guessInput.disabled = true;
+      button.disabled = true;
+      if (correctPlayer.includes(guess)) {
+        guessInput.style.backgroundColor = '#1dc278';
+        guessInput.style.color = 'white';
+        congratulationsElement.style.display = 'block';
+        answerElement.style.display = 'none';
+        localStorage.setItem(cricketerKey, 'played');
+      } else {
+        guessInput.style.backgroundColor = '#ff4d4d';
+        guessInput.style.color = 'white';
+        if (index < submitButtons.length - 1) {
+          guessInputs[index + 1].querySelector('input').disabled = false;
+          submitButtons[index + 1].disabled = false;
+          guessInputs[index + 1].querySelector('input').focus();
+        } else {
+          answerElement.style.display = 'block';
+          answerElement.querySelector('#correct-answer').textContent = correctPlayer[0];
+          localStorage.setItem(cricketerKey, 'played');
+        }
+      }
+    });
+  });
+}
 	
 				const input = guessInputs[index].querySelector("input");
 				input.addEventListener("keyup", (event) => {
