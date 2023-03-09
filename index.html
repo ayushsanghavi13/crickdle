@@ -482,9 +482,6 @@
 						guessInput.style.color = "white";
 						congratulationsElement.style.display = "block";
 						answerElement.style.display = "none";
-						if (performance.navigation.type === 1) {
-            window.location.href = "bowled.html";
-        }
 					} else if (isClose(guess, correctPlayer)) {
 						guessInput.style.backgroundColor = "#e4a404";
 						guessInput.style.color = "white";
@@ -495,9 +492,6 @@
 						} else {
 							answerElement.style.display = "block";
 							correctAnswerElement.textContent = correctPlayer[0];
-							if (performance.navigation.type === 1) {
-            window.location.href = "duck.html";
-        }
 						}
 					
 					} else {
@@ -510,9 +504,6 @@
 						} else {
 							answerElement.style.display = "block";
 							correctAnswerElement.textContent = correctPlayer[0];
-							if (performance.navigation.type === 1) {
-            window.location.href = "duck.html";
-        }
 						}
 					}
 					
