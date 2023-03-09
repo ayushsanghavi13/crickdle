@@ -496,8 +496,6 @@
                                         "&guess2=" + guessInputs[1].querySelector("input").style.backgroundColor +
                                         "&guess3=" + guessInputs[2].querySelector("input").style.backgroundColor +
                                         "&guess4=" + guessInputs[3].querySelector("input").style.backgroundColor;
-                    correctAnswerElement.textContent = correctPlayer[0];
-                    answerElement.style.display = "block";
                 }
             } else {
                 guessInput.style.backgroundColor = "#787c7f";
@@ -511,12 +509,10 @@
                                         "&guess2=" + guessInputs[1].querySelector("input").style.backgroundColor +
                                         "&guess3=" + guessInputs[2].querySelector("input").style.backgroundColor +
                                         "&guess4=" + guessInputs[3].querySelector("input").style.backgroundColor;
-                    correctAnswerElement.textContent = correctPlayer[0];
-                    answerElement.style.display = "block";
                 }
             }
 					
-					if (index === 2 && answerElement.style.display === "none" && congratulationsElement.style.display === "none") {
+					if (index === 2) {
 						const hintElement = document.createElement("div");
 						hintElement.style.color = "black";
 						hintElement.style.fontSize = "1.1rem";
