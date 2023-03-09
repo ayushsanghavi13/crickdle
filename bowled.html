@@ -43,6 +43,17 @@
 	</div>
 
 	<script>
+		const urlParams = new URLSearchParams(window.location.search);
+  const color1 = urlParams.get("color1");
+  const color2 = urlParams.get("color2");
+  const color3 = urlParams.get("color3");
+  const color4 = urlParams.get("color4");
+  const dashes = document.querySelectorAll(".dash");
+  dashes[0].style.backgroundColor = color1;
+  dashes[1].style.backgroundColor = color2;
+  dashes[2].style.backgroundColor = color3;
+  dashes[3].style.backgroundColor = color4;
+		
 		// Set the target time for the next Crickdle (9am UK time).
 		const targetTime = new Date();
 		targetTime.setHours(9, 0, 0, 0);
