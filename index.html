@@ -440,12 +440,6 @@
 				<input type="text" id="guess4" disabled />
 				<button id="submit4" disabled><b>ENTER</b></button>
 			</div>
-			<div id="congratulations" style="display:none">
-				<p><b>Bowled 'em! You got the answer.</b><br><span style="color: black">Come back tomorrow to guess another cricketer.</span></p>
-			</div>
-			<div id="answer" style="display:none">
-				<p><b>Out for a duck! The answer is <span id="correct-answer"></span>.</b><br><span style="color: black">Come back tomorrow to guess another cricketer.</span></p>
-			</div>
 		</div>
 		<script>
 			const gameDetails = {
@@ -466,8 +460,6 @@
 			
 			const guessInputs = document.querySelectorAll(".guess-input");
 			const submitButtons = document.querySelectorAll("button[id^='submit']");
-			const answerElement = document.getElementById("answer");
-			const congratulationsElement = document.getElementById("congratulations");
 			const correctAnswerElement = document.getElementById("correct-answer");
 			
     submitButtons.forEach((button, index) => {
