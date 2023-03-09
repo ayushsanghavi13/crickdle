@@ -448,6 +448,16 @@
 			</div>
 		</div>
 		<script>
+			window.addEventListener("load", () => {
+  if (isGamePlayed()) {
+    guessInputs.forEach(input => input.querySelector("input").disabled = true);
+    submitButtons.forEach(button => button.disabled = true);
+    answerElement.style.display = "block";
+    answerElement.style.fontWeight = "normal";
+    answerElement.textContent = "Come back tomorrow to guess another cricketer.";
+  }
+});
+			
 			const gameDetails = {
 				nation1: "England",
 				nation2: "South Africa",
@@ -470,6 +480,18 @@
 			const congratulationsElement = document.getElementById("congratulations");
 			const correctAnswerElement = document.getElementById("correct-answer");
 			
+			function isGamePlayed() {
+  const key = `${correctPlayer[0]}-${gameDetails.date}`;
+  return localStorage.getItem(key) === "played";
+}
+if (isGamePlayed()) {
+  guessInputs.forEach(input => input.querySelector("input").disabled = true);
+  submitButtons.forEach(button => button.disabled = true);
+  answerElement.style.display = "block";
+  answerElement.style.fontWeight = "normal";
+  answerElement.textContent = "Come back tomorrow to guess another cricketer.";
+}
+			
 			submitButtons.forEach((button, index) => {
 				button.addEventListener("click", (event) => {
 					event.preventDefault();
@@ -482,6 +504,7 @@
 						guessInput.style.color = "white";
 						congratulationsElement.style.display = "block";
 						answerElement.style.display = "none";
+						localStorage.setItem(`${correctPlayer[0]}-${gameDetails.date}`, "played");
 					} else if (isClose(guess, correctPlayer)) {
 						guessInput.style.backgroundColor = "#e4a404";
 						guessInput.style.color = "white";
@@ -492,6 +515,7 @@
 						} else {
 							answerElement.style.display = "block";
 							correctAnswerElement.textContent = correctPlayer[0];
+							localStorage.setItem(`${correctPlayer[0]}-${gameDetails.date}`, "played");
 						}
 					
 					} else {
@@ -504,6 +528,7 @@
 						} else {
 							answerElement.style.display = "block";
 							correctAnswerElement.textContent = correctPlayer[0];
+							localStorage.setItem(`${correctPlayer[0]}-${gameDetails.date}`, "played");
 						}
 					}
 					
