@@ -584,8 +584,11 @@ shareButton.addEventListener('click', function() {
         } else {
           j++;
         }
+        if (j === correctPlayerLength) {
+          break;
+        }
       }
-      if (misspelledLetters <= 2 && Math.abs(guessLength - correctPlayerLength) <= 2) {
+      if (misspelledLetters <= 2 && Math.abs(guessLength - correctPlayerLength) <= 2 && j === correctPlayerLength) {
         return true;
       }
     }
