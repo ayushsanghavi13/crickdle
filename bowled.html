@@ -64,7 +64,7 @@
 
 		// Update the countdown every second.
 		const countdownElem = document.getElementById('countdown');
-		setInterval(() => {
+		const intervalId = setInterval(() => {
 			const remaining = targetTime.getTime() - Date.now();
 			if (remaining <= 0) {
 				// If the target time has passed, reload the page.
