@@ -30,8 +30,249 @@
 			font-weight: bold;
                         color: #1dc278;
 		}
+		.toolbar {
+				background-color: #f7f7f7;
+				height: 48px;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				padding: 0 16px;
+				box-shadow: 0 0 6px rgba(0, 0, 0, 0.1);
+				margin-bottom: 30px
+			}
+
+			.toolbar-title {
+				font-size: 35px;
+				font-weight: bold;
+				color: #1dc278;
+				font-family: Arial, sans-serif;
+				line-height: 48px;
+				display: flex;
+				align-items: center;
+				margin: 0;
+			}
+			
+			.toolbar-title h1 {
+				font-size: inherit;
+				color: inherit;
+				font-weight: inherit;
+				font-family: inherit;
+				line-height: inherit;
+				display: inherit;
+				align-items: inherit;
+				margin: inherit;
+			}
+
+			.toolbar-help {
+				background: none;
+				border: none;
+				cursor: pointer;
+				margin-left: 15px;
+			}
+
+			.popup-background {
+				position: fixed;
+				top: 0;
+				left: 0;
+				right: 0;
+				bottom: 0;
+				background-color: white;
+				opacity: 1;
+				z-index: 9999;
+				display: none;
+				justify-content: center;
+				align-items: center;
+			}
+
+			.popup {
+				background-color: white;
+				width: 400px;
+				padding: 16px;
+				border-radius: 8px;
+				box-shadow: 0 0 6px rgba(0, 0, 0, 0.1);
+				position: relative;
+			}
+
+			.popup-header {
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				margin-bottom: 8px;
+				font-family: Arial, sans-serif;
+			}
+
+			.popup-header h2 {
+				margin: 0;
+				font-size: 20px;
+				color: #1dc278;
+				font-family: Arial, sans-serif;
+			}
+
+			.popup-close {
+				background: none;
+				border: none;
+				font-size: 24px;
+				cursor: pointer;
+				color: #f03a17;
+				font-family: Arial, sans-serif;
+			}
+
+			.popup-content {
+				margin: 0;
+				font-size: 18px;
+				line-height: 1.5;
+				font-family: Arial, sans-serif;
+			}
+			
+			.toolbar-info {
+				background: none;
+				border: none;
+				cursor: pointer;
+				margin-right: 15px;
+			}
+
+			.popup2-background {
+				position: fixed;
+				top: 0;
+				left: 0;
+				right: 0;
+				bottom: 0;
+				background-color: white;
+				opacity: 1;
+				z-index: 9999;
+				display: none;
+				justify-content: center;
+				align-items: center;
+			}
+
+			.popup2 {
+				background-color: white;
+				width: 400px;
+				padding: 16px;
+				border-radius: 8px;
+				box-shadow: 0 0 6px rgba(0, 0, 0, 0.1);
+				position: relative;
+			}
+
+			.popup2-header {
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				margin-bottom: 8px;
+				font-family: Arial, sans-serif;
+			}
+
+			.popup2-header h2 {
+				margin: 0;
+				font-size: 20px;
+				color: #1dc278;
+				font-family: Arial, sans-serif;
+			}
+
+			.popup2-close {
+				background: none;
+				border: none;
+				font-size: 24px;
+				cursor: pointer;
+				color: #f03a17;
+				font-family: Arial, sans-serif;
+			}
+
+			.popup2-content {
+				margin: 0;
+				font-size: 18px;
+				line-height: 1.5;
+				font-family: Arial, sans-serif;
+			}
+			
+			.share-container {
+  margin-top: 20px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.share-button {
+  background-color: #1dc278;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  font-family: Arial, sans-serif;
+  margin-right: 20px;
+  height: 40px;
+}
+
+.share-button:hover {
+  opacity: 0.8;
+}
+
+.twitter-button {
+  background-color: #1dc278;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  font-family: Arial, sans-serif;
+  text-decoration: none;
+  height: 40px;
+}
+
+.twitter-button:hover {
+  opacity: 0.8;
+}
+			
+			.toolbar-help img,
+			.toolbar-info img {
+				width: 20px;
+				height: 20px;
+			}
 	</style>
 </head>
+	<header>
+			<div class="toolbar">
+					<button class="toolbar-info" aria-label="About">
+						<img src="Info.png" alt="Information about Crickdle game">
+					</button>
+					<h1 class="toolbar-title">CRICKDLE</h1>
+					<button class="toolbar-help" aria-label="How to play">
+						<img src="Help.png" alt="How to play Crickdle game">
+					</button>
+			</div>
+			<div class="popup-background">
+				<div class="popup">
+					<div class="popup-header">
+						<h2>How to play</h2>
+						<button class="popup-close" aria-label="Close">&times;</button>
+					</div>
+					<div class="popup-content">
+						<p>Based on their stats in this game, guess the cricketer who was 'Player of the Match'. You have 4 tries.<br><ul><li>Each guess should be the <b>surname</b> of the player you're guessing.</li><li>The colour of the box will change to show how close your guess is.</li></ul>If you misspell the name, the box will turn <span style="color: #e4a404"><b>orange</b></span>, and if you get it wrong, the box will turn <span style="color: #787c7f"><b>grey</b></span>.</p>
+					</div>
+				</div>
+			</div>
+			<div class="popup2-background">
+				<div class="popup2">
+					<div class="popup2-header">
+						<h2>About</h2>
+						<button class="popup2-close" aria-label="Close">&times;</button>
+					</div>
+					<div class="popup2-content">
+						<p>Crickdle is a love letter to Test cricket. There's a new cricketer to guess every day.<br><br>Please send any enquiries about Crickdle to ayushsanghavi13 [at] gmail [dot] com</p>
+					</div>
+					 <div class="share-container">
+        <button class="share-button">SHARE</button>
+        <a href="https://twitter.com/Crickdle" target="_blank" rel="noopener" class="twitter-button">TWITTER</a>
+      </div>
+				</div>
+			</div>
+		</header>
 <body>
 	<div class="container">
 		<p class="text-large">Bowled 'em!</p>
@@ -80,6 +321,51 @@
 				countdownElem.textContent = `Next Crickdle in ${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
 			}
 		}, 1000);
+		
+		const helpButton = document.querySelector('.toolbar-help');
+			const popupBackground = document.querySelector('.popup-background');
+			const popupCloseButton = document.querySelector('.popup-close');
+			const hasShownInstructions = localStorage.getItem('hasShownInstructions');
+
+			if (!hasShownInstructions) {
+				popupBackground.style.display = 'flex';
+				localStorage.setItem('hasShownInstructions', 'true');
+			}
+
+			helpButton.addEventListener('click', function() {
+				popupBackground.style.display = 'flex';
+			});
+
+			popupCloseButton.addEventListener('click', function() {
+				popupBackground.style.display = 'none';
+			});
+			
+			const infoButton = document.querySelector('.toolbar-info');
+			const popup2Background = document.querySelector('.popup2-background');
+			const popup2CloseButton = document.querySelector('.popup2-close');
+
+			infoButton.addEventListener('click', function() {
+				popup2Background.style.display = 'flex';
+			});
+			
+			const shareButton = document.querySelector('.share-button');
+
+shareButton.addEventListener('click', function() {
+  const shareText = 'I’m playing Crickdle, a daily cricket guessing game. Join me and test your knowledge!';
+  const shareUrl = 'https://crickdle.com';
+  const shareTitle = 'Crickdle';
+  navigator.share({
+    title: shareTitle,
+    text: shareText,
+    url: shareUrl,
+  })
+  .then(() => console.log('Shared successfully!'))
+  .catch((error) => console.error('Error sharing:', error));
+});
+
+			popup2CloseButton.addEventListener('click', function() {
+				popup2Background.style.display = 'none';
+			});
 	</script>
 </body>
 </html>
