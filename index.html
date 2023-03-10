@@ -574,21 +574,18 @@ shareButton.addEventListener('click', function() {
     const guessLength = guess.length;
     if (Math.abs(guessLength - correctPlayerLength) <= 2) {
       let misspelledLetters = 0;
-      let j = 0;
+      let matchingLetters = 0;
       for (let k = 0; k < guessLength; k++) {
-        if (guess[k] !== correctPlayer[j]) {
+        if (guess[k] !== correctPlayer[k]) {
           misspelledLetters++;
           if (misspelledLetters > 2) {
             break;
           }
         } else {
-          j++;
-        }
-        if (j === correctPlayerLength) {
-          break;
+          matchingLetters++;
         }
       }
-      if (misspelledLetters <= 2 && Math.abs(guessLength - correctPlayerLength) <= 2 && j === correctPlayerLength) {
+      if (misspelledLetters <= 2 && Math.abs(guessLength - correctPlayerLength) <= 2 && (matchingLetters / guessLength) >= 0.8) {
         return true;
       }
     }
