@@ -585,7 +585,7 @@ shareButton.addEventListener('click', function() {
           j++;
         }
       }
-      if (misspelledLetters <= 2 && j >= correctPlayerLength - 2) {
+      if (misspelledLetters <= 2 && j >= correctPlayerLength - misspelledLetters) {
         return true;
       }
     }
