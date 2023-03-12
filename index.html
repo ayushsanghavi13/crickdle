@@ -142,7 +142,7 @@
 			.guess-input button {
 				padding: 0.5rem 1rem;
 				font-size: 1.3rem;
-				font-weight: bold;
+				font-weight: 600;
 				border: none;
 				border-radius: 8px;
 				background-color: #1dc278;
@@ -335,7 +335,7 @@
   border-radius: 4px;
   cursor: pointer;
   font-size: 16px;
-  font-weight: bold;
+  font-weight: 600;
   font-family: InterTight, sans-serif;
   margin-right: 20px;
   height: 40px;
@@ -353,7 +353,7 @@
   border-radius: 4px;
   cursor: pointer;
   font-size: 16px;
-  font-weight: bold;
+  font-weight: 600;
   font-family: InterTight, sans-serif;
   text-decoration: none;
   height: 40px;
@@ -513,7 +513,7 @@
 						const hintElement = document.createElement("div");
 						hintElement.style.color = "black";
 						hintElement.style.fontSize = "1.1rem";
-            hintElement.style.fontWeight = "bold";
+            hintElement.style.fontWeight = "600";
 						hintElement.style.marginTop = "1rem";
 						hintElement.innerHTML = "Stumped? Click here for a hint.";
 						guessInputs[index + 1].parentNode.insertBefore(hintElement, guessInputs[index + 1].nextSibling);
@@ -522,7 +522,7 @@
 							hintElement.style.display = "none";
 							const answerInput = guessInputs[index + 1].querySelector("input");
 							answerInput.value = correctPlayer[0][0];
-							answerInput.style.fontWeight = "bold";
+							answerInput.style.fontWeight = "600";
 						});
 						
 						const submitButton = document.getElementById("submit4");
@@ -591,7 +591,7 @@ shareButton.addEventListener('click', function() {
 				input.addEventListener('input', (event) => {
 					const inputValue = event.target.value;
 					event.target.value = inputValue.toUpperCase();
-					event.target.style.fontWeight = 'bold';
+					event.target.style.fontWeight = '600';
 				});
 			});
 			function isClose(guess, correctPlayers) {
