@@ -142,7 +142,7 @@
 			.guess-input button {
 				padding: 0.5rem 1rem;
 				font-size: 1.3rem;
-				font-weight: 600;
+				font-weight: 500;
 				border: none;
 				border-radius: 8px;
 				background-color: #1dc278;
@@ -338,6 +338,7 @@
   font-family: InterTight, sans-serif;
   margin-right: 20px;
   height: 40px;
+  font-weight: 500;
 }
 
 .share-button:hover {
@@ -355,6 +356,7 @@
   font-family: InterTight, sans-serif;
   text-decoration: none;
   height: 40px;
+  font-weight: 500;
 }
 
 .twitter-button:hover {
@@ -420,7 +422,7 @@
     </div>
 		<div id="guess-section">
         <div class="game-container">
-			<h2>Which <span id="crickdlequestion"></span></h2>
+		<span style="font-weight: 500"><h2>Which <span id="crickdlequestion"></span></h2></span>
 			<div class="guess-input">
 				<input type="text" id="guess1" />
 				<button id="submit1"><b>&rArr;</b></button>
@@ -512,6 +514,7 @@
 						hintElement.style.color = "black";
 						hintElement.style.fontSize = "1.1rem";
 						hintElement.style.marginTop = "1rem";
+            hintElement.style.fontWeight = "500";
 						hintElement.innerHTML = "Stumped? Click here for a hint.";
 						guessInputs[index + 1].parentNode.insertBefore(hintElement, guessInputs[index + 1].nextSibling);
 						hintElement.addEventListener("click", (event) => {
