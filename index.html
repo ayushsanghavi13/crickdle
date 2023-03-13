@@ -1,62 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<script>
-  function askConsent() {
-    // create a consent banner
-    const consentBanner = document.createElement('div');
-    consentBanner.id = 'consent-banner';
-    consentBanner.innerHTML = `
-      <p>We use cookies to improve your experience on our website. By clicking "I accept" you consent to the use of these cookies.</p>
-      <button onclick="acceptConsent()">I accept</button>
-      <button onclick="rejectConsent()">No thanks</button>
-    `;
-    document.body.appendChild(consentBanner);
-  }
-
-  function acceptConsent() {
-    // set a cookie to record user's consent
-    document.cookie = 'ga_consent=true; expires=Thu, 31 Dec 2099 23:59:59 GMT; path=/';
-
-    // load Google Analytics script
-    const gtagScript = document.createElement('script');
-    gtagScript.src = 'https://www.googletagmanager.com/gtag/js?id=G-F1WGM1SC5E';
-    gtagScript.async = true;
-    document.head.appendChild(gtagScript);
-
-    // initialize Google Analytics
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-F1WGM1SC5E');
-
-    // remove the consent banner
-    const consentBanner = document.getElementById('consent-banner');
-    consentBanner.parentNode.removeChild(consentBanner);
-  }
-
-  function rejectConsent() {
-    // remove the consent banner
-    const consentBanner = document.getElementById('consent-banner');
-    consentBanner.parentNode.removeChild(consentBanner);
-  }
-
-  // check if user has given consent
-  const hasConsent = document.cookie.split('; ').find(row => row.startsWith('ga_consent=')).split('=')[1] === 'true';
-
-  if (!hasConsent) {
-    askConsent();
-  }
-</script>
-		<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-F1WGM1SC5E"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-F1WGM1SC5E');
-</script>
 		<script type="application/ld+json">
 {
   "@context": "http://schema.org",
@@ -622,17 +566,13 @@
 			const helpButton = document.querySelector('.toolbar-help');
 			const popupBackground = document.querySelector('.popup-background');
 			const popupCloseButton = document.querySelector('.popup-close');
-
-  const hasShownInstructions = localStorage.getItem('hasShownInstructions');
+			const hasShownInstructions = localStorage.getItem('hasShownInstructions');
 
   if (!hasShownInstructions) {
-    const consent = getCookie('ga_consent');
-    if (consent === 'true' || consent === null) {
       const popupBackground = document.getElementById('popup-background');
       popupBackground.style.display = 'flex';
       localStorage.setItem('hasShownInstructions', 'true');
     }
-  }
 
   function getCookie(name) {
     const value = '; ' + document.cookie;
