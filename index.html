@@ -471,6 +471,10 @@
         button.addEventListener("click", (event) => {
             event.preventDefault();
             const guessInput = guessInputs[index].querySelector("input");
+		if (guessInput.value.length === 0) {
+                alert("Not enough letters!");
+                return;
+            }
             const guess = guessInput.value;
             guessInput.disabled = true;
             button.disabled = true;
