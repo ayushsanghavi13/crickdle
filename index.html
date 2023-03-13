@@ -28,21 +28,23 @@
     document.cookie = name+'=; Max-Age=-99999999;';  
   }
 
-  function askForConsent() {
+function askForConsent() {
   var consent = getCookie('google-analytics-consent');
   if (consent != 'yes') {
-    var dialog = document.createElement('div');
-    dialog.classList.add('consent-dialog');
-    dialog.innerHTML = '<h2>We use Google Analytics to collect anonymous statistics about how our website is used.</h2><p>Can we use cookies to enable Google Analytics?</p><button class="yes-button">Yes</button><button class="no-button">No</button>';
-    document.body.appendChild(dialog);
-    dialog.querySelector('.yes-button').addEventListener('click', function() {
+    var modalHtml = '<div class="modal fade" id="analyticsModal" tabindex="-1" role="dialog" aria-labelledby="analyticsModalLabel" aria-hidden="true"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="analyticsModalLabel">Google Analytics</h5><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button></div><div class="modal-body"><p>We use Google Analytics to collect anonymous statistics about how our website is used. Can we use cookies to enable Google Analytics?</p></div><div class="modal-footer"><button type="button" class="btn btn-secondary" data-dismiss="modal">No</button><button type="button" class="btn btn-primary" id="analyticsConfirm">Yes</button></div></div></div></div>';
+    $('body').append(modalHtml);
+    $('#analyticsModal').modal('show');
+    
+    $('#analyticsConfirm').on('click', function() {
       setCookie('google-analytics-consent', 'yes', 365);
       loadAnalytics();
-      dialog.remove();
+      $('#analyticsModal').modal('hide');
     });
-    dialog.querySelector('.no-button').addEventListener('click', function() {
-      setCookie('google-analytics-consent', 'no', 365);
-      dialog.remove();
+    
+    $('#analyticsModal').on('hidden.bs.modal', function () {
+      if (getCookie('google-analytics-consent') != 'yes') {
+        setCookie('google-analytics-consent', 'no', 365);
+      }
     });
   } else {
     loadAnalytics();
