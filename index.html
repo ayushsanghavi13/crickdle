@@ -608,17 +608,12 @@
 			const helpButton = document.querySelector('.toolbar-help');
 			const popupBackground = document.querySelector('.popup-background');
 			const popupCloseButton = document.querySelector('.popup-close');
-			
-			const hasConsent = (localStorage.getItem('gaConsent') === 'true');
-
-if (hasConsent) {
-  const hasShownInstructions = localStorage.getItem('hasShownInstructions');
+			const hasShownInstructions = localStorage.getItem('hasShownInstructions');
 
   if (!hasShownInstructions) {
     popupBackground.style.display = 'flex';
     localStorage.setItem('hasShownInstructions', 'true');
   }
-}
 
 			helpButton.addEventListener('click', function() {
 				popupBackground.style.display = 'flex';
