@@ -29,19 +29,25 @@
   }
 
   function askForConsent() {
-    var consent = getCookie('google-analytics-consent');
-    if (consent != 'yes') {
-      var confirmation = confirm('We use Google Analytics to collect anonymous statistics about how our website is used. Can we use cookies to enable Google Analytics?');
-      if (confirmation == true) {
-        setCookie('google-analytics-consent', 'yes', 365);
-        loadAnalytics();
-      } else {
-        setCookie('google-analytics-consent', 'no', 365);
-      }
-    } else {
+  var consent = getCookie('google-analytics-consent');
+  if (consent != 'yes') {
+    var dialog = document.createElement('div');
+    dialog.classList.add('consent-dialog');
+    dialog.innerHTML = '<h2>We use Google Analytics to collect anonymous statistics about how our website is used.</h2><p>Can we use cookies to enable Google Analytics?</p><button class="yes-button">Yes</button><button class="no-button">No</button>';
+    document.body.appendChild(dialog);
+    dialog.querySelector('.yes-button').addEventListener('click', function() {
+      setCookie('google-analytics-consent', 'yes', 365);
       loadAnalytics();
-    }
+      dialog.remove();
+    });
+    dialog.querySelector('.no-button').addEventListener('click', function() {
+      setCookie('google-analytics-consent', 'no', 365);
+      dialog.remove();
+    });
+  } else {
+    loadAnalytics();
   }
+}
 
   function loadAnalytics() {
     // Your Google Analytics tag
