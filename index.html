@@ -467,12 +467,11 @@
 			const submitButtons = document.querySelectorAll("button[id^='submit']");
 			const correctAnswerElement = document.getElementById("correct-answer");
 			
-    submitButtons.forEach((button, index) => {
+   submitButtons.forEach((button, index) => {
         button.addEventListener("click", (event) => {
             event.preventDefault();
             const guessInput = guessInputs[index].querySelector("input");
-            const guess = guessInput.value.trim();
-		const guess = guessInput.value;
+            const guess = guessInput.value;
             guessInput.disabled = true;
             button.disabled = true;
             if (correctPlayer.includes(guess)) {
