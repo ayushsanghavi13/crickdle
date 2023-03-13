@@ -1,42 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-F1WGM1SC5E"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-F1WGM1SC5E');
-</script>
-<!-- Google Analytics opt-out -->
-<script>
-  function gaOptout() {
-    document.cookie = 'ga-disable-G-F1WGM1SC5E=true; expires=Thu, 31 Dec 2099 23:59:59 UTC; path=/';
-    window['ga-disable-G-F1WGM1SC5E'] = true;
-    alert('Google Analytics has been disabled for this website.');
-  }
-</script>
-
-<!-- Google Analytics tracking code -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-F1WGM1SC5E"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  // Check if user has given consent
-  var hasConsent = (localStorage.getItem('gaConsent') === 'true');
-
-  if (hasConsent) {
-    // User has given consent, enable tracking
-    gtag('config', 'G-F1WGM1SC5E');
-  } else {
-    // User has not given consent, disable tracking
-    window['ga-disable-G-F1WGM1SC5E'] = true;
-  }
-</script>
 		<script type="application/ld+json">
 {
   "@context": "http://schema.org",
@@ -418,12 +382,6 @@
 		</style>
 	</head>
 	<body>
-		<!-- User consent request -->
-<div id="cookieConsent" style="display:none;">
-  <p>We use Google Analytics to analyze traffic to our site. We do not collect personally identifiable information. If you agree to our use of cookies and Google Analytics, please click "I agree". If you do not agree, you can disable cookies and Google Analytics in your web browser's settings.</p>
-  <button onclick="localStorage.setItem('gaConsent', 'true'); document.getElementById('cookieConsent').style.display = 'none';">I agree</button>
-  <button onclick="gaOptout(); localStorage.setItem('gaConsent', 'false'); document.getElementById('cookieConsent').style.display = 'none';">Disable Google Analytics</button>
-</div>
 		<header>
 			<div class="toolbar">
 					<button class="toolbar-info" aria-label="About">
