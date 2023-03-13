@@ -476,13 +476,14 @@
 				const warningPopup = document.createElement("div");
 				warningPopup.innerHTML = "Not enough letters!";
 				warningPopup.style.position = "absolute";
+			warningPopup.style.bottom = "30px";
 				warningPopup.style.top = "0";
 				warningPopup.style.left = "50%";
 				warningPopup.style.transform = "translateX(-50%)";
-				warningPopup.style.padding = "0.5rem";
-				warningPopup.style.backgroundColor = "#ff6666";
+				warningPopup.style.padding = "0.3rem";
+				warningPopup.style.backgroundColor = "#000000";
 				warningPopup.style.color = "#fff";
-				warningPopup.style.fontSize = "1.2rem";
+				warningPopup.style.fontSize = "0.8rem";
 				warningPopup.style.textAlign = "center";
 				warningPopup.style.borderRadius = "5px";
 				guessInput.parentNode.insertBefore(warningPopup, button);
