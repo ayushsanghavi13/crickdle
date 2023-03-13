@@ -472,26 +472,7 @@
             event.preventDefault();
             const guessInput = guessInputs[index].querySelector("input");
             const guess = guessInput.value.trim();
-		const guess = guessInput.value.trim();
-			if (guess === '') {
-				const warningPopup = document.createElement("div");
-				warningPopup.innerHTML = "Not enough letters!";
-				warningPopup.style.position = "absolute";
-				warningPopup.style.top = "0";
-				warningPopup.style.left = "50%";
-				warningPopup.style.transform = "translateX(-50%)";
-				warningPopup.style.padding = "0.5rem";
-				warningPopup.style.backgroundColor = "#ff6666";
-				warningPopup.style.color = "#fff";
-				warningPopup.style.fontSize = "1.2rem";
-				warningPopup.style.textAlign = "center";
-				warningPopup.style.borderRadius = "5px";
-				guessInput.parentNode.insertBefore(warningPopup, button);
-				setTimeout(() => {
-					warningPopup.parentNode.removeChild(warningPopup);
-				}, 3000);
-				return;
-			}
+		const guess = guessInput.value;
             guessInput.disabled = true;
             button.disabled = true;
             if (correctPlayer.includes(guess)) {
