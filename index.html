@@ -1,6 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
+		<script async src="https://www.googletagmanager.com/gtag/js?id=G-F1WGM1SC5E"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  // User consent for Google Analytics
+  function userConsent() {
+    gtag('consent', 'update', {
+      'analytics_storage': 'granted'
+    });
+  }
+
+  // Check user consent
+  var hasUserConsent = (localStorage.getItem('ga_consent') == 'true');
+
+  // Load Google Analytics if user has consented
+  if (hasUserConsent) {
+    userConsent();
+    gtag('config', 'G-F1WGM1SC5E');
+  }
+
+  // Show consent message
+  function showConsentMessage() {
+    var message = document.createElement('div');
+    message.innerHTML = 'We use cookies to enhance your experience. <button onclick="userConsent(); localStorage.setItem(\'ga_consent\', \'true\'); this.parentNode.parentNode.removeChild(this.parentNode);">I consent</button>';
+    document.body.appendChild(message);
+  }
+
+  // Check if user has previously given consent
+  if (!hasUserConsent) {
+    showConsentMessage();
+  }
+</script>
 		<script type="application/ld+json">
 {
   "@context": "http://schema.org",
