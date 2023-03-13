@@ -418,6 +418,7 @@
 		<div id="match-details">
 			<p><span id="nation1"></span> vs <span id="nation2"></span></p>
 			<p><span id="date"></span></p>
+			<p><span id="venue"></span></p>
 			<p><span id="score"></span></p>
     </div>
 		<div id="guess-section">
@@ -451,6 +452,7 @@
 				nation1: "England",
 				nation2: "Australia",
 				date: "Jul 16-20, 2009",
+				venue: "Lord's",
 				score: "England 425 & 311/6d, Australia (T: 522) 215 & 406; England won by 115 runs",
 				crickdlequestion: "England player scored 30* and took 1/27 & 5/92 in this match?"
 			};
@@ -460,6 +462,7 @@
 			document.getElementById("nation1").textContent = gameDetails.nation1;
 			document.getElementById("nation2").textContent = gameDetails.nation2;
 			document.getElementById("date").textContent = gameDetails.date;
+			document.getElementById("venue").textContent = gameDetails.venue;
 			document.getElementById("score").textContent = gameDetails.score;
 			document.getElementById("crickdlequestion").textContent = gameDetails.crickdlequestion;
 			
