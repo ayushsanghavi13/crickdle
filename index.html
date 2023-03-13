@@ -31,21 +31,52 @@
 function askForConsent() {
   var consent = getCookie('google-analytics-consent');
   if (consent != 'yes') {
-    var modalHtml = '<div class="modal fade" id="analyticsModal" tabindex="-1" role="dialog" aria-labelledby="analyticsModalLabel" aria-hidden="true"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="analyticsModalLabel">Google Analytics</h5><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button></div><div class="modal-body"><p>We use Google Analytics to collect anonymous statistics about how our website is used. Can we use cookies to enable Google Analytics?</p></div><div class="modal-footer"><button type="button" class="btn btn-secondary" data-dismiss="modal">No</button><button type="button" class="btn btn-primary" id="analyticsConfirm">Yes</button></div></div></div></div>';
-    $('body').append(modalHtml);
-    $('#analyticsModal').modal('show');
-    
-    $('#analyticsConfirm').on('click', function() {
+    var popup = document.createElement('div');
+    popup.innerHTML = 'We use Google Analytics to collect anonymous statistics about how our website is used. Can we use cookies to enable Google Analytics?';
+    popup.style.position = 'fixed';
+    popup.style.top = '50%';
+    popup.style.left = '50%';
+    popup.style.transform = 'translate(-50%, -50%)';
+    popup.style.padding = '1rem';
+    popup.style.backgroundColor = '#fff';
+    popup.style.color = '#000';
+    popup.style.fontSize = '1rem';
+    popup.style.textAlign = 'center';
+    popup.style.borderRadius = '5px';
+    popup.style.boxShadow = '0px 4px 8px rgba(0, 0, 0, 0.2)';
+    popup.style.zIndex = '9999';
+
+    var acceptButton = document.createElement('button');
+    acceptButton.innerText = 'Yes';
+    acceptButton.style.backgroundColor = '#008CBA';
+    acceptButton.style.color = '#fff';
+    acceptButton.style.borderRadius = '5px';
+    acceptButton.style.padding = '0.5rem';
+    acceptButton.style.marginRight = '1rem';
+    acceptButton.addEventListener('click', function() {
       setCookie('google-analytics-consent', 'yes', 365);
       loadAnalytics();
-      $('#analyticsModal').modal('hide');
+      document.body.removeChild(popup);
     });
-    
-    $('#analyticsModal').on('hidden.bs.modal', function () {
-      if (getCookie('google-analytics-consent') != 'yes') {
-        setCookie('google-analytics-consent', 'no', 365);
-      }
+
+    var cancelButton = document.createElement('button');
+    cancelButton.innerText = 'No';
+    cancelButton.style.backgroundColor = '#f44336';
+    cancelButton.style.color = '#fff';
+    cancelButton.style.borderRadius = '5px';
+    cancelButton.style.padding = '0.5rem';
+    cancelButton.addEventListener('click', function() {
+      setCookie('google-analytics-consent', 'no', 365);
+      document.body.removeChild(popup);
     });
+
+    var buttonWrapper = document.createElement('div');
+    buttonWrapper.appendChild(acceptButton);
+    buttonWrapper.appendChild(cancelButton);
+
+    popup.appendChild(buttonWrapper);
+
+    document.body.appendChild(popup);
   } else {
     loadAnalytics();
   }
