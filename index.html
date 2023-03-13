@@ -1,6 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
+		<!-- User consent request for Google Analytics -->
+<script>
+  function setCookie(name, value, days) {
+    var expires = "";
+    if (days) {
+      var date = new Date();
+      date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+      expires = "; expires=" + date.toUTCString();
+    }
+    document.cookie = name + "=" + (value || "") + expires + "; path=/";
+  }
+  
+  function getCookie(name) {
+    var nameEQ = name + "=";
+    var ca = document.cookie.split(';');
+    for(var i=0;i < ca.length;i++) {
+      var c = ca[i];
+      while (c.charAt(0)==' ') c = c.substring(1,c.length);
+      if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+    }
+    return null;
+  }
+  
+  function eraseCookie(name) {   
+    document.cookie = name+'=; Max-Age=-99999999;';  
+  }
+
+  function askForConsent() {
+    var consent = getCookie('google-analytics-consent');
+    if (consent != 'yes') {
+      var confirmation = confirm('We use Google Analytics to collect anonymous statistics about how our website is used. Can we use cookies to enable Google Analytics?');
+      if (confirmation == true) {
+        setCookie('google-analytics-consent', 'yes', 365);
+        loadAnalytics();
+      } else {
+        setCookie('google-analytics-consent', 'no', 365);
+      }
+    } else {
+      loadAnalytics();
+    }
+  }
+
+  function loadAnalytics() {
+    // Your Google Analytics tag
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-F1WGM1SC5E');
+  }
+  
+  askForConsent();
+</script>
+		<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-F1WGM1SC5E"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-F1WGM1SC5E');
+</script>
 		<script type="application/ld+json">
 {
   "@context": "http://schema.org",
@@ -566,12 +627,15 @@
 			const helpButton = document.querySelector('.toolbar-help');
 			const popupBackground = document.querySelector('.popup-background');
 			const popupCloseButton = document.querySelector('.popup-close');
-			const hasShownInstructions = localStorage.getItem('hasShownInstructions');
+const hasShownInstructions = localStorage.getItem('hasShownInstructions');
 
-  if (!hasShownInstructions) {
+if (!hasShownInstructions) {
+  var consent = getCookie('google-analytics-consent');
+  if (consent == 'yes' || consent == null) {
     popupBackground.style.display = 'flex';
     localStorage.setItem('hasShownInstructions', 'true');
   }
+}
 
 			helpButton.addEventListener('click', function() {
 				popupBackground.style.display = 'flex';
