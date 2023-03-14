@@ -561,6 +561,27 @@ function declineCookies() {
 			}
             guessInput.disabled = true;
             button.disabled = true;
+		} else if (guess.split(' ').length > 1) {
+      const warningPopup = document.createElement("div");
+      warningPopup.innerHTML = "Surnames only please!";
+		warningPopup.style.position = "absolute";
+				warningPopup.style.top = "54px";
+				warningPopup.style.left = "50%";
+				warningPopup.style.transform = "translateX(-50%)";
+				warningPopup.style.padding = "0.5rem";
+				warningPopup.style.backgroundColor = "#000000";
+				warningPopup.style.color = "#fff";
+				warningPopup.style.fontSize = "1rem";
+				warningPopup.style.textAlign = "center";
+				warningPopup.style.borderRadius = "5px";
+				guessInput.parentNode.insertBefore(warningPopup, button);
+				setTimeout(() => {
+					warningPopup.parentNode.removeChild(warningPopup);
+				}, 1500);
+				return;
+			}
+            guessInput.disabled = true;
+            button.disabled = true;
             if (correctPlayer.includes(guess)) {
                 guessInput.style.backgroundColor = "#1dc278";
                 guessInput.style.color = "white";
