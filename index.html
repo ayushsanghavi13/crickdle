@@ -388,12 +388,51 @@
     text-align: center;
     padding: 5px;
     }
+			
+			#cookieConsent {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 1rem;
+  background-color: #f7f7f7;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  z-index: 9999;
+  font-family: 'InterTight', sans-serif;
+  font-size: 1rem;
+}
+
+#cookieConsent p {
+  margin: 0;
+  padding: 0;
+}
+
+#cookieConsent button {
+  margin: 0.5rem;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 0.25rem;
+  background-color: #fff;
+  color: #28a745;
+  font-family: 'InterTight', sans-serif;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+#cookieConsent button:hover {
+  color: #218838;
+}
+
+#cookieConsent button:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(40, 167, 69, 0.5);
+}
 		</style>
 	</head>
 	<body>
 		<header>
 			<div id="cookieConsent" style="display:none;">
-  <p>This website uses cookies to ensure you get the best experience on our website. <a href="#">Learn more</a></p>
+  <p>This website uses cookies to analyse traffic. Any data collected is automatically anonymised.</p>
   <button onclick="acceptCookies()">Accept</button>
   <button onclick="declineCookies()">Decline</button>
 </div>
