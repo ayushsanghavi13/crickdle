@@ -1,6 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
+		<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-F1WGM1SC5E"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-F1WGM1SC5E');
+</script>
 		<script type="application/ld+json">
 {
   "@context": "http://schema.org",
@@ -383,6 +392,11 @@
 	</head>
 	<body>
 		<header>
+			<div id="cookieConsent" style="display:none;">
+  <p>This website uses cookies to ensure you get the best experience on our website. <a href="#">Learn more</a></p>
+  <button onclick="acceptCookies()">Accept</button>
+  <button onclick="declineCookies()">Decline</button>
+</div>
 			<div class="toolbar">
 					<button class="toolbar-info" aria-label="About">
 						<img src="Info.png" alt="Information about Crickdle game">
@@ -448,6 +462,18 @@
       </div>
 		</div>
 		<script>
+			function acceptCookies() {
+  document.cookie = "gaEnabled=true; expires=Thu, 31 Dec 2099 23:59:59 UTC; path=/";
+  document.getElementById("cookieConsent").style.display = "none";
+  gtag('consent', 'update', {'analytics_storage': 'granted'});
+}
+
+function declineCookies() {
+  document.cookie = "gaEnabled=false; expires=Thu, 31 Dec 2099 23:59:59 UTC; path=/";
+  document.getElementById("cookieConsent").style.display = "none";
+  gtag('consent', 'update', {'analytics_storage': 'denied'});
+}
+			
 			const gameDetails = {
 				nation1: "Australia",
 				nation2: "India",
@@ -566,12 +592,16 @@
 			const helpButton = document.querySelector('.toolbar-help');
 			const popupBackground = document.querySelector('.popup-background');
 			const popupCloseButton = document.querySelector('.popup-close');
-			const hasShownInstructions = localStorage.getItem('hasShownInstructions');
+			
+			const hasAcceptedCookies = document.cookie.includes('gaEnabled=true');
+const hasShownInstructions = localStorage.getItem('hasShownInstructions');
 
-  if (!hasShownInstructions) {
-      popupBackground.style.display = 'flex';
-      localStorage.setItem('hasShownInstructions', 'true');
-    }
+if (!hasAcceptedCookies) {
+  document.getElementById('cookieConsent').style.display = 'block';
+} else if (!hasShownInstructions) {
+  popupBackground.style.display = 'flex';
+  localStorage.setItem('hasShownInstructions', 'true');
+}
 
 			helpButton.addEventListener('click', function() {
 				popupBackground.style.display = 'flex';
