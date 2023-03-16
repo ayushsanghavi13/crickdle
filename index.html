@@ -656,13 +656,17 @@
 			const popupBackground = document.querySelector('.popup-background');
 			const popupCloseButton = document.querySelector('.popup-close');
 			
+			const hasShownInstructions = localStorage.getItem('hasShownInstructions');
 			const hasAcceptedCookies = document.cookie.includes('gaEnabled=true');
 			const hasRejectedCookies = document.cookie.includes('gaEnabled=false');
-			const hasShownInstructions = localStorage.getItem('hasShownInstructions');
 			
-			if (!hasAcceptedCookies || !hasRejectedCookies) {
+			if (!hasAcceptedCookies) {
 				document.getElementById('cookieConsent').style.display = 'block';
 				localStorage.setItem('hasAcceptedCookies', 'true');
+			}
+			
+			if (!hasRejectedCookies) {
+				document.getElementById('cookieConsent').style.display = 'block';
 				localStorage.setItem('hasRejectedCookies', 'true');
 			}
 
