@@ -657,9 +657,10 @@
 			const popupCloseButton = document.querySelector('.popup-close');
 			
 			const hasAcceptedCookies = document.cookie.includes('gaEnabled=true');
+			const hasRejectedCookies = document.cookie.includes('gaEnabled=false');
 			const hasShownInstructions = localStorage.getItem('hasShownInstructions');
 			
-			if (!hasAcceptedCookies) {
+			if (!hasAcceptedCookies || !hasRejectedCookies) {
 				document.getElementById('cookieConsent').style.display = 'block';
 			}
 
