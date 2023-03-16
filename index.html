@@ -662,6 +662,8 @@
 			
 			if (!hasAcceptedCookies || !hasRejectedCookies) {
 				document.getElementById('cookieConsent').style.display = 'block';
+				localStorage.setItem('hasAcceptedCookies', 'true');
+				localStorage.setItem('hasRejectedCookies', 'true');
 			}
 
 			if (!hasShownInstructions) {
