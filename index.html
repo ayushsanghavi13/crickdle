@@ -655,6 +655,18 @@
 			const helpButton = document.querySelector('.toolbar-help');
 			const popupBackground = document.querySelector('.popup-background');
 			const popupCloseButton = document.querySelector('.popup-close');
+			
+			const hasAcceptedCookies = document.cookie.includes('gaEnabled=true');
+			const hasShownInstructions = localStorage.getItem('hasShownInstructions');
+			
+			if (!hasAcceptedCookies) {
+				document.getElementById('cookieConsent').style.display = 'block';
+			}
+
+			if (!hasShownInstructions) {
+				popupBackground.style.display = 'flex';
+				localStorage.setItem('hasShownInstructions', 'true');
+			}
 
 			helpButton.addEventListener('click', function() {
 				popupBackground.style.display = 'flex';
