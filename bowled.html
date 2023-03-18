@@ -253,17 +253,6 @@
 				padding-bottom: 0.4rem;
 				margin-bottom: 1.5rem;
 				}
-		
-		.streak {
-    font-size: 48px;
-    font-weight: bold;
-    margin-bottom: 16px;
-}
-
-.not-out {
-    font-size: 16px;
-    font-weight: normal;
-}
 	</style>
 </head>
 	<header>
@@ -311,7 +300,6 @@
 		</div>
 		<p><span style="font-weight: 500">You got today's Crickdle.</span></p>
 		<p>Come back tomorrow to guess another cricketer.</p>
-    <div class="streak-container"></div>
         <button class="share-button">SHARE</button>
 		<p>Next Crickdle in <span id="countdown"></span></p>
 	</div>
@@ -397,42 +385,6 @@ shareButton.addEventListener('click', function() {
 			popup2CloseButton.addEventListener('click', function() {
 				popup2Background.style.display = 'none';
 			});
-		
-		// Get the query parameters from the URL
-const queryString = window.location.search;
-
-// Parse the query parameters into an object
-const urlParams = new URLSearchParams(queryString);
-
-// Get the guess parameters from the query string
-const guess1 = urlParams.get("guess1");
-const guess2 = urlParams.get("guess2");
-const guess3 = urlParams.get("guess3");
-const guess4 = urlParams.get("guess4");
-
-// Count the number of correct guesses
-let streak = 0;
-if (guess1 === "#1dc278") {
-    streak++;
-}
-if (guess2 === "#1dc278") {
-    streak++;
-}
-if (guess3 === "#1dc278") {
-    streak++;
-}
-if (guess4 === "#1dc278") {
-    streak++;
-}
-
-// Get the streak container element
-const streakContainer = document.querySelector(".streak-container");
-
-// Create the streak element and add it to the container
-const streakElement = document.createElement("p");
-streakElement.classList.add("streak");
-streakElement.innerHTML = streak + "<span class='not-out'> not out</span>";
-streakContainer.insertBefore(streakElement, document.querySelector(".share-button"));
 	</script>
 </body>
 </html>
