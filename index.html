@@ -591,12 +591,6 @@
                                         "&guess2=" + guessInputs[1].querySelector("input").style.backgroundColor +
                                         "&guess3=" + guessInputs[2].querySelector("input").style.backgroundColor +
                                         "&guess4=" + guessInputs[3].querySelector("input").style.backgroundColor;
-} else {
-  // otherwise increment the current streak
-  currentStreak = parseInt(currentStreak) + 1;
-}
-// store current streak in local storage
-localStorage.setItem('currentStreak', currentStreak);
             } else if (isClose(guess, correctPlayer)) {
                 guessInput.style.backgroundColor = "#e4a404";
                 guessInput.style.color = "white";
