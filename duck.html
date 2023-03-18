@@ -297,20 +297,6 @@
 		<span class="dash" id="dash2">●</span>
 		<span class="dash" id="dash3">●</span>
 		<span class="dash" id="dash4">●</span>
-				  <div class="stats-container">
-      <div class="stat">
-        <h3 id="correct-guesses">0</h3>
-        <p>Correct</p>
-      </div>
-      <div class="stat">
-        <h3 id="correct-guesses-percentage">0%</h3>
-        <p>Percentage</p>
-      </div>
-      <div class="stat">
-        <h3 id="current-streak">0</h3>
-        <p>Streak</p>
-      </div>
-    </div>
 		</div>
 		<p><span style="font-weight: 500">You didn't get today's Crickdle. The answer is HOPE.</span></p>
 		<p>Come back tomorrow to guess another cricketer.</p>
@@ -399,34 +385,6 @@ shareButton.addEventListener('click', function() {
 			popup2CloseButton.addEventListener('click', function() {
 				popup2Background.style.display = 'none';
 			});
-		
-    // Get the number of games played and correct guesses from the URL parameters
-    const urlParams = new URLSearchParams(window.location.search);
-    const gamesPlayed = parseInt(urlParams.get("guess1")) + parseInt(urlParams.get("guess2")) + parseInt(urlParams.get("guess3")) + parseInt(urlParams.get("guess4"));
-    const correctGuesses = parseInt(urlParams.get("guess1").startsWith("#1dc278")) + parseInt(urlParams.get("guess2").startsWith("#1dc278")) + parseInt(urlParams.get("guess3").startsWith("#1dc278")) + parseInt(urlParams.get("guess4").startsWith("#1dc278"));
-
-    // Calculate and display the number of correct guesses and percentage
-    const percentage = Math.round((correctGuesses / gamesPlayed) * 100);
-    const statsText = `${correctGuesses}/${gamesPlayed} (${percentage}%)`;
-    const statsElem = document.createElement("p");
-    statsElem.textContent = `You have guessed ${statsText} correctly so far.`;
-    document.querySelector(".game-container").appendChild(statsElem);
-
-    // Get the current streak from localStorage
-    let streak = parseInt(localStorage.getItem("streak")) || 0;
-
-    // Check if the current guess was correct and update the streak
-    if (correctGuesses > 0) {
-        streak++;
-        localStorage.setItem("streak", streak);
-    } else {
-        localStorage.setItem("streak", 0);
-    }
-
-    // Display the current streak
-    const streakElem = document.createElement("p");
-    streakElem.textContent = `Your current streak of correct guesses is ${streak}.`;
-    document.querySelector(".game-container").appendChild(streakElem);
 	</script>
 </body>
 </html>
