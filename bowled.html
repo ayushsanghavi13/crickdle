@@ -300,6 +300,14 @@
 		</div>
 		<p><span style="font-weight: 500">You got today's Crickdle.</span></p>
 		<p>Come back tomorrow to guess another cricketer.</p>
+		<p style="display: flex; justify-content: space-between;">
+  <span style="font-size: 2rem; font-weight: 500; margin-right: 1rem;">
+    <script>document.write(correctPercentage + '%; ' + streak)</script>
+  </span>
+  <span style="font-size: 1.2rem; color: #666; align-self: flex-end;">
+    <script>document.write('correct; streak')</script>
+  </span>
+</p>
         <button class="share-button">SHARE</button>
 		<p>Next Crickdle in <span id="countdown"></span></p>
 	</div>
@@ -385,6 +393,12 @@ shareButton.addEventListener('click', function() {
 			popup2CloseButton.addEventListener('click', function() {
 				popup2Background.style.display = 'none';
 			});
+
+  const urlParams = new URLSearchParams(window.location.search);
+  const correctGuesses = urlParams.getAll("guess1").filter((guess) => guess === "#1dc278").length + urlParams.getAll("guess2").filter((guess) => guess === "#1dc278").length + urlParams.getAll("guess3").filter((guess) => guess === "#1dc278").length + urlParams.getAll("guess4").filter((guess) => guess === "#1dc278").length;
+  const totalGuesses = urlParams.getAll("guess1").length + urlParams.getAll("guess2").length + urlParams.getAll("guess3").length + urlParams.getAll("guess4").length;
+  const correctPercentage = totalGuesses === 0 ? 0 : Math.round((correctGuesses / totalGuesses) * 100);
+  const streak = urlParams.get("streak") || 0;
 	</script>
 </body>
 </html>
