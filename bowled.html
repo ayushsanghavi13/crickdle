@@ -253,15 +253,6 @@
 				padding-bottom: 0.4rem;
 				margin-bottom: 1.5rem;
 				}
-		
-		#streak {
-  font-size: 2rem;
-}
-
-#streak > span {
-  font-size: small;
-  font-weight: normal;
-}
 	</style>
 </head>
 	<header>
@@ -309,7 +300,6 @@
 		</div>
 		<p><span style="font-weight: 500">You got today's Crickdle.</span></p>
 		<p>Come back tomorrow to guess another cricketer.</p>
-		<p>Your current streak: <span id="streak"></span></p>
         <button class="share-button">SHARE</button>
 		<p>Next Crickdle in <span id="countdown"></span></p>
 	</div>
@@ -325,31 +315,6 @@
   document.getElementById("dash2").style.color = guess2Color;
   document.getElementById("dash3").style.color = guess3Color;
   document.getElementById("dash4").style.color = guess4Color;
-
-// Calculate streak
-let streak = 0;
-for (let i = 1; i <= 4; i++) {
-  const guessColor = urlParams.get("guess" + i);
-  if (guessColor === "#1dc278") {
-    streak++;
-  } else {
-    break;
-  }
-}
-
-// Display streak
-const streakElement = document.getElementById("streak");
-if (streak > 0) {
-  streakElement.innerText = streak;
-  streakElement.style.fontWeight = "bold";
-  const notOutElement = document.createElement("span");
-  notOutElement.innerText = " not out";
-  notOutElement.style.fontSize = "small";
-  notOutElement.style.fontWeight = "normal";
-  streakElement.appendChild(notOutElement);
-} else {
-  streakElement.innerText = "No streak";
-}
 		
 		// Set the target time for the next Crickdle (9am UK time).
 		const targetTime = new Date();
