@@ -300,16 +300,6 @@
 		</div>
 		<p><span style="font-weight: 500">You got today's Crickdle.</span></p>
 		<p>Come back tomorrow to guess another cricketer.</p>
-		<div class="stats-container">
-  <div class="stats">
-    <div class="stat-value" id="percent-correct">0%</div>
-    <div class="stat-text">correct</div>
-  </div>
-  <div class="stats">
-    <div class="stat-value" id="streak">0</div>
-    <div class="stat-text">streak</div>
-  </div>
-</div>
         <button class="share-button">SHARE</button>
 		<p>Next Crickdle in <span id="countdown"></span></p>
 	</div>
@@ -395,86 +385,6 @@ shareButton.addEventListener('click', function() {
 			popup2CloseButton.addEventListener('click', function() {
 				popup2Background.style.display = 'none';
 			});
-		
-		// Get the query parameters from the URL
-const urlParams = new URLSearchParams(window.location.search);
-
-// Get the guess parameters from the URL
-const guess1 = urlParams.get("guess1");
-const guess2 = urlParams.get("guess2");
-const guess3 = urlParams.get("guess3");
-const guess4 = urlParams.get("guess4");
-
-// Count the number of correct guesses
-let numCorrect = 0;
-if (guess1 === "#1dc278") {
-  numCorrect++;
-}
-if (guess2 === "#1dc278") {
-  numCorrect++;
-}
-if (guess3 === "#1dc278") {
-  numCorrect++;
-}
-if (guess4 === "#1dc278") {
-  numCorrect++;
-}
-
-// Calculate the percentage of correct guesses
-const numGuesses = urlParams.has("guess1") + urlParams.has("guess2") + urlParams.has("guess3") + urlParams.has("guess4");
-const percentCorrect = Math.floor(numCorrect / numGuesses * 100);
-
-// Get the current streak from local storage
-let streak = localStorage.getItem("streak");
-if (streak === null) {
-  streak = 0;
-} else {
-  streak = parseInt(streak);
-}
-
-// Update the streak and percentage of correct guesses
-if (numCorrect === 1) {
-  streak++;
-} else {
-  streak = 0;
-}
-localStorage.setItem("streak", streak);
-
-// Create a container for the statistics
-const statsContainer = document.createElement("div");
-statsContainer.className = "stats-container";
-
-// Create a container for the percentage of correct guesses
-const percentContainer = document.createElement("div");
-percentContainer.className = "percent-container";
-const percentNum = document.createElement("p");
-percentNum.className = "stat-num";
-percentNum.innerText = percentCorrect + "%";
-const percentText = document.createElement("p");
-percentText.className = "stat-text";
-percentText.innerText = "correct";
-percentContainer.appendChild(percentNum);
-percentContainer.appendChild(percentText);
-
-// Create a container for the streak
-const streakContainer = document.createElement("div");
-streakContainer.className = "streak-container";
-const streakNum = document.createElement("p");
-streakNum.className = "stat-num";
-streakNum.innerText = streak;
-const streakText = document.createElement("p");
-streakText.className = "stat-text";
-streakText.innerText = "streak";
-streakContainer.appendChild(streakNum);
-streakContainer.appendChild(streakText);
-
-// Add the statistics containers to the main container
-statsContainer.appendChild(percentContainer);
-statsContainer.appendChild(streakContainer);
-
-// Get the share button and insert the statistics container before it
-const shareButton = document.querySelector(".share-button");
-shareButton.parentNode.insertBefore(statsContainer, shareButton);
 	</script>
 </body>
 </html>
