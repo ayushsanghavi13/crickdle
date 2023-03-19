@@ -569,6 +569,7 @@ function saveState() {
     const currentInput = input.querySelector("input");
     localStorage.setItem(`guess${index + 1}`, currentInput.value);
     localStorage.setItem(`guess${index + 1}Color`, currentInput.style.backgroundColor);
+	   localStorage.setItem(`guess${index + 1}TextColor`, currentInput.style.color);
     localStorage.setItem(`guess${index + 1}FontWeight`, currentInput.style.fontWeight);
     localStorage.setItem(`guess${index + 1}Disabled`, currentInput.disabled);
   });
@@ -582,6 +583,7 @@ function loadState() {
     const currentInput = input.querySelector("input");
     currentInput.value = playedToday ? (localStorage.getItem(`guess${index + 1}`) || "") : "";
     currentInput.style.backgroundColor = playedToday ? (localStorage.getItem(`guess${index + 1}Color`) || "") : "";
+	  currentInput.style.color = playedToday ? (localStorage.getItem(`guess${index + 1}TextColor`) || "") : "";
     currentInput.style.fontWeight = playedToday ? (localStorage.getItem(`guess${index + 1}FontWeight`) || "") : "";
     currentInput.disabled = playedToday ? (localStorage.getItem(`guess${index + 1}Disabled`) === 'true') : (index !== 0);
     submitButtons[index].disabled = currentInput.disabled;
