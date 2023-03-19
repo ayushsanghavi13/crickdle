@@ -325,23 +325,45 @@
 if (localStorage.getItem("streak") === null) {
   localStorage.setItem("streak", "0");
 }
+		
+		function isSamePeriod(lastTimestamp) {
+  const now = new Date();
+  const last = new Date(lastTimestamp);
 
+  if (now.toDateString() === last.toDateString()) {
+    const nowHours = now.getHours();
+    const lastHours = last.getHours();
+    return (lastHours >= 9 && nowHours >= 9) || (lastHours < 9 && nowHours < 9);
+  } else {
+    return (
+      (last.getHours() >= 9 && now - last < 24 * 60 * 60 * 1000) ||
+      (now.getHours() < 9 && now - last < 15 * 60 * 60 * 1000)
+    );
+  }
+}
+		
+		const lastTimestamp = localStorage.getItem("lastTimestamp");
 		let streak = parseInt(localStorage.getItem("streak"), 10);
 		
         if (isCorrect) {
-            result1MessageElement.textContent = "Bowled 'em!";
-            result2MessageElement.textContent = "You got today's Crickdle.";
-		streak++;
-		const streakElement = document.getElementById("streak");
-streakElement.textContent = `Your streak: ${streak}*`;
-        } else {
-            result1MessageElement.textContent = "Out for a duck!";
-            result2MessageElement.textContent = "You didn't get today's Crickdle. The correct answer is MURALIDARAN.";
-		 streak = 0;
-		const streakElement = document.getElementById("streak");
+  result1MessageElement.textContent = "Bowled 'em!";
+  result2MessageElement.textContent = "You got today's Crickdle.";
+
+  if (!lastTimestamp || !isSamePeriod(lastTimestamp)) {
+    streak++;
+    localStorage.setItem("streak", streak.toString());
+    localStorage.setItem("lastTimestamp", new Date().toISOString());
+  }
+} else {
+  result1MessageElement.textContent = "Out for a duck!";
+  result2MessageElement.textContent = "You didn't get today's Crickdle. The correct answer is MURALIDARAN.";
+  streak = 0;
+  localStorage.setItem("streak", streak.toString());
+}
+
+// Display the updated streak value on the result.html page
+const streakElement = document.getElementById("streak");
 streakElement.textContent = `Your streak: ${streak}`;
-        }
-		localStorage.setItem("streak", streak.toString());
 		
 		// Set the target time for the next Crickdle (9am UK time).
 		const targetTime = new Date();
