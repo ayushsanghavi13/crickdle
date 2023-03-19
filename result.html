@@ -299,6 +299,7 @@
 		<span class="dash" id="dash4">●</span>
 		</div>
 			  <p id="result2-message" style="font-weight: 500"></p>
+			<p><span style="font-weight: 500">Which <span id="streak"></span></span></p>
 		<p>Come back tomorrow to guess another cricketer.</p>
         <button class="share-button">SHARE</button>
 		<p>Next Crickdle in <span id="countdown"></span></p>
@@ -319,14 +320,26 @@
 		
 				const result1MessageElement = document.getElementById("result1-message");
 		const result2MessageElement = document.getElementById("result2-message");
+		
+		// Initialize the streak value in localStorage if it doesn't exist
+if (localStorage.getItem("streak") === null) {
+  localStorage.setItem("streak", "0");
+}
 
         if (isCorrect) {
             result1MessageElement.textContent = "Bowled 'em!";
             result2MessageElement.textContent = "You got today's Crickdle.";
+		streak++;
         } else {
             result1MessageElement.textContent = "Out for a duck!";
             result2MessageElement.textContent = "You didn't get today's Crickdle. The correct answer is MURALIDARAN.";
+		 streak = 0;
         }
+		localStorage.setItem("streak", streak.toString());
+		
+		// Display the updated streak value on the result.html page
+const streakElement = document.getElementById("streak");
+streakElement.textContent = `Current Streak: ${streak}`;
 		
 		// Set the target time for the next Crickdle (9am UK time).
 		const targetTime = new Date();
