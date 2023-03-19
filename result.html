@@ -326,9 +326,13 @@ if (localStorage.getItem("streak") === null) {
   localStorage.setItem("streak", "0");
 }
 		
-		function isSamePeriod(lastTimestamp) {
-  const now = new Date();
-  const last = new Date(lastTimestamp);
+function getUKTime(date) {
+  return new Date(date.toLocaleString('en-US', { timeZone: 'Europe/London' }));
+}
+
+function isSamePeriod(lastTimestamp) {
+  const now = getUKTime(new Date());
+  const last = getUKTime(new Date(lastTimestamp));
 
   if (now.toDateString() === last.toDateString()) {
     const nowHours = now.getHours();
@@ -341,8 +345,9 @@ if (localStorage.getItem("streak") === null) {
     );
   }
 }
-		
-		const lastTimestamp = localStorage.getItem("lastTimestamp");
+
+const lastTimestamp = localStorage.getItem("lastTimestamp");
+
 		let streak = parseInt(localStorage.getItem("streak"), 10);
 		
         if (isCorrect) {
