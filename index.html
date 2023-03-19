@@ -587,20 +587,15 @@ function loadState() {
     submitButtons[index].disabled = currentInput.disabled;
   });
 }
-
-// ... (Your existing code starts here) ...
-
-const guessInputs = document.querySelectorAll(".guess-input");
-const submitButtons = document.querySelectorAll("button[id^='submit']");
-
-loadState(); // Load the state from localStorage when the page loads
+			
+			const guessInputs = document.querySelectorAll(".guess-input");
+			const submitButtons = document.querySelectorAll("button[id^='submit']");
+			
+			loadState(); // Load the state from localStorage when the page loads
 resetAt9am(); // Reset the game if it's 9 am
 
 // Set an interval to check for 9 am reset every minute
 setInterval(resetAt9am, 60 * 1000);
-			
-			const guessInputs = document.querySelectorAll(".guess-input");
-			const submitButtons = document.querySelectorAll("button[id^='submit']");
 			
 			submitButtons.forEach((button, index) => {
 				button.addEventListener("click", (event) => {
