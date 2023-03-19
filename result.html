@@ -299,7 +299,7 @@
 		<span class="dash" id="dash4">●</span>
 		</div>
 			  <p id="result2-message" style="font-weight: 500"></p>
-			<p><span style="font-weight: 500">Which <span id="streak"></span></span></p>
+			<p><span style="font-weight: 500"><span id="streak"></span></span></p>
 		<p>Come back tomorrow to guess another cricketer.</p>
         <button class="share-button">SHARE</button>
 		<p>Next Crickdle in <span id="countdown"></span></p>
@@ -326,6 +326,8 @@ if (localStorage.getItem("streak") === null) {
   localStorage.setItem("streak", "0");
 }
 
+		let streak = parseInt(localStorage.getItem("streak"), 10);
+		
         if (isCorrect) {
             result1MessageElement.textContent = "Bowled 'em!";
             result2MessageElement.textContent = "You got today's Crickdle.";
