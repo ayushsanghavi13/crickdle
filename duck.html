@@ -290,7 +290,7 @@
 		</header>
 		<div class="container">
 			  <div class="game-container">
-				  <p id="result1-message" class="text-large"></p>
+				  <p class="text-large">Out for a duck!</p>
 			<img src="bowled.png" alt="A ball ripping through a set of stumps">
 		<br>
 		<span class="dash" id="dash1">●</span>
@@ -298,7 +298,7 @@
 		<span class="dash" id="dash3">●</span>
 		<span class="dash" id="dash4">●</span>
 		</div>
-			  <p id="result2-message" style="font-weight: 500"></p>
+			<p><span style="font-weight: 500">You didn't get today's Crickdle. The answer is MURALIDARAN.</span></p>
 		<p>Come back tomorrow to guess another cricketer.</p>
         <button class="share-button">SHARE</button>
 		<p>Next Crickdle in <span id="countdown"></span></p>
@@ -316,17 +316,6 @@
   document.getElementById("dash2").style.color = guess2Color;
   document.getElementById("dash3").style.color = guess3Color;
   document.getElementById("dash4").style.color = guess4Color;
-		
-		const result1MessageElement = document.getElementById("result1-message");
-		const result2MessageElement = document.getElementById("result2-message");
-
-        if (isCorrect) {
-            result1MessageElement.textContent = "Bowled 'em!";
-            result2MessageElement.textContent = "You got today's Crickdle.";
-        } else {
-            result1MessageElement.textContent = "Out for a duck!";
-            result2MessageElement.textContent = "You didn't get today's Crickdle. The correct answer is MURALIDARAN.";
-        }
 		
 		// Set the target time for the next Crickdle (9am UK time).
 		const targetTime = new Date();
