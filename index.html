@@ -536,27 +536,22 @@
 			document.getElementById("score").textContent = gameDetails.score;
 			document.getElementById("crickdlequestion").textContent = gameDetails.crickdlequestion;
 
-// Function to get current UK time
-function getUKTime() {
-  const utc = new Date().getTime();
-  const ukOffset = 60; // UK is UTC+1 during daylight savings time
-  return new Date(utc + ukOffset * 60000);
+function getUKTime(date) {
+  return new Date(date.toLocaleString('en-US', { timeZone: 'Europe/London' }));
 }
 
-// Function to check if it's 9 am in the UK
 function is9amUKTime() {
-  const ukTime = getUKTime();
+  const ukTime = getUKTime(new Date());
   return ukTime.getHours() === 9 && ukTime.getMinutes() === 0;
 }
 
-// Function to clear localStorage and enable input fields and buttons at 9 am
 function resetAt9am() {
   if (is9amUKTime()) {
     localStorage.clear();
     guessInputs.forEach((input, index) => {
       input.querySelector("input").value = "";
       input.querySelector("input").style.backgroundColor = "";
-	    input.querySelector("input").style.color = "";
+      input.querySelector("input").style.color = "";
       input.querySelector("input").style.fontWeight = "";
       input.querySelector("input").disabled = index !== 0;
       submitButtons[index].disabled = index !== 0;
