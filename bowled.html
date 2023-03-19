@@ -290,7 +290,7 @@
 		</header>
 	<div class="container">
 		  <div class="game-container">
-			  <p id="result-message" class="text-large"></p>
+			  <p class="text-large">Bowled 'em!</p>
 		<img src="bowled.png" alt="A ball ripping through a set of stumps">
 		<br>
 		<span class="dash" id="dash1">●</span>
@@ -306,20 +306,10 @@
 
 	<script>
 		const urlParams = new URLSearchParams(window.location.search);
-		const isCorrect = urlParams.get("isCorrect") === "true";
   const guess1Color = urlParams.get("guess1");
   const guess2Color = urlParams.get("guess2");
   const guess3Color = urlParams.get("guess3");
   const guess4Color = urlParams.get("guess4");
-		
-		 const resultMessageElement = document.getElementById("result-message");
-  if (isCorrect) {
-    resultMessageElement.textContent = "Bowled 'em!";
-    document.querySelector(".game-container + p").innerHTML = "<span style='font-weight: 500'>You got today's Crickdle.</span>";
-  } else {
-    resultMessageElement.textContent = "Out for a duck!";
-    document.querySelector(".game-container + p").innerHTML = "<span style='font-weight: 500'>You didn't get today's Crickdle. The answer is MURALIDARAN.</span>";
-  }
 
   document.getElementById("dash1").style.color = guess1Color;
   document.getElementById("dash2").style.color = guess2Color;
