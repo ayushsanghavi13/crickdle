@@ -364,30 +364,32 @@ if (localStorage.getItem("streak") === null) {
 		const streakElement = document.getElementById("streak");
 		streakElement.textContent = `Your streak: ${streak}`;
 		
-		// Set the target time for the next Crickdle (9am UK time).
-		const targetTime = new Date();
-		targetTime.setHours(9, 0, 0, 0);
-		if (targetTime <= Date.now()) {
-			// If the target time is in the past, set it for tomorrow.
-			targetTime.setDate(targetTime.getDate() + 1);
-		}
+function getUKTime(date) {
+  return new Date(date.toLocaleString('en-US', { timeZone: 'Europe/London' }));
+}
 
-		// Update the countdown every second.
-		const countdownElem = document.getElementById('countdown');
-		const intervalId = setInterval(() => {
-			const remaining = targetTime.getTime() - Date.now();
-			if (remaining <= 0) {
-				// If the target time has passed, reload the page.
-				            clearInterval(intervalId);
-                                            window.location.href = 'index.html';
-			} else {
-				// Otherwise, update the countdown display.
-				const hours = Math.floor(remaining / (1000 * 60 * 60));
-				const minutes = Math.floor((remaining / (1000 * 60)) % 60);
-				const seconds = Math.floor((remaining / 1000) % 60);
-				countdownElem.textContent = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
-			}
-		}, 1000);
+const now = new Date();
+const ukTime = getUKTime(now);
+const targetTime = new Date(ukTime);
+
+targetTime.setHours(9, 0, 0, 0);
+if (targetTime <= ukTime) {
+  targetTime.setDate(targetTime.getDate() + 1);
+}
+
+const countdownElem = document.getElementById('countdown');
+const intervalId = setInterval(() => {
+  const remaining = targetTime.getTime() - getUKTime(new Date()).getTime();
+  if (remaining <= 0) {
+    clearInterval(intervalId);
+    window.location.href = 'index.html';
+  } else {
+    const hours = Math.floor(remaining / (1000 * 60 * 60));
+    const minutes = Math.floor((remaining / (1000 * 60)) % 60);
+    const seconds = Math.floor((remaining / 1000) % 60);
+    countdownElem.textContent = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+  }
+}, 1000);
 		
 		const helpButton = document.querySelector('.toolbar-help');
 			const popupBackground = document.querySelector('.popup-background');
