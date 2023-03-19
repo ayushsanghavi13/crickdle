@@ -368,10 +368,6 @@ const lastTimestamp = localStorage.getItem("lastTimestamp");
 		
 		const streakElement = document.getElementById("streak");
 		streakElement.textContent = `Your streak: ${streak}`;
-		
-function getUKTime(date) {
-  return new Date(date.toLocaleString('en-US', { timeZone: 'Europe/London' }));
-}
 
 const now = new Date();
 const ukTime = getUKTime(now);
