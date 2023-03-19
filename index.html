@@ -556,6 +556,7 @@ function resetAt9am() {
     guessInputs.forEach((input, index) => {
       input.querySelector("input").value = "";
       input.querySelector("input").style.backgroundColor = "";
+	    input.querySelector("input").style.color = "";
       input.querySelector("input").style.fontWeight = "";
       input.querySelector("input").disabled = index !== 0;
       submitButtons[index].disabled = index !== 0;
