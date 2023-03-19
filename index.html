@@ -535,6 +535,69 @@
 			document.getElementById("venue").textContent = gameDetails.venue;
 			document.getElementById("score").textContent = gameDetails.score;
 			document.getElementById("crickdlequestion").textContent = gameDetails.crickdlequestion;
+
+// Function to get current UK time
+function getUKTime() {
+  const utc = new Date().getTime();
+  const ukOffset = 60; // UK is UTC+1 during daylight savings time
+  return new Date(utc + ukOffset * 60000);
+}
+
+// Function to check if it's 9 am in the UK
+function is9amUKTime() {
+  const ukTime = getUKTime();
+  return ukTime.getHours() === 9 && ukTime.getMinutes() === 0;
+}
+
+// Function to clear localStorage and enable input fields and buttons at 9 am
+function resetAt9am() {
+  if (is9amUKTime()) {
+    localStorage.clear();
+    guessInputs.forEach((input, index) => {
+      input.querySelector("input").value = "";
+      input.querySelector("input").style.backgroundColor = "";
+      input.querySelector("input").style.fontWeight = "";
+      input.querySelector("input").disabled = index !== 0;
+      submitButtons[index].disabled = index !== 0;
+    });
+  }
+}
+
+// Function to save the current state to localStorage
+function saveState() {
+  guessInputs.forEach((input, index) => {
+    const currentInput = input.querySelector("input");
+    localStorage.setItem(`guess${index + 1}`, currentInput.value);
+    localStorage.setItem(`guess${index + 1}Color`, currentInput.style.backgroundColor);
+    localStorage.setItem(`guess${index + 1}FontWeight`, currentInput.style.fontWeight);
+    localStorage.setItem(`guess${index + 1}Disabled`, currentInput.disabled);
+  });
+  localStorage.setItem('playedToday', 'true');
+}
+
+// Function to load the state from localStorage
+function loadState() {
+  const playedToday = localStorage.getItem('playedToday') === 'true';
+  guessInputs.forEach((input, index) => {
+    const currentInput = input.querySelector("input");
+    currentInput.value = playedToday ? (localStorage.getItem(`guess${index + 1}`) || "") : "";
+    currentInput.style.backgroundColor = playedToday ? (localStorage.getItem(`guess${index + 1}Color`) || "") : "";
+    currentInput.style.fontWeight = playedToday ? (localStorage.getItem(`guess${index + 1}FontWeight`) || "") : "";
+    currentInput.disabled = playedToday ? (localStorage.getItem(`guess${index + 1}Disabled`) === 'true') : (index !== 0);
+    submitButtons[index].disabled = currentInput.disabled;
+  });
+}
+
+// ... (Your existing code starts here) ...
+
+const guessInputs = document.querySelectorAll(".guess-input");
+const submitButtons = document.querySelectorAll("button[id^='submit']");
+
+loadState(); // Load the state from localStorage when the page loads
+resetAt9am(); // Reset the game if it's 9 am
+
+// Set an interval to check for 9 am reset every minute
+setInterval(resetAt9am, 60 * 1000);
 			
 			const guessInputs = document.querySelectorAll(".guess-input");
 			const submitButtons = document.querySelectorAll("button[id^='submit']");
@@ -587,6 +650,7 @@
             if (correctPlayer.includes(guess)) {
                 guessInput.style.backgroundColor = "#1dc278";
                 guessInput.style.color = "white";
+		     saveState();
                 window.location.href = "result.html?isCorrect=true&" +
 		    "guess1=" + guessInputs[0].querySelector("input").style.backgroundColor +
                                         "&guess2=" + guessInputs[1].querySelector("input").style.backgroundColor +
@@ -600,6 +664,7 @@
                     guessInputs[index + 1].querySelector("button").disabled = false;
                     guessInputs[index + 1].querySelector("input").focus();
                 } else {
+			 saveState();
                     window.location.href = "result.html?guess1=" + guessInputs[0].querySelector("input").style.backgroundColor +
                                         "&guess2=" + guessInputs[1].querySelector("input").style.backgroundColor +
                                         "&guess3=" + guessInputs[2].querySelector("input").style.backgroundColor +
@@ -613,6 +678,7 @@
                     guessInputs[index + 1].querySelector("button").disabled = false;
                     guessInputs[index + 1].querySelector("input").focus();
                 } else {
+			 saveState();
                     window.location.href = "result.html?guess1=" + guessInputs[0].querySelector("input").style.backgroundColor +
                                         "&guess2=" + guessInputs[1].querySelector("input").style.backgroundColor +
                                         "&guess3=" + guessInputs[2].querySelector("input").style.backgroundColor +
