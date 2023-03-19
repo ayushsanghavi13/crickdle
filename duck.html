@@ -306,6 +306,7 @@
 
 	<script>
 		const urlParams = new URLSearchParams(window.location.search);
+		 const isCorrect = urlParams.get("isCorrect") === "true";
   const guess1Color = urlParams.get("guess1");
   const guess2Color = urlParams.get("guess2");
   const guess3Color = urlParams.get("guess3");
@@ -317,9 +318,9 @@
   document.getElementById("dash4").style.color = guess4Color;
 		
 		const result1MessageElement = document.getElementById("result1-message");
-        const result2MessageElement = document.getElementById("result2-message");
+		const result2MessageElement = document.getElementById("result2-message");
 
-        if (guess1Color === "#1dc278" || guess2Color === "#1dc278" || guess3Color === "#1dc278" || guess4Color === "#1dc278") {
+        if (isCorrect) {
             result1MessageElement.textContent = "Bowled 'em!";
             result2MessageElement.textContent = "You got today's Crickdle.";
         } else {
