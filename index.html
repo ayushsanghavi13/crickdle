@@ -587,6 +587,7 @@
             if (correctPlayer.includes(guess)) {
                 guessInput.style.backgroundColor = "#1dc278";
                 guessInput.style.color = "white";
+		    saveInputsToLocalStorage();
                 window.location.href = "result.html?isCorrect=true&" +
 		    "guess1=" + guessInputs[0].querySelector("input").style.backgroundColor +
                                         "&guess2=" + guessInputs[1].querySelector("input").style.backgroundColor +
@@ -600,6 +601,7 @@
                     guessInputs[index + 1].querySelector("button").disabled = false;
                     guessInputs[index + 1].querySelector("input").focus();
                 } else {
+			saveInputsToLocalStorage();
                     window.location.href = "result.html?guess1=" + guessInputs[0].querySelector("input").style.backgroundColor +
                                         "&guess2=" + guessInputs[1].querySelector("input").style.backgroundColor +
                                         "&guess3=" + guessInputs[2].querySelector("input").style.backgroundColor +
@@ -613,6 +615,7 @@
                     guessInputs[index + 1].querySelector("button").disabled = false;
                     guessInputs[index + 1].querySelector("input").focus();
                 } else {
+			saveInputsToLocalStorage();
                     window.location.href = "result.html?guess1=" + guessInputs[0].querySelector("input").style.backgroundColor +
                                         "&guess2=" + guessInputs[1].querySelector("input").style.backgroundColor +
                                         "&guess3=" + guessInputs[2].querySelector("input").style.backgroundColor +
@@ -643,6 +646,48 @@
 						
 					}
 				});
+				
+				function saveInputsToLocalStorage() {
+  for (let i = 0; i < 4; i++) {
+    const input = guessInputs[i].querySelector("input");
+    localStorage.setItem(`input${i + 1}`, input.value);
+    localStorage.setItem(`input${i + 1}Background`, input.style.backgroundColor);
+  }
+}
+
+				function loadInputsFromLocalStorage() {
+  for (let i = 0; i < 4; i++) {
+    const input = guessInputs[i].querySelector("input");
+    const button = guessInputs[i].querySelector("button");
+    input.value = localStorage.getItem(`input${i + 1}`) || "";
+    input.style.backgroundColor = localStorage.getItem(`input${i + 1}Background`) || "";
+    input.disabled = input.value !== "";
+    button.disabled = input.value !== "";
+  }
+}
+
+				function checkResetTime() {
+  const currentTimestamp = new Date().getTime();
+  const lastResetTimestamp = localStorage.getItem("lastResetTimestamp") || 0;
+
+  // Check if 9 AM UK time has passed since the last reset
+  const nineAMUK = new Date();
+  nineAMUK.setUTCHours(9, 0, 0, 0);
+  if (nineAMUK.getTime() > lastResetTimestamp && currentTimestamp > nineAMUK.getTime()) {
+    for (let i = 0; i < 4; i++) {
+      localStorage.removeItem(`input${i + 1}`);
+      localStorage.removeItem(`input${i + 1}Background`);
+    }
+    localStorage.setItem("lastResetTimestamp", currentTimestamp);
+    loadInputsFromLocalStorage();
+  }
+}
+
+				document.addEventListener("DOMContentLoaded", () => {
+  checkResetTime();
+  loadInputsFromLocalStorage();
+});
+
 	
 				const input = guessInputs[index].querySelector("input");
 				input.addEventListener("keyup", (event) => {
