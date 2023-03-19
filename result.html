@@ -332,16 +332,16 @@ if (localStorage.getItem("streak") === null) {
             result1MessageElement.textContent = "Bowled 'em!";
             result2MessageElement.textContent = "You got today's Crickdle.";
 		streak++;
+		const streakElement = document.getElementById("streak");
+streakElement.textContent = `Streak: ${streak}*`;
         } else {
             result1MessageElement.textContent = "Out for a duck!";
             result2MessageElement.textContent = "You didn't get today's Crickdle. The correct answer is MURALIDARAN.";
 		 streak = 0;
+		const streakElement = document.getElementById("streak");
+streakElement.textContent = `Streak: ${streak}`;
         }
 		localStorage.setItem("streak", streak.toString());
-		
-		// Display the updated streak value on the result.html page
-const streakElement = document.getElementById("streak");
-streakElement.textContent = `Current Streak: ${streak}`;
 		
 		// Set the target time for the next Crickdle (9am UK time).
 		const targetTime = new Date();
