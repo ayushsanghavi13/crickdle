@@ -536,67 +536,66 @@
 			document.getElementById("score").textContent = gameDetails.score;
 			document.getElementById("crickdlequestion").textContent = gameDetails.crickdlequestion;
 
-function getUKTime(date) {
-  return new Date(date.toLocaleString('en-US', { timeZone: 'Europe/London' }));
-}
+			function getUKTime(date) {
+				return new Date(date.toLocaleString('en-US', { timeZone: 'Europe/London' }));
+			}
 			
-function isPast9amUKTime() {
-  const ukTime = getUKTime(new Date());
-  return ukTime.getHours() >= 9;
-}
+			function isPast9amUKTime() {
+				const ukTime = getUKTime(new Date());
+				return ukTime.getHours() >= 9;
+			}
 
-function resetAt9am() {
-  const lastResetDate = localStorage.getItem('lastResetDate');
-  const today = new Date().toISOString().slice(0, 10);
+			function resetAt9am() {
+				const lastResetDate = localStorage.getItem('lastResetDate');
+				const today = new Date().toISOString().slice(0, 10);
 
-  if (isPast9amUKTime() && lastResetDate !== today) {
-    guessInputs.forEach((input, index) => {
-      localStorage.removeItem(`guess${index + 1}`);
-      localStorage.removeItem(`guess${index + 1}Color`);
-      localStorage.removeItem(`guess${index + 1}TextColor`);
-      localStorage.removeItem(`guess${index + 1}FontWeight`);
-      localStorage.removeItem(`guess${index + 1}Disabled`);
-    });
-    localStorage.removeItem('playedToday');
-    localStorage.setItem('lastResetDate', today);
+				if (isPast9amUKTime() && lastResetDate !== today) {
+					guessInputs.forEach((input, index) => {
+						localStorage.removeItem(`guess${index + 1}`);
+						localStorage.removeItem(`guess${index + 1}Color`);
+						localStorage.removeItem(`guess${index + 1}TextColor`);
+						localStorage.removeItem(`guess${index + 1}FontWeight`);
+						localStorage.removeItem(`guess${index + 1}Disabled`);
+					});
+					localStorage.removeItem('playedToday');
+					localStorage.setItem('lastResetDate', today);
 
-    guessInputs.forEach((input, index) => {
-      input.querySelector("input").value = "";
-      input.querySelector("input").style.backgroundColor = "";
-      input.querySelector("input").style.color = "";
-      input.querySelector("input").style.fontWeight = "";
-      input.querySelector("input").disabled = index !== 0;
-      submitButtons[index].disabled = index !== 0;
-    });
-  }
-}
+					guessInputs.forEach((input, index) => {
+						input.querySelector("input").value = "";
+						input.querySelector("input").style.backgroundColor = "";
+						input.querySelector("input").style.color = "";
+						input.querySelector("input").style.fontWeight = "";
+						input.querySelector("input").disabled = index !== 0;
+						submitButtons[index].disabled = index !== 0;
+					});
+				}
+			}
 
-// Function to save the current state to localStorage
-function saveState() {
-  guessInputs.forEach((input, index) => {
-    const currentInput = input.querySelector("input");
-    localStorage.setItem(`guess${index + 1}`, currentInput.value);
-    localStorage.setItem(`guess${index + 1}Color`, currentInput.style.backgroundColor);
-	   localStorage.setItem(`guess${index + 1}TextColor`, currentInput.style.color);
-    localStorage.setItem(`guess${index + 1}FontWeight`, currentInput.style.fontWeight);
-    localStorage.setItem(`guess${index + 1}Disabled`, currentInput.disabled);
-  });
-  localStorage.setItem('playedToday', 'true');
-}
 
-// Function to load the state from localStorage
-function loadState() {
-  const playedToday = localStorage.getItem('playedToday') === 'true';
-  guessInputs.forEach((input, index) => {
-    const currentInput = input.querySelector("input");
-    currentInput.value = playedToday ? (localStorage.getItem(`guess${index + 1}`) || "") : "";
-    currentInput.style.backgroundColor = playedToday ? (localStorage.getItem(`guess${index + 1}Color`) || "") : "";
-	  currentInput.style.color = playedToday ? (localStorage.getItem(`guess${index + 1}TextColor`) || "") : "";
-    currentInput.style.fontWeight = playedToday ? (localStorage.getItem(`guess${index + 1}FontWeight`) || "") : "";
-    currentInput.disabled = playedToday ? (localStorage.getItem(`guess${index + 1}Disabled`) === 'true') : (index !== 0);
-    submitButtons[index].disabled = currentInput.disabled;
-  });
-}
+			function saveState() {
+				guessInputs.forEach((input, index) => {
+					const currentInput = input.querySelector("input");
+					localStorage.setItem(`guess${index + 1}`, currentInput.value);
+					localStorage.setItem(`guess${index + 1}Color`, currentInput.style.backgroundColor);
+					localStorage.setItem(`guess${index + 1}TextColor`, currentInput.style.color);
+					localStorage.setItem(`guess${index + 1}FontWeight`, currentInput.style.fontWeight);
+					localStorage.setItem(`guess${index + 1}Disabled`, currentInput.disabled);
+				});
+				localStorage.setItem('playedToday', 'true');
+			}
+
+			function loadState() {
+				const playedToday = localStorage.getItem('playedToday') === 'true';
+				guessInputs.forEach((input, index) => {
+					const currentInput = input.querySelector("input");
+					currentInput.value = playedToday ? (localStorage.getItem(`guess${index + 1}`) || "") : "";
+					currentInput.style.backgroundColor = playedToday ? (localStorage.getItem(`guess${index + 1}Color`) || "") : "";
+					currentInput.style.color = playedToday ? (localStorage.getItem(`guess${index + 1}TextColor`) || "") : "";
+					currentInput.style.fontWeight = playedToday ? (localStorage.getItem(`guess${index + 1}FontWeight`) || "") : "";
+					currentInput.disabled = playedToday ? (localStorage.getItem(`guess${index + 1}Disabled`) === 'true') : (index !== 0);
+					submitButtons[index].disabled = currentInput.disabled;
+				});
+			}
 			
 			const guessInputs = document.querySelectorAll(".guess-input");
 			const submitButtons = document.querySelectorAll("button[id^='submit']");
@@ -628,23 +627,23 @@ function loadState() {
 						}, 1500);
 						return;
 					} else if (/[^a-zA-Z]/.test(guess)) {
-  const warningPopup = document.createElement("div");
-  warningPopup.innerHTML = "Letters only please!";
-  warningPopup.style.position = "absolute";
-  warningPopup.style.top = "54px";
-  warningPopup.style.left = "50%";
-  warningPopup.style.transform = "translateX(-50%)";
-  warningPopup.style.padding = "0.5rem";
-  warningPopup.style.backgroundColor = "#000000";
-  warningPopup.style.color = "#fff";
-  warningPopup.style.fontSize = "1rem";
-  warningPopup.style.textAlign = "center";
-  warningPopup.style.borderRadius = "5px";
-  guessInput.parentNode.insertBefore(warningPopup, button);
-  setTimeout(() => {
-    warningPopup.parentNode.removeChild(warningPopup);
-  }, 1500);
-  return;
+						const warningPopup = document.createElement("div");
+						warningPopup.innerHTML = "Letters only please!";
+						warningPopup.style.position = "absolute";
+						warningPopup.style.top = "54px";
+						warningPopup.style.left = "50%";
+						warningPopup.style.transform = "translateX(-50%)";
+						warningPopup.style.padding = "0.5rem";
+						warningPopup.style.backgroundColor = "#000000";
+						warningPopup.style.color = "#fff";
+						warningPopup.style.fontSize = "1rem";
+						warningPopup.style.textAlign = "center";
+						warningPopup.style.borderRadius = "5px";
+						guessInput.parentNode.insertBefore(warningPopup, button);
+						setTimeout(() => {
+							warningPopup.parentNode.removeChild(warningPopup);
+						}, 1500);
+						return;
 					} else if (guess.split(' ').length > 1) {
 						const warningPopup = document.createElement("div");
 						warningPopup.innerHTML = "Surnames only please!";
