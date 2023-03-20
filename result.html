@@ -334,16 +334,28 @@ function isSamePeriod(lastTimestamp) {
   const now = getUKTime(new Date());
   const last = getUKTime(new Date(lastTimestamp));
 
-  if (now.toDateString() === last.toDateString()) {
-    const nowHours = now.getHours();
-    const lastHours = last.getHours();
-    return (lastHours >= 9 && nowHours >= 9) || (lastHours < 9 && nowHours < 9);
-  } else {
-    return (
-      (last.getHours() >= 9 && now - last < 24 * 60 * 60 * 1000) ||
-      (now.getHours() < 9 && now - last < 15 * 60 * 60 * 1000)
-    );
+  const nowDate = now.toDateString();
+  const lastDate = last.toDateString();
+
+  // If the dates are the same
+  if (nowDate === lastDate) {
+    // If both are before 9 AM or both are after 9 AM
+    if ((last.getHours() < 9 && now.getHours() < 9) || (last.getHours() >= 9 && now.getHours() >= 9)) {
+      return true;
+    }
   }
+
+  // If the last play was before 9 AM on the previous day and now is after 9 AM
+  if (last.getHours() < 9 && now.getHours() >= 9 && now - last < 24 * 60 * 60 * 1000) {
+    return false;
+  }
+
+  // If the last play was after 9 AM on the previous day and now is before 9 AM
+  if (last.getHours() >= 9 && now.getHours() < 9 && now - last < 15 * 60 * 60 * 1000) {
+    return true;
+  }
+
+  return false;
 }
 
 const lastTimestamp = localStorage.getItem("lastTimestamp");
