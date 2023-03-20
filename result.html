@@ -252,9 +252,9 @@
 			padding-top: 0.1rem;
 			padding-bottom: 0.4rem;
 			margin-bottom: 1.5rem
-}
+		}
 	</style>
-</head>
+	</head>
 	<header>
 			<div class="toolbar">
 					<button class="toolbar-info" aria-label="About">
@@ -376,9 +376,6 @@ let streak = parseInt(localStorage.getItem("streak"), 10);
   localStorage.setItem("streak", streak.toString());
   streakElement.textContent = `Your streak: ${streak}`;
 }
-		
-const streakElement = document.getElementById("streak");
-streakElement.textContent = `Your streak: ${streak}`;
 
 const now = new Date();
 const ukTime = getUKTime(now);
