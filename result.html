@@ -328,7 +328,8 @@
 		</div>
 			<div class="other-stuff">
 			  <p id="result2-message" style="font-weight: 500"></p>
-			<p><span style="font-weight: 500"><span id="streak"></span></span></p>
+			<p><span style="font-weight: 500; font-size: 1.4rem;"><span id="streak"></span></span></p>
+			<p>STREAK</p>	
 		<p>Come back tomorrow to guess another cricketer.</p>
 				</div>
 			       <div class="share-container">
@@ -408,7 +409,7 @@ let streak = parseInt(localStorage.getItem("streak"), 10);
 }
 		
 const streakElement = document.getElementById("streak");
-streakElement.textContent = `Your streak: ${streak}`;
+streakElement.textContent = `${streak}`;
 
 const now = new Date();
 const ukTime = getUKTime(now);
