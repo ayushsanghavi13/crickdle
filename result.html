@@ -307,16 +307,16 @@
 
 	<script>
 		const urlParams = new URLSearchParams(window.location.search);
-		 const isCorrect = urlParams.get("isCorrect") === "true";
-  const guess1Color = urlParams.get("guess1");
-  const guess2Color = urlParams.get("guess2");
-  const guess3Color = urlParams.get("guess3");
-  const guess4Color = urlParams.get("guess4");
+		const isCorrect = urlParams.get("isCorrect") === "true";
+		const guess1Color = urlParams.get("guess1");
+		const guess2Color = urlParams.get("guess2");
+		const guess3Color = urlParams.get("guess3");
+		const guess4Color = urlParams.get("guess4");
 
-  document.getElementById("dash1").style.color = guess1Color;
-  document.getElementById("dash2").style.color = guess2Color;
-  document.getElementById("dash3").style.color = guess3Color;
-  document.getElementById("dash4").style.color = guess4Color;
+		document.getElementById("dash1").style.color = guess1Color;
+		document.getElementById("dash2").style.color = guess2Color;
+		document.getElementById("dash3").style.color = guess3Color;
+		document.getElementById("dash4").style.color = guess4Color;
 		
 		const result1MessageElement = document.getElementById("result1-message");
 		const result2MessageElement = document.getElementById("result2-message");
@@ -355,23 +355,26 @@ function isSamePeriod(lastTimestamp) {
 }
 
 const lastTimestamp = localStorage.getItem("lastTimestamp");
+const streakElement = document.getElementById("streak");
 
 let streak = parseInt(localStorage.getItem("streak"), 10);
 		
         if (isCorrect) {
-  result1MessageElement.textContent = "Bowled 'em!";
-  result2MessageElement.textContent = "You got today's Crickdle.";
+		result1MessageElement.textContent = "Bowled 'em!";
+		result2MessageElement.textContent = "You got today's Crickdle.";
 
   if (!lastTimestamp || !isSamePeriod(lastTimestamp)) {
     streak++;
     localStorage.setItem("streak", streak.toString());
     localStorage.setItem("lastTimestamp", new Date().toISOString());
+    streakElement.textContent = `Your streak: ${streak} not out`;
   }
 } else {
   result1MessageElement.textContent = "Out for a duck!";
   result2MessageElement.textContent = "You didn't get today's Crickdle. The correct answer is HAFEEZ.";
   streak = 0;
   localStorage.setItem("streak", streak.toString());
+  streakElement.textContent = `Your streak: ${streak}`;
 }
 		
 const streakElement = document.getElementById("streak");
