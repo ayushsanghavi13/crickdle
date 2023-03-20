@@ -2,22 +2,22 @@
 <html lang="en">
 <head>
 	<title>Crickdle - Daily Cricket Guessing Game | Test Your Cricket Knowledge!</title>
-		<link rel="icon" type="image/x-icon" href="favicon.ico.png">
-			<link rel="apple-touch-icon" sizes="60x60" href="favicon.ico.png">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-			<meta charset="UTF-8">
-	  <meta name="description" content="Crickdle - Daily Cricket Guessing Game | Test Your Cricket Knowledge!">
-  <meta name="keywords" content="Wordle, cricket, Crickdle, quiz, game, sport, bowler, batsman">
-  <meta name="author" content="Ayush Sanghavi">
+	<link rel="icon" type="image/x-icon" href="favicon.ico.png">
+	<link rel="apple-touch-icon" sizes="60x60" href="favicon.ico.png">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta charset="UTF-8">
+	<meta name="description" content="Crickdle - Daily Cricket Guessing Game | Test Your Cricket Knowledge!">
+	<meta name="keywords" content="Wordle, cricket, Crickdle, quiz, game, sport, bowler, batsman">
+	<meta name="author" content="Ayush Sanghavi">
 	<style>
 	   @font-face {
-  font-family: InterTight;
-  src: url(InterTight-VariableFont_wght.ttf);
-}
+		   font-family: InterTight;
+		   src: url(InterTight-VariableFont_wght.ttf);
+		}
 	
 		html {
-				box-sizing: border-box;
-				font-size: 16px;
+			box-sizing: border-box;
+			font-size: 16px;
 			}
 
 			*, *:before, *:after {
@@ -35,14 +35,14 @@
 			font-size: 1.1rem;
 		}
 		.container {
-  height: 100%;
-  text-align: center;
-		width: 90%;
-				max-width: 600px;
-				margin: 0 auto;
+			height: 100%;
+			text-align: center;
+			width: 90%;
+			max-width: 600px;
+			margin: 0 auto;
 		}
 		.dash {
-						display: inline-block;
+			display: inline-block;
 			width: 2rem;
 			font-weight: bold;
 			font-size: 1.8rem;
@@ -54,20 +54,20 @@
 			margin-bottom: 0;
 		}
 		.toolbar {
-				background-color: #f7f7f7;
-				height: 48px;
-				display: flex;
-				justify-content: center;
-				align-items: center;
-				padding: 0 16px;
-				box-shadow: 0 0 6px rgba(0, 0, 0, 0.1);
-				margin-bottom: 30px
+			background-color: #f7f7f7;
+			height: 48px;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			padding: 0 16px;
+			box-shadow: 0 0 6px rgba(0, 0, 0, 0.1);
+			margin-bottom: 30px
 			}
 
 			@font-face {
-  font-family: ClimateCrisis;
-  src: url(ClimateCrisis-Regular-VariableFont_YEAR.ttf);
-}
+				font-family: ClimateCrisis;
+				src: url(ClimateCrisis-Regular-VariableFont_YEAR.ttf);
+		}
 
 			.toolbar-title {
 				font-size: 35px;
@@ -212,46 +212,46 @@
 				font-family: InterTight, sans-serif;
 			}
 		
-.share-button {
-  color: #1dc278;
-  background-color: white;
-  border: none;
-  padding: 8px 16px;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 16px;
-  font-weight: 500;
-  font-family: InterTight, sans-serif;
-  margin-right: 10px;
-  height: 40px;
-}
+		.share-button {
+			color: #1dc278;
+			background-color: white;
+			border: none;
+			padding: 8px 16px;
+			border-radius: 4px;
+			cursor: pointer;
+			font-size: 16px;
+			font-weight: 500;
+			font-family: InterTight, sans-serif;
+			margin-right: 10px;
+			height: 40px;
+		}
 
-.share-button:hover {
-  opacity: 0.8;
-}
+		.share-button:hover {
+			opacity: 0.8;
+		}
 			
-			.toolbar-help img,
-			.toolbar-info img {
-				width: 20px;
-				height: 20px;
-			}
+		.toolbar-help img,
+		.toolbar-info img {
+			width: 20px;
+			height: 20px;
+		}
 		
-			 img {
-		margin-bottom: 1rem;
-		margin-top: 1rem;
-        width: 10rem;
-      }
+		.img {
+			margin-bottom: 1rem;
+			margin-top: 1rem;
+			width: 10rem;
+		}
 						
-							.game-container {
-		margin: auto;
-		width: 90%;
-    background-color: #f5f5f5;
-		max-width: 600px;
-    border-radius: 0.5rem;
-    text-align: center;
-				padding-top: 0.1rem;
-				padding-bottom: 0.4rem;
-				margin-bottom: 1.5rem
+		.game-container {
+			margin: auto;
+			width: 90%;
+			background-color: #f5f5f5;
+			max-width: 600px;
+			border-radius: 0.5rem;
+			text-align: center;
+			padding-top: 0.1rem;
+			padding-bottom: 0.4rem;
+			margin-bottom: 1.5rem
 }
 	</style>
 </head>
@@ -318,10 +318,9 @@
   document.getElementById("dash3").style.color = guess3Color;
   document.getElementById("dash4").style.color = guess4Color;
 		
-				const result1MessageElement = document.getElementById("result1-message");
+		const result1MessageElement = document.getElementById("result1-message");
 		const result2MessageElement = document.getElementById("result2-message");
 		
-		// Initialize the streak value in localStorage if it doesn't exist
 if (localStorage.getItem("streak") === null) {
   localStorage.setItem("streak", "0");
 }
@@ -337,7 +336,6 @@ function isSamePeriod(lastTimestamp) {
   const nowDate = now.toDateString();
   const lastDate = last.toDateString();
 
-  // If the dates are the same
   if (nowDate === lastDate) {
     // If both are before 9 AM or both are after 9 AM
     if ((last.getHours() < 9 && now.getHours() < 9) || (last.getHours() >= 9 && now.getHours() >= 9)) {
@@ -345,12 +343,10 @@ function isSamePeriod(lastTimestamp) {
     }
   }
 
-  // If the last play was before 9 AM on the previous day and now is after 9 AM
   if (last.getHours() < 9 && now.getHours() >= 9 && now - last < 24 * 60 * 60 * 1000) {
     return false;
   }
 
-  // If the last play was after 9 AM on the previous day and now is before 9 AM
   if (last.getHours() >= 9 && now.getHours() < 9 && now - last < 15 * 60 * 60 * 1000) {
     return true;
   }
@@ -360,7 +356,7 @@ function isSamePeriod(lastTimestamp) {
 
 const lastTimestamp = localStorage.getItem("lastTimestamp");
 
-		let streak = parseInt(localStorage.getItem("streak"), 10);
+let streak = parseInt(localStorage.getItem("streak"), 10);
 		
         if (isCorrect) {
   result1MessageElement.textContent = "Bowled 'em!";
@@ -378,8 +374,8 @@ const lastTimestamp = localStorage.getItem("lastTimestamp");
   localStorage.setItem("streak", streak.toString());
 }
 		
-		const streakElement = document.getElementById("streak");
-		streakElement.textContent = `Your streak: ${streak}`;
+const streakElement = document.getElementById("streak");
+streakElement.textContent = `Your streak: ${streak}`;
 
 const now = new Date();
 const ukTime = getUKTime(now);
