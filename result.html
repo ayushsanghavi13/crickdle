@@ -211,7 +211,7 @@
 				font-family: InterTight, sans-serif;
 			}
 		
-			.share-container {
+		.share-container {
 				margin-top: 20px;
 				text-align: center;
 				display: flex;
@@ -324,10 +324,12 @@
 		<span class="dash" id="dash3">●</span>
 		<span class="dash" id="dash4">●</span>
 		</div>
+			<div class="other-stuff">
 			  <p id="result2-message" style="font-weight: 500"></p>
 			<p><span style="font-weight: 500"><span id="streak"></span></span></p>
 		<p>Come back tomorrow to guess another cricketer.</p>
-			      <div class="share-container">
+				</div>
+			       <div class="share-container">
         <button class="share-button">SHARE</button>
         <a href="https://twitter.com/Crickdle" target="_blank" rel="noopener" class="twitter-button">FOLLOW US ON TWITTER</a>
       </div>
@@ -451,18 +453,18 @@ const intervalId = setInterval(() => {
 			
 			const shareButton = document.querySelector('.share-button');
 
-shareButton.addEventListener('click', function() {
-  const shareText = 'I’m playing Crickdle, a daily cricket guessing game. Join me and test your knowledge!';
-  const shareUrl = 'https://crickdle.com';
-  const shareTitle = 'Crickdle';
-  navigator.share({
-    title: shareTitle,
-    text: shareText,
-    url: shareUrl,
-  })
-  .then(() => console.log('Shared successfully!'))
-  .catch((error) => console.error('Error sharing:', error));
-});
+			shareButton.addEventListener('click', function() {
+				const shareText = 'I’m playing Crickdle, a daily cricket guessing game. Join me and test your knowledge!';
+				const shareUrl = 'https://crickdle.com';
+				const shareTitle = 'Crickdle';
+				navigator.share({
+					title: shareTitle,
+					text: shareText,
+					url: shareUrl,
+				})
+					.then(() => console.log('Shared successfully!'))
+					.catch((error) => console.error('Error sharing:', error));
+			});
 
 			popup2CloseButton.addEventListener('click', function() {
 				popup2Background.style.display = 'none';
