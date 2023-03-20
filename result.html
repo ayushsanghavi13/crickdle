@@ -367,7 +367,7 @@ let streak = parseInt(localStorage.getItem("streak"), 10);
     streak++;
     localStorage.setItem("streak", streak.toString());
     localStorage.setItem("lastTimestamp", new Date().toISOString());
-    streakElement.textContent = `Your streak: ${streak} not out`;
+    streakElement.textContent = `Your streak: ${streak}*`;
   }
 } else {
   result1MessageElement.textContent = "Out for a duck!";
