@@ -539,15 +539,27 @@
 function getUKTime(date) {
   return new Date(date.toLocaleString('en-US', { timeZone: 'Europe/London' }));
 }
-
-function is9amUKTime() {
+			
+function isPast9amUKTime() {
   const ukTime = getUKTime(new Date());
-  return ukTime.getHours() === 9 && ukTime.getMinutes() === 0;
+  return ukTime.getHours() >= 9;
 }
 
 function resetAt9am() {
-  if (is9amUKTime()) {
-    localStorage.clear();
+  const lastResetDate = localStorage.getItem('lastResetDate');
+  const today = new Date().toISOString().slice(0, 10);
+
+  if (isPast9amUKTime() && lastResetDate !== today) {
+    guessInputs.forEach((input, index) => {
+      localStorage.removeItem(`guess${index + 1}`);
+      localStorage.removeItem(`guess${index + 1}Color`);
+      localStorage.removeItem(`guess${index + 1}TextColor`);
+      localStorage.removeItem(`guess${index + 1}FontWeight`);
+      localStorage.removeItem(`guess${index + 1}Disabled`);
+    });
+    localStorage.removeItem('playedToday');
+    localStorage.setItem('lastResetDate', today);
+
     guessInputs.forEach((input, index) => {
       input.querySelector("input").value = "";
       input.querySelector("input").style.backgroundColor = "";
@@ -589,11 +601,8 @@ function loadState() {
 			const guessInputs = document.querySelectorAll(".guess-input");
 			const submitButtons = document.querySelectorAll("button[id^='submit']");
 			
+			resetAt9am(); // Reset the game if it's 9 am
 			loadState(); // Load the state from localStorage when the page loads
-resetAt9am(); // Reset the game if it's 9 am
-
-// Set an interval to check for 9 am reset every minute
-setInterval(resetAt9am, 60 * 1000);
 			
 			submitButtons.forEach((button, index) => {
 				button.addEventListener("click", (event) => {
