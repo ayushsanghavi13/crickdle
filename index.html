@@ -745,7 +745,6 @@ window.location.href = resultURL;
 						submitButton.addEventListener("click", (event) => {
 							hintElement.style.display = "none";
 						});
-						
 					}
 				});
 	
@@ -842,6 +841,13 @@ window.location.href = resultURL;
 				}
 				return false;
 			}
+			
+			window.onpageshow = function(event) {
+  if (event.persisted) {
+    resetAt9am();
+    loadState();
+  }
+};
 		</script>
 	</body>
 </html>
