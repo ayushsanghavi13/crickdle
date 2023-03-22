@@ -508,6 +508,16 @@
       </div>
       </div>
 		<script>
+			function redirectToResultIfPlayedToday() {
+  const playedToday = localStorage.getItem('playedToday') === 'true';
+  if (playedToday) {
+    const resultURL = localStorage.getItem('resultURL');
+    if (resultURL) {
+      window.location.href = resultURL;
+    }
+  }
+}
+			
 			function acceptCookies() {
 				document.cookie = "gaEnabled=true; expires=Thu, 31 Dec 2099 23:59:59 UTC; path=/";
 				document.getElementById("cookieConsent").style.display = "none";
@@ -597,12 +607,6 @@
 					currentInput.style.fontWeight = playedToday ? (localStorage.getItem(`guess${index + 1}FontWeight`) || "") : "";
 					currentInput.disabled = playedToday ? (localStorage.getItem(`guess${index + 1}Disabled`) === 'true') : (index !== 0);
 					submitButtons[index].disabled = currentInput.disabled;
-					if (playedToday) {
-  const resultURL = localStorage.getItem('resultURL');
-  if (resultURL) {
-    window.location.href = resultURL;
-  }
-}
 				});
 			}
 			
@@ -743,6 +747,8 @@ window.location.href = resultURL;
 						
 					}
 				});
+				
+				redirectToResultIfPlayedToday();
 	
 				const input = guessInputs[index].querySelector("input");
 				input.addEventListener("keyup", (event) => {
