@@ -607,8 +607,8 @@
 					currentInput.style.fontWeight = playedToday ? (localStorage.getItem(`guess${index + 1}FontWeight`) || "") : "";
 					currentInput.disabled = playedToday ? (localStorage.getItem(`guess${index + 1}Disabled`) === 'true') : (index !== 0);
 					submitButtons[index].disabled = currentInput.disabled;
-					redirectToResultIfPlayedToday();
 				});
+				redirectToResultIfPlayedToday();
 			}
 			
 			const guessInputs = document.querySelectorAll(".guess-input");
