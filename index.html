@@ -464,17 +464,22 @@
 .speech-bubble {
     position: relative;
     display: inline-block;
-    padding: 10px;
+    padding: 20px;
     font-size: 1.2em;
+    background-color: transparent;
+    border: 2px solid #1dc278;
+    border-radius: 10px;
 }
 
-.speech-bubble-svg {
+.speech-bubble-triangle {
     position: absolute;
-    bottom: -15px;
-    left: 10px;
-    width: 20px;
-    height: 20px;
-    pointer-events: none;
+    bottom: -12px;
+    left: 20px;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0 10px 12px 10px;
+    border-color: transparent transparent #1dc278 transparent;
 }
 		</style>
 	</head>
@@ -525,9 +530,9 @@
 		</div>
 		<div id="guess-section">
 			<div class="game-container">
-				 <div class="speech-bubble">
-				<h2>Which <span id="crickdlequestion"></h2>
-					</div>
+				<div class="speech-bubble">
+        <h2>Which <span id="crickdlequestion"></span></h2>
+        <div class="speech-bubble-triangle"></div>
 					    <svg class="speech-bubble-svg" viewBox="0 0 60 60" preserveAspectRatio="none">
             <polygon points="0,0 60,0 60,44 12,44 0,60" fill="none" stroke="#1dc278" stroke-width="1.5" />
         </svg>
