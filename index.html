@@ -460,6 +460,27 @@
 		font-weight: 500;
 		color: #000;
 	}
+			
+			.speech-bubble {
+    position: relative;
+    display: inline-block;
+    padding: 15px;
+    background-color: transparent;
+    border: 2px solid #1dc278;
+    border-radius: 10px;
+}
+
+.speech-bubble::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-top: 10px solid #1dc278;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    left: 20px;
+    bottom: -20px;
+}
 		</style>
 	</head>
 	<body>
@@ -509,10 +530,9 @@
 		</div>
 		<div id="guess-section">
 			<div class="game-container">
-       <div style="position: relative; padding: 10px; border: 2px solid #1dc278; background-color: transparent; display: inline-block; border-radius: 10px;">
-  <h2 style="margin: 0;">Which <span id="crickdlequestion"></span></h2>
-  <div style="position: absolute; bottom: -20px; left: 20px; border-style: solid; border-width: 10px 10px 0 0; border-color: transparent transparent #1dc278 transparent;"></div>
-</div>
+       <div class="speech-bubble">
+        <h2>Which <span id="crickdlequestion"></span></h2>
+    </div>
 			<div class="guess-input">
 				<input type="text" id="guess1">
 				<button id="submit1"><span style="font-weight: 500">&rArr;</span></button>
