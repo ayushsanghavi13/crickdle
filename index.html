@@ -465,38 +465,39 @@
     position: relative;
     display: inline-block;
     padding-top: 20px;
-	padding-bottom: 10px;
-	padding-left: 20px;
-	padding-right: 20px;
+    padding-bottom: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
     background-color: #e3e3e3;
     margin-bottom: 5px;
     font-size: 1.1em;
-    width: 100%;
-    max-width: 660px;
+    width: 90%;
+    max-width: 600px;
+    border: 2px solid green;
 }
 
 .speech-bubble::before {
     content: "";
     position: absolute;
     left: 20px;
-    bottom: -20px;
+    bottom: -22px;
     width: 0;
     height: 0;
-    border-left: 10px solid transparent;
-    border-right: 10px solid transparent;
-    border-top: 20px solid #e3e3e3;
+    border-left: 12px solid transparent;
+    border-right: 12px solid transparent;
+    border-top: 22px solid green;
 }
 
 .speech-bubble::after {
     content: "";
     position: absolute;
     left: 22px;
-    bottom: -16px;
+    bottom: -18px;
     width: 0;
     height: 0;
-    border-left: 9px solid transparent;
-    border-right: 9px solid transparent;
-    border-top: 18px solid #e3e3e3;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 20px solid #e3e3e3;
     z-index: 1;
 }
 		</style>
