@@ -464,34 +464,17 @@
 .speech-bubble {
     position: relative;
     display: inline-block;
-    padding-left: 20px;
-	padding-right: 20px;
-	padding-top: 10px;
-	padding-bottom: 10px;
-    background-color: transparent;
-    border: 2px solid #1dc278;
-    border-radius: 10px;
+    padding: 20px;
     font-size: 1.2em;
 }
 
-.speech-bubble::before {
-    content: '';
+.speech-bubble-svg {
     position: absolute;
-    left: 25px;
-    bottom: -15px;
-    border-left: 10px solid transparent;
-    border-right: 10px solid transparent;
-    border-top: 15px solid #1dc278;
-}
-
-.speech-bubble::after {
-    content: '';
-    position: absolute;
-    left: 27px;
-    bottom: -12px;
-    border-left: 9px solid transparent;
-    border-right: 9px solid transparent;
-    border-top: 14px solid transparent;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
 }
 		</style>
 	</head>
@@ -545,6 +528,9 @@
 				 <div class="speech-bubble">
 				<h2>Which <span id="crickdlequestion"></h2>
 					</div>
+					  <svg class="speech-bubble-svg" viewBox="0 0 150 150" preserveAspectRatio="none">
+        <polygon points="0,0 150,0 150,110 30,110 0,150" fill="none" stroke="#1dc278" stroke-width="4" />
+    </svg>
 			<div class="guess-input">
 				<input type="text" id="guess1">
 				<button id="submit1"><span style="font-weight: 500">&rArr;</span></button>
