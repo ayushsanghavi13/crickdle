@@ -395,17 +395,6 @@
 				width: 20px;
 				height: 20px;
 			}
-      
-			.details-container {
-				margin: 0 auto;
-				border-radius: 0.5rem;
-				background-color: #f5f5f5;
-				width: 90%;
-				max-width: 600px;
-				margin-bottom: 1.5rem;
-				text-align: center;
-				padding: 5px;
-			}
 			
 			#cookieConsent {
 				position: fixed;
@@ -444,7 +433,19 @@
 			#cookieConsent button:focus {
 				outline: none;
 				box-shadow: 0 0 0 3px rgba(40, 167, 69, 0.5);
-			}						
+			}	
+			
+				#guess-section h2 {
+		margin-bottom: 0.5rem;
+		font-size: 1.3rem;
+		font-family: InterTight, sans-serif;
+		font-weight: 500;
+		color: #000;
+	}
+
+	#crickdlequestion {
+		font-weight: 700;
+	}
 		</style>
 	</head>
 	<body>
@@ -494,7 +495,7 @@
 		</div>
 		<div id="guess-section">
 			<div class="game-container">
-				<h2><span style="font-weight: 500"><span style="color: #000000"><span style="font-size: 1.3rem">Which <span id="crickdlequestion"></span></span></span></h2>
+				<h2>Which <span id="crickdlequestion"></h2>
 			<div class="guess-input">
 				<input type="text" id="guess1">
 				<button id="submit1"><span style="font-weight: 500">&rArr;</span></button>
