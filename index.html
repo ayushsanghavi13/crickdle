@@ -715,8 +715,9 @@
 		    localStorage.setItem('resultURL', resultURL);
 window.location.href = resultURL;
             } else if (isClose(guess, correctPlayer)) {
-		                    guessInput.style.color = "white";
+		guessInput.style.color = "white";
                 guessInput.style.backgroundColor = "#e4a404";
+		    		guessInput.style.color = "white";
                 if (index < 3) {
                     guessInputs[index + 1].querySelector("input").disabled = false;
                     guessInputs[index + 1].querySelector("button").disabled = false;
