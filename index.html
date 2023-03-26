@@ -629,7 +629,6 @@
 					});
 					localStorage.removeItem('playedToday');
 					localStorage.setItem('lastResetDate', today);
-					localStorage.removeItem('resultURL');
 
 					guessInputs.forEach((input, index) => {
 						input.querySelector("input").value = "";
@@ -741,13 +740,11 @@
                 guessInput.style.backgroundColor = "#1dc278";
                 guessInput.style.color = "white";
 		     saveState();
-                const resultURL = "result.html?isCorrect=true&" +
+                window.location.href = "result.html?isCorrect=true&" +
 		    "guess1=" + guessInputs[0].querySelector("input").style.backgroundColor +
                                         "&guess2=" + guessInputs[1].querySelector("input").style.backgroundColor +
                                         "&guess3=" + guessInputs[2].querySelector("input").style.backgroundColor +
                                         "&guess4=" + guessInputs[3].querySelector("input").style.backgroundColor;
-		    localStorage.setItem('resultURL', resultURL);
-window.location.href = resultURL;
             } else if (isClose(guess, correctPlayer)) {
                 guessInput.style.backgroundColor = "#e4a404";
 		guessInput.style.color = "white";
@@ -757,12 +754,10 @@ window.location.href = resultURL;
                     guessInputs[index + 1].querySelector("input").focus();
                 } else {
 			 saveState();
-                    const resultURL = "result.html?guess1=" + guessInputs[0].querySelector("input").style.backgroundColor +
+                    window.location.href = "result.html?guess1=" + guessInputs[0].querySelector("input").style.backgroundColor +
                                         "&guess2=" + guessInputs[1].querySelector("input").style.backgroundColor +
                                         "&guess3=" + guessInputs[2].querySelector("input").style.backgroundColor +
                                         "&guess4=" + guessInputs[3].querySelector("input").style.backgroundColor;
-			localStorage.setItem('resultURL', resultURL);
-window.location.href = resultURL;
                 }
             } else {
                 guessInput.style.backgroundColor = "#787c7f";
@@ -773,12 +768,10 @@ window.location.href = resultURL;
                     guessInputs[index + 1].querySelector("input").focus();
                 } else {
 			 saveState();
-                    const resultURL = "result.html?guess1=" + guessInputs[0].querySelector("input").style.backgroundColor +
+                   window.location.href = "result.html?guess1=" + guessInputs[0].querySelector("input").style.backgroundColor +
                                         "&guess2=" + guessInputs[1].querySelector("input").style.backgroundColor +
                                         "&guess3=" + guessInputs[2].querySelector("input").style.backgroundColor +
                                         "&guess4=" + guessInputs[3].querySelector("input").style.backgroundColor;
-			localStorage.setItem('resultURL', resultURL);
-window.location.href = resultURL;
                 }
             }
 					
