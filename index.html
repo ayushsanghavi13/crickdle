@@ -578,12 +578,14 @@
 		<script>
 			function acceptCookies() {
 				document.cookie = "gaEnabled=true; expires=Thu, 31 Dec 2099 23:59:59 UTC; path=/";
+				document.cookie = "_hjOptOut=false; expires=Thu, 31 Dec 2099 23:59:59 UTC; path=/";
 				document.getElementById("cookieConsent").style.display = "none";
 				gtag('consent', 'update', {'analytics_storage': 'granted'});
 			}
 
 			function declineCookies() {
 				document.cookie = "gaEnabled=false; expires=Thu, 31 Dec 2099 23:59:59 UTC; path=/";
+				document.cookie = "_hjOptOut=true; expires=Thu, 31 Dec 2099 23:59:59 UTC; path=/";
 				document.getElementById("cookieConsent").style.display = "none";
 				gtag('consent', 'update', {'analytics_storage': 'denied'});
 			}
