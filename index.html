@@ -605,16 +605,6 @@
 			document.getElementById("venue").textContent = gameDetails.venue;
 			document.getElementById("score").textContent = gameDetails.score;
 			document.getElementById("crickdlequestion").textContent = gameDetails.crickdlequestion;
-			
-			function redirectToResultIfPlayedToday() {
-  const playedToday = localStorage.getItem('playedToday') === 'true';
-  if (playedToday) {
-    const resultURL = localStorage.getItem('resultURL');
-    if (resultURL) {
-      window.location.href = resultURL;
-    }
-  }
-}
 
 			function getUKTime(date) {
 				return new Date(date.toLocaleString('en-US', { timeZone: 'Europe/London' }));
@@ -676,7 +666,6 @@
 					currentInput.disabled = playedToday ? (localStorage.getItem(`guess${index + 1}Disabled`) === 'true') : (index !== 0);
 					submitButtons[index].disabled = currentInput.disabled;
 				});
-				redirectToResultIfPlayedToday();
 			}
 			
 			const guessInputs = document.querySelectorAll(".guess-input");
@@ -916,7 +905,6 @@ window.location.href = resultURL;
     loadState();
   }
 };
-			redirectToResultIfPlayedToday();
 		</script>
 	</body>
 </html>
