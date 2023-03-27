@@ -357,6 +357,26 @@
 			</div>
 
 	<script>
+	function getUKTime(date) {
+				return new Date(date.toLocaleString('en-US', { timeZone: 'Europe/London' }));
+			}
+			
+			function isPast9amUKTime() {
+				const ukTime = getUKTime(new Date());
+				return ukTime.getHours() >= 9;
+			}
+
+			function resetAt9am() {
+  const lastResetDate2 = localStorage.getItem('lastResetDate2');
+  const today = new Date().toISOString().slice(0, 10);
+
+  if (isPast9amUKTime() && lastResetDate2 !== today) {
+    localStorage.removeItem('playedToday');
+    localStorage.setItem('lastResetDate2', today);
+  }
+
+			resetAt9am();
+	
 		const crickdleDateElement = document.getElementById('crickdleDate');
     const crickdleNumberElement = document.getElementById('crickdleNumber');
     
