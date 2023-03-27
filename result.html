@@ -357,6 +357,18 @@
 			</div>
 
 	<script>
+	window.addEventListener('storage', (event) => {
+  if (event.key === 'playedToday') {
+    if (event.newValue !== 'true') {
+      window.location.href = 'index.html';
+    }
+  }
+});
+		
+		if (!localStorage.getItem('playedToday')) {
+  window.location.href = 'index.html';
+}
+	
 		const crickdleDateElement = document.getElementById('crickdleDate');
     const crickdleNumberElement = document.getElementById('crickdleNumber');
     
@@ -369,10 +381,6 @@
     crickdleNumberElement.textContent = crickdleNumber;
 		
 		const correctPlayer = JSON.parse(localStorage.getItem("correctPlayer"));
-		
-		if (!localStorage.getItem('playedToday')) {
-  window.location.href = 'index.html';
-}
 		
 		const urlParams = new URLSearchParams(window.location.search);
 		const isCorrect = urlParams.get("isCorrect") === "true";
