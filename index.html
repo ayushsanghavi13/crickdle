@@ -636,38 +636,39 @@ function loadGoogleTagManager() {
 				const lastResetDate = localStorage.getItem('lastResetDate');
 				const today = new Date().toISOString().slice(0, 10);
 
-				if (isPast9amUKTime() && lastResetDate !== today) {
-					// Update the date and Crickdle number here
+if (isPast9amUKTime() && lastResetDate !== today) {
+    // Update the date and Crickdle number here
     const dateElement = document.querySelector('.popup2-content ul li:first-child');
     const crickdleNumber = 37 + Math.floor((new Date() - getUKTime(new Date(2023, 2, 27, 9))) / (24 * 60 * 60 * 1000));
     dateElement.textContent = formatUKDate(new Date());
     document.querySelector('.popup2-content ul li:last-child').textContent = `Crickdle #${crickdleNumber}`;
-					
-					    localStorage.setItem('crickdleDate', dateElement.textContent);
+
+    // Save date and Crickdle number to localStorage
+    localStorage.setItem('crickdleDate', dateElement.textContent);
     localStorage.setItem('crickdleNumber', `Crickdle #${crickdleNumber}`);
 
     // Force a page reload
-					location.href = location.href;
+    location.href = location.href;
 					
-					guessInputs.forEach((input, index) => {
-						localStorage.removeItem(`guess${index + 1}`);
-						localStorage.removeItem(`guess${index + 1}Color`);
-						localStorage.removeItem(`guess${index + 1}TextColor`);
-						localStorage.removeItem(`guess${index + 1}FontWeight`);
-						localStorage.removeItem(`guess${index + 1}Disabled`);
-					});
-					localStorage.removeItem('playedToday');
-					localStorage.setItem('lastResetDate', today);
+    guessInputs.forEach((input, index) => {
+        localStorage.removeItem(`guess${index + 1}`);
+        localStorage.removeItem(`guess${index + 1}Color`);
+        localStorage.removeItem(`guess${index + 1}TextColor`);
+        localStorage.removeItem(`guess${index + 1}FontWeight`);
+        localStorage.removeItem(`guess${index + 1}Disabled`);
+    });
+    localStorage.removeItem('playedToday');
+    localStorage.setItem('lastResetDate', today);
 
-					guessInputs.forEach((input, index) => {
-						input.querySelector("input").value = "";
-						input.querySelector("input").style.backgroundColor = "";
-						input.querySelector("input").style.color = "";
-						input.querySelector("input").style.fontWeight = "";
-						input.querySelector("input").disabled = index !== 0;
-						submitButtons[index].disabled = index !== 0;
-					});
-				}
+    guessInputs.forEach((input, index) => {
+        input.querySelector("input").value = "";
+        input.querySelector("input").style.backgroundColor = "";
+        input.querySelector("input").style.color = "";
+        input.querySelector("input").style.fontWeight = "";
+        input.querySelector("input").disabled = index !== 0;
+        submitButtons[index].disabled = index !== 0;
+    });
+}
 			}
 
 
