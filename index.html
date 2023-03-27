@@ -595,6 +595,7 @@ function loadGoogleTagManager() {
 				gtag('consent', 'update', {'analytics_storage': 'granted'});
 				loadHotjar();
 				loadGoogleTagManager();
+				localStorage.setItem('hasAcceptedCookies', 'true');
 			}
 
 			function declineCookies() {
@@ -854,7 +855,6 @@ function loadGoogleTagManager() {
 			
 			if (!hasAcceptedCookies) {
 				document.getElementById('cookieConsent').style.display = 'block';
-				localStorage.setItem('hasAcceptedCookies', 'true');
 			}
 
 			if (!hasShownInstructions) {
