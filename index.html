@@ -631,6 +631,15 @@ function loadGoogleTagManager() {
 				const ukTime = getUKTime(new Date());
 				return ukTime.getHours() >= 9;
 			}
+			
+			function formatUKDate(date) {
+  const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
+                  "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+  const monthName = months[date.getMonth()];
+  const day = date.getDate();
+  const year = date.getFullYear();
+  return `${monthName} ${day}, ${year}`;
+}
 
 			function resetAt9am() {
   const lastResetDate = localStorage.getItem('lastResetDate');
@@ -640,7 +649,7 @@ function loadGoogleTagManager() {
     // Update the date and Crickdle number here
     const dateElement = document.querySelector('.popup2-content ul li:first-child');
     const crickdleNumber = 37 + Math.floor((new Date() - getUKTime(new Date(2023, 2, 27, 9))) / (24 * 60 * 60 * 1000));
-    dateElement.textContent = formatUKDate(new Date());
+    dateElement.textContent = formatUKDate(getUKTime(new Date()));
     document.querySelector('.popup2-content ul li:last-child').textContent = `Crickdle #${crickdleNumber}`;
 
     // Save date and Crickdle number to localStorage
