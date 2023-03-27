@@ -323,8 +323,13 @@
 						<button class="popup2-close" aria-label="Close">&times;</button>
 					</div>
 					<div class="popup2-content">
-						<p>Crickdle is a love letter to Test cricket. A new question is released at 9 a.m. UK time each day.<br><ul><li><span style="font-weight: 500">Mar 27, 2023</span></li><li>Crickdle #37</li></ul>Please send any enquiries to <span style="font-weight: 500">crickdle [at] gmail [dot] com</span></p>
-					</div>
+    <p>Crickdle is a love letter to Test cricket. A new question is released at 9 a.m. UK time each day.<br>
+    <ul>
+        <li><span style="font-weight: 500" id="crickdleDate"></span></li>
+        <li><span id="crickdleNumber"></span></li>
+    </ul>
+    Please send any enquiries to <span style="font-weight: 500">crickdle [at] gmail [dot] com</span></p>
+</div>
 					</div>
 			</div>
 		</header>
@@ -352,6 +357,17 @@
 			</div>
 
 	<script>
+		const crickdleDateElement = document.getElementById('crickdleDate');
+    const crickdleNumberElement = document.getElementById('crickdleNumber');
+    
+    // Retrieve date and Crickdle number from localStorage
+    const crickdleDate = localStorage.getItem('crickdleDate');
+    const crickdleNumber = localStorage.getItem('crickdleNumber');
+
+    // Update the elements with the retrieved values
+    crickdleDateElement.textContent = crickdleDate;
+    crickdleNumberElement.textContent = crickdleNumber;
+		
 		const correctPlayer = JSON.parse(localStorage.getItem("correctPlayer"));
 		
 		if (!localStorage.getItem('playedToday')) {
