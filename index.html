@@ -609,6 +609,7 @@ function loadGoogleTagManager() {
 			};
 
 			const correctPlayer = ["TROTT"];
+			localStorage.setItem("correctPlayer", JSON.stringify(correctPlayer));
 			
 			document.getElementById("nation1").textContent = gameDetails.nation1;
 			document.getElementById("nation2").textContent = gameDetails.nation2;
