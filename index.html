@@ -853,13 +853,13 @@ function loadGoogleTagManager() {
 			const hasShownInstructions = localStorage.getItem('hasShownInstructions');
 			const hasAcceptedCookies = document.cookie.includes('gaEnabled=true');
 			
-			if (!hasAcceptedCookies) {
-				document.getElementById('cookieConsent').style.display = 'block';
-			}
-
 			if (!hasShownInstructions) {
 				popupBackground.style.display = 'flex';
 				localStorage.setItem('hasShownInstructions', 'true');
+			}
+			
+			if (!hasAcceptedCookies) {
+				document.getElementById('cookieConsent').style.display = 'block';
 			}
 
 			helpButton.addEventListener('click', function() {
