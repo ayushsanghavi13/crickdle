@@ -642,6 +642,9 @@ function loadGoogleTagManager() {
     const crickdleNumber = 37 + Math.floor((new Date() - getUKTime(new Date(2023, 2, 27, 9))) / (24 * 60 * 60 * 1000));
     dateElement.textContent = formatUKDate(new Date());
     document.querySelector('.popup2-content ul li:last-child').textContent = `Crickdle #${crickdleNumber}`;
+					
+					    localStorage.setItem('crickdleDate', dateElement.textContent);
+    localStorage.setItem('crickdleNumber', `Crickdle #${crickdleNumber}`);
 
     // Force a page reload
 					location.href = location.href;
