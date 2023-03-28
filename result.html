@@ -515,16 +515,14 @@ shareButton.addEventListener('click', function() {
     // Function to map color to corresponding circle emoji
     const getColorEmoji = (color) => {
         switch (color) {
-            case 'rgb(23, 194, 120)': // Green
+            case 'rgb(29, 194, 120)': // Green
                 return '🟢';
             case 'rgb(228, 164, 4)': // Orange
                 return '🟠';
             case 'rgb(120, 124, 127)': // Grey
                 return '⚪';
-            case 'rgb(0, 0, 0)': // Black
-                return '⚫';
             default:
-                return '❓';
+                return '⚫';
         }
     };
 
