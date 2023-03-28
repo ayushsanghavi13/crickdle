@@ -536,7 +536,7 @@ const intervalId = setInterval(() => {
 
 shareButton.addEventListener('click', function() {
     const crickdleNumberText = crickdleNumberElement.textContent;
-    const shareTitle = 'Crickdle';
+    const shareTitle = `${crickdleNumberText}`;
     
     // Function to map color to corresponding circle emoji
     const getColorEmoji = (color) => {
