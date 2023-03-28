@@ -508,18 +508,31 @@ const intervalId = setInterval(() => {
 			
 			const shareButton = document.querySelector('.share-button');
 
-			shareButton.addEventListener('click', function() {
-				const shareText = 'I’m playing Crickdle, a daily cricket guessing game. Join me and test your knowledge!';
-				const shareUrl = 'https://crickdle.com';
-				const shareTitle = 'Crickdle';
-				navigator.share({
-					title: shareTitle,
-					text: shareText,
-					url: shareUrl,
-				})
-					.then(() => console.log('Shared successfully!'))
-					.catch((error) => console.error('Error sharing:', error));
-			});
+// Helper function to convert the color to the corresponding emoji
+function colorToEmoji(color) {
+    if (color === '#787c7f') return '\u{26AA}'; // grey
+    if (color === '#000000') return '\u{26AB}'; // black
+    if (color === '#1dc278') return '\u{1F7E2}'; // green
+    if (color === '#e4a404') return '\u{1F7E0}'; // orange
+    return '';
+}
+
+shareButton.addEventListener('click', function () {
+    const crickdleNumber = localStorage.getItem('crickdleNumber');
+    const shareTitle = 'Crickdle';
+
+    // Construct the shareText with the Crickdle number and the emojis for each dash color
+    const shareText = `${crickdleNumber} - The Daily Cricket Guessing Game: ${colorToEmoji(guess1Color)} ${colorToEmoji(guess2Color)} ${colorToEmoji(guess3Color)} ${colorToEmoji(guess4Color)}`;
+
+    const shareUrl = 'https://crickdle.com';
+    navigator.share({
+        title: shareTitle,
+        text: shareText,
+        url: shareUrl,
+    })
+        .then(() => console.log('Shared successfully!'))
+        .catch((error) => console.error('Error sharing:', error));
+});
 
 			popup2CloseButton.addEventListener('click', function() {
 				popup2Background.style.display = 'none';
