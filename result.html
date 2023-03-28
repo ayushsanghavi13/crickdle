@@ -508,12 +508,12 @@ const intervalId = setInterval(() => {
 			
 			const shareButton = document.querySelector('.share-button');
 
-// Helper function to convert the color to the corresponding emoji
-function colorToEmoji(color) {
-    if (color === '#787c7f') return '\u{26AA}'; // grey
-    if (color === '#000000') return '\u{26AB}'; // black
-    if (color === '#1dc278') return '\u{1F7E2}'; // green
-    if (color === '#e4a404') return '\u{1F7E0}'; // orange
+// Helper function to convert the color to the corresponding HTML entity
+function colorToEntity(color) {
+    if (color === '#787c7f') return '&amp;#9899;';
+    if (color === '#000000') return '&amp;#9898;';
+    if (color === '#1dc278') return '&amp;#128996;';
+    if (color === '#e4a404') return '&amp;#128994;';
     return '';
 }
 
@@ -521,8 +521,8 @@ shareButton.addEventListener('click', function () {
     const crickdleNumber = localStorage.getItem('crickdleNumber');
     const shareTitle = 'Crickdle';
 
-    // Construct the shareText with the Crickdle number and the emojis for each dash color
-    const shareText = `${crickdleNumber} - The Daily Cricket Guessing Game: ${colorToEmoji(guess1Color)} ${colorToEmoji(guess2Color)} ${colorToEmoji(guess3Color)} ${colorToEmoji(guess4Color)}`;
+    // Construct the shareText with the Crickdle number and the HTML entities for each dash color
+    const shareText = `${crickdleNumber} - The Daily Cricket Guessing Game: ${colorToEntity(guess1Color)} ${colorToEntity(guess2Color)} ${colorToEntity(guess3Color)} ${colorToEntity(guess4Color)}`;
 
     const shareUrl = 'https://crickdle.com';
     navigator.share({
