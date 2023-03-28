@@ -521,8 +521,8 @@
 					<div class="popup2-content">
   <p>Crickdle is a love letter to Test cricket. A new question is released at 9 a.m. UK time each day.<br>
   <ul>
-    <li></li>
-    <li></li>
+    <li id="date-element"></li>
+    <li id="crickdle-number"></li>
   </ul>
   Please send any enquiries to <span style="font-weight: 500">crickdle [at] gmail [dot] com</span></p>
 </div>
@@ -681,6 +681,12 @@ function loadGoogleTagManager() {
     localStorage.setItem('lastResetDate', today);
   }
 }
+			
+// Set the initial values for date and Crickdle number from localStorage
+const dateElement = document.getElementById('date-element');
+const crickdleNumberElement = document.getElementById('crickdle-number');
+dateElement.textContent = localStorage.getItem('crickdleDate') || '';
+crickdleNumberElement.textContent = localStorage.getItem('crickdleNumber') || '';
 
 			function saveState() {
 				guessInputs.forEach((input, index) => {
