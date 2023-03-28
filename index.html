@@ -623,6 +623,16 @@ function loadGoogleTagManager() {
 			document.getElementById("venue").textContent = gameDetails.venue;
 			document.getElementById("score").textContent = gameDetails.score;
 			document.getElementById("crickdlequestion").textContent = gameDetails.crickdlequestion;
+			
+			function redirectToResultIfPlayedToday() {
+  const playedToday = localStorage.getItem('playedToday') === 'true';
+  if (playedToday) {
+    const resultURL = localStorage.getItem('resultURL');
+    if (resultURL) {
+      window.location.href = resultURL;
+    }
+  }
+}
 
 			function getUKTime(date) {
 				return new Date(date.toLocaleString('en-US', { timeZone: 'Europe/London' }));
@@ -711,6 +721,7 @@ crickdleNumberElement.textContent = localStorage.getItem('crickdleNumber') || ''
 					currentInput.disabled = playedToday ? (localStorage.getItem(`guess${index + 1}Disabled`) === 'true') : (index !== 0);
 					submitButtons[index].disabled = currentInput.disabled;
 				});
+				redirectToResultIfPlayedToday();
 			}
 			
 			const guessInputs = document.querySelectorAll(".guess-input");
@@ -718,6 +729,7 @@ crickdleNumberElement.textContent = localStorage.getItem('crickdleNumber') || ''
 			
 			resetAt9am(); // Reset the game if it's 9 am
 			loadState(); // Load the state from localStorage when the page loads
+			redirectToResultIfPlayedToday();
 			
 			submitButtons.forEach((button, index) => {
 				button.addEventListener("click", (event) => {
@@ -786,11 +798,13 @@ crickdleNumberElement.textContent = localStorage.getItem('crickdleNumber') || ''
                 guessInput.style.backgroundColor = "#1dc278";
                 guessInput.style.color = "white";
 		     saveState();
-                window.location.href = "result.html?isCorrect=true&" +
+                const resultURL = "result.html?isCorrect=true&" +
 		    "guess1=" + guessInputs[0].querySelector("input").style.backgroundColor +
                                         "&guess2=" + guessInputs[1].querySelector("input").style.backgroundColor +
                                         "&guess3=" + guessInputs[2].querySelector("input").style.backgroundColor +
                                         "&guess4=" + guessInputs[3].querySelector("input").style.backgroundColor;
+		    localStorage.setItem('resultURL', resultURL);
+		    window.location.href = resultURL;
             } else if (isClose(guess, correctPlayer)) {
                 guessInput.style.backgroundColor = "#e4a404";
 		guessInput.style.color = "white";
@@ -800,10 +814,12 @@ crickdleNumberElement.textContent = localStorage.getItem('crickdleNumber') || ''
                     guessInputs[index + 1].querySelector("input").focus();
                 } else {
 			 saveState();
-                    window.location.href = "result.html?guess1=" + guessInputs[0].querySelector("input").style.backgroundColor +
+                    const resultURL = "result.html?guess1=" + guessInputs[0].querySelector("input").style.backgroundColor +
                                         "&guess2=" + guessInputs[1].querySelector("input").style.backgroundColor +
                                         "&guess3=" + guessInputs[2].querySelector("input").style.backgroundColor +
                                         "&guess4=" + guessInputs[3].querySelector("input").style.backgroundColor;
+			localStorage.setItem('resultURL', resultURL);
+		    window.location.href = resultURL;
                 }
             } else {
                 guessInput.style.backgroundColor = "#787c7f";
@@ -814,10 +830,12 @@ crickdleNumberElement.textContent = localStorage.getItem('crickdleNumber') || ''
                     guessInputs[index + 1].querySelector("input").focus();
                 } else {
 			 saveState();
-                   window.location.href = "result.html?guess1=" + guessInputs[0].querySelector("input").style.backgroundColor +
+                   const resultURL = "result.html?guess1=" + guessInputs[0].querySelector("input").style.backgroundColor +
                                         "&guess2=" + guessInputs[1].querySelector("input").style.backgroundColor +
                                         "&guess3=" + guessInputs[2].querySelector("input").style.backgroundColor +
                                         "&guess4=" + guessInputs[3].querySelector("input").style.backgroundColor;
+			localStorage.setItem('resultURL', resultURL);
+		    window.location.href = resultURL;
                 }
             }
 					
