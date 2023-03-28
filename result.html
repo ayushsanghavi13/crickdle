@@ -439,10 +439,36 @@ function isSamePeriod(lastTimestamp) {
 
   return false;
 }
+		
+function hasMissedADay(lastTimestamp) {
+  const now = getUKTime(new Date());
+  const last = getUKTime(new Date(lastTimestamp));
+
+  const timeDifference = now - last;
+
+  if (timeDifference >= 2 * 24 * 60 * 60 * 1000) {
+    return true;
+  }
+
+  if (
+    last.getHours() >= 9 &&
+    now.getHours() < 9 &&
+    timeDifference >= (24 + 15) * 60 * 60 * 1000
+  ) {
+    return true;
+  }
+
+  return false;
+}
 
 const lastTimestamp = localStorage.getItem("lastTimestamp");
 
 let streak = parseInt(localStorage.getItem("streak"), 10);
+		
+		if (lastTimestamp && hasMissedADay(lastTimestamp)) {
+  streak = 0;
+  localStorage.setItem("streak", streak.toString());
+}
 		
         if (isCorrect) {
 		result1MessageElement.textContent = "Bowled 'em!";
