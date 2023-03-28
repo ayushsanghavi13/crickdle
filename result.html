@@ -508,21 +508,32 @@ const intervalId = setInterval(() => {
 			
 			const shareButton = document.querySelector('.share-button');
 
-// Helper function to convert the color to the corresponding HTML entity
-function colorToEntity(color) {
-    if (color === '#787c7f') return '&amp;#9899;';
-    if (color === '#000000') return '&amp;#9898;';
-    if (color === '#1dc278') return '&amp;#128996;';
-    if (color === '#e4a404') return '&amp;#128994;';
-    return '';
-}
-
-shareButton.addEventListener('click', function () {
-    const crickdleNumber = localStorage.getItem('crickdleNumber');
+shareButton.addEventListener('click', function() {
+    const crickdleNumberText = crickdleNumberElement.textContent;
     const shareTitle = 'Crickdle';
+    
+    // Function to map color to corresponding circle emoji
+    const getColorEmoji = (color) => {
+        switch (color) {
+            case 'rgb(23, 194, 120)': // Green
+                return '🟢';
+            case 'rgb(228, 164, 4)': // Orange
+                return '🟠';
+            case 'rgb(120, 124, 127)': // Grey
+                return '⚪';
+            case 'rgb(0, 0, 0)': // Black
+                return '⚫';
+            default:
+                return '❓';
+        }
+    };
 
-    // Construct the shareText with the Crickdle number and the HTML entities for each dash color
-    const shareText = `${crickdleNumber} - The Daily Cricket Guessing Game: ${colorToEntity(guess1Color)} ${colorToEntity(guess2Color)} ${colorToEntity(guess3Color)} ${colorToEntity(guess4Color)}`;
+    const guess1Emoji = getColorEmoji(guess1Color);
+    const guess2Emoji = getColorEmoji(guess2Color);
+    const guess3Emoji = getColorEmoji(guess3Color);
+    const guess4Emoji = getColorEmoji(guess4Color);
+
+    const shareText = `${crickdleNumberText} - The Daily Cricket Guessing Game: ${guess1Emoji} ${guess2Emoji} ${guess3Emoji} ${guess4Emoji}`;
 
     const shareUrl = 'https://crickdle.com';
     navigator.share({
@@ -530,8 +541,8 @@ shareButton.addEventListener('click', function () {
         text: shareText,
         url: shareUrl,
     })
-        .then(() => console.log('Shared successfully!'))
-        .catch((error) => console.error('Error sharing:', error));
+    .then(() => console.log('Shared successfully!'))
+    .catch((error) => console.error('Error sharing:', error));
 });
 
 			popup2CloseButton.addEventListener('click', function() {
