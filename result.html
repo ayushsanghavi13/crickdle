@@ -421,25 +421,21 @@ function isSamePeriod(lastTimestamp) {
   const now = getUKTime(new Date());
   const last = getUKTime(new Date(lastTimestamp));
 
-  const nowDate = now.toDateString();
-  const lastDate = last.toDateString();
+  const nowAdjusted = new Date(now);
+  const lastAdjusted = new Date(last);
 
-  if (nowDate === lastDate) {
-    // If both are before 9 AM or both are after 9 AM
-    if ((last.getHours() < 9 && now.getHours() < 9) || (last.getHours() >= 9 && now.getHours() >= 9)) {
-      return true;
-    }
+  if (now.getHours() < 9) {
+    nowAdjusted.setDate(now.getDate() - 1);
   }
 
-  if (last.getHours() < 9 && now.getHours() >= 9 && now - last < 24 * 60 * 60 * 1000) {
-    return false;
+  if (last.getHours() < 9) {
+    lastAdjusted.setDate(last.getDate() - 1);
   }
 
-  if (last.getHours() >= 9 && now.getHours() < 9 && now - last < 15 * 60 * 60 * 1000) {
-    return true;
-  }
+  const nowDate = nowAdjusted.toDateString();
+  const lastDate = lastAdjusted.toDateString();
 
-  return false;
+  return nowDate === lastDate;
 }
 		
 function hasMissedADay(lastTimestamp) {
