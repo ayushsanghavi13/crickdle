@@ -359,6 +359,29 @@
 			</div>
 
 	<script>
+	function clearPlayedToday() {
+  localStorage.removeItem('playedToday');
+}
+
+function schedulePlayedTodayClear() {
+  const now = new Date();
+  const ukTime = getUKTime(now);
+  const targetTime = new Date(ukTime);
+
+  targetTime.setHours(9, 0, 0, 0);
+  if (targetTime <= ukTime) {
+    targetTime.setDate(targetTime.getDate() + 1);
+  }
+
+  const remaining = targetTime.getTime() - ukTime.getTime();
+  setTimeout(() => {
+    clearPlayedToday();
+    schedulePlayedTodayClear(); // Reschedule for the next day
+  }, remaining);
+}
+
+schedulePlayedTodayClear(); // Initial call
+	
 function checkPlayedToday() {
   if (!localStorage.getItem('playedToday')) {
     window.location.href = 'index.html';
