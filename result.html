@@ -406,6 +406,10 @@ document.addEventListener('visibilitychange', () => {
     checkPlayedToday();
   }
 });
+		
+document.addEventListener('DOMContentLoaded', () => {
+  checkPlayedToday();
+});
 
 checkPlayedToday();
 	
@@ -496,18 +500,16 @@ let streak = parseInt(localStorage.getItem("streak"), 10);
   localStorage.setItem("streak", streak.toString());
 }
 		
-        if (isCorrect) {
-		result1MessageElement.textContent = "Bowled 'em!";
-		result2MessageElement.textContent = "You got today's Crickdle.";
+       if (isCorrect && !isSamePeriod(lastTimestamp)) {
+  result1MessageElement.textContent = "Bowled 'em!";
+  result2MessageElement.textContent = "You got today's Crickdle.";
 
-  if (!lastTimestamp || !isSamePeriod(lastTimestamp)) {
-    streak++;
-    localStorage.setItem("streak", streak.toString());
-    localStorage.setItem("lastTimestamp", new Date().toISOString());
-  }
-} else {
+  streak++;
+  localStorage.setItem("streak", streak.toString());
+  localStorage.setItem("lastTimestamp", new Date().toISOString());
+} else if (!isCorrect) {
   result1MessageElement.textContent = "Out for a duck!";
-	result2MessageElement.textContent = "You didn't get today's Crickdle. The correct answer is " + correctPlayer + ".";
+  result2MessageElement.textContent = "You didn't get today's Crickdle. The correct answer is " + correctPlayer + ".";
   streak = 0;
   localStorage.setItem("streak", streak.toString());
 }
