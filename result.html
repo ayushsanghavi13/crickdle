@@ -364,6 +364,27 @@
 		<p>Next Crickdle in <span id="countdown"></span></p>
 			</div>
 	<script>
+		function clearPlayedTodayIfNeeded() {
+  const now = new Date();
+  const ukTime = getUKTime(now);
+  const targetTime = new Date(ukTime);
+
+  targetTime.setHours(9, 0, 0, 0);
+
+  if (targetTime <= ukTime && localStorage.getItem('playedToday')) {
+    clearPlayedToday();
+    return true;
+  }
+
+  return false;
+}
+
+if (clearPlayedTodayIfNeeded()) {
+  window.location.href = 'index.html';
+}
+
+schedulePlayedTodayClear(); // Initial call
+		
 	function clearPlayedToday() {
   localStorage.removeItem('playedToday');
 }
