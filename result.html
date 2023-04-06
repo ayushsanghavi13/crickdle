@@ -1,622 +1,599 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-			<script data-goatcounter="https://crickdle.goatcounter.com/count"
-        async src="//gc.zgo.at/count.js"></script>
-	<title>Crickdle - Daily Cricket Guessing Game | Your Result</title>
-	<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-	<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-	<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-	<link rel="manifest" href="/site.webmanifest">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta charset="UTF-8">
-	<meta name="description" content="Crickdle - Daily Cricket Guessing Game | Your Result">
-	<meta name="keywords" content="Wordle, cricket, Crickdle, quiz, game, sport, bowler, batsman">
-	<meta name="author" content="Ayush Sanghavi">
-	<style>
-	   @font-face {
-		   font-family: InterTight;
-		   src: url(InterTight-VariableFont_wght.ttf);
-		}
-	
-		html {
-			box-sizing: border-box;
-			font-size: 16px;
-			}
-
-			*, *:before, *:after {
-				box-sizing: inherit;
-			}
-
-			@media only screen and (min-width: 768px) {
-				html {
-					font-size: 18px;
-				}
-			}
-		body {
-			background-color: white;
-			font-family: InterTight;
-			font-size: 1.1rem;
-		}
-		.container {
-			height: 100%;
-			text-align: center;
-			width: 90%;
-			max-width: 600px;
-			margin: 0 auto;
-		}
-		.dash {
-			display: inline-block;
-			width: 1.5rem;
-			font-weight: bold;
-			font-size: 1.5rem;
-			margin-bottom: 1rem;
-		}
-		.text-large {
-			font-size: 1.4rem;
-			font-weight: 500;
-			margin-bottom: 0;
-		}
-		.toolbar {
-			background-color: #f7f7f7;
-			height: 48px;
-			display: flex;
-			justify-content: center;
-			align-items: center;
-			padding: 0 16px;
-			margin-bottom: 30px
-			}
-
-			@font-face {
-				font-family: ClimateCrisis;
-				src: url(ClimateCrisis-Regular-VariableFont_YEAR.ttf);
-		}
-
-			.toolbar-title {
-				font-size: 35px;
-				color: #1dc278;
-				font-family: ClimateCrisis;
-				line-height: 48px;
-				display: flex;
-				align-items: center;
-				margin: 0;
-			}
-			
-			.toolbar-title h1 {
-				font-size: inherit;
-				color: inherit;
-				font-weight: inherit;
-				font-family: inherit;
-				line-height: inherit;
-				display: inherit;
-				align-items: inherit;
-				margin: inherit;
-			}
-
-			.toolbar-help {
-				background: none;
-				border: none;
-				cursor: pointer;
-				margin-left: 1.5rem;
-			}
-		
-			.toolbar-info {
-				background: none;
-				border: none;
-				cursor: pointer;
-				margin-right: 1.5rem;
-			}
-
-			.popup-background {
-				position: fixed;
-				top: 0;
-				left: 0;
-				right: 0;
-				bottom: 0;
-				background-color: white;
-				opacity: 1;
-				z-index: 9999;
-				display: none;
-				justify-content: center;
-				align-items: center;
-			}
-
-			.popup {
-				background-color: white;
-				width: 400px;
-				padding: 16px;
-				border-radius: 8px;
-				box-shadow: 0 0 6px rgba(0, 0, 0, 0.1);
-				position: relative;
-			}
-
-			.popup-header {
-				display: flex;
-				justify-content: space-between;
-				align-items: center;
-				margin-bottom: 8px;
-				font-family: InterTight, sans-serif;
-			}
-
-			.popup-header h2 {
-				margin: 0;
-				font-size: 20px;
-				color: #1dc278;
-				font-family: InterTight, sans-serif;
-			}
-
-			.popup-close {
-				  background: none;
-  border: none;
-  cursor: pointer;
-  margin: 0;
-  padding: 0;
-  position: absolute;
-  top: 8px;
-  right: 20px;
-	font-size: 1.75rem;
-	font-weight: 400;
-	color: #000000;
-			}
-
-			.popup-content {
-				margin: 0;
-				font-size: 18px;
-				line-height: 1.5;
-				font-family: InterTight, sans-serif;
-			}
-
-			.popup2-background {
-				position: fixed;
-				top: 0;
-				left: 0;
-				right: 0;
-				bottom: 0;
-				background-color: white;
-				opacity: 1;
-				z-index: 9999;
-				display: none;
-				justify-content: center;
-				align-items: center;
-			}
-
-			.popup2 {
-				background-color: white;
-				width: 400px;
-				padding: 16px;
-				border-radius: 8px;
-				box-shadow: 0 0 6px rgba(0, 0, 0, 0.1);
-				position: relative;
-			}
-
-			.popup2-header {
-				display: flex;
-				justify-content: space-between;
-				align-items: center;
-				margin-bottom: 8px;
-				font-family: InterTight, sans-serif;
-			}
-
-			.popup2-header h2 {
-				margin: 0;
-				font-size: 20px;
-				color: #1dc278;
-				font-family: InterTight, sans-serif;
-			}
-
-			.popup2-close {
-		  background: none;
-  border: none;
-  cursor: pointer;
-  margin: 0;
-  padding: 0;
-  position: absolute;
-  top: 8px;
-  right: 20px;
-	font-size: 1.75rem;
-	font-weight: 400;
-	color: #000000;
-			}
-
-			.popup2-content {
-				margin: 0;
-				font-size: 18px;
-				line-height: 1.5;
-				font-family: InterTight, sans-serif;
-			}
-		
-		.share-container {
-				margin-top: 20px;
-				text-align: center;
-				display: flex;
-				justify-content: center;
-				align-items: center;
-			}
-
-			.share-button {
-				color: #1dc278;
-				background-color: white;
-				border: none;
-				padding: 8px 16px;
-				border-radius: 4px;
-				cursor: pointer;
-				font-size: 16px;
-				font-family: InterTight, sans-serif;
-				margin-right: 20px;
-				height: 40px;
-				font-weight: 500;
-				text-decoration: none;
-				line-height: 1.5;
-			}
-
-			.share-button:hover {
-				opacity: 0.8;
-			}
-
-			.twitter-button {
-				color: #1dc278;
-				background-color: white;
-				border: none;
-				padding: 8px 16px;
-				border-radius: 4px;
-				cursor: pointer;
-				font-size: 16px;
-				font-family: InterTight, sans-serif;
-				text-decoration: none;
-				height: 40px;
-				font-weight: 500;
-				line-height: 1.5;
-			}
-
-			.twitter-button:hover {
-				opacity: 0.8;
-			}
-			
-		.toolbar-help img,
-		.toolbar-info img {
-			width: 20px;
-			height: 20px;
-		}
-		
-		img {
-			margin-bottom: 1rem;
-			margin-top: 1rem;
-			width: 10rem;
-		}
-						
-		.game-container {
-			margin: auto;
-			width: 90%;
-			background-color: #f5f5f5;
-			max-width: 600px;
-			border-radius: 0.5rem;
-			text-align: center;
-			padding-top: 0.1rem;
-			padding-bottom: 0.4rem;
-			margin-bottom: 1.5rem
-		}
-		
-		 .signup-link {
-      color: #1dc278;
-    }
-	</style>
-	</head>
-	<body>
-	<header>
-			<div class="toolbar">
-					<button class="toolbar-info" aria-label="About">
-						<img src="Info.png" alt="Information about Crickdle game">
-					</button>
-					<h1 class="toolbar-title">Crickdle</h1>
-					<button class="toolbar-help" aria-label="How to play">
-						<img src="Help.png" alt="How to play Crickdle game">
-					</button>
-			</div>
-			<div class="popup-background">
-				<div class="popup">
-					<div class="popup-header">
-						<h2><span style="font-weight: 500">HOW TO PLAY</span></h2>
-												<button class="popup-close" aria-label="Close">&times;</button>
-					</div>
-					<div class="popup-content">
-						<p>Based on their stats in this game, guess the cricketer who was 'Player of the Match' in 4 tries.<br><ul><li>Each guess should be the <span style="font-weight: 500">surname</span> of the player you're guessing.</li><li>The colour of the box will change to show how close your guess is.</li></ul>If you misspell the name, the box will turn <span style="color: #e4a404"><span style="font-weight: 500">orange</span></span>, and if you get it wrong, the box will turn <span style="color: #787c7f"><span style="font-weight: 500">grey</span></span>.
-					</div>
-				</div>
-			</div>
-			<div class="popup2-background">
-				<div class="popup2">
-					<div class="popup2-header">
-						<h2><span style="font-weight: 500">ABOUT</span></h2>
-												<button class="popup2-close" aria-label="Close">&times;</button>
-					</div>
-					<div class="popup2-content">
-						  <p>Crickdle is a love letter to Test cricket. A new question is released at 9 a.m. UK time each day.<br>
-  <ul>
-<li><span style="font-weight: 500" id="crickdleDate"></span></li>
-<li><span id="crickdleNumber"></span></li>
-  </ul>
-  <p>If you haven't already, you can <a href="reminder.html" target="_blank" class="signup-link">sign up</a> for our daily reminder email.<br>
-		<p>Please send any enquiries to <span style="font-weight: 500">hello [at] crickdle [dot] com</span></p>
-</div>
-				</div>
-			</div>
-		</header>
-		<div class="container">
-			  <div class="game-container">
-				  	  <p id="result1-message" class="text-large"></p>
-			<img src="bowled.png" alt="A ball ripping through a set of stumps">
-		<br>
-		<span class="dash" id="dash1">●</span>
-		<span class="dash" id="dash2">●</span>
-		<span class="dash" id="dash3">●</span>
-		<span class="dash" id="dash4">●</span>
-		</div>
-			<div class="other-stuff">
-			  <p id="result2-message" style="font-weight: 500"></p>
-			<p style="margin-bottom: 0;"><span style="font-weight: 500; font-size: 2rem;"><span id="streak"></span></span></p>
-				<p style="margin-top: 0;"><span style="font-weight: 500; font-size: 1rem;">STREAK</span></p>
-		<p>Come back tomorrow to guess another cricketer.</p>
-				</div>
-			       <div class="share-container">
-        <button class="share-button">SHARE</button>
-        <a href="https://www.buymeacoffee.com/crickdle" target="_blank" rel="noopener" class="twitter-button">DONATE</a>
+   <head>
+      <script data-goatcounter="https://crickdle.goatcounter.com/count"
+         async src="//gc.zgo.at/count.js"></script>
+      <title>Crickdle - Daily Cricket Guessing Game | Your Result</title>
+      <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+      <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+      <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+      <link rel="manifest" href="/site.webmanifest">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta charset="UTF-8">
+      <meta name="description" content="Crickdle - Daily Cricket Guessing Game | Your Result">
+      <meta name="keywords" content="Wordle, cricket, Crickdle, quiz, game, sport, bowler, batsman">
+      <meta name="author" content="Ayush Sanghavi">
+      <style>
+         @font-face {
+         font-family: InterTight;
+         src: url(InterTight-VariableFont_wght.ttf);
+         }
+         html {
+         box-sizing: border-box;
+         font-size: 16px;
+         }
+         *, *:before, *:after {
+         box-sizing: inherit;
+         }
+         @media only screen and (min-width: 768px) {
+         html {
+         font-size: 18px;
+         }
+         }
+         body {
+         background-color: white;
+         font-family: InterTight;
+         font-size: 1.1rem;
+         }
+         .container {
+         height: 100%;
+         text-align: center;
+         width: 90%;
+         max-width: 600px;
+         margin: 0 auto;
+         }
+         .dash {
+         display: inline-block;
+         width: 1.5rem;
+         font-weight: bold;
+         font-size: 1.5rem;
+         margin-bottom: 1rem;
+         }
+         .text-large {
+         font-size: 1.4rem;
+         font-weight: 500;
+         margin-bottom: 0;
+         }
+         .toolbar {
+         background-color: #f7f7f7;
+         height: 48px;
+         display: flex;
+         justify-content: center;
+         align-items: center;
+         padding: 0 16px;
+         margin-bottom: 30px
+         }
+         @font-face {
+         font-family: ClimateCrisis;
+         src: url(ClimateCrisis-Regular-VariableFont_YEAR.ttf);
+         }
+         .toolbar-title {
+         font-size: 35px;
+         color: #1dc278;
+         font-family: ClimateCrisis;
+         line-height: 48px;
+         display: flex;
+         align-items: center;
+         margin: 0;
+         }
+         .toolbar-title h1 {
+         font-size: inherit;
+         color: inherit;
+         font-weight: inherit;
+         font-family: inherit;
+         line-height: inherit;
+         display: inherit;
+         align-items: inherit;
+         margin: inherit;
+         }
+         .toolbar-help {
+         background: none;
+         border: none;
+         cursor: pointer;
+         margin-left: 1.5rem;
+         }
+         .toolbar-info {
+         background: none;
+         border: none;
+         cursor: pointer;
+         margin-right: 1.5rem;
+         }
+         .popup-background {
+         position: fixed;
+         top: 0;
+         left: 0;
+         right: 0;
+         bottom: 0;
+         background-color: white;
+         opacity: 1;
+         z-index: 9999;
+         display: none;
+         justify-content: center;
+         align-items: center;
+         }
+         .popup {
+         background-color: white;
+         width: 400px;
+         padding: 16px;
+         border-radius: 8px;
+         box-shadow: 0 0 6px rgba(0, 0, 0, 0.1);
+         position: relative;
+         }
+         .popup-header {
+         display: flex;
+         justify-content: space-between;
+         align-items: center;
+         margin-bottom: 8px;
+         font-family: InterTight, sans-serif;
+         }
+         .popup-header h2 {
+         margin: 0;
+         font-size: 20px;
+         color: #1dc278;
+         font-family: InterTight, sans-serif;
+         }
+         .popup-close {
+         background: none;
+         border: none;
+         cursor: pointer;
+         margin: 0;
+         padding: 0;
+         position: absolute;
+         top: 8px;
+         right: 20px;
+         font-size: 1.75rem;
+         font-weight: 400;
+         color: #000000;
+         }
+         .popup-content {
+         margin: 0;
+         font-size: 18px;
+         line-height: 1.5;
+         font-family: InterTight, sans-serif;
+         }
+         .popup2-background {
+         position: fixed;
+         top: 0;
+         left: 0;
+         right: 0;
+         bottom: 0;
+         background-color: white;
+         opacity: 1;
+         z-index: 9999;
+         display: none;
+         justify-content: center;
+         align-items: center;
+         }
+         .popup2 {
+         background-color: white;
+         width: 400px;
+         padding: 16px;
+         border-radius: 8px;
+         box-shadow: 0 0 6px rgba(0, 0, 0, 0.1);
+         position: relative;
+         }
+         .popup2-header {
+         display: flex;
+         justify-content: space-between;
+         align-items: center;
+         margin-bottom: 8px;
+         font-family: InterTight, sans-serif;
+         }
+         .popup2-header h2 {
+         margin: 0;
+         font-size: 20px;
+         color: #1dc278;
+         font-family: InterTight, sans-serif;
+         }
+         .popup2-close {
+         background: none;
+         border: none;
+         cursor: pointer;
+         margin: 0;
+         padding: 0;
+         position: absolute;
+         top: 8px;
+         right: 20px;
+         font-size: 1.75rem;
+         font-weight: 400;
+         color: #000000;
+         }
+         .popup2-content {
+         margin: 0;
+         font-size: 18px;
+         line-height: 1.5;
+         font-family: InterTight, sans-serif;
+         }
+         .share-container {
+         margin-top: 20px;
+         text-align: center;
+         display: flex;
+         justify-content: center;
+         align-items: center;
+         }
+         .share-button {
+         color: #1dc278;
+         background-color: white;
+         border: none;
+         padding: 8px 16px;
+         border-radius: 4px;
+         cursor: pointer;
+         font-size: 16px;
+         font-family: InterTight, sans-serif;
+         margin-right: 20px;
+         height: 40px;
+         font-weight: 500;
+         text-decoration: none;
+         line-height: 1.5;
+         }
+         .share-button:hover {
+         opacity: 0.8;
+         }
+         .twitter-button {
+         color: #1dc278;
+         background-color: white;
+         border: none;
+         padding: 8px 16px;
+         border-radius: 4px;
+         cursor: pointer;
+         font-size: 16px;
+         font-family: InterTight, sans-serif;
+         text-decoration: none;
+         height: 40px;
+         font-weight: 500;
+         line-height: 1.5;
+         }
+         .twitter-button:hover {
+         opacity: 0.8;
+         }
+         .toolbar-help img,
+         .toolbar-info img {
+         width: 20px;
+         height: 20px;
+         }
+         img {
+         margin-bottom: 1rem;
+         margin-top: 1rem;
+         width: 10rem;
+         }
+         .game-container {
+         margin: auto;
+         width: 90%;
+         background-color: #f5f5f5;
+         max-width: 600px;
+         border-radius: 0.5rem;
+         text-align: center;
+         padding-top: 0.1rem;
+         padding-bottom: 0.4rem;
+         margin-bottom: 1.5rem
+         }
+         .signup-link {
+         color: #1dc278;
+         }
+      </style>
+   </head>
+   <body>
+      <header>
+         <div class="toolbar">
+            <button class="toolbar-info" aria-label="About">
+            <img src="Info.png" alt="Information about Crickdle game">
+            </button>
+            <h1 class="toolbar-title">Crickdle</h1>
+            <button class="toolbar-help" aria-label="How to play">
+            <img src="Help.png" alt="How to play Crickdle game">
+            </button>
+         </div>
+         <div class="popup-background">
+            <div class="popup">
+               <div class="popup-header">
+                  <h2><span style="font-weight: 500">HOW TO PLAY</span></h2>
+                  <button class="popup-close" aria-label="Close">&times;</button>
+               </div>
+               <div class="popup-content">
+                  <p>Based on their stats in this game, guess the cricketer who was 'Player of the Match' in 4 tries.<br>
+                  <ul>
+                     <li>Each guess should be the <span style="font-weight: 500">surname</span> of the player you're guessing.</li>
+                     <li>The colour of the box will change to show how close your guess is.</li>
+                  </ul>
+                  If you misspell the name, the box will turn <span style="color: #e4a404"><span style="font-weight: 500">orange</span></span>, and if you get it wrong, the box will turn <span style="color: #787c7f"><span style="font-weight: 500">grey</span></span>.
+               </div>
+            </div>
+         </div>
+         <div class="popup2-background">
+            <div class="popup2">
+               <div class="popup2-header">
+                  <h2><span style="font-weight: 500">ABOUT</span></h2>
+                  <button class="popup2-close" aria-label="Close">&times;</button>
+               </div>
+               <div class="popup2-content">
+                  <p>Crickdle is a love letter to Test cricket. A new question is released at 9 a.m. UK time each day.<br>
+                  <ul>
+                     <li><span style="font-weight: 500" id="crickdleDate"></span></li>
+                     <li><span id="crickdleNumber"></span></li>
+                  </ul>
+                  <p>If you haven't already, you can <a href="reminder.html" target="_blank" class="signup-link">sign up</a> for our daily reminder email.<br>
+                  <p>Please send any enquiries to <span style="font-weight: 500">hello [at] crickdle [dot] com</span></p>
+               </div>
+            </div>
+         </div>
+      </header>
+      <div class="container">
+         <div class="game-container">
+            <p id="result1-message" class="text-large"></p>
+            <img src="bowled.png" alt="A ball ripping through a set of stumps">
+            <br>
+            <span class="dash" id="dash1">●</span>
+            <span class="dash" id="dash2">●</span>
+            <span class="dash" id="dash3">●</span>
+            <span class="dash" id="dash4">●</span>
+         </div>
+         <div class="other-stuff">
+            <p id="result2-message" style="font-weight: 500"></p>
+            <p style="margin-bottom: 0;"><span style="font-weight: 500; font-size: 2rem;"><span id="streak"></span></span></p>
+            <p style="margin-top: 0;"><span style="font-weight: 500; font-size: 1rem;">STREAK</span></p>
+            <p>Come back tomorrow to guess another cricketer.</p>
+         </div>
+         <div class="share-container">
+            <button class="share-button">SHARE</button>
+            <a href="https://www.buymeacoffee.com/crickdle" target="_blank" rel="noopener" class="twitter-button">DONATE</a>
+         </div>
+         <p>Next Crickdle in <span id="countdown"></span></p>
       </div>
-		<p>Next Crickdle in <span id="countdown"></span></p>
-			</div>
-	<script>
-function clearPlayedToday() {
-  localStorage.removeItem('playedToday');
-}
-
-function schedulePlayedTodayClear() {
-  const now = new Date();
-  const ukTime = getUKTime(now);
-  const targetTime = new Date(ukTime);
-
-  targetTime.setHours(9, 0, 0, 0);
-  if (targetTime <= ukTime) {
-    targetTime.setDate(targetTime.getDate() + 1);
-  }
-
-  const remaining = targetTime.getTime() - ukTime.getTime();
-  setTimeout(() => {
-    clearPlayedToday();
-    schedulePlayedTodayClear(); // Reschedule for the next day
-  }, remaining);
-}
-
-schedulePlayedTodayClear(); // Initial call
-
-function checkPlayedToday() {
-  if (!localStorage.getItem('playedToday')) {
-    const now = new Date();
-    const ukTime = getUKTime(now);
-    const targetTime = new Date(ukTime);
-    
-    targetTime.setHours(9, 0, 0, 0);
-    
-    // Redirect the user to index.html if it's past 9AM UK time
-    // and the playedToday flag is not set
-    if (ukTime >= targetTime) {
-      window.location.href = 'index.html';
-    }
-  }
-}
-
-function getUKTime(date) {
-  return new Date(date.toLocaleString('en-US', { timeZone: 'Europe/London' }));
-}
-
-window.addEventListener('storage', (event) => {
-  if (event.key === 'playedToday') {
-    if (!event.newValue) {
-      window.location.href = 'index.html';
-    }
-  }
-});
-
-document.addEventListener('visibilitychange', () => {
-  if (document.visibilityState === 'visible') {
-    checkPlayedToday();
-  }
-});
-
-document.addEventListener('DOMContentLoaded', () => {
-  checkPlayedToday();
-});
-
-checkPlayedToday();
-	
-		const crickdleDateElement = document.getElementById('crickdleDate');
-    const crickdleNumberElement = document.getElementById('crickdleNumber');
-    
-    // Retrieve date and Crickdle number from localStorage
-    const crickdleDate = localStorage.getItem('crickdleDate');
-    const crickdleNumber = localStorage.getItem('crickdleNumber');
-
-    // Update the elements with the retrieved values
-    crickdleDateElement.textContent = crickdleDate;
-    crickdleNumberElement.textContent = crickdleNumber;
-		
-		const correctPlayer = JSON.parse(localStorage.getItem("correctPlayer"));
-		
-		const urlParams = new URLSearchParams(window.location.search);
-		const isCorrect = urlParams.get("isCorrect") === "true";
-		const guess1Color = urlParams.get("guess1");
-		const guess2Color = urlParams.get("guess2");
-		const guess3Color = urlParams.get("guess3");
-		const guess4Color = urlParams.get("guess4");
-
-		document.getElementById("dash1").style.color = guess1Color;
-		document.getElementById("dash2").style.color = guess2Color;
-		document.getElementById("dash3").style.color = guess3Color;
-		document.getElementById("dash4").style.color = guess4Color;
-		
-		const result1MessageElement = document.getElementById("result1-message");
-		const result2MessageElement = document.getElementById("result2-message");
-		
-if (localStorage.getItem("streak") === null) {
-  localStorage.setItem("streak", "0");
-}
-		
-function getUKTime(date) {
-  return new Date(date.toLocaleString('en-US', { timeZone: 'Europe/London' }));
-}
-
-function isSamePeriod(lastTimestamp) {
-  const now = getUKTime(new Date());
-  const last = getUKTime(new Date(lastTimestamp));
-
-  const nowAdjusted = new Date(now);
-  const lastAdjusted = new Date(last);
-
-  if (now.getHours() < 9) {
-    nowAdjusted.setDate(now.getDate() - 1);
-  }
-
-  if (last.getHours() < 9) {
-    lastAdjusted.setDate(last.getDate() - 1);
-  }
-
-  const nowDate = nowAdjusted.toDateString();
-  const lastDate = lastAdjusted.toDateString();
-
-  return nowDate === lastDate;
-}
-		
-function hasMissedADay(lastTimestamp) {
-  const now = getUKTime(new Date());
-  const last = getUKTime(new Date(lastTimestamp));
-
-  const timeDifference = now - last;
-
-  if (timeDifference >= 2 * 24 * 60 * 60 * 1000) {
-    return true;
-  }
-
-  if (
-    last.getHours() >= 9 &&
-    now.getHours() < 9 &&
-    timeDifference >= (24 + 15) * 60 * 60 * 1000
-  ) {
-    return true;
-  }
-
-  return false;
-}
-
-const lastTimestamp = localStorage.getItem("lastTimestamp");
-
-let streak = parseInt(localStorage.getItem("streak"), 10);
-		
-		if (lastTimestamp && hasMissedADay(lastTimestamp)) {
-  streak = 0;
-  localStorage.setItem("streak", streak.toString());
-}
-		
-       if (isCorrect) {
-			result1MessageElement.textContent = "Bowled 'em!";
-			result2MessageElement.textContent = "You got today's Crickdle.";
-	
-
-	  if (!lastTimestamp || !isSamePeriod(lastTimestamp)) {
-	    streak++;
-	    localStorage.setItem("streak", streak.toString());
-	    localStorage.setItem("lastTimestamp", new Date().toISOString());
-	  }
-	} else {
-	  result1MessageElement.textContent = "Out for a duck!";
-		result2MessageElement.textContent = "You didn't get today's Crickdle. The correct answer is " + correctPlayer + ".";
-	  streak = 0;
-	  localStorage.setItem("streak", streak.toString());
-	}
-		
-const streakElement = document.getElementById("streak");
-streakElement.textContent = `${streak}`;
-
-const now = new Date();
-const ukTime = getUKTime(now);
-const targetTime = new Date(ukTime);
-
-targetTime.setHours(9, 0, 0, 0);
-if (targetTime <= ukTime) {
-  targetTime.setDate(targetTime.getDate() + 1);
-}
-
-const countdownElem = document.getElementById('countdown');
-const intervalId = setInterval(() => {
-  const remaining = targetTime.getTime() - getUKTime(new Date()).getTime();
-  if (remaining <= 0) {
-    clearInterval(intervalId);
-    window.location.href = 'index.html';
-  } else {
-    const hours = Math.floor(remaining / (1000 * 60 * 60));
-    const minutes = Math.floor((remaining / (1000 * 60)) % 60);
-    const seconds = Math.floor((remaining / 1000) % 60);
-    countdownElem.textContent = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
-  }
-}, 1000);
-		
-		const helpButton = document.querySelector('.toolbar-help');
-			const popupBackground = document.querySelector('.popup-background');
-			const popupCloseButton = document.querySelector('.popup-close');
-
-			helpButton.addEventListener('click', function() {
-				popupBackground.style.display = 'flex';
-			});
-
-			popupCloseButton.addEventListener('click', function() {
-				popupBackground.style.display = 'none';
-			});
-			
-			const infoButton = document.querySelector('.toolbar-info');
-			const popup2Background = document.querySelector('.popup2-background');
-			const popup2CloseButton = document.querySelector('.popup2-close');
-
-			infoButton.addEventListener('click', function() {
-				popup2Background.style.display = 'flex';
-			});
-			
-			const shareButton = document.querySelector('.share-button');
-
-shareButton.addEventListener('click', function() {
-    const crickdleNumberText = crickdleNumberElement.textContent;
-    const shareTitle = `${crickdleNumberText}`;
-    
-    // Function to map color to corresponding circle emoji
-    const getColorEmoji = (color) => {
-        switch (color) {
-            case 'rgb(29, 194, 120)': // Green
-                return '🟢';
-            case 'rgb(228, 164, 4)': // Orange
-                return '🟠';
-            case 'rgb(120, 124, 127)': // Grey
-                return '⚪';
-            default:
-                return '⚫';
-        }
-    };
-
-    const guess1Emoji = getColorEmoji(guess1Color);
-    const guess2Emoji = getColorEmoji(guess2Color);
-    const guess3Emoji = getColorEmoji(guess3Color);
-    const guess4Emoji = getColorEmoji(guess4Color);
-
-    const shareText = `${crickdleNumberText} - The Daily Cricket Guessing Game: ${guess1Emoji}${guess2Emoji}${guess3Emoji}${guess4Emoji}`;
-
-    const shareUrl = 'https://crickdle.com';
-    navigator.share({
-        title: shareTitle,
-        text: shareText,
-        url: shareUrl,
-    })
-    .then(() => console.log('Shared successfully!'))
-    .catch((error) => console.error('Error sharing:', error));
-});
-
-			popup2CloseButton.addEventListener('click', function() {
-				popup2Background.style.display = 'none';
-			});
-	</script>
-</body>
+      <script>
+         function clearPlayedToday() {
+           localStorage.removeItem('playedToday');
+         }
+         
+         function schedulePlayedTodayClear() {
+           const now = new Date();
+           const ukTime = getUKTime(now);
+           const targetTime = new Date(ukTime);
+         
+           targetTime.setHours(9, 0, 0, 0);
+           if (targetTime <= ukTime) {
+             targetTime.setDate(targetTime.getDate() + 1);
+           }
+         
+           const remaining = targetTime.getTime() - ukTime.getTime();
+           setTimeout(() => {
+             clearPlayedToday();
+             schedulePlayedTodayClear(); // Reschedule for the next day
+           }, remaining);
+         }
+         
+         schedulePlayedTodayClear(); // Initial call
+         
+         function checkPlayedToday() {
+           if (!localStorage.getItem('playedToday')) {
+             const now = new Date();
+             const ukTime = getUKTime(now);
+             const targetTime = new Date(ukTime);
+             
+             targetTime.setHours(9, 0, 0, 0);
+             
+             // Redirect the user to index.html if it's past 9AM UK time
+             // and the playedToday flag is not set
+             if (ukTime >= targetTime) {
+               window.location.href = 'index.html';
+             }
+           }
+         }
+         
+         function getUKTime(date) {
+           return new Date(date.toLocaleString('en-US', { timeZone: 'Europe/London' }));
+         }
+         
+         window.addEventListener('storage', (event) => {
+           if (event.key === 'playedToday') {
+             if (!event.newValue) {
+               window.location.href = 'index.html';
+             }
+           }
+         });
+         
+         document.addEventListener('visibilitychange', () => {
+           if (document.visibilityState === 'visible') {
+             checkPlayedToday();
+           }
+         });
+         
+         document.addEventListener('DOMContentLoaded', () => {
+           checkPlayedToday();
+         });
+         
+         checkPlayedToday();
+         	
+         		const crickdleDateElement = document.getElementById('crickdleDate');
+             const crickdleNumberElement = document.getElementById('crickdleNumber');
+             
+             // Retrieve date and Crickdle number from localStorage
+             const crickdleDate = localStorage.getItem('crickdleDate');
+             const crickdleNumber = localStorage.getItem('crickdleNumber');
+         
+             // Update the elements with the retrieved values
+             crickdleDateElement.textContent = crickdleDate;
+             crickdleNumberElement.textContent = crickdleNumber;
+         		
+         		const correctPlayer = JSON.parse(localStorage.getItem("correctPlayer"));
+         		
+         		const urlParams = new URLSearchParams(window.location.search);
+         		const isCorrect = urlParams.get("isCorrect") === "true";
+         		const guess1Color = urlParams.get("guess1");
+         		const guess2Color = urlParams.get("guess2");
+         		const guess3Color = urlParams.get("guess3");
+         		const guess4Color = urlParams.get("guess4");
+         
+         		document.getElementById("dash1").style.color = guess1Color;
+         		document.getElementById("dash2").style.color = guess2Color;
+         		document.getElementById("dash3").style.color = guess3Color;
+         		document.getElementById("dash4").style.color = guess4Color;
+         		
+         		const result1MessageElement = document.getElementById("result1-message");
+         		const result2MessageElement = document.getElementById("result2-message");
+         		
+         if (localStorage.getItem("streak") === null) {
+           localStorage.setItem("streak", "0");
+         }
+         		
+         function getUKTime(date) {
+           return new Date(date.toLocaleString('en-US', { timeZone: 'Europe/London' }));
+         }
+         
+         function isSamePeriod(lastTimestamp) {
+           const now = getUKTime(new Date());
+           const last = getUKTime(new Date(lastTimestamp));
+         
+           const nowAdjusted = new Date(now);
+           const lastAdjusted = new Date(last);
+         
+           if (now.getHours() < 9) {
+             nowAdjusted.setDate(now.getDate() - 1);
+           }
+         
+           if (last.getHours() < 9) {
+             lastAdjusted.setDate(last.getDate() - 1);
+           }
+         
+           const nowDate = nowAdjusted.toDateString();
+           const lastDate = lastAdjusted.toDateString();
+         
+           return nowDate === lastDate;
+         }
+         		
+         function hasMissedADay(lastTimestamp) {
+           const now = getUKTime(new Date());
+           const last = getUKTime(new Date(lastTimestamp));
+         
+           const timeDifference = now - last;
+         
+           if (timeDifference >= 2 * 24 * 60 * 60 * 1000) {
+             return true;
+           }
+         
+           if (
+             last.getHours() >= 9 &&
+             now.getHours() < 9 &&
+             timeDifference >= (24 + 15) * 60 * 60 * 1000
+           ) {
+             return true;
+           }
+         
+           return false;
+         }
+         
+         const lastTimestamp = localStorage.getItem("lastTimestamp");
+         
+         let streak = parseInt(localStorage.getItem("streak"), 10);
+         		
+         		if (lastTimestamp && hasMissedADay(lastTimestamp)) {
+           streak = 0;
+           localStorage.setItem("streak", streak.toString());
+         }
+         		
+                if (isCorrect) {
+         			result1MessageElement.textContent = "Bowled 'em!";
+         			result2MessageElement.textContent = "You got today's Crickdle.";
+         	
+         
+         	  if (!lastTimestamp || !isSamePeriod(lastTimestamp)) {
+         	    streak++;
+         	    localStorage.setItem("streak", streak.toString());
+         	    localStorage.setItem("lastTimestamp", new Date().toISOString());
+         	  }
+         	} else {
+         	  result1MessageElement.textContent = "Out for a duck!";
+         		result2MessageElement.textContent = "You didn't get today's Crickdle. The correct answer is " + correctPlayer + ".";
+         	  streak = 0;
+         	  localStorage.setItem("streak", streak.toString());
+         	}
+         		
+         const streakElement = document.getElementById("streak");
+         streakElement.textContent = `${streak}`;
+         
+         const now = new Date();
+         const ukTime = getUKTime(now);
+         const targetTime = new Date(ukTime);
+         
+         targetTime.setHours(9, 0, 0, 0);
+         if (targetTime <= ukTime) {
+           targetTime.setDate(targetTime.getDate() + 1);
+         }
+         
+         const countdownElem = document.getElementById('countdown');
+         const intervalId = setInterval(() => {
+           const remaining = targetTime.getTime() - getUKTime(new Date()).getTime();
+           if (remaining <= 0) {
+             clearInterval(intervalId);
+             window.location.href = 'index.html';
+           } else {
+             const hours = Math.floor(remaining / (1000 * 60 * 60));
+             const minutes = Math.floor((remaining / (1000 * 60)) % 60);
+             const seconds = Math.floor((remaining / 1000) % 60);
+             countdownElem.textContent = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+           }
+         }, 1000);
+         		
+         		const helpButton = document.querySelector('.toolbar-help');
+         			const popupBackground = document.querySelector('.popup-background');
+         			const popupCloseButton = document.querySelector('.popup-close');
+         
+         			helpButton.addEventListener('click', function() {
+         				popupBackground.style.display = 'flex';
+         			});
+         
+         			popupCloseButton.addEventListener('click', function() {
+         				popupBackground.style.display = 'none';
+         			});
+         			
+         			const infoButton = document.querySelector('.toolbar-info');
+         			const popup2Background = document.querySelector('.popup2-background');
+         			const popup2CloseButton = document.querySelector('.popup2-close');
+         
+         			infoButton.addEventListener('click', function() {
+         				popup2Background.style.display = 'flex';
+         			});
+         			
+         			const shareButton = document.querySelector('.share-button');
+         
+         shareButton.addEventListener('click', function() {
+             const crickdleNumberText = crickdleNumberElement.textContent;
+             const shareTitle = `${crickdleNumberText}`;
+             
+             // Function to map color to corresponding circle emoji
+             const getColorEmoji = (color) => {
+                 switch (color) {
+                     case 'rgb(29, 194, 120)': // Green
+                         return '🟢';
+                     case 'rgb(228, 164, 4)': // Orange
+                         return '🟠';
+                     case 'rgb(120, 124, 127)': // Grey
+                         return '⚪';
+                     default:
+                         return '⚫';
+                 }
+             };
+         
+             const guess1Emoji = getColorEmoji(guess1Color);
+             const guess2Emoji = getColorEmoji(guess2Color);
+             const guess3Emoji = getColorEmoji(guess3Color);
+             const guess4Emoji = getColorEmoji(guess4Color);
+         
+             const shareText = `${crickdleNumberText} - The Daily Cricket Guessing Game: ${guess1Emoji}${guess2Emoji}${guess3Emoji}${guess4Emoji}`;
+         
+             const shareUrl = 'https://crickdle.com';
+             navigator.share({
+                 title: shareTitle,
+                 text: shareText,
+                 url: shareUrl,
+             })
+             .then(() => console.log('Shared successfully!'))
+             .catch((error) => console.error('Error sharing:', error));
+         });
+         
+         			popup2CloseButton.addEventListener('click', function() {
+         				popup2Background.style.display = 'none';
+         			});
+         	
+      </script>
+   </body>
 </html>
