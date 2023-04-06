@@ -1,882 +1,841 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<script data-goatcounter="https://crickdle.goatcounter.com/count"
-        async src="//gc.zgo.at/count.js"></script>
-		<link rel="canonical" href="https://crickdle.com/">
-		<script type="application/ld+json">
-		{
-		"@context": "http://schema.org",
-		"@type": "Game",
-		"name": "Crickdle - Daily Cricket Guessing Game!",
-		"url": "https://crickdle.com",
-		"description": "Crickdle is a daily cricket guessing game. Test your cricket knowledge and guess the cricketer based on their stats.",
-		"dateCreated": "2023-02-19",
-		"numberOfPlayers": "1",
-		"gamePlatform": "Web",
-		"genre": "Sports"
-		}
-		</script>
-		<title>Crickdle - Daily Cricket Guessing Game | Test Your Cricket Knowledge!</title>
-		<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-		<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-		<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-		<link rel="manifest" href="/site.webmanifest">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<meta charset="UTF-8">
-		<meta name="description" content="Crickdle is a daily cricket guessing game. Test your cricket knowledge and guess the cricketer based on their stats.">
-		<meta name="keywords" content="Wordle, cricket, Crickdle, test, challenge, quiz, game, sport, bowler, batsman, bowled, duck">
-		<meta name="author" content="Ayush Sanghavi">
-		<meta name="language" content="en">
-		<meta property="og:title" content="Crickdle">
-		<meta property="og:description" content="The Daily Cricket Guessing Game">
-		<meta property="og:image" content="https://crickdle.com/Graphic.jpg">
-		<meta property="og:url" content="https://crickdle.com/">
-		<meta property="og:type" content="website">
-		<meta name="twitter:card" content="summary" />
-		<meta name="twitter:title" content="Crickdle" />
-		<meta name="twitter:description" content="The Daily Cricket Guessing Game" />
-		<meta name="twitter:image" content="https://crickdle.com/Graphic.jpg" />
-		<style>
-			@font-face {
-				font-family: InterTight;
-				src: url(InterTight-VariableFont_wght.ttf);
-			}
-    
-			html {
-				box-sizing: border-box;
-				font-size: 16px;
-			}
-
-			*, *:before, *:after {
-				box-sizing: inherit;
-			}
-
-			@media only screen and (min-width: 768px) {
-				html {
-					font-size: 18px;
-				}
-			}
-
-			body {
-				font-family: InterTight, sans-serif;
-				font-weight: 400;
-				font-size: 1rem;
-				line-height: 1.5;
-				color: #333;
-			}
-
-			h1, h2, h3, h4, h5, h6 {
-				font-family: InterTight, sans-serif;
-				font-weight: 700;
-				line-height: 1.2;
-				margin-top: 0;
-			}
-
-			p {
-				margin: 0.5rem 0;
-			}
-
-			#game-container {
-				margin: 0 auto;
-				padding: 1.5rem;
-				border-radius: 0.5rem;
-				width: 90%;
-				max-width: 600px;
-			}
-
-			#match-details {
-				text-align: center;
-				font-family: InterTight, sans-serif;
-				width: 90%;
-				max-width: 600px;
-				border-radius: 0.5rem;
-				margin: auto;
-				background-color: #f7f7f7;
-				margin-bottom: 1.5rem;
-				padding: 10px;
-			}
-		
-			#match-details p {
-				margin: 0.2rem 0;
-				font-size: 1.1rem;
-				font-weight: 500;
-				font-family: InterTight, sans-serif;
-				color: #333;
-			}
-
-			#guess-section {
-				text-align: center;
-				margin-bottom: 1rem;
-				width: 90%;
-				max-width: 600px;
-				margin: auto;
-			}
-
-			#guess-section h2 {
-				margin-bottom: 0.5rem;
-				font-size: 1.1rem;
-				font-family: InterTight, sans-serif;
-			}
-
-			.guess-input {
-				margin: 1rem 0;
-				display: flex;
-				align-items: center;
-				justify-content: center;
-			}
-
-			.guess-input label {
-				margin-right: 0.5rem;
-				font-size: 1.2rem;
-				font-family: InterTight, sans-serif;
-			}
-
-			.guess-input input {
-				margin-right: 0.5rem;
-				padding: 0.5rem;
-				font-size: 1.4rem;
-				text-align: center;
-				border: 2px solid #ccc;
-				border-radius: 8px;
-				width: 70%;
-				max-width: 250px;
-				height: 50px;
-				transition: all 0.2s ease-in-out;
-				text-transform: uppercase;
-				font-family: InterTight, sans-serif;
-			}
-
-			.guess-input input:focus {
-				outline: none;
-				border-color: #1dc278;
-				box-shadow: 0 0 4px rgba(29, 194, 120, 0.5);
-			}
-
-			.guess-input button {
-				padding: 0.5rem 1rem;
-				font-size: 1.3rem;
-				font-weight: 500;
-				border: none;
-				border-radius: 8px;
-				background-color: #1dc278;
-				color: #fff;
-				cursor: pointer;
-				transition: all 0.2s ease-in-out;
-				width: 30%;
-				max-width: 100px;
-				height: 50px;
-				font-family: InterTight, sans-serif;
-			}
-
-			.guess-input button:disabled {
-				background-color: #ccc;
-				color: #333;
-				cursor: default;
-			}
-		  
-			.toolbar {
-				background-color: #f7f7f7;
-				height: 48px;
-				display: flex;
-				justify-content: center;
-				align-items: center;
-				padding: 0 16px;
-				margin-bottom: 30px
-			}
-			
-			@font-face {
-				font-family: ClimateCrisis;
-				src: url(ClimateCrisis-Regular-VariableFont_YEAR.ttf);
-			}
-
-			.toolbar-title {
-				font-size: 35px;
-				color: #1dc278;
-				font-family: ClimateCrisis;
-				line-height: 48px;
-				display: flex;
-				align-items: center;
-				margin: 0;
-			}
-			
-			.toolbar-title h1 {
-				font-size: inherit;
-				color: inherit;
-				font-weight: inherit;
-				font-family: inherit;
-				line-height: inherit;
-				display: inherit;
-				align-items: inherit;
-				margin: inherit;
-			}
-
-			.toolbar-help {
-				background: none;
-				border: none;
-				cursor: pointer;
-				margin-left: 1.5rem;
-			}
-			
-			.toolbar-info {
-				background: none;
-				border: none;
-				cursor: pointer;
-				margin-right: 1.5rem;
-			}
-
-.popup-background {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: white;
-  opacity: 1;
-  z-index: 9999;
-  display: none;
-  justify-content: center;
-  align-items: center;
-}
-
-.popup {
-  background-color: white;
-  width: 400px;
-  padding: 16px;
-  border-radius: 8px;
-  box-shadow: 0 0 6px rgba(0, 0, 0, 0.1);
-  position: relative;
-}
-
-.popup-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 8px;
-  font-family: InterTight, sans-serif;
-}
-
-.popup-header h2 {
-  margin: 0;
-  font-size: 20px;
-  color: #1dc278;
-  font-family: InterTight, sans-serif;
-}
-			
-.popup-close {
-  background: none;
-  border: none;
-  cursor: pointer;
-  margin: 0;
-  padding: 0;
-  position: absolute;
-  top: 8px;
-  right: 20px;
-	font-size: 1.75rem;
-	font-weight: 400;
-	color: #000000;
-			}
-
-			.popup-content {
-				margin: 0;
-				font-size: 18px;
-				line-height: 1.5;
-				font-family: InterTight, sans-serif;
-			}
-			
-			.popup2-background {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: white;
-  opacity: 1;
-  z-index: 9999;
-  display: none;
-  justify-content: center;
-  align-items: center;
-}
-
-.popup2 {
-  background-color: white;
-  width: 400px;
-  padding: 16px;
-  border-radius: 8px;
-  box-shadow: 0 0 6px rgba(0, 0, 0, 0.1);
-  position: relative;
-}
-
-.popup2-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 8px;
-  font-family: InterTight, sans-serif;
-}
-
-.popup2-header h2 {
-  margin: 0;
-  font-size: 20px;
-  color: #1dc278;
-  font-family: InterTight, sans-serif;
-}
-
-.popup2-close {
-  background: none;
-  border: none;
-  cursor: pointer;
-  margin: 0;
-  padding: 0;
-  position: absolute;
-  top: 8px;
-    right: 20px;
-	font-size: 1.75rem;
-	font-weight: 400;
-	color: #000000;
-			}
-
-			.popup2-content {
-				margin: 0;
-				font-size: 18px;
-				line-height: 1.5;
-				font-family: InterTight, sans-serif;
-			}
-			
-			.share-container {
-				margin-top: 20px;
-				text-align: center;
-				display: flex;
-				justify-content: center;
-				align-items: center;
-			}
-
-			.share-button {
-				color: #1dc278;
-				background-color: white;
-				border: none;
-				padding: 8px 16px;
-				border-radius: 4px;
-				cursor: pointer;
-				font-size: 16px;
-				font-family: InterTight, sans-serif;
-				margin-right: 20px;
-				height: 40px;
-				font-weight: 500;
-				text-decoration: none;
-				 line-height: 1.5;
-			}
-
-			.share-button:hover {
-				opacity: 0.8;
-			}
-
-			.twitter-button {
-				color: #1dc278;
-				background-color: white;
-				border: none;
-				padding: 8px 16px;
-				border-radius: 4px;
-				cursor: pointer;
-				font-size: 16px;
-				font-family: InterTight, sans-serif;
-				text-decoration: none;
-				height: 40px;
-				font-weight: 500;
-				 line-height: 1.5;
-			}
-
-			.twitter-button:hover {
-				opacity: 0.8;
-			}
-			
-			.toolbar-help img,
-			.toolbar-info img {
-				width: 20px;
-				height: 20px;
-			}
-			
-				#guess-section h2 {
-		margin-bottom: 0.5rem;
-		font-size: 1.2rem;
-		font-family: InterTight, sans-serif;
-		font-weight: 500;
-		color: #000;
-	}
-			
-.speech-bubble {
-    position: relative;
-    display: inline-block;
-    padding-top: 18px;
-    padding-bottom: 10px;
-    padding-left: 20px;
-    padding-right: 20px;
-    background-color: #ffffff;
-    margin-bottom: 5px;
-    font-size: 1.1em;
-    width: 100;
-    max-width: 660px;
-    border: 2px solid #1dc278;
-    border-radius: 10px;
-}
-
-.speech-bubble::before {
-    content: "";
-    position: absolute;
-    left: 20px;
-    bottom: -22px;
-    width: 0;
-    height: 0;
-    border-left: 12px solid transparent;
-    border-right: 12px solid transparent;
-    border-top: 22px solid #1dc278;
-}
-
-.speech-bubble::after {
-    content: "";
-    position: absolute;
-    left: 22px;
-    bottom: -18px;
-    width: 0;
-    height: 0;
-    border-left: 10px solid transparent;
-    border-right: 10px solid transparent;
-    border-top: 20px solid #ffffff;
-    z-index: 1;
-}
-
- .signup-link {
-      color: #1dc278;
-    }
-		</style>
-	</head>
-	<body>
-		<header>
-			<div class="toolbar">
-					<button class="toolbar-info" aria-label="About">
-						<img src="Info.png" alt="Information about Crickdle game">
-					</button>
-					<h1 class="toolbar-title">Crickdle</h1>
-					<button class="toolbar-help" aria-label="How to play">
-						<img src="Help.png" alt="How to play Crickdle game">
-					</button>
-			</div>
-			<div class="popup-background">
-				<div class="popup">
-					<div class="popup-header">
-						<h2><span style="font-weight: 500">HOW TO PLAY</span></h2>
-												<button class="popup-close" aria-label="Close">&times;</button>
-					</div>
-					<div class="popup-content">
-						<p>Based on their stats in this game, guess the cricketer who was 'Player of the Match' in 4 tries.<br><ul><li>Each guess should be the <span style="font-weight: 500">surname</span> of the player you're guessing.</li><li>The colour of the box will change to show how close your guess is.</li></ul>If you misspell the name, the box will turn <span style="color: #e4a404"><span style="font-weight: 500">orange</span></span>, and if you get it wrong, the box will turn <span style="color: #787c7f"><span style="font-weight: 500">grey</span></span>.
-					</div>
-				</div>
-			</div>
-			<div class="popup2-background">
-				<div class="popup2">
-					<div class="popup2-header">
-						<h2><span style="font-weight: 500">ABOUT</span></h2>
-												<button class="popup2-close" aria-label="Close">&times;</button>
-					</div>
-					<div class="popup2-content">
-  <p>Crickdle is a love letter to Test cricket. A new question is released at 9 a.m. UK time each day.<br>
-  <ul>
-    <li id="date-element" style="font-weight: 500;"></li>
-    <li id="crickdle-number"></li>
-  </ul>
-  <p>If you haven't already, you can <a href="reminder.html" target="_blank" class="signup-link">sign up</a> for our daily reminder email.<br>
-		<p>Please send any enquiries to <span style="font-weight: 500">hello [at] crickdle [dot] com</span></p>
-</div>
-				</div>
-			</div>
-		</header>
-		<div id="match-details">
-			<p><span id="nation1"></span> vs <span id="nation2"></span></p>
-			<p><span id="date"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="venue"></span></p>
-			<p><span id="venue"></span></p>
-			<p><span id="score"></span></p>
-		</div>
-		<div id="guess-section">
-			<div class="game-container">
-       <div class="speech-bubble">
-        <h2>Which <span id="crickdlequestion"></span></h2>
-    </div>
-			<div class="guess-input">
-				<input type="text" id="guess1">
-				<button id="submit1"><span style="font-weight: 500">&rArr;</span></button>
-			</div>
-			<div class="guess-input">
-				<input type="text" id="guess2" disabled>
-				<button id="submit2" disabled><span style="font-weight: 500">&rArr;</span></button>
-			</div>
-			<div class="guess-input">
-				<input type="text" id="guess3" disabled>
-				<button id="submit3" disabled><span style="font-weight: 500">&rArr;</span></button>
-			</div>
-			<div class="guess-input">
-				<input type="text" id="guess4" disabled>
-				<button id="submit4" disabled><span style="font-weight: 500">&rArr;</span></button>
-			</div>
+   <head>
+      <script data-goatcounter="https://crickdle.goatcounter.com/count"
+         async src="//gc.zgo.at/count.js"></script>
+      <link rel="canonical" href="https://crickdle.com/">
+      <script type="application/ld+json">
+         {
+         "@context": "http://schema.org",
+         "@type": "Game",
+         "name": "Crickdle - Daily Cricket Guessing Game!",
+         "url": "https://crickdle.com",
+         "description": "Crickdle is a daily cricket guessing game. Test your cricket knowledge and guess the cricketer based on their stats.",
+         "dateCreated": "2023-02-19",
+         "numberOfPlayers": "1",
+         "gamePlatform": "Web",
+         "genre": "Sports"
+         }
+      </script>
+      <title>Crickdle - Daily Cricket Guessing Game | Test Your Cricket Knowledge!</title>
+      <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+      <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+      <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+      <link rel="manifest" href="/site.webmanifest">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta charset="UTF-8">
+      <meta name="description" content="Crickdle is a daily cricket guessing game. Test your cricket knowledge and guess the cricketer based on their stats.">
+      <meta name="keywords" content="Wordle, cricket, Crickdle, test, challenge, quiz, game, sport, bowler, batsman, bowled, duck">
+      <meta name="author" content="Ayush Sanghavi">
+      <meta name="language" content="en">
+      <meta property="og:title" content="Crickdle">
+      <meta property="og:description" content="The Daily Cricket Guessing Game">
+      <meta property="og:image" content="https://crickdle.com/Graphic.jpg">
+      <meta property="og:url" content="https://crickdle.com/">
+      <meta property="og:type" content="website">
+      <meta name="twitter:card" content="summary" />
+      <meta name="twitter:title" content="Crickdle" />
+      <meta name="twitter:description" content="The Daily Cricket Guessing Game" />
+      <meta name="twitter:image" content="https://crickdle.com/Graphic.jpg" />
+      <style>
+         @font-face {
+         font-family: InterTight;
+         src: url(InterTight-VariableFont_wght.ttf);
+         }
+         html {
+         box-sizing: border-box;
+         font-size: 16px;
+         }
+         *, *:before, *:after {
+         box-sizing: inherit;
+         }
+         @media only screen and (min-width: 768px) {
+         html {
+         font-size: 18px;
+         }
+         }
+         body {
+         font-family: InterTight, sans-serif;
+         font-weight: 400;
+         font-size: 1rem;
+         line-height: 1.5;
+         color: #333;
+         }
+         h1, h2, h3, h4, h5, h6 {
+         font-family: InterTight, sans-serif;
+         font-weight: 700;
+         line-height: 1.2;
+         margin-top: 0;
+         }
+         p {
+         margin: 0.5rem 0;
+         }
+         #game-container {
+         margin: 0 auto;
+         padding: 1.5rem;
+         border-radius: 0.5rem;
+         width: 90%;
+         max-width: 600px;
+         }
+         #match-details {
+         text-align: center;
+         font-family: InterTight, sans-serif;
+         width: 90%;
+         max-width: 600px;
+         border-radius: 0.5rem;
+         margin: auto;
+         background-color: #f7f7f7;
+         margin-bottom: 1.5rem;
+         padding: 10px;
+         }
+         #match-details p {
+         margin: 0.2rem 0;
+         font-size: 1.1rem;
+         font-weight: 500;
+         font-family: InterTight, sans-serif;
+         color: #333;
+         }
+         #guess-section {
+         text-align: center;
+         margin-bottom: 1rem;
+         width: 90%;
+         max-width: 600px;
+         margin: auto;
+         }
+         #guess-section h2 {
+         margin-bottom: 0.5rem;
+         font-size: 1.1rem;
+         font-family: InterTight, sans-serif;
+         }
+         .guess-input {
+         margin: 1rem 0;
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         }
+         .guess-input label {
+         margin-right: 0.5rem;
+         font-size: 1.2rem;
+         font-family: InterTight, sans-serif;
+         }
+         .guess-input input {
+         margin-right: 0.5rem;
+         padding: 0.5rem;
+         font-size: 1.4rem;
+         text-align: center;
+         border: 2px solid #ccc;
+         border-radius: 8px;
+         width: 70%;
+         max-width: 250px;
+         height: 50px;
+         transition: all 0.2s ease-in-out;
+         text-transform: uppercase;
+         font-family: InterTight, sans-serif;
+         }
+         .guess-input input:focus {
+         outline: none;
+         border-color: #1dc278;
+         box-shadow: 0 0 4px rgba(29, 194, 120, 0.5);
+         }
+         .guess-input button {
+         padding: 0.5rem 1rem;
+         font-size: 1.3rem;
+         font-weight: 500;
+         border: none;
+         border-radius: 8px;
+         background-color: #1dc278;
+         color: #fff;
+         cursor: pointer;
+         transition: all 0.2s ease-in-out;
+         width: 30%;
+         max-width: 100px;
+         height: 50px;
+         font-family: InterTight, sans-serif;
+         }
+         .guess-input button:disabled {
+         background-color: #ccc;
+         color: #333;
+         cursor: default;
+         }
+         .toolbar {
+         background-color: #f7f7f7;
+         height: 48px;
+         display: flex;
+         justify-content: center;
+         align-items: center;
+         padding: 0 16px;
+         margin-bottom: 30px
+         }
+         @font-face {
+         font-family: ClimateCrisis;
+         src: url(ClimateCrisis-Regular-VariableFont_YEAR.ttf);
+         }
+         .toolbar-title {
+         font-size: 35px;
+         color: #1dc278;
+         font-family: ClimateCrisis;
+         line-height: 48px;
+         display: flex;
+         align-items: center;
+         margin: 0;
+         }
+         .toolbar-title h1 {
+         font-size: inherit;
+         color: inherit;
+         font-weight: inherit;
+         font-family: inherit;
+         line-height: inherit;
+         display: inherit;
+         align-items: inherit;
+         margin: inherit;
+         }
+         .toolbar-help {
+         background: none;
+         border: none;
+         cursor: pointer;
+         margin-left: 1.5rem;
+         }
+         .toolbar-info {
+         background: none;
+         border: none;
+         cursor: pointer;
+         margin-right: 1.5rem;
+         }
+         .popup-background {
+         position: fixed;
+         top: 0;
+         left: 0;
+         right: 0;
+         bottom: 0;
+         background-color: white;
+         opacity: 1;
+         z-index: 9999;
+         display: none;
+         justify-content: center;
+         align-items: center;
+         }
+         .popup {
+         background-color: white;
+         width: 400px;
+         padding: 16px;
+         border-radius: 8px;
+         box-shadow: 0 0 6px rgba(0, 0, 0, 0.1);
+         position: relative;
+         }
+         .popup-header {
+         display: flex;
+         justify-content: space-between;
+         align-items: center;
+         margin-bottom: 8px;
+         font-family: InterTight, sans-serif;
+         }
+         .popup-header h2 {
+         margin: 0;
+         font-size: 20px;
+         color: #1dc278;
+         font-family: InterTight, sans-serif;
+         }
+         .popup-close {
+         background: none;
+         border: none;
+         cursor: pointer;
+         margin: 0;
+         padding: 0;
+         position: absolute;
+         top: 8px;
+         right: 20px;
+         font-size: 1.75rem;
+         font-weight: 400;
+         color: #000000;
+         }
+         .popup-content {
+         margin: 0;
+         font-size: 18px;
+         line-height: 1.5;
+         font-family: InterTight, sans-serif;
+         }
+         .popup2-background {
+         position: fixed;
+         top: 0;
+         left: 0;
+         right: 0;
+         bottom: 0;
+         background-color: white;
+         opacity: 1;
+         z-index: 9999;
+         display: none;
+         justify-content: center;
+         align-items: center;
+         }
+         .popup2 {
+         background-color: white;
+         width: 400px;
+         padding: 16px;
+         border-radius: 8px;
+         box-shadow: 0 0 6px rgba(0, 0, 0, 0.1);
+         position: relative;
+         }
+         .popup2-header {
+         display: flex;
+         justify-content: space-between;
+         align-items: center;
+         margin-bottom: 8px;
+         font-family: InterTight, sans-serif;
+         }
+         .popup2-header h2 {
+         margin: 0;
+         font-size: 20px;
+         color: #1dc278;
+         font-family: InterTight, sans-serif;
+         }
+         .popup2-close {
+         background: none;
+         border: none;
+         cursor: pointer;
+         margin: 0;
+         padding: 0;
+         position: absolute;
+         top: 8px;
+         right: 20px;
+         font-size: 1.75rem;
+         font-weight: 400;
+         color: #000000;
+         }
+         .popup2-content {
+         margin: 0;
+         font-size: 18px;
+         line-height: 1.5;
+         font-family: InterTight, sans-serif;
+         }
+         .share-container {
+         margin-top: 20px;
+         text-align: center;
+         display: flex;
+         justify-content: center;
+         align-items: center;
+         }
+         .share-button {
+         color: #1dc278;
+         background-color: white;
+         border: none;
+         padding: 8px 16px;
+         border-radius: 4px;
+         cursor: pointer;
+         font-size: 16px;
+         font-family: InterTight, sans-serif;
+         margin-right: 20px;
+         height: 40px;
+         font-weight: 500;
+         text-decoration: none;
+         line-height: 1.5;
+         }
+         .share-button:hover {
+         opacity: 0.8;
+         }
+         .twitter-button {
+         color: #1dc278;
+         background-color: white;
+         border: none;
+         padding: 8px 16px;
+         border-radius: 4px;
+         cursor: pointer;
+         font-size: 16px;
+         font-family: InterTight, sans-serif;
+         text-decoration: none;
+         height: 40px;
+         font-weight: 500;
+         line-height: 1.5;
+         }
+         .twitter-button:hover {
+         opacity: 0.8;
+         }
+         .toolbar-help img,
+         .toolbar-info img {
+         width: 20px;
+         height: 20px;
+         }
+         #guess-section h2 {
+         margin-bottom: 0.5rem;
+         font-size: 1.2rem;
+         font-family: InterTight, sans-serif;
+         font-weight: 500;
+         color: #000;
+         }
+         .speech-bubble {
+         position: relative;
+         display: inline-block;
+         padding-top: 18px;
+         padding-bottom: 10px;
+         padding-left: 20px;
+         padding-right: 20px;
+         background-color: #ffffff;
+         margin-bottom: 5px;
+         font-size: 1.1em;
+         width: 100;
+         max-width: 660px;
+         border: 2px solid #1dc278;
+         border-radius: 10px;
+         }
+         .speech-bubble::before {
+         content: "";
+         position: absolute;
+         left: 20px;
+         bottom: -22px;
+         width: 0;
+         height: 0;
+         border-left: 12px solid transparent;
+         border-right: 12px solid transparent;
+         border-top: 22px solid #1dc278;
+         }
+         .speech-bubble::after {
+         content: "";
+         position: absolute;
+         left: 22px;
+         bottom: -18px;
+         width: 0;
+         height: 0;
+         border-left: 10px solid transparent;
+         border-right: 10px solid transparent;
+         border-top: 20px solid #ffffff;
+         z-index: 1;
+         }
+         .signup-link {
+         color: #1dc278;
+         }
+      </style>
+   </head>
+   <body>
+      <header>
+         <div class="toolbar">
+            <button class="toolbar-info" aria-label="About">
+            <img src="Info.png" alt="Information about Crickdle game">
+            </button>
+            <h1 class="toolbar-title">Crickdle</h1>
+            <button class="toolbar-help" aria-label="How to play">
+            <img src="Help.png" alt="How to play Crickdle game">
+            </button>
+         </div>
+         <div class="popup-background">
+            <div class="popup">
+               <div class="popup-header">
+                  <h2><span style="font-weight: 500">HOW TO PLAY</span></h2>
+                  <button class="popup-close" aria-label="Close">&times;</button>
+               </div>
+               <div class="popup-content">
+                  <p>Based on their stats in this game, guess the cricketer who was 'Player of the Match' in 4 tries.<br>
+                  <ul>
+                     <li>Each guess should be the <span style="font-weight: 500">surname</span> of the player you're guessing.</li>
+                     <li>The colour of the box will change to show how close your guess is.</li>
+                  </ul>
+                  If you misspell the name, the box will turn <span style="color: #e4a404"><span style="font-weight: 500">orange</span></span>, and if you get it wrong, the box will turn <span style="color: #787c7f"><span style="font-weight: 500">grey</span></span>.
+               </div>
+            </div>
+         </div>
+         <div class="popup2-background">
+            <div class="popup2">
+               <div class="popup2-header">
+                  <h2><span style="font-weight: 500">ABOUT</span></h2>
+                  <button class="popup2-close" aria-label="Close">&times;</button>
+               </div>
+               <div class="popup2-content">
+                  <p>Crickdle is a love letter to Test cricket. A new question is released at 9 a.m. UK time each day.<br>
+                  <ul>
+                     <li id="date-element" style="font-weight: 500;"></li>
+                     <li id="crickdle-number"></li>
+                  </ul>
+                  <p>If you haven't already, you can <a href="reminder.html" target="_blank" class="signup-link">sign up</a> for our daily reminder email.<br>
+                  <p>Please send any enquiries to <span style="font-weight: 500">hello [at] crickdle [dot] com</span></p>
+               </div>
+            </div>
+         </div>
+      </header>
+      <div id="match-details">
+         <p><span id="nation1"></span> vs <span id="nation2"></span></p>
+         <p><span id="date"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="venue"></span></p>
+         <p><span id="venue"></span></p>
+         <p><span id="score"></span></p>
       </div>
-                <div class="share-container">
-        <button class="share-button">SHARE</button>
-        <a href="https://twitter.com/Crickdle" target="_blank" rel="noopener" class="twitter-button">FOLLOW US ON TWITTER</a>
+      <div id="guess-section">
+         <div class="game-container">
+            <div class="speech-bubble">
+               <h2>Which <span id="crickdlequestion"></span></h2>
+            </div>
+            <div class="guess-input">
+               <input type="text" id="guess1">
+               <button id="submit1"><span style="font-weight: 500">&rArr;</span></button>
+            </div>
+            <div class="guess-input">
+               <input type="text" id="guess2" disabled>
+               <button id="submit2" disabled><span style="font-weight: 500">&rArr;</span></button>
+            </div>
+            <div class="guess-input">
+               <input type="text" id="guess3" disabled>
+               <button id="submit3" disabled><span style="font-weight: 500">&rArr;</span></button>
+            </div>
+            <div class="guess-input">
+               <input type="text" id="guess4" disabled>
+               <button id="submit4" disabled><span style="font-weight: 500">&rArr;</span></button>
+            </div>
+         </div>
+         <div class="share-container">
+            <button class="share-button">SHARE</button>
+            <a href="https://twitter.com/Crickdle" target="_blank" rel="noopener" class="twitter-button">FOLLOW US ON TWITTER</a>
+         </div>
       </div>
-      </div>
-		<script>
-			const gameDetails = {
-				nation1: "India",
-				nation2: "New Zealand",
-				date: "Nov 25-29, 2021",
-				venue: "Kanpur",
-				score: "India 345 & 234/7d, New Zealand (T: 284) 296 & 165/9; Match drawn",
-				crickdlequestion: "India player scored 105 & 65 in this match?"
-			};
-
-			const correctPlayer = ["IYER", "SHREYAS"];
-			localStorage.setItem("correctPlayer", JSON.stringify(correctPlayer[0]));
-			
-			document.getElementById("nation1").textContent = gameDetails.nation1;
-			document.getElementById("nation2").textContent = gameDetails.nation2;
-			document.getElementById("date").textContent = gameDetails.date;
-			document.getElementById("venue").textContent = gameDetails.venue;
-			document.getElementById("score").textContent = gameDetails.score;
-			document.getElementById("crickdlequestion").textContent = gameDetails.crickdlequestion;
-			
-			function redirectToResultIfPlayedToday() {
-  const playedToday = localStorage.getItem('playedToday') === 'true';
-  if (playedToday) {
-    const resultURL = localStorage.getItem('resultURL');
-    if (resultURL) {
-      window.location.href = resultURL;
-    }
-  }
-}
-
-			function getUKTime(date) {
-				return new Date(date.toLocaleString('en-US', { timeZone: 'Europe/London' }));
-			}
-			
-			function isPast9amUKTime() {
-				const ukTime = getUKTime(new Date());
-				return ukTime.getHours() >= 9;
-			}
-			
-			function formatUKDate(date) {
-  const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
-                  "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-  const monthName = months[date.getMonth()];
-  const day = date.getDate();
-  const year = date.getFullYear();
-  return `${monthName} ${day}, ${year}`;
-}
-
-			function resetAt9am() {
-  const lastResetDate = localStorage.getItem('lastResetDate');
-  const today = new Date().toISOString().slice(0, 10);
-
-  if (isPast9amUKTime() && lastResetDate !== today) {
-    // Update the date and Crickdle number here
-    const dateElement = document.querySelector('.popup2-content ul li:first-child');
-    const crickdleNumber = 37 + Math.floor((new Date() - getUKTime(new Date(2023, 2, 27, 9))) / (24 * 60 * 60 * 1000));
-    dateElement.textContent = formatUKDate(getUKTime(new Date()));
-    document.querySelector('.popup2-content ul li:last-child').textContent = `Crickdle #${crickdleNumber}`;
-
-    // Save date and Crickdle number to localStorage
-    localStorage.setItem('crickdleDate', dateElement.textContent);
-    localStorage.setItem('crickdleNumber', `Crickdle #${crickdleNumber}`);
-
-    // Force a page reload
-    location.href = location.href;
-
-    // Reset the game state
-    const guessInputs = document.querySelectorAll(".guess-input");
-    guessInputs.forEach((input, index) => {
-      localStorage.removeItem(`guess${index + 1}`);
-      localStorage.removeItem(`guess${index + 1}Color`);
-      localStorage.removeItem(`guess${index + 1}TextColor`);
-      localStorage.removeItem(`guess${index + 1}FontWeight`);
-      localStorage.removeItem(`guess${index + 1}Disabled`);
-      const currentInput = input.querySelector("input");
-      currentInput.value = "";
-      currentInput.style.backgroundColor = "";
-      currentInput.style.color = "";
-      currentInput.style.fontWeight = "";
-      currentInput.disabled = index !== 0;
-      const submitButton = submitButtons[index];
-      submitButton.disabled = index !== 0;
-    });
-    localStorage.removeItem('playedToday');
-    localStorage.setItem('lastResetDate', today);
-  }
-}
-			
-// Set the initial values for date and Crickdle number from localStorage
-const dateElement = document.getElementById('date-element');
-const crickdleNumberElement = document.getElementById('crickdle-number');
-dateElement.textContent = localStorage.getItem('crickdleDate') || '';
-crickdleNumberElement.textContent = localStorage.getItem('crickdleNumber') || '';
-
-			function saveState() {
-				guessInputs.forEach((input, index) => {
-					const currentInput = input.querySelector("input");
-					localStorage.setItem(`guess${index + 1}`, currentInput.value);
-					localStorage.setItem(`guess${index + 1}Color`, currentInput.style.backgroundColor);
-					localStorage.setItem(`guess${index + 1}TextColor`, currentInput.style.color);
-					localStorage.setItem(`guess${index + 1}FontWeight`, currentInput.style.fontWeight);
-					localStorage.setItem(`guess${index + 1}Disabled`, currentInput.disabled);
-				});
-				localStorage.setItem('playedToday', 'true');
-			}
-
-			function loadState() {
-				const playedToday = localStorage.getItem('playedToday') === 'true';
-				guessInputs.forEach((input, index) => {
-					const currentInput = input.querySelector("input");
-					currentInput.value = playedToday ? (localStorage.getItem(`guess${index + 1}`) || "") : "";
-					currentInput.style.backgroundColor = playedToday ? (localStorage.getItem(`guess${index + 1}Color`) || "") : "";
-					currentInput.style.color = playedToday ? (localStorage.getItem(`guess${index + 1}TextColor`) || "") : "";
-					currentInput.style.fontWeight = playedToday ? (localStorage.getItem(`guess${index + 1}FontWeight`) || "") : "";
-					currentInput.disabled = playedToday ? (localStorage.getItem(`guess${index + 1}Disabled`) === 'true') : (index !== 0);
-					submitButtons[index].disabled = currentInput.disabled;
-				});
-				redirectToResultIfPlayedToday();
-			}
-			
-			const guessInputs = document.querySelectorAll(".guess-input");
-			const submitButtons = document.querySelectorAll("button[id^='submit']");
-			
-			resetAt9am(); // Reset the game if it's 9 am
-			loadState(); // Load the state from localStorage when the page loads
-			redirectToResultIfPlayedToday();
-			
-			submitButtons.forEach((button, index) => {
-				button.addEventListener("click", (event) => {
-					event.preventDefault();
-					const guessInput = guessInputs[index].querySelector("input");
-					const guess = guessInput.value;
-					if (guess === '') {
-						const warningPopup = document.createElement("div");
-						warningPopup.innerHTML = "Not enough letters!";
-						warningPopup.style.position = "absolute";
-						warningPopup.style.top = "54px";
-						warningPopup.style.left = "50%";
-						warningPopup.style.transform = "translateX(-50%)";
-						warningPopup.style.padding = "0.5rem";
-						warningPopup.style.backgroundColor = "#000000";
-						warningPopup.style.color = "#fff";
-						warningPopup.style.fontSize = "1rem";
-						warningPopup.style.textAlign = "center";
-						warningPopup.style.borderRadius = "5px";
-						guessInput.parentNode.insertBefore(warningPopup, button);
-						setTimeout(() => {
-							warningPopup.parentNode.removeChild(warningPopup);
-						}, 1500);
-						return;
-											} else if (guess.split(' ').length > 1) {
-						const warningPopup = document.createElement("div");
-						warningPopup.innerHTML = "Surnames only please!";
-						warningPopup.style.position = "absolute";
-						warningPopup.style.top = "54px";
-						warningPopup.style.left = "50%";
-						warningPopup.style.transform = "translateX(-50%)";
-						warningPopup.style.padding = "0.5rem";
-						warningPopup.style.backgroundColor = "#000000";
-						warningPopup.style.color = "#fff";
-						warningPopup.style.fontSize = "1rem";
-						warningPopup.style.textAlign = "center";
-						warningPopup.style.borderRadius = "5px";
-						guessInput.parentNode.insertBefore(warningPopup, button);
-						setTimeout(() => {
-							warningPopup.parentNode.removeChild(warningPopup);
-						}, 1500);
-						return;
-					} else if (/[^a-zA-Z]/.test(guess)) {
-						const warningPopup = document.createElement("div");
-						warningPopup.innerHTML = "Letters only please!";
-						warningPopup.style.position = "absolute";
-						warningPopup.style.top = "54px";
-						warningPopup.style.left = "50%";
-						warningPopup.style.transform = "translateX(-50%)";
-						warningPopup.style.padding = "0.5rem";
-						warningPopup.style.backgroundColor = "#000000";
-						warningPopup.style.color = "#fff";
-						warningPopup.style.fontSize = "1rem";
-						warningPopup.style.textAlign = "center";
-						warningPopup.style.borderRadius = "5px";
-						guessInput.parentNode.insertBefore(warningPopup, button);
-						setTimeout(() => {
-							warningPopup.parentNode.removeChild(warningPopup);
-						}, 1500);
-						return;
-					} else {
-						guessInput.disabled = true;
-						button.disabled = true;
-					}
-            if (correctPlayer.includes(guess)) {
-                guessInput.style.backgroundColor = "#1dc278";
-                guessInput.style.color = "white";
-		     saveState();
-                const resultURL = "result.html?isCorrect=true&" +
-		    "guess1=" + guessInputs[0].querySelector("input").style.backgroundColor +
-                                        "&guess2=" + guessInputs[1].querySelector("input").style.backgroundColor +
-                                        "&guess3=" + guessInputs[2].querySelector("input").style.backgroundColor +
-                                        "&guess4=" + guessInputs[3].querySelector("input").style.backgroundColor;
-		    localStorage.setItem('resultURL', resultURL);
-		    window.location.href = resultURL;
-            } else if (isClose(guess, correctPlayer)) {
-                guessInput.style.backgroundColor = "#e4a404";
-		guessInput.style.color = "white";
-                if (index < 3) {
-                    guessInputs[index + 1].querySelector("input").disabled = false;
-                    guessInputs[index + 1].querySelector("button").disabled = false;
-                    guessInputs[index + 1].querySelector("input").focus();
-                } else {
-			 saveState();
-                    const resultURL = "result.html?guess1=" + guessInputs[0].querySelector("input").style.backgroundColor +
-                                        "&guess2=" + guessInputs[1].querySelector("input").style.backgroundColor +
-                                        "&guess3=" + guessInputs[2].querySelector("input").style.backgroundColor +
-                                        "&guess4=" + guessInputs[3].querySelector("input").style.backgroundColor;
-			localStorage.setItem('resultURL', resultURL);
-		    window.location.href = resultURL;
-                }
-            } else {
-                guessInput.style.backgroundColor = "#787c7f";
-                guessInput.style.color = "white";
-                if (index < 3) {
-                    guessInputs[index + 1].querySelector("input").disabled = false;
-                    guessInputs[index + 1].querySelector("button").disabled = false;
-                    guessInputs[index + 1].querySelector("input").focus();
-                } else {
-			 saveState();
-                   const resultURL = "result.html?guess1=" + guessInputs[0].querySelector("input").style.backgroundColor +
-                                        "&guess2=" + guessInputs[1].querySelector("input").style.backgroundColor +
-                                        "&guess3=" + guessInputs[2].querySelector("input").style.backgroundColor +
-                                        "&guess4=" + guessInputs[3].querySelector("input").style.backgroundColor;
-			localStorage.setItem('resultURL', resultURL);
-		    window.location.href = resultURL;
-                }
-            }
-					
-					if (index === 2) {
-						const hintElement = document.createElement("div");
-						hintElement.style.color = "black";
-						hintElement.style.fontSize = "1.1rem";
-						hintElement.style.marginTop = "1rem";
-						hintElement.style.fontWeight = "500";
-						hintElement.innerHTML = "Stumped? Click here for a hint.";
-						guessInputs[index + 1].parentNode.insertBefore(hintElement, guessInputs[index + 1].nextSibling);
-						hintElement.addEventListener("click", (event) => {
-							event.preventDefault();
-							hintElement.style.display = "none";
-							const answerInput = guessInputs[index + 1].querySelector("input");
-							answerInput.value = correctPlayer[0][0];
-							answerInput.style.fontWeight = "600";
-						});
-						
-						const submitButton = document.getElementById("submit4");
-						submitButton.addEventListener("click", (event) => {
-							hintElement.style.display = "none";
-						});
-					}
-				});
-	
-				const input = guessInputs[index].querySelector("input");
-				input.addEventListener("keyup", (event) => {
-					if (event.key === "Enter") {
-						button.click();
-					}
-				});
-			});
-		  
-			const helpButton = document.querySelector('.toolbar-help');
-			const popupBackground = document.querySelector('.popup-background');
-			const popupCloseButton = document.querySelector('.popup-close');
-			
-			window.addEventListener('load', function() {
-    const hasShownInstructions = localStorage.getItem('hasShownInstructions');
-
-    if (!hasShownInstructions) {
-        popupBackground.style.display = 'flex';
-        localStorage.setItem('hasShownInstructions', 'true');
-    }
-});
-
-			helpButton.addEventListener('click', function() {
-				popupBackground.style.display = 'flex';
-			});
-
-			popupCloseButton.addEventListener('click', function() {
-				popupBackground.style.display = 'none';
-			});
-			
-			const infoButton = document.querySelector('.toolbar-info');
-			const popup2Background = document.querySelector('.popup2-background');
-			const popup2CloseButton = document.querySelector('.popup2-close');
-
-			infoButton.addEventListener('click', function() {
-				popup2Background.style.display = 'flex';
-			});
-			
-			const shareButton = document.querySelector('.share-button');
-
-			shareButton.addEventListener('click', function() {
-				const shareText = 'I’m playing Crickdle, a daily cricket guessing game. Join me and test your knowledge!';
-				const shareUrl = 'https://crickdle.com';
-				const shareTitle = 'Crickdle';
-				navigator.share({
-					title: shareTitle,
-					text: shareText,
-					url: shareUrl,
-				})
-					.then(() => console.log('Shared successfully!'))
-					.catch((error) => console.error('Error sharing:', error));
-			});
-
-			popup2CloseButton.addEventListener('click', function() {
-				popup2Background.style.display = 'none';
-			});
-		  
-			const inputElements = document.querySelectorAll('input[type="text"]');
-			inputElements.forEach((input) => {
-				input.addEventListener('input', (event) => {
-					const inputValue = event.target.value;
-					event.target.value = inputValue.toUpperCase();
-					event.target.style.fontWeight = '600';
-				});
-			});
-			function isClose(guess, correctPlayers) {
-				for (let i = 0; i < correctPlayers.length; i++) {
-					const correctPlayer = correctPlayers[i];
-					const correctPlayerLength = correctPlayer.length;
-					const guessLength = guess.length;
-					if (Math.abs(guessLength - correctPlayerLength) <= 2) {
-						let misspelledLetters = 0;
-						let matchingLetters = 0;
-						for (let k = 0; k < guessLength; k++) {
-							if (guess[k] !== correctPlayer[k]) {
-								misspelledLetters++;
-								if (misspelledLetters > 2) {
-									break;
-								}
-							} else {
-								matchingLetters++;
-							}
-						}
-						if (misspelledLetters <= 2 && Math.abs(guessLength - correctPlayerLength) <= 2 && (matchingLetters / guessLength) >= 0.8) {
-							return true;
-						}
-					}
-				}
-				return false;
-			}
-			
-			window.onpageshow = function(event) {
-  if (event.persisted) {
-    resetAt9am();
-    loadState();
-  }
-};
-		</script>
-	</body>
+      <script>
+         const gameDetails = {
+         	nation1: "India",
+         	nation2: "New Zealand",
+         	date: "Nov 25-29, 2021",
+         	venue: "Kanpur",
+         	score: "India 345 & 234/7d, New Zealand (T: 284) 296 & 165/9; Match drawn",
+         	crickdlequestion: "India player scored 105 & 65 in this match?"
+         };
+         
+         const correctPlayer = ["IYER", "SHREYAS"];
+         localStorage.setItem("correctPlayer", JSON.stringify(correctPlayer[0]));
+         
+         document.getElementById("nation1").textContent = gameDetails.nation1;
+         document.getElementById("nation2").textContent = gameDetails.nation2;
+         document.getElementById("date").textContent = gameDetails.date;
+         document.getElementById("venue").textContent = gameDetails.venue;
+         document.getElementById("score").textContent = gameDetails.score;
+         document.getElementById("crickdlequestion").textContent = gameDetails.crickdlequestion;
+         
+         function redirectToResultIfPlayedToday() {
+         const playedToday = localStorage.getItem('playedToday') === 'true';
+         if (playedToday) {
+          const resultURL = localStorage.getItem('resultURL');
+          if (resultURL) {
+            window.location.href = resultURL;
+          }
+         }
+         }
+         
+         function getUKTime(date) {
+         	return new Date(date.toLocaleString('en-US', { timeZone: 'Europe/London' }));
+         }
+         
+         function isPast9amUKTime() {
+         	const ukTime = getUKTime(new Date());
+         	return ukTime.getHours() >= 9;
+         }
+         
+         function formatUKDate(date) {
+         const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
+                        "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+         const monthName = months[date.getMonth()];
+         const day = date.getDate();
+         const year = date.getFullYear();
+         return `${monthName} ${day}, ${year}`;
+         }
+         
+         function resetAt9am() {
+         const lastResetDate = localStorage.getItem('lastResetDate');
+         const today = new Date().toISOString().slice(0, 10);
+         
+         if (isPast9amUKTime() && lastResetDate !== today) {
+          // Update the date and Crickdle number here
+          const dateElement = document.querySelector('.popup2-content ul li:first-child');
+          const crickdleNumber = 37 + Math.floor((new Date() - getUKTime(new Date(2023, 2, 27, 9))) / (24 * 60 * 60 * 1000));
+          dateElement.textContent = formatUKDate(getUKTime(new Date()));
+          document.querySelector('.popup2-content ul li:last-child').textContent = `Crickdle #${crickdleNumber}`;
+         
+          // Save date and Crickdle number to localStorage
+          localStorage.setItem('crickdleDate', dateElement.textContent);
+          localStorage.setItem('crickdleNumber', `Crickdle #${crickdleNumber}`);
+         
+          // Force a page reload
+          location.href = location.href;
+         
+          // Reset the game state
+          const guessInputs = document.querySelectorAll(".guess-input");
+          guessInputs.forEach((input, index) => {
+            localStorage.removeItem(`guess${index + 1}`);
+            localStorage.removeItem(`guess${index + 1}Color`);
+            localStorage.removeItem(`guess${index + 1}TextColor`);
+            localStorage.removeItem(`guess${index + 1}FontWeight`);
+            localStorage.removeItem(`guess${index + 1}Disabled`);
+            const currentInput = input.querySelector("input");
+            currentInput.value = "";
+            currentInput.style.backgroundColor = "";
+            currentInput.style.color = "";
+            currentInput.style.fontWeight = "";
+            currentInput.disabled = index !== 0;
+            const submitButton = submitButtons[index];
+            submitButton.disabled = index !== 0;
+          });
+          localStorage.removeItem('playedToday');
+          localStorage.setItem('lastResetDate', today);
+         }
+         }
+         
+         // Set the initial values for date and Crickdle number from localStorage
+         const dateElement = document.getElementById('date-element');
+         const crickdleNumberElement = document.getElementById('crickdle-number');
+         dateElement.textContent = localStorage.getItem('crickdleDate') || '';
+         crickdleNumberElement.textContent = localStorage.getItem('crickdleNumber') || '';
+         
+         function saveState() {
+         	guessInputs.forEach((input, index) => {
+         		const currentInput = input.querySelector("input");
+         		localStorage.setItem(`guess${index + 1}`, currentInput.value);
+         		localStorage.setItem(`guess${index + 1}Color`, currentInput.style.backgroundColor);
+         		localStorage.setItem(`guess${index + 1}TextColor`, currentInput.style.color);
+         		localStorage.setItem(`guess${index + 1}FontWeight`, currentInput.style.fontWeight);
+         		localStorage.setItem(`guess${index + 1}Disabled`, currentInput.disabled);
+         	});
+         	localStorage.setItem('playedToday', 'true');
+         }
+         
+         function loadState() {
+         	const playedToday = localStorage.getItem('playedToday') === 'true';
+         	guessInputs.forEach((input, index) => {
+         		const currentInput = input.querySelector("input");
+         		currentInput.value = playedToday ? (localStorage.getItem(`guess${index + 1}`) || "") : "";
+         		currentInput.style.backgroundColor = playedToday ? (localStorage.getItem(`guess${index + 1}Color`) || "") : "";
+         		currentInput.style.color = playedToday ? (localStorage.getItem(`guess${index + 1}TextColor`) || "") : "";
+         		currentInput.style.fontWeight = playedToday ? (localStorage.getItem(`guess${index + 1}FontWeight`) || "") : "";
+         		currentInput.disabled = playedToday ? (localStorage.getItem(`guess${index + 1}Disabled`) === 'true') : (index !== 0);
+         		submitButtons[index].disabled = currentInput.disabled;
+         	});
+         	redirectToResultIfPlayedToday();
+         }
+         
+         const guessInputs = document.querySelectorAll(".guess-input");
+         const submitButtons = document.querySelectorAll("button[id^='submit']");
+         
+         resetAt9am(); // Reset the game if it's 9 am
+         loadState(); // Load the state from localStorage when the page loads
+         redirectToResultIfPlayedToday();
+         
+         submitButtons.forEach((button, index) => {
+         	button.addEventListener("click", (event) => {
+         		event.preventDefault();
+         		const guessInput = guessInputs[index].querySelector("input");
+         		const guess = guessInput.value;
+         		if (guess === '') {
+         			const warningPopup = document.createElement("div");
+         			warningPopup.innerHTML = "Not enough letters!";
+         			warningPopup.style.position = "absolute";
+         			warningPopup.style.top = "54px";
+         			warningPopup.style.left = "50%";
+         			warningPopup.style.transform = "translateX(-50%)";
+         			warningPopup.style.padding = "0.5rem";
+         			warningPopup.style.backgroundColor = "#000000";
+         			warningPopup.style.color = "#fff";
+         			warningPopup.style.fontSize = "1rem";
+         			warningPopup.style.textAlign = "center";
+         			warningPopup.style.borderRadius = "5px";
+         			guessInput.parentNode.insertBefore(warningPopup, button);
+         			setTimeout(() => {
+         				warningPopup.parentNode.removeChild(warningPopup);
+         			}, 1500);
+         			return;
+         								} else if (guess.split(' ').length > 1) {
+         			const warningPopup = document.createElement("div");
+         			warningPopup.innerHTML = "Surnames only please!";
+         			warningPopup.style.position = "absolute";
+         			warningPopup.style.top = "54px";
+         			warningPopup.style.left = "50%";
+         			warningPopup.style.transform = "translateX(-50%)";
+         			warningPopup.style.padding = "0.5rem";
+         			warningPopup.style.backgroundColor = "#000000";
+         			warningPopup.style.color = "#fff";
+         			warningPopup.style.fontSize = "1rem";
+         			warningPopup.style.textAlign = "center";
+         			warningPopup.style.borderRadius = "5px";
+         			guessInput.parentNode.insertBefore(warningPopup, button);
+         			setTimeout(() => {
+         				warningPopup.parentNode.removeChild(warningPopup);
+         			}, 1500);
+         			return;
+         		} else if (/[^a-zA-Z]/.test(guess)) {
+         			const warningPopup = document.createElement("div");
+         			warningPopup.innerHTML = "Letters only please!";
+         			warningPopup.style.position = "absolute";
+         			warningPopup.style.top = "54px";
+         			warningPopup.style.left = "50%";
+         			warningPopup.style.transform = "translateX(-50%)";
+         			warningPopup.style.padding = "0.5rem";
+         			warningPopup.style.backgroundColor = "#000000";
+         			warningPopup.style.color = "#fff";
+         			warningPopup.style.fontSize = "1rem";
+         			warningPopup.style.textAlign = "center";
+         			warningPopup.style.borderRadius = "5px";
+         			guessInput.parentNode.insertBefore(warningPopup, button);
+         			setTimeout(() => {
+         				warningPopup.parentNode.removeChild(warningPopup);
+         			}, 1500);
+         			return;
+         		} else {
+         			guessInput.disabled = true;
+         			button.disabled = true;
+         		}
+                  if (correctPlayer.includes(guess)) {
+                      guessInput.style.backgroundColor = "#1dc278";
+                      guessInput.style.color = "white";
+             saveState();
+                      const resultURL = "result.html?isCorrect=true&" +
+            "guess1=" + guessInputs[0].querySelector("input").style.backgroundColor +
+                                              "&guess2=" + guessInputs[1].querySelector("input").style.backgroundColor +
+                                              "&guess3=" + guessInputs[2].querySelector("input").style.backgroundColor +
+                                              "&guess4=" + guessInputs[3].querySelector("input").style.backgroundColor;
+            localStorage.setItem('resultURL', resultURL);
+            window.location.href = resultURL;
+                  } else if (isClose(guess, correctPlayer)) {
+                      guessInput.style.backgroundColor = "#e4a404";
+         guessInput.style.color = "white";
+                      if (index < 3) {
+                          guessInputs[index + 1].querySelector("input").disabled = false;
+                          guessInputs[index + 1].querySelector("button").disabled = false;
+                          guessInputs[index + 1].querySelector("input").focus();
+                      } else {
+          saveState();
+                          const resultURL = "result.html?guess1=" + guessInputs[0].querySelector("input").style.backgroundColor +
+                                              "&guess2=" + guessInputs[1].querySelector("input").style.backgroundColor +
+                                              "&guess3=" + guessInputs[2].querySelector("input").style.backgroundColor +
+                                              "&guess4=" + guessInputs[3].querySelector("input").style.backgroundColor;
+         localStorage.setItem('resultURL', resultURL);
+            window.location.href = resultURL;
+                      }
+                  } else {
+                      guessInput.style.backgroundColor = "#787c7f";
+                      guessInput.style.color = "white";
+                      if (index < 3) {
+                          guessInputs[index + 1].querySelector("input").disabled = false;
+                          guessInputs[index + 1].querySelector("button").disabled = false;
+                          guessInputs[index + 1].querySelector("input").focus();
+                      } else {
+          saveState();
+                         const resultURL = "result.html?guess1=" + guessInputs[0].querySelector("input").style.backgroundColor +
+                                              "&guess2=" + guessInputs[1].querySelector("input").style.backgroundColor +
+                                              "&guess3=" + guessInputs[2].querySelector("input").style.backgroundColor +
+                                              "&guess4=" + guessInputs[3].querySelector("input").style.backgroundColor;
+         localStorage.setItem('resultURL', resultURL);
+            window.location.href = resultURL;
+                      }
+                  }
+         		
+         		if (index === 2) {
+         			const hintElement = document.createElement("div");
+         			hintElement.style.color = "black";
+         			hintElement.style.fontSize = "1.1rem";
+         			hintElement.style.marginTop = "1rem";
+         			hintElement.style.fontWeight = "500";
+         			hintElement.innerHTML = "Stumped? Click here for a hint.";
+         			guessInputs[index + 1].parentNode.insertBefore(hintElement, guessInputs[index + 1].nextSibling);
+         			hintElement.addEventListener("click", (event) => {
+         				event.preventDefault();
+         				hintElement.style.display = "none";
+         				const answerInput = guessInputs[index + 1].querySelector("input");
+         				answerInput.value = correctPlayer[0][0];
+         				answerInput.style.fontWeight = "600";
+         			});
+         			
+         			const submitButton = document.getElementById("submit4");
+         			submitButton.addEventListener("click", (event) => {
+         				hintElement.style.display = "none";
+         			});
+         		}
+         	});
+         
+         	const input = guessInputs[index].querySelector("input");
+         	input.addEventListener("keyup", (event) => {
+         		if (event.key === "Enter") {
+         			button.click();
+         		}
+         	});
+         });
+          
+         const helpButton = document.querySelector('.toolbar-help');
+         const popupBackground = document.querySelector('.popup-background');
+         const popupCloseButton = document.querySelector('.popup-close');
+         
+         window.addEventListener('load', function() {
+          const hasShownInstructions = localStorage.getItem('hasShownInstructions');
+         
+          if (!hasShownInstructions) {
+              popupBackground.style.display = 'flex';
+              localStorage.setItem('hasShownInstructions', 'true');
+          }
+         });
+         
+         helpButton.addEventListener('click', function() {
+         	popupBackground.style.display = 'flex';
+         });
+         
+         popupCloseButton.addEventListener('click', function() {
+         	popupBackground.style.display = 'none';
+         });
+         
+         const infoButton = document.querySelector('.toolbar-info');
+         const popup2Background = document.querySelector('.popup2-background');
+         const popup2CloseButton = document.querySelector('.popup2-close');
+         
+         infoButton.addEventListener('click', function() {
+         	popup2Background.style.display = 'flex';
+         });
+         
+         const shareButton = document.querySelector('.share-button');
+         
+         shareButton.addEventListener('click', function() {
+         	const shareText = 'I’m playing Crickdle, a daily cricket guessing game. Join me and test your knowledge!';
+         	const shareUrl = 'https://crickdle.com';
+         	const shareTitle = 'Crickdle';
+         	navigator.share({
+         		title: shareTitle,
+         		text: shareText,
+         		url: shareUrl,
+         	})
+         		.then(() => console.log('Shared successfully!'))
+         		.catch((error) => console.error('Error sharing:', error));
+         });
+         
+         popup2CloseButton.addEventListener('click', function() {
+         	popup2Background.style.display = 'none';
+         });
+          
+         const inputElements = document.querySelectorAll('input[type="text"]');
+         inputElements.forEach((input) => {
+         	input.addEventListener('input', (event) => {
+         		const inputValue = event.target.value;
+         		event.target.value = inputValue.toUpperCase();
+         		event.target.style.fontWeight = '600';
+         	});
+         });
+         function isClose(guess, correctPlayers) {
+         	for (let i = 0; i < correctPlayers.length; i++) {
+         		const correctPlayer = correctPlayers[i];
+         		const correctPlayerLength = correctPlayer.length;
+         		const guessLength = guess.length;
+         		if (Math.abs(guessLength - correctPlayerLength) <= 2) {
+         			let misspelledLetters = 0;
+         			let matchingLetters = 0;
+         			for (let k = 0; k < guessLength; k++) {
+         				if (guess[k] !== correctPlayer[k]) {
+         					misspelledLetters++;
+         					if (misspelledLetters > 2) {
+         						break;
+         					}
+         				} else {
+         					matchingLetters++;
+         				}
+         			}
+         			if (misspelledLetters <= 2 && Math.abs(guessLength - correctPlayerLength) <= 2 && (matchingLetters / guessLength) >= 0.8) {
+         				return true;
+         			}
+         		}
+         	}
+         	return false;
+         }
+         
+         window.onpageshow = function(event) {
+         if (event.persisted) {
+          resetAt9am();
+          loadState();
+         }
+         };
+      </script>
+   </body>
 </html>
