@@ -364,7 +364,7 @@
 		<p>Next Crickdle in <span id="countdown"></span></p>
 			</div>
 	<script>
-	function clearPlayedToday() {
+function clearPlayedToday() {
   localStorage.removeItem('playedToday');
 }
 
@@ -386,11 +386,25 @@ function schedulePlayedTodayClear() {
 }
 
 schedulePlayedTodayClear(); // Initial call
-	
+
 function checkPlayedToday() {
   if (!localStorage.getItem('playedToday')) {
-    window.location.href = 'index.html';
+    const now = new Date();
+    const ukTime = getUKTime(now);
+    const targetTime = new Date(ukTime);
+    
+    targetTime.setHours(9, 0, 0, 0);
+    
+    // Redirect the user to index.html if it's past 9AM UK time
+    // and the playedToday flag is not set
+    if (ukTime >= targetTime) {
+      window.location.href = 'index.html';
+    }
   }
+}
+
+function getUKTime(date) {
+  return new Date(date.toLocaleString('en-US', { timeZone: 'Europe/London' }));
 }
 
 window.addEventListener('storage', (event) => {
@@ -406,7 +420,7 @@ document.addEventListener('visibilitychange', () => {
     checkPlayedToday();
   }
 });
-		
+
 document.addEventListener('DOMContentLoaded', () => {
   checkPlayedToday();
 });
