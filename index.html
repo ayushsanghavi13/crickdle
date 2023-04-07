@@ -576,6 +576,16 @@
          dateElement.textContent = localStorage.getItem('crickdleDate') || '';
          crickdleNumberElement.textContent = localStorage.getItem('crickdleNumber') || '';
          
+         const now = new Date();
+const ukTime = getUKTime(now);
+const gamePeriodStart = new Date(ukTime);
+
+gamePeriodStart.setHours(9, 0, 0, 0);
+
+if (ukTime < gamePeriodStart) {
+  gamePeriodStart.setDate(gamePeriodStart.getDate() - 1);
+}
+         
          function saveState() {
          	guessInputs.forEach((input, index) => {
          		const currentInput = input.querySelector("input");
@@ -586,6 +596,7 @@
          		localStorage.setItem(`guess${index + 1}Disabled`, currentInput.disabled);
          	});
          	localStorage.setItem('playedToday', 'true');
+            localStorage.setItem('playedTimestamp', gamePeriodStart.toISOString());
          }
          
          function loadState() {
