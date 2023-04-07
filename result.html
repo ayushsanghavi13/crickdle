@@ -345,39 +345,50 @@
          }
          
          function schedulePlayedTodayClear() {
-           const now = new Date();
-           const ukTime = getUKTime(now);
-           const targetTime = new Date(ukTime);
-         
-           targetTime.setHours(9, 0, 0, 0);
-           if (targetTime <= ukTime) {
-             targetTime.setDate(targetTime.getDate() + 1);
-           }
-         
-           const remaining = targetTime.getTime() - ukTime.getTime();
-           setTimeout(() => {
-             clearPlayedToday();
-             schedulePlayedTodayClear(); // Reschedule for the next day
-           }, remaining);
-         }
+  setInterval(() => {
+    const now = new Date();
+    const ukTime = getUKTime(now);
+    const targetTime = new Date(ukTime);
+
+    targetTime.setHours(9, 0, 0, 0);
+
+    const playedTimestamp = localStorage.getItem('playedTimestamp');
+    if (playedTimestamp) {
+      const playedDate = new Date(playedTimestamp);
+      const playedUKTime = getUKTime(playedDate);
+
+      // If it's past 9 AM UK time on the next day, clear the playedToday flag
+      if (ukTime >= targetTime && playedUKTime < targetTime) {
+        clearPlayedToday();
+      }
+    }
+  }, 60 * 1000); // Check every minute
+}
          
          schedulePlayedTodayClear(); // Initial call
          
          function checkPlayedToday() {
-           if (!localStorage.getItem('playedToday')) {
-             const now = new Date();
-             const ukTime = getUKTime(now);
-             const targetTime = new Date(ukTime);
-             
-             targetTime.setHours(9, 0, 0, 0);
-             
-             // Redirect the user to index.html if it's past 9AM UK time
-             // and the playedToday flag is not set
-             if (ukTime >= targetTime) {
-               window.location.href = 'index.html';
-             }
-           }
-         }
+  const playedTimestamp = localStorage.getItem('playedTimestamp');
+  if (!playedTimestamp) {
+    // If the user has never played the game, redirect them to index.html
+    window.location.href = 'index.html';
+    return;
+  }
+
+  const now = new Date();
+  const ukTime = getUKTime(now);
+  const targetTime = new Date(ukTime);
+
+  targetTime.setHours(9, 0, 0, 0);
+
+  const playedDate = new Date(playedTimestamp);
+  const playedUKTime = getUKTime(playedDate);
+
+  // If it's past 9 AM UK time on the next day, redirect the user to index.html
+  if (ukTime >= targetTime && playedUKTime < targetTime) {
+    window.location.href = 'index.html';
+  }
+}
          
          function getUKTime(date) {
            return new Date(date.toLocaleString('en-US', { timeZone: 'Europe/London' }));
