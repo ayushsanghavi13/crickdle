@@ -367,13 +367,14 @@
          
          schedulePlayedTodayClear(); // Initial call
          
-         function checkPlayedToday() {
-  const playedTimestamp = localStorage.getItem('playedTimestamp');
-  if (!playedTimestamp) {
-    // If the user has never played the game, redirect them to index.html
+function checkPlayedToday() {
+  const playedToday = localStorage.getItem('playedToday');
+  if (!playedToday) {
+    // If the user hasn't played the game today, redirect them to index.html
     window.location.href = 'index.html';
     return;
   }
+}
 
   const now = new Date();
   const ukTime = getUKTime(now);
@@ -394,25 +395,33 @@
            return new Date(date.toLocaleString('en-US', { timeZone: 'Europe/London' }));
          }
          
-         window.addEventListener('storage', (event) => {
-           if (event.key === 'playedToday') {
-             if (!event.newValue) {
-               window.location.href = 'index.html';
-             }
-           }
-         });
-         
-         document.addEventListener('visibilitychange', () => {
-           if (document.visibilityState === 'visible') {
-             checkPlayedToday();
-           }
-         });
-         
-         document.addEventListener('DOMContentLoaded', () => {
-           checkPlayedToday();
-         });
-         
-         checkPlayedToday();
+let checkPlayedTodayCalled = false;
+
+function callCheckPlayedTodayOnce() {
+  if (!checkPlayedTodayCalled) {
+    checkPlayedTodayCalled = true;
+    checkPlayedToday();
+  }
+}
+
+window.addEventListener('storage', (event) => {
+  if (event.key === 'playedToday') {
+    if (!event.newValue) {
+      callCheckPlayedTodayOnce();
+    }
+  }
+});
+
+document.addEventListener('visibilitychange', () => {
+  if (document.visibilityState === 'visible') {
+    callCheckPlayedTodayOnce();
+  }
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+  callCheckPlayedTodayOnce();
+});
+
          	
          const crickdleDateElement = document.getElementById('crickdleDate');
          const crickdleNumberElement = document.getElementById('crickdleNumber');
