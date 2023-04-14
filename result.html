@@ -375,22 +375,7 @@ function checkPlayedToday() {
     return;
   }
 }
-
-  const now = new Date();
-  const ukTime = getUKTime(now);
-  const targetTime = new Date(ukTime);
-
-  targetTime.setHours(9, 0, 0, 0);
-
-  const playedDate = new Date(playedTimestamp);
-  const playedUKTime = getUKTime(playedDate);
-
-  // If it's past 9 AM UK time on the next day, redirect the user to index.html
-  if (ukTime >= targetTime && playedUKTime < targetTime) {
-    window.location.href = 'index.html';
-  }
-}
-         
+       
          function getUKTime(date) {
            return new Date(date.toLocaleString('en-US', { timeZone: 'Europe/London' }));
          }
