@@ -386,6 +386,13 @@ function checkPlayedToday() {
     }
   }
 
+  if (!playedToday) {
+    // Redirect them to index.html
+    window.location.href = 'index.html';
+    return;
+  }
+}
+
   if (!playedToday || (playedToday && ukTime >= targetTime)) {
     // Redirect them to index.html
     window.location.href = 'index.html';
