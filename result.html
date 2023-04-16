@@ -391,7 +391,6 @@ function checkPlayedToday() {
     window.location.href = 'index.html';
     return;
   }
-}
 
   if (!playedToday || (playedToday && ukTime >= targetTime)) {
     // Redirect them to index.html
@@ -416,7 +415,6 @@ function checkPlayedToday() {
 }
   }
 }
-
        
          function getUKTime(date) {
            return new Date(date.toLocaleString('en-US', { timeZone: 'Europe/London' }));
