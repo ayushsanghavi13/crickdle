@@ -386,13 +386,13 @@
 
   // If it's past 9 AM UK time on the next day, redirect the user to index.html
   if (ukTime >= targetTime && playedUKTime < targetTime) {
+    clearPlayedToday();
     window.location.href = 'index.html';
-  } else if (isSamePeriod(playedTimestamp)) {
-    // If the user has already played during the current 9 AM to 9 AM period, don't redirect
+  } else if (playedUKTime > targetTime) {
+    // If the user has played in the current game period, do nothing
     return;
   } else {
-    // If it's a new 9 AM to 9 AM period and the user hasn't played yet, redirect them to index.html
-    clearPlayedToday();
+    // Otherwise, if the user played during the previous game period, redirect them to index.html
     window.location.href = 'index.html';
   }
 }
