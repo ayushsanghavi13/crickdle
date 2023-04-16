@@ -344,7 +344,7 @@
            localStorage.removeItem('playedToday');
          }
          
-function schedulePlayedTodayClear() {
+         function schedulePlayedTodayClear() {
   setInterval(() => {
     const now = new Date();
     const ukTime = getUKTime(now);
@@ -367,7 +367,7 @@ function schedulePlayedTodayClear() {
          
          schedulePlayedTodayClear(); // Initial call
          
- function checkPlayedToday() {
+         function checkPlayedToday() {
   const playedTimestamp = localStorage.getItem('playedTimestamp');
   if (!playedTimestamp) {
     // If the user has never played the game, redirect them to index.html
@@ -394,9 +394,25 @@ function schedulePlayedTodayClear() {
            return new Date(date.toLocaleString('en-US', { timeZone: 'Europe/London' }));
          }
          
+         window.addEventListener('storage', (event) => {
+           if (event.key === 'playedToday') {
+             if (!event.newValue) {
+               window.location.href = 'index.html';
+             }
+           }
+         });
+         
+         document.addEventListener('visibilitychange', () => {
+           if (document.visibilityState === 'visible') {
+             checkPlayedToday();
+           }
+         });
+         
          document.addEventListener('DOMContentLoaded', () => {
            checkPlayedToday();
          });
+         
+         checkPlayedToday();
          	
          const crickdleDateElement = document.getElementById('crickdleDate');
          const crickdleNumberElement = document.getElementById('crickdleNumber');
