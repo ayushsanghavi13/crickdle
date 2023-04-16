@@ -485,14 +485,14 @@
       <script>
          const gameDetails = {
          	nation1: "England",
-         	nation2: "South Africa",
-         	date: "Jul 19-23, 2012",
-         	venue: "The Oval",
-         	score: "England 385 & 240, South Africa 637/2d; South Africa won by an innings and 12 runs",
-         	crickdlequestion: "South Africa player scored 311* in this match?"
+         	nation2: "Pakistan",
+         	date: "Aug 21-25, 2020",
+         	venue: "Southampton",
+         	score: "England 583/8d, Pakistan (f/o) 273 & 187/4; Match drawn",
+         	crickdlequestion: "England player scored 267 in this match?"
          };
          
-         const correctPlayer = ["AMLA"];
+         const correctPlayer = ["CRAWLEY"];
          localStorage.setItem("correctPlayer", JSON.stringify(correctPlayer[0]));
          
          document.getElementById("nation1").textContent = gameDetails.nation1;
@@ -686,7 +686,6 @@ if (ukTime < gamePeriodStart) {
                   if (correctPlayer.includes(guess)) {
                       guessInput.style.backgroundColor = "#1dc278";
                       guessInput.style.color = "white";
-                      localStorage.setItem('playedTimestamp', new Date().toISOString());
              saveState();
                       const resultURL = "result.html?isCorrect=true&" +
             "guess1=" + guessInputs[0].querySelector("input").style.backgroundColor +
@@ -703,7 +702,6 @@ if (ukTime < gamePeriodStart) {
                           guessInputs[index + 1].querySelector("button").disabled = false;
                           guessInputs[index + 1].querySelector("input").focus();
                       } else {
-                         localStorage.setItem('playedTimestamp', new Date().toISOString());
           saveState();
                           const resultURL = "result.html?guess1=" + guessInputs[0].querySelector("input").style.backgroundColor +
                                               "&guess2=" + guessInputs[1].querySelector("input").style.backgroundColor +
@@ -720,7 +718,6 @@ if (ukTime < gamePeriodStart) {
                           guessInputs[index + 1].querySelector("button").disabled = false;
                           guessInputs[index + 1].querySelector("input").focus();
                       } else {
-                         localStorage.setItem('playedTimestamp', new Date().toISOString());
           saveState();
                          const resultURL = "result.html?guess1=" + guessInputs[0].querySelector("input").style.backgroundColor +
                                               "&guess2=" + guessInputs[1].querySelector("input").style.backgroundColor +
