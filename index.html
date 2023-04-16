@@ -703,6 +703,7 @@ if (ukTime < gamePeriodStart) {
                           guessInputs[index + 1].querySelector("button").disabled = false;
                           guessInputs[index + 1].querySelector("input").focus();
                       } else {
+                         localStorage.setItem('playedTimestamp', new Date().toISOString());
           saveState();
                           const resultURL = "result.html?guess1=" + guessInputs[0].querySelector("input").style.backgroundColor +
                                               "&guess2=" + guessInputs[1].querySelector("input").style.backgroundColor +
@@ -719,6 +720,7 @@ if (ukTime < gamePeriodStart) {
                           guessInputs[index + 1].querySelector("button").disabled = false;
                           guessInputs[index + 1].querySelector("input").focus();
                       } else {
+                         localStorage.setItem('playedTimestamp', new Date().toISOString());
           saveState();
                          const resultURL = "result.html?guess1=" + guessInputs[0].querySelector("input").style.backgroundColor +
                                               "&guess2=" + guessInputs[1].querySelector("input").style.backgroundColor +
