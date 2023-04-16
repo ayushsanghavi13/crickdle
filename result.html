@@ -397,14 +397,6 @@
            return new Date(date.toLocaleString('en-US', { timeZone: 'Europe/London' }));
          }
          
-         window.addEventListener('storage', (event) => {
-           if (event.key === 'playedToday') {
-             if (!event.newValue) {
-               window.location.href = 'index.html';
-             }
-           }
-         });
-         
          document.addEventListener('visibilitychange', () => {
            if (document.visibilityState === 'visible') {
              checkPlayedToday();
