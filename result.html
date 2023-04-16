@@ -344,7 +344,7 @@
            localStorage.removeItem('playedToday');
          }
          
-         function schedulePlayedTodayClear() {
+function schedulePlayedTodayClear() {
   setInterval(() => {
     const now = new Date();
     const ukTime = getUKTime(now);
@@ -361,6 +361,9 @@
       if (ukTime >= targetTime && playedUKTime < targetTime) {
         clearPlayedToday();
       }
+    } else {
+      // If there is no playedTimestamp, clear the playedToday flag
+      clearPlayedToday();
     }
   }, 60 * 1000); // Check every minute
 }
