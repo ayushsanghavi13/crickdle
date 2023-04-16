@@ -378,14 +378,18 @@
   const now = new Date();
   const ukTime = getUKTime(now);
   const targetTime = new Date(ukTime);
-
+  
   targetTime.setHours(9, 0, 0, 0);
+
+  if (ukTime.getHours() < 9) {
+    targetTime.setDate(targetTime.getDate() - 1);
+  }
 
   const playedDate = new Date(playedTimestamp);
   const playedUKTime = getUKTime(playedDate);
 
-  // If it's past 9 AM UK time on the next day and playedToday is not set, redirect the user to index.html
-  if (ukTime >= targetTime && playedUKTime < targetTime && !localStorage.getItem('playedToday')) {
+  // If it's past 9 AM UK time on the next day, redirect the user to index.html
+  if (ukTime >= targetTime && playedUKTime < targetTime) {
     window.location.href = 'index.html';
   }
 }
