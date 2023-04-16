@@ -361,16 +361,13 @@ function schedulePlayedTodayClear() {
       if (ukTime >= targetTime && playedUKTime < targetTime) {
         clearPlayedToday();
       }
-    } else {
-      // If there is no playedTimestamp, clear the playedToday flag
-      clearPlayedToday();
     }
   }, 60 * 1000); // Check every minute
 }
          
          schedulePlayedTodayClear(); // Initial call
          
-function checkPlayedToday() {
+ function checkPlayedToday() {
   const playedTimestamp = localStorage.getItem('playedTimestamp');
   if (!playedTimestamp) {
     // If the user has never played the game, redirect them to index.html
@@ -387,13 +384,9 @@ function checkPlayedToday() {
   const playedDate = new Date(playedTimestamp);
   const playedUKTime = getUKTime(playedDate);
 
-  // If it's past 9 AM UK time on the next day and the user has played today, redirect the user to index.html
+  // If it's past 9 AM UK time on the next day, redirect the user to index.html
   if (ukTime >= targetTime && playedUKTime < targetTime) {
-    const playedToday = localStorage.getItem('playedToday');
-    if (playedToday) {
-      window.location.href = 'index.html';
-      return;
-    }
+    window.location.href = 'index.html';
   }
 }
          
@@ -401,25 +394,9 @@ function checkPlayedToday() {
            return new Date(date.toLocaleString('en-US', { timeZone: 'Europe/London' }));
          }
          
-         window.addEventListener('storage', (event) => {
-           if (event.key === 'playedToday') {
-             if (!event.newValue) {
-               window.location.href = 'index.html';
-             }
-           }
-         });
-         
-         document.addEventListener('visibilitychange', () => {
-           if (document.visibilityState === 'visible') {
-             checkPlayedToday();
-           }
-         });
-         
          document.addEventListener('DOMContentLoaded', () => {
            checkPlayedToday();
          });
-         
-         checkPlayedToday();
          	
          const crickdleDateElement = document.getElementById('crickdleDate');
          const crickdleNumberElement = document.getElementById('crickdleNumber');
