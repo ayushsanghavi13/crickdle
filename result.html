@@ -339,7 +339,7 @@
          </div>
          <p>Next Crickdle in <span id="countdown"></span></p>
       </div>
-      <script>
+       <script>
          function clearPlayedToday() {
            localStorage.removeItem('playedToday');
          }
@@ -370,15 +370,14 @@
 function checkPlayedToday() {
   const playedToday = localStorage.getItem('playedToday');
   const playedTimestamp = localStorage.getItem('playedTimestamp');
-
-  const now = new Date();
-  const ukTime = getUKTime(now);
-  const targetTime = new Date(ukTime);
-  targetTime.setHours(9, 0, 0, 0);
-
   if (playedTimestamp) {
     const playedDate = new Date(playedTimestamp);
     const playedUKTime = getUKTime(playedDate);
+
+    const now = new Date();
+    const ukTime = getUKTime(now);
+    const targetTime = new Date(ukTime);
+    targetTime.setHours(9, 0, 0, 0);
 
     // If it's past 9 AM UK time on the next day, clear the playedToday flag
     if (ukTime >= targetTime && playedUKTime < targetTime) {
@@ -387,35 +386,12 @@ function checkPlayedToday() {
   }
 
   if (!playedToday) {
-    // Redirect them to index.html
+    // If the user hasn't played the game today, redirect them to index.html
     window.location.href = 'index.html';
     return;
   }
-
-  if (!playedToday || (playedToday && ukTime >= targetTime)) {
-    // Redirect them to index.html
-    window.location.href = 'index.html';
-    return;
-  }
-
-  if (!playedToday) {
-    // If the user hasn't played the game during the current 9 AM to 9 AM period
-    const now = new Date();
-    const ukTime = getUKTime(now);
-    const targetTime = new Date(ukTime);
-    targetTime.setHours(9, 0, 0, 0);
-
-    const nextTargetTime = new Date(targetTime);
-    nextTargetTime.setDate(targetTime.getDate() + 1);
-
-    if ((playedTimestamp && ukTime >= targetTime && playedUKTime < targetTime) || (!playedTimestamp && ukTime >= targetTime)) {
-  // Redirect them to index.html
-  window.location.href = 'index.html';
-  return;
 }
-  }
-}
-       
+         
          function getUKTime(date) {
            return new Date(date.toLocaleString('en-US', { timeZone: 'Europe/London' }));
          }
@@ -478,6 +454,10 @@ document.addEventListener('DOMContentLoaded', () => {
          		
          if (localStorage.getItem("streak") === null) {
            localStorage.setItem("streak", "0");
+         }
+         		
+         function getUKTime(date) {
+           return new Date(date.toLocaleString('en-US', { timeZone: 'Europe/London' }));
          }
          
          function isSamePeriod(lastTimestamp) {
