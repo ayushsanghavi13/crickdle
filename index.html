@@ -595,7 +595,7 @@ if (ukTime < gamePeriodStart) {
          		localStorage.setItem(`guess${index + 1}FontWeight`, currentInput.style.fontWeight);
          		localStorage.setItem(`guess${index + 1}Disabled`, currentInput.disabled);
          	});
-         	localStorage.setItem("playedToday", new Date().toISOString());
+         	localStorage.setItem("playedToday", "true");
             localStorage.setItem('playedTimestamp', gamePeriodStart.toISOString());
          }
          
