@@ -369,10 +369,8 @@
          
          function checkPlayedToday() {
   const playedTimestamp = localStorage.getItem('playedTimestamp');
-  const playedToday = localStorage.getItem('playedToday');
-  
-  if (!playedTimestamp || !playedToday) {
-    // If the user has never played the game, or playedToday is not set, redirect them to index.html
+  if (!playedTimestamp) {
+    // If the user has never played the game, redirect them to index.html
     window.location.href = 'index.html';
     return;
   }
@@ -386,7 +384,7 @@
   const playedDate = new Date(playedTimestamp);
   const playedUKTime = getUKTime(playedDate);
 
-  // If it's past 9 AM UK time on the next day, clear playedToday and redirect the user to index.html
+  // If it's past 9 AM UK time on the next day, redirect the user to index.html
   if (ukTime >= targetTime && playedUKTime < targetTime) {
     clearPlayedToday();
     window.location.href = 'index.html';
@@ -396,12 +394,6 @@
          function getUKTime(date) {
            return new Date(date.toLocaleString('en-US', { timeZone: 'Europe/London' }));
          }
-         
-         document.addEventListener('visibilitychange', () => {
-           if (document.visibilityState === 'visible') {
-             checkPlayedToday();
-           }
-         });
          
          document.addEventListener('DOMContentLoaded', () => {
            checkPlayedToday();
