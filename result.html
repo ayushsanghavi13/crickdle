@@ -346,9 +346,21 @@
          
          function schedulePlayedTodayClear() {
   setInterval(() => {
-    const playedTodayTimestamp = localStorage.getItem('playedToday');
-    if (playedTodayTimestamp && !isSamePeriod(playedTodayTimestamp)) {
-      clearPlayedToday();
+    const now = new Date();
+    const ukTime = getUKTime(now);
+    const targetTime = new Date(ukTime);
+
+    targetTime.setHours(9, 0, 0, 0);
+
+    const playedTimestamp = localStorage.getItem('playedTimestamp');
+    if (playedTimestamp) {
+      const playedDate = new Date(playedTimestamp);
+      const playedUKTime = getUKTime(playedDate);
+
+      // If it's past 9 AM UK time on the next day, clear the playedToday flag
+      if (ukTime >= targetTime && playedUKTime < targetTime) {
+        clearPlayedToday();
+      }
     }
   }, 60 * 1000); // Check every minute
 }
@@ -357,8 +369,6 @@
          
          function checkPlayedToday() {
   const playedTimestamp = localStorage.getItem('playedTimestamp');
-  const playedTodayTimestamp = localStorage.getItem('playedToday');
-
   if (!playedTimestamp) {
     // If the user has never played the game, redirect them to index.html
     window.location.href = 'index.html';
@@ -375,12 +385,22 @@
   const playedUKTime = getUKTime(playedDate);
 
   // If it's past 9 AM UK time on the next day and playedToday is not set, redirect the user to index.html
-  if (
-    ukTime >= targetTime &&
-    playedUKTime < targetTime &&
-    (!playedTodayTimestamp || !isSamePeriod(playedTodayTimestamp))
-  ) {
-    clearPlayedToday();
+  if (ukTime >= targetTime && playedUKTime < targetTime && !localStorage.getItem('playedToday')) {
+    window.location.href = 'index.html';
+  }
+}
+
+  const now = new Date();
+  const ukTime = getUKTime(now);
+  const targetTime = new Date(ukTime);
+
+  targetTime.setHours(9, 0, 0, 0);
+
+  const playedDate = new Date(playedTimestamp);
+  const playedUKTime = getUKTime(playedDate);
+
+  // If it's past 9 AM UK time on the next day, redirect the user to index.html
+  if (ukTime >= targetTime && playedUKTime < targetTime) {
     window.location.href = 'index.html';
   }
 }
@@ -388,6 +408,20 @@
          function getUKTime(date) {
            return new Date(date.toLocaleString('en-US', { timeZone: 'Europe/London' }));
          }
+         
+         window.addEventListener('storage', (event) => {
+           if (event.key === 'playedToday') {
+             if (!event.newValue) {
+               window.location.href = 'index.html';
+             }
+           }
+         });
+         
+         document.addEventListener('visibilitychange', () => {
+           if (document.visibilityState === 'visible') {
+             checkPlayedToday();
+           }
+         });
          
          document.addEventListener('DOMContentLoaded', () => {
            checkPlayedToday();
