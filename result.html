@@ -340,29 +340,30 @@
          <p>Next Crickdle in <span id="countdown"></span></p>
       </div>
      <script>
-         function clearPlayedToday() {
-           localStorage.removeItem('playedToday');
-         }
-         
-         function schedulePlayedTodayClear() {
-  setInterval(() => {
-    const now = new Date();
-    const ukTime = getUKTime(now);
-    const targetTime = new Date(ukTime);
+         function checkPlayedToday() {
+  const playedTimestamp = localStorage.getItem('playedTimestamp');
+  if (!playedTimestamp) {
+    // If the user has never played the game, redirect them to index.html
+    window.location.href = 'index.html';
+    return;
+  }
 
-    targetTime.setHours(9, 0, 0, 0);
+  const now = new Date();
+  const ukTime = getUKTime(now);
+  const targetTime = new Date(ukTime);
 
-    const playedTimestamp = localStorage.getItem('playedTimestamp');
-    if (playedTimestamp) {
-      const playedDate = new Date(playedTimestamp);
-      const playedUKTime = getUKTime(playedDate);
+  targetTime.setHours(9, 0, 0, 0);
 
-      // If it's past 9 AM UK time on the next day, clear the playedToday flag
-      if (ukTime >= targetTime && playedUKTime < targetTime) {
-        clearPlayedToday();
-      }
-    }
-  }, 60 * 1000); // Check every minute
+  const playedDate = new Date(playedTimestamp);
+  const playedUKTime = getUKTime(playedDate);
+
+  // If it's past 9 AM UK time on the next day and playedToday is not set, redirect the user to index.html
+  if (ukTime >= targetTime && playedUKTime < targetTime && !localStorage.getItem('playedToday')) {
+    // Update the playedToday flag before redirecting
+    localStorage.setItem('playedToday', 'true');
+    localStorage.setItem('playedTimestamp', new Date().toISOString());
+    window.location.href = 'index.html';
+  }
 }
          
          schedulePlayedTodayClear(); // Initial call
