@@ -663,7 +663,7 @@ if (ukTime < gamePeriodStart) {
                                                          warningPopup.parentNode.removeChild(warningPopup);
                                            }, 1500);
                                            return;
-                             } else if (/[^a-zA-Z]/.test(guess) || (guess.split(' ').length > 1 && !allowedTwoWordAnswers.includes(guess.toUpperCase()))) {
+                             } else if ((/[^a-zA-Z]/.test(guess) && !allowedTwoWordAnswers.includes(guess.toUpperCase())) || (guess.split(' ').length > 1 && !allowedTwoWordAnswers.includes(guess.toUpperCase()))) {
                                            const warningPopup = document.createElement("div");
                                            warningPopup.innerHTML = "Letters only please!";
                                            warningPopup.style.position = "absolute";
