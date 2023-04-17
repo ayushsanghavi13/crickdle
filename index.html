@@ -645,7 +645,7 @@ if (ukTime < gamePeriodStart) {
                                                          warningPopup.parentNode.removeChild(warningPopup);
                                            }, 1500);
                                            return;
-                             } else if (guess.split(' ').length > 1) {
+                             } else if (guess.split(' ').length > 2 || (guess.split(' ').length === 2 && !allowedTwoWordAnswers.includes(guess.toUpperCase()))) {
                                            const warningPopup = document.createElement("div");
                                            warningPopup.innerHTML = "Surnames only please!";
                                            warningPopup.style.position = "absolute";
