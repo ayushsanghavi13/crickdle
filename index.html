@@ -645,7 +645,7 @@ if (ukTime < gamePeriodStart) {
                                                          warningPopup.parentNode.removeChild(warningPopup);
                                            }, 1500);
                                            return;
-                             } else if (guess.split(' ').length > 1 && !allowedTwoWordAnswers.includes(guess)) { 
+                             } else if (guess.split(' ').length > 1) {
                                            const warningPopup = document.createElement("div");
                                            warningPopup.innerHTML = "Surnames only please!";
                                            warningPopup.style.position = "absolute";
@@ -660,7 +660,7 @@ if (ukTime < gamePeriodStart) {
                                            warningPopup.style.borderRadius = "5px";
                                            guessInput.parentNode.insertBefore(warningPopup, button);
                                            setTimeout(() => {
-                                                        warningPopup.parentNode.removeChild(warningPopup);
+                                                         warningPopup.parentNode.removeChild(warningPopup);
                                            }, 1500);
                                            return;
                              } else if (/[^a-zA-Z]/.test(guess)) {
