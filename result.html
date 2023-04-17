@@ -340,35 +340,37 @@
          <p>Next Crickdle in <span id="countdown"></span></p>
       </div>
      <script>
-         function checkPlayedToday() {
-  const playedTimestamp = localStorage.getItem('playedTimestamp');
-  if (!playedTimestamp) {
-    // If the user has never played the game, redirect them to index.html
-    window.location.href = 'index.html';
-    return;
-  }
+         function clearPlayedToday() {
+	           localStorage.removeItem('playedToday');
+	         }
+	         
+	         function schedulePlayedTodayClear() {
+	  setInterval(() => {
+	    const now = new Date();
+	    const ukTime = getUKTime(now);
+	    const targetTime = new Date(ukTime);
+	
 
-  const now = new Date();
-  const ukTime = getUKTime(now);
-  const targetTime = new Date(ukTime);
+	    targetTime.setHours(9, 0, 0, 0);
+	
 
-  targetTime.setHours(9, 0, 0, 0);
+	    const playedTimestamp = localStorage.getItem('playedTimestamp');
+	    if (playedTimestamp) {
+	      const playedDate = new Date(playedTimestamp);
+	      const playedUKTime = getUKTime(playedDate);
+	
 
-  const playedDate = new Date(playedTimestamp);
-  const playedUKTime = getUKTime(playedDate);
-
-  // If it's past 9 AM UK time on the next day and playedToday is not set, redirect the user to index.html
-  if (ukTime >= targetTime && playedUKTime < targetTime && !localStorage.getItem('playedToday')) {
-    // Update the playedToday flag before redirecting
-    localStorage.setItem('playedToday', 'true');
-    localStorage.setItem('playedTimestamp', new Date().toISOString());
-    window.location.href = 'index.html';
-  }
-}
-         
-         schedulePlayedTodayClear(); // Initial call
-         
-         function checkPlayedToday() {
+	      // If it's past 9 AM UK time on the next day, clear the playedToday flag
+	      if (ukTime >= targetTime && playedUKTime < targetTime) {
+	        clearPlayedToday();
+	      }
+	    }
+	  }, 60 * 1000); // Check every minute
+	}
+	         
+	         schedulePlayedTodayClear(); // Initial call
+	         
+	         function checkPlayedToday() {
 	  const playedTimestamp = localStorage.getItem('playedTimestamp');
 	  if (!playedTimestamp) {
 	    // If the user has never played the game, redirect them to index.html
@@ -406,125 +408,125 @@
 	             }
 	           }
 	         });
-         
-         document.addEventListener('visibilitychange', () => {
-           if (document.visibilityState === 'visible') {
-             checkPlayedToday();
-           }
-         });
-         
-         document.addEventListener('DOMContentLoaded', () => {
-           checkPlayedToday();
-         });
-         
-         checkPlayedToday();
-         	
-         const crickdleDateElement = document.getElementById('crickdleDate');
-         const crickdleNumberElement = document.getElementById('crickdleNumber');
-             
-             // Retrieve date and Crickdle number from localStorage
-             const crickdleDate = localStorage.getItem('crickdleDate');
-             const crickdleNumber = localStorage.getItem('crickdleNumber');
-         
-             // Update the elements with the retrieved values
-             crickdleDateElement.textContent = crickdleDate;
-             crickdleNumberElement.textContent = crickdleNumber;
-         		
-         		const correctPlayer = JSON.parse(localStorage.getItem("correctPlayer"));
-         		
-         		const urlParams = new URLSearchParams(window.location.search);
-         		const isCorrect = urlParams.get("isCorrect") === "true";
-         		const guess1Color = urlParams.get("guess1");
-         		const guess2Color = urlParams.get("guess2");
-         		const guess3Color = urlParams.get("guess3");
-         		const guess4Color = urlParams.get("guess4");
-         
-         		document.getElementById("dash1").style.color = guess1Color;
-         		document.getElementById("dash2").style.color = guess2Color;
-         		document.getElementById("dash3").style.color = guess3Color;
-         		document.getElementById("dash4").style.color = guess4Color;
-         		
-         		const result1MessageElement = document.getElementById("result1-message");
-         		const result2MessageElement = document.getElementById("result2-message");
-         		
-         if (localStorage.getItem("streak") === null) {
-           localStorage.setItem("streak", "0");
-         }
-         		
-         function getUKTime(date) {
-           return new Date(date.toLocaleString('en-US', { timeZone: 'Europe/London' }));
-         }
-         
-         function isSamePeriod(lastTimestamp) {
-           const now = getUKTime(new Date());
-           const last = getUKTime(new Date(lastTimestamp));
-         
-           const nowAdjusted = new Date(now);
-           const lastAdjusted = new Date(last);
-         
-           if (now.getHours() < 9) {
-             nowAdjusted.setDate(now.getDate() - 1);
-           }
-         
-           if (last.getHours() < 9) {
-             lastAdjusted.setDate(last.getDate() - 1);
-           }
-         
-           const nowDate = nowAdjusted.toDateString();
-           const lastDate = lastAdjusted.toDateString();
-         
-           return nowDate === lastDate;
-         }
-         		
-         function hasMissedADay(lastTimestamp) {
-           const now = getUKTime(new Date());
-           const last = getUKTime(new Date(lastTimestamp));
-         
-           const timeDifference = now - last;
-         
-           if (timeDifference >= 2 * 24 * 60 * 60 * 1000) {
-             return true;
-           }
-         
-           if (
-             last.getHours() >= 9 &&
-             now.getHours() < 9 &&
-             timeDifference >= (24 + 15) * 60 * 60 * 1000
-           ) {
-             return true;
-           }
-         
-           return false;
-         }
-         
-         const lastTimestamp = localStorage.getItem("lastTimestamp");
-         
-         let streak = parseInt(localStorage.getItem("streak"), 10);
-         		
-         		if (lastTimestamp && hasMissedADay(lastTimestamp)) {
-           streak = 0;
-           localStorage.setItem("streak", streak.toString());
-         }
-         		
-                if (isCorrect) {
-         			result1MessageElement.textContent = "Bowled 'em!";
-         			result2MessageElement.textContent = "You got today's Crickdle.";
-         	
-         
-         	  if (!lastTimestamp || !isSamePeriod(lastTimestamp)) {
-         	    streak++;
-         	    localStorage.setItem("streak", streak.toString());
-         	    localStorage.setItem("lastTimestamp", new Date().toISOString());
-         	  }
-         	} else {
-         	  result1MessageElement.textContent = "Out for a duck!";
-         		result2MessageElement.textContent = "You didn't get today's Crickdle. The correct answer is " + correctPlayer + ".";
-         	  streak = 0;
-         	  localStorage.setItem("streak", streak.toString());
-         	}
-         		
-         const streakElement = document.getElementById("streak");
-         streakElement.textContent = `${streak}`;
+	         
+	         document.addEventListener('visibilitychange', () => {
+	           if (document.visibilityState === 'visible') {
+	             checkPlayedToday();
+	           }
+	         });
+	         
+	         document.addEventListener('DOMContentLoaded', () => {
+	           checkPlayedToday();
+	         });
+	         
+	         checkPlayedToday();
+	         	
+	         const crickdleDateElement = document.getElementById('crickdleDate');
+	         const crickdleNumberElement = document.getElementById('crickdleNumber');
+	             
+	             // Retrieve date and Crickdle number from localStorage
+	             const crickdleDate = localStorage.getItem('crickdleDate');
+	             const crickdleNumber = localStorage.getItem('crickdleNumber');
+	         
+	             // Update the elements with the retrieved values
+	             crickdleDateElement.textContent = crickdleDate;
+	             crickdleNumberElement.textContent = crickdleNumber;
+	         		
+	         		const correctPlayer = JSON.parse(localStorage.getItem("correctPlayer"));
+	         		
+	         		const urlParams = new URLSearchParams(window.location.search);
+	         		const isCorrect = urlParams.get("isCorrect") === "true";
+	         		const guess1Color = urlParams.get("guess1");
+	         		const guess2Color = urlParams.get("guess2");
+	         		const guess3Color = urlParams.get("guess3");
+	         		const guess4Color = urlParams.get("guess4");
+	         
+	         		document.getElementById("dash1").style.color = guess1Color;
+	         		document.getElementById("dash2").style.color = guess2Color;
+	         		document.getElementById("dash3").style.color = guess3Color;
+	         		document.getElementById("dash4").style.color = guess4Color;
+	         		
+	         		const result1MessageElement = document.getElementById("result1-message");
+	         		const result2MessageElement = document.getElementById("result2-message");
+	         		
+	         if (localStorage.getItem("streak") === null) {
+	           localStorage.setItem("streak", "0");
+	         }
+	         		
+	         function getUKTime(date) {
+	           return new Date(date.toLocaleString('en-US', { timeZone: 'Europe/London' }));
+	         }
+	         
+	         function isSamePeriod(lastTimestamp) {
+	           const now = getUKTime(new Date());
+	           const last = getUKTime(new Date(lastTimestamp));
+	         
+	           const nowAdjusted = new Date(now);
+	           const lastAdjusted = new Date(last);
+	         
+	           if (now.getHours() < 9) {
+	             nowAdjusted.setDate(now.getDate() - 1);
+	           }
+	         
+	           if (last.getHours() < 9) {
+	             lastAdjusted.setDate(last.getDate() - 1);
+	           }
+	         
+	           const nowDate = nowAdjusted.toDateString();
+	           const lastDate = lastAdjusted.toDateString();
+	         
+	           return nowDate === lastDate;
+	         }
+	         		
+	         function hasMissedADay(lastTimestamp) {
+	           const now = getUKTime(new Date());
+	           const last = getUKTime(new Date(lastTimestamp));
+	         
+	           const timeDifference = now - last;
+	         
+	           if (timeDifference >= 2 * 24 * 60 * 60 * 1000) {
+	             return true;
+	           }
+	         
+	           if (
+	             last.getHours() >= 9 &&
+	             now.getHours() < 9 &&
+	             timeDifference >= (24 + 15) * 60 * 60 * 1000
+	           ) {
+	             return true;
+	           }
+	         
+	           return false;
+	         }
+	         
+	         const lastTimestamp = localStorage.getItem("lastTimestamp");
+	         
+	         let streak = parseInt(localStorage.getItem("streak"), 10);
+	         		
+	         		if (lastTimestamp && hasMissedADay(lastTimestamp)) {
+	           streak = 0;
+	           localStorage.setItem("streak", streak.toString());
+	         }
+	         		
+	                if (isCorrect) {
+	         			result1MessageElement.textContent = "Bowled 'em!";
+	         			result2MessageElement.textContent = "You got today's Crickdle.";
+	         	
+	         
+	         	  if (!lastTimestamp || !isSamePeriod(lastTimestamp)) {
+	         	    streak++;
+	         	    localStorage.setItem("streak", streak.toString());
+	         	    localStorage.setItem("lastTimestamp", new Date().toISOString());
+	         	  }
+	         	} else {
+	         	  result1MessageElement.textContent = "Out for a duck!";
+	         		result2MessageElement.textContent = "You didn't get today's Crickdle. The correct answer is " + correctPlayer + ".";
+	         	  streak = 0;
+	         	  localStorage.setItem("streak", streak.toString());
+	         	}
+	         		
+	         const streakElement = document.getElementById("streak");
+	         streakElement.textContent = `${streak}`;
          
          const now = new Date();
          const ukTime = getUKTime(now);
