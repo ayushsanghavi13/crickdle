@@ -620,7 +620,7 @@ if (ukTime < gamePeriodStart) {
          loadState(); // Load the state from localStorage when the page loads
          redirectToResultIfPlayedToday();
          
-         const allowedTwoWordAnswers = ["COULTER-NILE", "DE SILVA", "UL-HAQ", "DE VILLIERS", "DE KOCK", "AL HASAN", "HAQUE JR", "DU PLESSIS"];
+         const allowedTwoWordAnswers = ["COULTER-NILE", "DE SILVA", "UL-HAQ", "UL HAQ", "DE VILLIERS", "DE KOCK", "AL HASAN", "HAQUE JR", "DU PLESSIS"];
          
          submitButtons.forEach((button, index) => {
               button.addEventListener("click", (event) => {
@@ -663,7 +663,7 @@ if (ukTime < gamePeriodStart) {
                                                          warningPopup.parentNode.removeChild(warningPopup);
                                            }, 1500);
                                            return;
-                             } else if (/[^a-zA-Z]/.test(guess)) {
+                             } else if (/[^a-zA-Z]/.test(guess) || (guess.split(' ').length > 1 && !allowedTwoWordAnswers.includes(guess.toUpperCase()))) {
                                            const warningPopup = document.createElement("div");
                                            warningPopup.innerHTML = "Letters only please!";
                                            warningPopup.style.position = "absolute";
