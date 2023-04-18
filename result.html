@@ -345,28 +345,26 @@
 	         }
 	         
 	         function schedulePlayedTodayClear() {
-	  setInterval(() => {
-	    const now = new Date();
-	    const ukTime = getUKTime(now);
-	    const targetTime = new Date(ukTime);
-	
+  setInterval(() => {
+    const now = new Date();
+    const ukTime = getUKTime(now);
+    const targetTime = new Date(ukTime);
 
-	    targetTime.setHours(9, 0, 0, 0);
-	
+    targetTime.setHours(9, 0, 0, 0);
 
-	    const playedTimestamp = localStorage.getItem('playedTimestamp');
-	    if (playedTimestamp) {
-	      const playedDate = new Date(playedTimestamp);
-	      const playedUKTime = getUKTime(playedDate);
-	
+    const playedTimestamp = localStorage.getItem('playedTimestamp');
+    if (playedTimestamp) {
+      const playedDate = new Date(playedTimestamp);
+      const playedUKTime = getUKTime(playedDate);
 
-	      // If it's past 9 AM UK time on the next day, clear the playedToday flag
-	      if (ukTime >= targetTime && playedUKTime < targetTime) {
-	        clearPlayedToday();
-	      }
-	    }
-	  }, 60 * 1000); // Check every minute
-	}
+      // If it's past 9 AM UK time on the next day, clear the playedToday flag
+      if (ukTime >= targetTime && playedUKTime < targetTime) {
+        clearPlayedToday();
+        localStorage.setItem('playedToday', 'false'); // Add this line here
+      }
+    }
+  }, 60 * 1000); // Check every minute
+}
 	         
 	         schedulePlayedTodayClear(); // Initial call
 	         
