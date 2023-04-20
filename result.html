@@ -342,6 +342,7 @@
      <script>
          function clearPlayedToday() {
 	           localStorage.removeItem('playedToday');
+		  localStorage.setItem('redirectToIndex', 'true');
 	         }
 	         
 	         function schedulePlayedTodayClear() {
@@ -384,9 +385,15 @@
   const playedDate = new Date(playedTimestamp);
   const playedUKTime = getUKTime(playedDate);
 
-  // If it's past 9 AM UK time on the next day, clear the playedToday flag and redirect the user to index.html
-  if (ukTime >= targetTime && playedUKTime < targetTime) {
-    clearPlayedToday();
+  // If it's past 9 AM UK time on the next day and playedToday is not set, and redirectToIndex is true, redirect the user to index.html
+  if (
+    ukTime >= targetTime &&
+    playedUKTime < targetTime &&
+    !localStorage.getItem('playedToday') &&
+    localStorage.getItem('redirectToIndex') === 'true'
+  ) {
+    localStorage.setItem('playedToday', 'true');
+    localStorage.removeItem('redirectToIndex'); // Remove the redirectToIndex flag
     window.location.href = 'index.html';
   }
 }
