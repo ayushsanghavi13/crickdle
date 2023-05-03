@@ -1,10 +1,10 @@
         const gameDetails = {
-         	nation1: "Bangladesh",
-         	nation2: "Zimbabwe",
-         	date: "Feb 22-25, 2020",
-         	venue: "Mirpur",
-         	score: "Zimbabwe 265 & 189, Bangladesh 560/6d; Bangladesh won by an innings and 106 runs",
-         	crickdlequestion: "Bangladesh player scored 203* in this match?"
+         	nation1: "South Africa",
+         	nation2: "England",
+         	date: "Dec 17-21, 2004",
+         	venue: "Gqeberha",
+         	score: "South Africa 337 & 229, England (T: 142) 425 & 145/3; England won by 7 wickets",
+         	crickdlequestion: "England player scored 126 & 94* in this match?"
          };
          
-         const correctPlayer = ["RAHIM"];
+         const correctPlayer = ["STRAUSS"];
