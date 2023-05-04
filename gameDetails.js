@@ -1,10 +1,10 @@
         const gameDetails = {
-         	nation1: "South Africa",
-         	nation2: "England",
-         	date: "Dec 17-21, 2004",
-         	venue: "Gqeberha",
-         	score: "South Africa 337 & 229, England (T: 142) 425 & 145/3; England won by 7 wickets",
-         	crickdlequestion: "England player scored 126 & 94* in this match?"
+         	nation1: "Sri Lanka",
+         	nation2: "Bangladesh",
+         	date: "Mar 15-19, 2017",
+         	venue: "Colombo (PSS)",
+         	score: "Sri Lanka 338 & 319, Bangladesh (T: 191) 467 & 191/6; Bangladesh won by 4 wickets",
+         	crickdlequestion: "Bangladesh player scored 49 & 82 in this match?"
          };
          
-         const correctPlayer = ["STRAUSS"];
+         const correctPlayer = ["IQBAL"];
