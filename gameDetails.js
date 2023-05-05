@@ -1,10 +1,10 @@
         const gameDetails = {
-         	nation1: "Sri Lanka",
+         	nation1: "Pakistan",
          	nation2: "Bangladesh",
-         	date: "Mar 15-19, 2017",
-         	venue: "Colombo (PSS)",
-         	score: "Sri Lanka 338 & 319, Bangladesh (T: 191) 467 & 191/6; Bangladesh won by 4 wickets",
-         	crickdlequestion: "Bangladesh player scored 49 & 82 in this match?"
+         	date: "Feb 7-10, 2020",
+         	venue: "Rawalpindi",
+         	score: "Bangladesh 233 & 168, Pakistan 445; Pakistan won by an innings and 44 runs",
+         	crickdlequestion: "Pakistan player scored 1/61 & 4/26 in this match?"
          };
          
-         const correctPlayer = ["IQBAL"];
+         const correctPlayer = ["SHAH"];
