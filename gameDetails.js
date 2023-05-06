@@ -1,10 +1,10 @@
         const gameDetails = {
-         	nation1: "Pakistan",
-         	nation2: "Bangladesh",
-         	date: "Feb 7-10, 2020",
-         	venue: "Rawalpindi",
-         	score: "Bangladesh 233 & 168, Pakistan 445; Pakistan won by an innings and 44 runs",
-         	crickdlequestion: "Pakistan player scored 1/61 & 4/26 in this match?"
+         	nation1: "South Africa",
+         	nation2: "England",
+         	date: "Jan 3-7, 2020",
+         	venue: "Cape Town",
+         	score: "England 269 & 391/8d, South Africa (T: 438) 223 & 248; England won by 189 runs",
+         	crickdlequestion: "England player scored 135* and took 6 catches in this match?"
          };
          
-         const correctPlayer = ["SHAH"];
+         const correctPlayer = ["STOKES"];
