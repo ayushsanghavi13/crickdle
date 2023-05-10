@@ -1,10 +1,10 @@
         const gameDetails = {
-         	nation1: "Australia",
-         	nation2: "New Zealand",
-         	date: "Nov 26-30, 2004",
-         	venue: "Adelaide",
-         	score: "Australia 575/8d & 139/2d, New Zealand (T: 464) 251 & 250; Australia won by 213 runs",
-         	crickdlequestion: "Australia player scored 215 & 46 in this match?"
+         	nation1: "Sri Lanka",
+         	nation2: "Zimbabwe",
+         	date: "Jan 12-15, 2002",
+         	venue: "Galle",
+         	score: "Sri Lanka 418 & 212/2d, Zimbabwe (T: 395) 236 & 79; Sri Lanka won by 315 runs",
+         	crickdlequestion: "Sri Lanka player scored 28 & 36 and took 5/43 & 4/31 in this match?"
          };
          
-         const correctPlayer = ["LANGER"];
+         const correctPlayer = ["JAYASURIYA"];
