@@ -1,10 +1,10 @@
         const gameDetails = {
-         	nation1: "England",
-         	nation2: "New Zealand",
-         	date: "May 16-19, 2013",
-         	venue: "Lord's",
-         	score: "England 232 & 213, New Zealand (T: 239) 207 & 68; England won by 170 runs",
-         	crickdlequestion: "England player scored 26* and took 1/64 & 7/44 in this match?"
+         	nation1: "Australia",
+         	nation2: "India",
+         	date: "Dec 14-18, 2018",
+         	venue: "Perth",
+         	score: "Australia 326 & 243, India (T: 287) 283 & 140; Australia won by 146 runs",
+         	crickdlequestion: "Australia player took 5/67 & 3/39 in this match?"
          };
          
-         const correctPlayer = ["BROAD"];
+         const correctPlayer = ["LYON"];
