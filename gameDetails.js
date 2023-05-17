@@ -1,10 +1,10 @@
         const gameDetails = {
-         	nation1: "West Indies",
-         	nation2: "England",
-         	date: "Jan 31-Feb 2, 2019",
-         	venue: "North Sound",
-         	score: "England 187 & 132, West Indies (T: 14) 306 & 17/0; West Indies won by 10 wickets",
-         	crickdlequestion: "West Indies player took 4/30 & 4/52 in this match?"
+         	nation1: "Bangladesh",
+         	nation2: "South Africa",
+         	date: "Feb 22-25, 2008",
+         	venue: "Mirpur",
+         	score: "Bangladesh 192 & 182, South Africa (T: 205) 170 & 205/5; South Africa won by 5 wickets",
+         	crickdlequestion: "South Africa player took 5/30 in this match?"
          };
          
-         const correctPlayer = ["ROACH"];
+         const correctPlayer = ["KALLIS"];
