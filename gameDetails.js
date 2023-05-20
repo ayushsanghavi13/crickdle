@@ -1,10 +1,10 @@
         const gameDetails = {
-         	nation1: "Australia",
+         	nation1: "India",
          	nation2: "New Zealand",
-         	date: "Jan 3-6, 2020",
-         	venue: "Sydney",
-         	score: "Australia 454 & 217/2d, New Zealand (T: 416) 256 & 136; Australia won by 279 runs",
-         	crickdlequestion: "Australia player scored 215 & 59 in this match?"
+         	date: "Sep 30-Oct 3, 2016",
+         	venue: "Eden Gardens",
+         	score: "India 316 & 263, New Zealand (T: 376) 204 & 197; India won by 178 runs",
+         	crickdlequestion: "India player scored 54* & 58* in this match?"
          };
          
-         const correctPlayer = ["LABUSCHAGNE"];
+         const correctPlayer = ["SAHA"];
