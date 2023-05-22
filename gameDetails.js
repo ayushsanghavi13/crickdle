@@ -1,10 +1,10 @@
         const gameDetails = {
-         	nation1: "England",
+         	nation1: "Australia",
          	nation2: "India",
-         	date: "Aug 7-9, 2014",
-         	venue: "Manchester",
-         	score: "India 152 & 161, England 367; England won by an innings and 54 runs",
-         	crickdlequestion: "England player took 6/25 in this match?"
+         	date: "Dec 26-29, 2020",
+         	venue: "Melbourne",
+         	score: "Australia 195 & 200, India (T: 70) 326 & 70/2; India won by 8 wickets",
+         	crickdlequestion: "India player scored 112 & 27* in this match?"
          };
          
-         const correctPlayer = ["BROAD"];
+         const correctPlayer = ["RAHANE"];
