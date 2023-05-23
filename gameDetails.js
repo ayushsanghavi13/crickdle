@@ -1,10 +1,10 @@
         const gameDetails = {
          	nation1: "Australia",
          	nation2: "India",
-         	date: "Dec 26-29, 2020",
-         	venue: "Melbourne",
-         	score: "Australia 195 & 200, India (T: 70) 326 & 70/2; India won by 8 wickets",
-         	crickdlequestion: "India player scored 112 & 27* in this match?"
+         	date: "Dec 4-8, 2003",
+         	venue: "Brisbane",
+         	score: "Australia 323 & 284/3d, India (T: 199) 409 & 73/2; Match drawn",
+         	crickdlequestion: "India player scored 144 in this match?"
          };
          
-         const correctPlayer = ["RAHANE"];
+         const correctPlayer = ["GANGULY"];
