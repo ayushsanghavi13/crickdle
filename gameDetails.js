@@ -1,10 +1,10 @@
         const gameDetails = {
-         	nation1: "England",
+         	nation1: "Australia",
          	nation2: "South Africa",
-         	date: "Jul 14-17, 2017",
-         	venue: "Nottingham",
-         	score: "South Africa 335 & 343/9d, England (T: 474) 205 & 133; South Africa won by 340 runs",
-         	crickdlequestion: "South Africa player scored 54 & 42 and took 2/48 & 3/24 in this match?"
+         	date: "Dec 16-20, 2005",
+         	venue: "Perth",
+         	score: "Australia 258 & 528/8d, South Africa (T: 491) 296 & 287/5; Match drawn",
+         	crickdlequestion: "Australia player scored 41 & 203* in this match?"
          };
          
-         const correctPlayer = ["PHILANDER"];
+         const correctPlayer = ["HODGE"];
