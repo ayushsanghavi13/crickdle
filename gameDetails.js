@@ -1,10 +1,10 @@
         const gameDetails = {
-         	nation1: "Australia",
-         	nation2: "ICC World XI",
-         	date: "Oct 14-17, 2005",
-         	venue: "Sydney",
-         	score: "Australia 345 & 199, ICC World XI (T: 355) 190 & 144; Australia won by 210 runs",
-         	crickdlequestion: "Australia player scored 111 & 77 in this match?"
+         	nation1: "New Zealand",
+         	nation2: "Bangladesh",
+         	date: "Feb 15-19, 2010",
+         	venue: "Hamilton",
+         	score: "New Zealand 553/7d & 258/5d, Bangladesh (T: 404) 408 & 282; New Zealand won by 121 runs",
+         	crickdlequestion: "New Zealand player scored 189 & 56* in this match?"
          };
          
-         const correctPlayer = ["HAYDEN"];
+         const correctPlayer = ["GUPTILL"];
