@@ -1,10 +1,10 @@
         const gameDetails = {
-         	nation1: "New Zealand",
-         	nation2: "Bangladesh",
-         	date: "Feb 15-19, 2010",
-         	venue: "Hamilton",
-         	score: "New Zealand 553/7d & 258/5d, Bangladesh (T: 404) 408 & 282; New Zealand won by 121 runs",
-         	crickdlequestion: "New Zealand player scored 189 & 56* in this match?"
+         	nation1: "South Africa",
+         	nation2: "Pakistan",
+         	date: "Jan 19-22, 2007",
+         	venue: "Gqeberha",
+         	score: "South Africa 124 & 331, Pakistan (T: 191) 265 & 191/5; Pakistan won by 5 wickets",
+         	crickdlequestion: "Pakistan player scored 92* in this match?"
          };
          
-         const correctPlayer = ["GUPTILL"];
+         const correctPlayer = ["UL-HAQ"];
