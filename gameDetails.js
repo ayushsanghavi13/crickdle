@@ -1,10 +1,10 @@
         const gameDetails = {
-         	nation1: "South Africa",
-         	nation2: "Pakistan",
-         	date: "Jan 19-22, 2007",
-         	venue: "Gqeberha",
-         	score: "South Africa 124 & 331, Pakistan (T: 191) 265 & 191/5; Pakistan won by 5 wickets",
-         	crickdlequestion: "Pakistan player scored 92* in this match?"
+         	nation1: "Bangladesh",
+         	nation2: "India",
+         	date: "Dec 14-18, 2022",
+         	venue: "Chattogram",
+         	score: "India 404 & 258/2d, Bangladesh (T: 513) 150 & 324; India won by 188 runs",
+         	crickdlequestion: "India player scored 40 and took 5/40 & 3/73 in this match?"
          };
          
-         const correctPlayer = ["UL-HAQ"];
+         const correctPlayer = ["YADAV"];
