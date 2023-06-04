@@ -7,4 +7,4 @@
          	crickdlequestion: "South Africa player scored 189* in this match?"
             };
          
-         const correctPlayer = ["YADAV"];
+         const correctPlayer = ["KALLIS"];
