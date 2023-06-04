@@ -1,10 +1,10 @@
         const gameDetails = {
-         	nation1: "Zimbabwe",
-         	nation2: "South Africa",
-         	date: "Sep 14-18, 2001",
-         	venue: "Bulawayo",
-         	score: "Zimbabwe 419/9d & 96/3, South Africa 519/8d; Match drawn",
-         	crickdlequestion: "South Africa player scored 189* in this match?"
+         	nation1: "England",
+         	nation2: "Sri Lanka",
+         	date: "Jun 9-13, 2016",
+         	venue: "Lord's",
+         	score: "England 416 & 233/7d, Sri Lanka (T: 362) 288 & 78/1; Match drawn",
+         	crickdlequestion: "England player scored 167* & 32 in this match?"
             };
          
-         const correctPlayer = ["KALLIS"];
+         const correctPlayer = ["BAIRSTOW"];
