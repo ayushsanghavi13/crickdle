@@ -1,10 +1,10 @@
         const gameDetails = {
-         	nation1: "Australia",
-         	nation2: "West Indies",
-         	date: "Dec 8-11, 2022",
-         	venue: "Adelaide",
-         	score: "Australia 511/7d & 199/6d, West Indies (T: 497) 214 & 77; Australia won by 419 runs",
-         	crickdlequestion: "Australia player scored 175 & 38* in this match?"
+         	nation1: "New Zealand",
+         	nation2: "Sri Lanka",
+         	date: "Apr 4-8, 2005",
+         	venue: "Napier",
+         	score: "New Zealand 561 & 238, Sri Lanka (T: 302) 498 & 7/0; Match drawn",
+         	crickdlequestion: "Sri Lanka player took 4/130 & 5/80 in this match?"
             };
          
-         const correctPlayer = ["HEAD"];
+         const correctPlayer = ["MALINGA"];
