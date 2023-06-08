@@ -1,10 +1,10 @@
         const gameDetails = {
          	nation1: "New Zealand",
-         	nation2: "Sri Lanka",
-         	date: "Apr 4-8, 2005",
-         	venue: "Napier",
-         	score: "New Zealand 561 & 238, Sri Lanka (T: 302) 498 & 7/0; Match drawn",
-         	crickdlequestion: "Sri Lanka player took 4/130 & 5/80 in this match?"
+         	nation2: "Pakistan",
+         	date: "Nov 26-30, 2014",
+         	venue: "Sharjah",
+         	score: "Pakistan 351 & 259, New Zealand 690; New Zealand won by an innings and 80 runs",
+         	crickdlequestion: "New Zealand player scored 65 and took 7/94 & 3/109 in this match?"
             };
          
-         const correctPlayer = ["MALINGA"];
+         const correctPlayer = ["CRAIG"];
