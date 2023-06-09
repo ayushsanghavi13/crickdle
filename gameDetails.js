@@ -1,10 +1,10 @@
         const gameDetails = {
-         	nation1: "New Zealand",
-         	nation2: "Pakistan",
-         	date: "Nov 26-30, 2014",
-         	venue: "Sharjah",
-         	score: "Pakistan 351 & 259, New Zealand 690; New Zealand won by an innings and 80 runs",
-         	crickdlequestion: "New Zealand player scored 65 and took 7/94 & 3/109 in this match?"
+         	nation1: "Sri Lanka",
+         	nation2: "Australia",
+         	date: "Aug 4-6, 2016",
+         	venue: "Galle",
+         	score: "Sri Lanka 281 & 237, Australia (T: 413) 106 & 183; Sri Lanka won by 229 runs",
+         	crickdlequestion: "Sri Lanka player scored 64 and took 4/29 & 6/70 in this match?"
             };
          
-         const correctPlayer = ["CRAIG"];
+         const correctPlayer = ["PERERA"];
