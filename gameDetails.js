@@ -1,10 +1,10 @@
         const gameDetails = {
-         	nation1: "Sri Lanka",
-         	nation2: "Australia",
-         	date: "Aug 4-6, 2016",
-         	venue: "Galle",
-         	score: "Sri Lanka 281 & 237, Australia (T: 413) 106 & 183; Sri Lanka won by 229 runs",
-         	crickdlequestion: "Sri Lanka player scored 64 and took 4/29 & 6/70 in this match?"
+         	nation1: "Bangladesh",
+         	nation2: "West Indies",
+         	date: "Nov 13-17, 2012",
+         	venue: "Mirpur",
+         	score: "West Indies 527/4d & 273, Bangladesh (T: 245) 556 & 167; West Indies won by 77 runs",
+         	crickdlequestion: "West Indies player scored 117 & 110 in this match?"
             };
          
-         const correctPlayer = ["PERERA"];
+         const correctPlayer = ["POWELL"];
