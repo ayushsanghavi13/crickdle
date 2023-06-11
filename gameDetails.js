@@ -1,10 +1,10 @@
         const gameDetails = {
-         	nation1: "Bangladesh",
-         	nation2: "West Indies",
-         	date: "Nov 13-17, 2012",
-         	venue: "Mirpur",
-         	score: "West Indies 527/4d & 273, Bangladesh (T: 245) 556 & 167; West Indies won by 77 runs",
-         	crickdlequestion: "West Indies player scored 117 & 110 in this match?"
+         	nation1: "India",
+         	nation2: "South Africa",
+         	date: "Apr 11-13, 2008",
+         	venue: "Kanpur",
+         	score: "South Africa 265 & 121, India (T: 62) 325 & 64/2; India won by 8 wickets",
+         	crickdlequestion: "India player scored 87 in this match?"
             };
          
-         const correctPlayer = ["POWELL"];
+         const correctPlayer = ["GANGULY"];
