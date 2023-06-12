@@ -1,10 +1,10 @@
         const gameDetails = {
-         	nation1: "India",
-         	nation2: "South Africa",
-         	date: "Apr 11-13, 2008",
-         	venue: "Kanpur",
-         	score: "South Africa 265 & 121, India (T: 62) 325 & 64/2; India won by 8 wickets",
-         	crickdlequestion: "India player scored 87 in this match?"
+         	nation1: "West Indies",
+         	nation2: "England",
+         	date: "Apr 13-17, 2015",
+         	venue: "North Sound",
+         	score: "England 399 & 333/7d, West Indies (T: 438) 295 & 350/7; Match drawn",
+         	crickdlequestion: "West Indies player scored 103* and took 2/69 & 1/63 in this match?"
             };
          
-         const correctPlayer = ["GANGULY"];
+         const correctPlayer = ["HOLDER"];
