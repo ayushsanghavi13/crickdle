@@ -1,10 +1,10 @@
         const gameDetails = {
-         	nation1: "West Indies",
-         	nation2: "England",
-         	date: "Apr 13-17, 2015",
-         	venue: "North Sound",
-         	score: "England 399 & 333/7d, West Indies (T: 438) 295 & 350/7; Match drawn",
-         	crickdlequestion: "West Indies player scored 103* and took 2/69 & 1/63 in this match?"
+         	nation1: "South Africa",
+         	nation2: "Australia",
+         	date: "Mar 1-5, 2014",
+         	venue: "Cape Town",
+         	score: "Australia 494/7d & 303/5d, South Africa (T: 511) 287 & 265; Australia won by 245 runs",
+         	crickdlequestion: "Australia player scored 135 & 145 in this match?"
             };
          
-         const correctPlayer = ["HOLDER"];
+         const correctPlayer = ["WARNER"];
