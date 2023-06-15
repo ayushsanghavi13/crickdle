@@ -1,10 +1,10 @@
         const gameDetails = {
          	nation1: "South Africa",
-         	nation2: "Australia",
-         	date: "Mar 1-5, 2014",
+         	nation2: "New Zealand",
+         	date: "Apr 27-May 1, 2006",
          	venue: "Cape Town",
-         	score: "Australia 494/7d & 303/5d, South Africa (T: 511) 287 & 265; Australia won by 245 runs",
-         	crickdlequestion: "Australia player scored 135 & 145 in this match?"
+         	score: "New Zealand 593/8d & 121/3, South Africa 512; Match drawn",
+         	crickdlequestion: "New Zealand player scored 262 in this match?"
             };
          
-         const correctPlayer = ["WARNER"];
+         const correctPlayer = ["FLEMING"];
