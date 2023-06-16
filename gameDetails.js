@@ -1,10 +1,10 @@
         const gameDetails = {
-         	nation1: "South Africa",
-         	nation2: "New Zealand",
-         	date: "Apr 27-May 1, 2006",
-         	venue: "Cape Town",
-         	score: "New Zealand 593/8d & 121/3, South Africa 512; Match drawn",
-         	crickdlequestion: "New Zealand player scored 262 in this match?"
+         	nation1: "England",
+         	nation2: "India",
+         	date: "Jul 27-31, 2014",
+         	venue: "Southampton",
+         	score: "England 569/7d & 205/4d, India (T: 445) 330 & 178; England won by 266 runs",
+         	crickdlequestion: "England player took 5/53 & 2/24 in this match?"
             };
          
-         const correctPlayer = ["FLEMING"];
+         const correctPlayer = ["ANDERSON"];
