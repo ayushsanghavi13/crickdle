@@ -1,10 +1,10 @@
         const gameDetails = {
-         	nation1: "England",
-         	nation2: "India",
-         	date: "Jul 27-31, 2014",
-         	venue: "Southampton",
-         	score: "England 569/7d & 205/4d, India (T: 445) 330 & 178; England won by 266 runs",
-         	crickdlequestion: "England player took 5/53 & 2/24 in this match?"
+         	nation1: "New Zealand",
+         	nation2: "Bangladesh",
+         	date: "Jan 4-6, 2008",
+         	venue: "Dunedin",
+         	score: "Bangladesh 137 & 254, New Zealand (T: 35) 357 & 39/1; New Zealand won by 9 wickets",
+         	crickdlequestion: "New Zealand player scored 117 and took 3/23 & 1/21 in this match?"
             };
          
-         const correctPlayer = ["ANDERSON"];
+         const correctPlayer = ["ORAM"];
