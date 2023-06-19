@@ -1,10 +1,10 @@
         const gameDetails = {
-         	nation1: "South Africa",
+         	nation1: "Sri Lanka",
          	nation2: "India",
-         	date: "Nov 16-20, 2001",
-         	venue: "Gqeberha",
-         	score: "South Africa 362 & 233/5d, India (T: 395) 201 & 206/3; Match drawn",
-         	crickdlequestion: "South Africa player scored 196 in this match?"
+         	date: "Aug 29-Sep 2, 2001",
+         	venue: "Colombo (SSC)",
+         	score: "India 234 & 299, Sri Lanka 610/6d; Sri Lanka won by an innings and 77 runs",
+         	crickdlequestion: "Sri Lanka player took 8/87 & 3/109 in this match?"
             };
          
-         const correctPlayer = ["GIBBS"];
+         const correctPlayer = ["MURALIDARAN"];
