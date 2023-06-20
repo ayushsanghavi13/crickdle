@@ -1,10 +1,10 @@
         const gameDetails = {
-         	nation1: "Sri Lanka",
-         	nation2: "India",
-         	date: "Aug 29-Sep 2, 2001",
-         	venue: "Colombo (SSC)",
-         	score: "India 234 & 299, Sri Lanka 610/6d; Sri Lanka won by an innings and 77 runs",
-         	crickdlequestion: "Sri Lanka player took 8/87 & 3/109 in this match?"
+         	nation1: "New Zealand",
+         	nation2: "West Indies",
+         	date: "Dec 11-13, 2013",
+         	venue: "Wellington",
+         	score: "New Zealand 441, West Indies (f/o) 193 & 175; New Zealand won by an innings and 73 runs",
+         	crickdlequestion: "New Zealand player scored 38* and took 6/40 & 4/40 in this match?"
             };
          
-         const correctPlayer = ["MURALIDARAN"];
+         const correctPlayer = ["BOULT"];
