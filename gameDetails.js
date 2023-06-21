@@ -1,10 +1,10 @@
         const gameDetails = {
-         	nation1: "New Zealand",
-         	nation2: "West Indies",
-         	date: "Dec 11-13, 2013",
-         	venue: "Wellington",
-         	score: "New Zealand 441, West Indies (f/o) 193 & 175; New Zealand won by an innings and 73 runs",
-         	crickdlequestion: "New Zealand player scored 38* and took 6/40 & 4/40 in this match?"
+         	nation1: "England",
+         	nation2: "Pakistan",
+         	date: "Aug 3-7, 2016",
+         	venue: "Birmingham",
+         	score: "England 297 & 445/6d, Pakistan (T: 343) 400 & 201; England won by 141 runs",
+         	crickdlequestion: "England player scored 63 & 86* and took 2/49 in this match?"
             };
          
-         const correctPlayer = ["BOULT"];
+         const correctPlayer = ["ALI"];
