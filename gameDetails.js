@@ -1,10 +1,10 @@
         const gameDetails = {
-         	nation1: "England",
-         	nation2: "Pakistan",
-         	date: "Aug 3-7, 2016",
-         	venue: "Birmingham",
-         	score: "England 297 & 445/6d, Pakistan (T: 343) 400 & 201; England won by 141 runs",
-         	crickdlequestion: "England player scored 63 & 86* and took 2/49 in this match?"
+         	nation1: "Sri Lanka",
+         	nation2: "Zimbabwe",
+         	date: "Dec 27-31, 2001",
+         	venue: "Colombo (SSC)",
+         	score: "Sri Lanka 586/6d, Zimbabwe (f/o) 184 & 236; Sri Lanka won by an innings and 166 runs",
+         	crickdlequestion: "Sri Lanka player scored 128 in this match?"
             };
          
-         const correctPlayer = ["ALI"];
+         const correctPlayer = ["SANGAKKARA"];
