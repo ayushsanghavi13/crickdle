@@ -1,10 +1,10 @@
         const gameDetails = {
          	nation1: "Sri Lanka",
-         	nation2: "Zimbabwe",
-         	date: "Dec 27-31, 2001",
-         	venue: "Colombo (SSC)",
-         	score: "Sri Lanka 586/6d, Zimbabwe (f/o) 184 & 236; Sri Lanka won by an innings and 166 runs",
-         	crickdlequestion: "Sri Lanka player scored 128 in this match?"
+         	nation2: "Australia",
+         	date: "Jul 8-11, 2022",
+         	venue: "Galle",
+         	score: "Australia 364 & 151, Sri Lanka 554; Sri Lanka won by an innings and 39 runs",
+         	crickdlequestion: "Sri Lanka player took 6/118 & 6/59 in this match?"
             };
          
-         const correctPlayer = ["SANGAKKARA"];
+         const correctPlayer = ["JAYASURIYA"];
