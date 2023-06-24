@@ -1,10 +1,10 @@
         const gameDetails = {
-         	nation1: "Sri Lanka",
-         	nation2: "Australia",
-         	date: "Jul 8-11, 2022",
-         	venue: "Galle",
-         	score: "Australia 364 & 151, Sri Lanka 554; Sri Lanka won by an innings and 39 runs",
-         	crickdlequestion: "Sri Lanka player took 6/118 & 6/59 in this match?"
+         	nation1: "Australia",
+         	nation2: "South Africa",
+         	date: "Dec 14-18, 2001",
+         	venue: "Adelaide",
+         	score: "Australia 439 & 309/7d, South Africa (T: 375) 374 & 128; Australia won by 246 runs",
+         	crickdlequestion: "Australia player scored 41 and took 5/113 & 3/57 in this match?"
             };
          
-         const correctPlayer = ["JAYASURIYA"];
+         const correctPlayer = ["WARNE"];
