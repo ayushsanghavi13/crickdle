@@ -1,10 +1,10 @@
         const gameDetails = {
-         	nation1: "Australia",
+         	nation1: "India",
          	nation2: "South Africa",
-         	date: "Dec 14-18, 2001",
-         	venue: "Adelaide",
-         	score: "Australia 439 & 309/7d, South Africa (T: 375) 374 & 128; Australia won by 246 runs",
-         	crickdlequestion: "Australia player scored 41 and took 5/113 & 3/57 in this match?"
+         	date: "Dec 3-7, 2015",
+         	venue: "Delhi",
+         	score: "India 334 & 267/5d, South Africa (T: 481) 121 & 143; India won by 337 runs",
+         	crickdlequestion: "India player scored 127 & 100* in this match?"
             };
          
-         const correctPlayer = ["WARNE"];
+         const correctPlayer = ["RAHANE"];
