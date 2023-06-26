@@ -1,10 +1,10 @@
         const gameDetails = {
          	nation1: "India",
-         	nation2: "South Africa",
-         	date: "Dec 3-7, 2015",
-         	venue: "Delhi",
-         	score: "India 334 & 267/5d, South Africa (T: 481) 121 & 143; India won by 337 runs",
-         	crickdlequestion: "India player scored 127 & 100* in this match?"
+         	nation2: "New Zealand",
+         	date: "Dec 3-6, 2021",
+         	venue: "Wankhede",
+         	score: "India 325 & 276/7d, New Zealand (T: 540) 62 & 167; India won by 372 runs",
+         	crickdlequestion: "India player scored 150 & 62 in this match?"
             };
          
-         const correctPlayer = ["RAHANE"];
+         const correctPlayer = ["AGARWAL"];
