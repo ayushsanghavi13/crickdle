@@ -1,10 +1,10 @@
         const gameDetails = {
-         	nation1: "New Zealand",
-         	nation2: "South Africa",
-         	date: "Mar 23-27, 2012",
-         	venue: "Wellington",
-         	score: "South Africa 474/9d & 189/3d, New Zealand (T: 389) 275 & 200/6; Match drawn",
-         	crickdlequestion: "South Africa player took 6/23 in this match?"
+         	nation1: "India",
+         	nation2: "England",
+         	date: "Dec 19-23, 2001",
+         	venue: "Bengaluru",
+         	score: "England 336 & 33/0, India 238; Match drawn",
+         	crickdlequestion: "England player took 4/50 in this match?"
             };
          
-         const correctPlayer = ["MORKEL"];
+         const correctPlayer = ["FLINTOFF"];
