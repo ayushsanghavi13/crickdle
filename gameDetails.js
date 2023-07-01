@@ -1,10 +1,10 @@
         const gameDetails = {
-         	nation1: "India",
-         	nation2: "England",
-         	date: "Dec 19-23, 2001",
-         	venue: "Bengaluru",
-         	score: "England 336 & 33/0, India 238; Match drawn",
-         	crickdlequestion: "England player took 4/50 in this match?"
+         	nation1: "Pakistan",
+         	nation2: "South Africa",
+         	date: "Jan 26-29, 2021",
+         	venue: "Karachi",
+         	score: "South Africa 220 & 245, Pakistan (T: 88) 378 & 90/3; Pakistan won by 7 wickets",
+         	crickdlequestion: "Pakistan player scored 109 in this match?"
             };
          
-         const correctPlayer = ["FLINTOFF"];
+         const correctPlayer = ["ALAM"];
