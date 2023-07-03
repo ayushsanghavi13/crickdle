@@ -1,10 +1,10 @@
         const gameDetails = {
-         	nation1: "Pakistan",
-         	nation2: "South Africa",
-         	date: "Jan 26-29, 2021",
-         	venue: "Karachi",
-         	score: "South Africa 220 & 245, Pakistan (T: 88) 378 & 90/3; Pakistan won by 7 wickets",
-         	crickdlequestion: "Pakistan player scored 109 in this match?"
+         	nation1: "South Africa",
+         	nation2: "Pakistan",
+         	date: "Feb 22-24, 2013",
+         	venue: "Centurion",
+         	score: "South Africa 409, Pakistan (f/o) 156 & 235; South Africa won by an innings and 18 runs",
+         	crickdlequestion: "South Africa player took 7/29 & 2/39 in this match?"
             };
          
-         const correctPlayer = ["ALAM"];
+         const correctPlayer = ["ABBOTT"];
